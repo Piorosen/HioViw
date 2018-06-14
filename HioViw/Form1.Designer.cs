@@ -35,6 +35,7 @@
             this.Colum_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Colum_Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Colum_Tag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TEXT_URL = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // LIST_Download
@@ -90,11 +91,19 @@
             // 
             this.Colum_Tag.Text = "Tag";
             // 
+            // TEXT_URL
+            // 
+            this.TEXT_URL.Location = new System.Drawing.Point(412, 54);
+            this.TEXT_URL.Name = "TEXT_URL";
+            this.TEXT_URL.Size = new System.Drawing.Size(504, 21);
+            this.TEXT_URL.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 450);
+            this.Controls.Add(this.TEXT_URL);
             this.Controls.Add(this.BTN_Download);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TEXT_DownloadLink);
@@ -115,6 +124,7 @@
         private System.Windows.Forms.ColumnHeader Colum_ID;
         private System.Windows.Forms.ColumnHeader Colum_Title;
         private System.Windows.Forms.ColumnHeader Colum_Tag;
+        private System.Windows.Forms.TextBox TEXT_URL;
     }
 }
 

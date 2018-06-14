@@ -47,6 +47,29 @@ namespace HioViw
 
                     string a = Regex.Split(web, "<div class=\"gallery-content\">")[1];
                     a = Regex.Split(a, "<div class=\"page-container\">")[0];
+
+                    List<string> list = new List<string>();
+                    list.Add("dj");
+                    list.Add("manga");
+                    list.Add("acg");
+
+                    for (int loop = 0; loop < 3; loop++) {
+                        string[] alldata = Regex.Split(a, "<div class=\"" + list[loop].ToString() + "\">");
+
+                        for (int ww = 1; ww < alldata.Length; ww++)
+                        {
+                            string ID = Regex.Split(alldata[ww], "<a href=\"/galleries/")[1].Split('\"')[0];
+
+                            using (WebClient wq = new WebClient())
+                            {
+                                wq.DownloadString(TEXT_URL.Text + "/galleries/" + ID);
+
+                            }
+
+                        }
+
+                    }
+
                 }
 
                     LIST_Download.Items.Add(front + i.ToString() + back);
