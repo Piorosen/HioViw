@@ -26,7 +26,7 @@ namespace HioViw
             string front = str.Split('{')[0];
             string back = str.Split('}')[1];
 
-
+            ㅁㄴㄹㅇㅁㄴㅇ
 
 
             int Frange;
