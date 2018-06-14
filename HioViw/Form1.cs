@@ -16,5 +16,31 @@ namespace HioViw
         {
             InitializeComponent();
         }
+
+        private void BTN_Download_Click(object sender, EventArgs e)
+        {
+            string str = TEXT_DownloadLink.Text;
+
+            string data = str.Split('{')[1].Split('}')[0];
+
+            string front = str.Split('{')[0];
+            string back = str.Split('}')[1];
+
+
+
+
+            int Frange;
+            int Lrange;
+
+
+            int.TryParse(data.Split('-')[0], out Frange);
+            int.TryParse(data.Split('-')[1], out Lrange);
+
+            for (int i = Frange; i <= Lrange; i++)
+            {
+                LIST_Download.Items.Add(front + i.ToString() + back);
+            }
+
+        }
     }
 }
