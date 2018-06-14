@@ -32,15 +32,23 @@
             this.TEXT_DownloadLink = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BTN_Download = new System.Windows.Forms.Button();
+            this.Colum_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Colum_Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Colum_Tag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // LIST_Download
             // 
+            this.LIST_Download.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Colum_ID,
+            this.Colum_Title,
+            this.Colum_Tag});
             this.LIST_Download.Location = new System.Drawing.Point(368, 81);
             this.LIST_Download.Name = "LIST_Download";
             this.LIST_Download.Size = new System.Drawing.Size(629, 357);
             this.LIST_Download.TabIndex = 0;
             this.LIST_Download.UseCompatibleStateImageBehavior = false;
+            this.LIST_Download.View = System.Windows.Forms.View.Details;
             // 
             // TEXT_DownloadLink
             // 
@@ -68,6 +76,20 @@
             this.BTN_Download.UseVisualStyleBackColor = true;
             this.BTN_Download.Click += new System.EventHandler(this.BTN_Download_Click);
             // 
+            // Colum_ID
+            // 
+            this.Colum_ID.Text = "ID";
+            this.Colum_ID.Width = 93;
+            // 
+            // Colum_Title
+            // 
+            this.Colum_Title.Text = "Title";
+            this.Colum_Title.Width = 96;
+            // 
+            // Colum_Tag
+            // 
+            this.Colum_Tag.Text = "Tag";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -90,6 +112,9 @@
         private System.Windows.Forms.TextBox TEXT_DownloadLink;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BTN_Download;
+        private System.Windows.Forms.ColumnHeader Colum_ID;
+        private System.Windows.Forms.ColumnHeader Colum_Title;
+        private System.Windows.Forms.ColumnHeader Colum_Tag;
     }
 }
 

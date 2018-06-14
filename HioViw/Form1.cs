@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,8 +27,7 @@ namespace HioViw
 
             string front = str.Split('{')[0];
             string back = str.Split('}')[1];
-
-            ㅁㄴㄹㅇㅁㄴㅇ
+            
 
 
             int Frange;
@@ -38,7 +39,17 @@ namespace HioViw
 
             for (int i = Frange; i <= Lrange; i++)
             {
-                LIST_Download.Items.Add(front + i.ToString() + back);
+                using (WebClient wc = new WebClient()) 
+                {
+
+
+                    string web = wc.DownloadString(front + i.ToString() + back);
+
+                    string a = Regex.Split(web, "<div class=\"gallery-content\">")[1];
+                    a = Regex.Split(a, "<div class=\"page-container\">")[0];
+                }
+
+                    LIST_Download.Items.Add(front + i.ToString() + back);
             }
 
         }
