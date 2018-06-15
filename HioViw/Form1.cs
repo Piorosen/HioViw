@@ -42,6 +42,7 @@ namespace HioViw
             {
                 using (WebClient wc = new WebClient()) 
                 {
+                    // https://hitomi.la/index-all-i.html
                     string web = wc.DownloadString(front + i.ToString() + back);
 
                     string a = Regex.Split(web, "<div class=\"gallery-content\">")[1];
@@ -60,8 +61,28 @@ namespace HioViw
                             string ID = Regex.Split(alldata[ww], "<a href=\"/galleries/")[1].Split('\"')[0];
                             string Title = Regex.Split(alldata[ww], "<h1>")[1];
                             Title = Regex.Split(Title, ">")[1];
-                            Title = Regex.Split(Title, "</a>")[0];
+                            Title = Regex.Split(Title, "</a")[0];
                             int page;
+                            string Uploader = Regex.Split(alldata[ww], "<div class=\"artist-list\">")[1].Split('>')[3].Split('<')[0];
+                            var p = Regex.Split(alldata[ww], "N/A");
+                            string Series = p.Length == 0 ? "N/A" : Regex.Split(alldata[ww], "<a href=\"/series/")[1].Split('>')[1].Split('<')[0];
+                            string Type = Regex.Split(alldata[ww], "<a href=\"/type/")[1].Split('-')[0];
+                            string Language = Regex.Split(alldata[ww], "<a href=\"/index-")[1].Split('-')[0];
+                            List<string> tagList = new List<string>();
+                            using (WebClient we = new WebClient())
+                            {
+                                string tags = we.DownloadString("https://hitomi.la/galleries/" + ID);
+                                string Tag = Regex.Split(alldata[ww], "<td>Tags</td>")[1];
+                                Tag = Regex.Split(Tag, "</tr>")[0];
+
+
+                                var ttt = Regex.Split(Tag, "<a href=\"/tag/");
+                                foreach (string o in ttt)
+                                {
+                                    tagList.Add(o.Split('-')[0]);
+                                }
+
+                            }
 
                             List<string> ext = new List<string>();
                             using (WebClient wq = new WebClient())
