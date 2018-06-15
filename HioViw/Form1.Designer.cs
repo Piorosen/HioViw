@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.LIST_Download = new System.Windows.Forms.ListView();
-            this.TEXT_DownloadLink = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BTN_Download = new System.Windows.Forms.Button();
             this.Colum_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Colum_Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Colum_Tag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TEXT_DownloadLink = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BTN_Download = new System.Windows.Forms.Button();
             this.TEXT_URL = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -50,6 +50,20 @@
             this.LIST_Download.TabIndex = 0;
             this.LIST_Download.UseCompatibleStateImageBehavior = false;
             this.LIST_Download.View = System.Windows.Forms.View.Details;
+            // 
+            // Colum_ID
+            // 
+            this.Colum_ID.Text = "ID";
+            this.Colum_ID.Width = 93;
+            // 
+            // Colum_Title
+            // 
+            this.Colum_Title.Text = "Title";
+            this.Colum_Title.Width = 96;
+            // 
+            // Colum_Tag
+            // 
+            this.Colum_Tag.Text = "Tag";
             // 
             // TEXT_DownloadLink
             // 
@@ -76,20 +90,6 @@
             this.BTN_Download.Text = "Download";
             this.BTN_Download.UseVisualStyleBackColor = true;
             this.BTN_Download.Click += new System.EventHandler(this.BTN_Download_Click);
-            // 
-            // Colum_ID
-            // 
-            this.Colum_ID.Text = "ID";
-            this.Colum_ID.Width = 93;
-            // 
-            // Colum_Title
-            // 
-            this.Colum_Title.Text = "Title";
-            this.Colum_Title.Width = 96;
-            // 
-            // Colum_Tag
-            // 
-            this.Colum_Tag.Text = "Tag";
             // 
             // TEXT_URL
             // 

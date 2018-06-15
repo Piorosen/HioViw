@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -41,8 +42,6 @@ namespace HioViw
             {
                 using (WebClient wc = new WebClient()) 
                 {
-
-
                     string web = wc.DownloadString(front + i.ToString() + back);
 
                     string a = Regex.Split(web, "<div class=\"gallery-content\">")[1];
@@ -54,19 +53,54 @@ namespace HioViw
                     list.Add("acg");
 
                     for (int loop = 0; loop < 3; loop++) {
-                        string[] alldata = Regex.Split(a, "<div class=\"" + list[loop].ToString() + "\">");
+                            string[] alldata = Regex.Split(a, "<div class=\"" + list[loop].ToString() + "\">");
 
                         for (int ww = 1; ww < alldata.Length; ww++)
                         {
                             string ID = Regex.Split(alldata[ww], "<a href=\"/galleries/")[1].Split('\"')[0];
+                            string Title = Regex.Split(alldata[ww], "<h1>")[1];
+                            Title = Regex.Split(Title, ">")[1];
+                            Title = Regex.Split(Title, "</a>")[0];
+                            int page;
+
+                            List<string> ext = new List<string>();
+                            using (WebClient wq = new WebClient())
+                            {
+                                string getpage = wq.DownloadString("https://hitomi.la/reader/" + ID + "#1");
+                                var pagel = Regex.Split(getpage, "//g.hitomi.la/galleries/" + ID.Split('.')[0] + "/");
+                                for (int l2 = 1; l2 < pagel.Length; l2++)
+                                {
+                                    ext.Add(pagel[l2].Split('<')[0]);
+                                }
+                                page = pagel.Length - 1;
+                            }
 
                             using (WebClient wq = new WebClient())
                             {
-                                wq.DownloadString(TEXT_URL.Text + "/galleries/" + ID);
+                                DirectoryInfo di = new DirectoryInfo("C:\\Map\\" + ID.Split('.')[0]);
+                                if (!di.Exists)
+                                {
+                                    di.Create();
+                                }
 
+                                for (int qww = 1; qww <= page; qww++)
+                                {
+                                    try
+                                    {
+                                        wq.DownloadFile(new Uri("https://aa.hitomi.la/galleries/" + ID.Split('.')[0] + "/" + ext[qww - 1]),
+                                            "C:\\Map\\" + ID.Split('.')[0] + "\\" + qww.ToString() + ".jpg");
+                                    }catch(Exception)
+                                    {
+                                         wq.DownloadFile(new Uri("https://ba.hitomi.la/galleries/" + ID.Split('.')[0] + "/" + ext[qww - 1]),
+                                           "C:\\Map\\" + ID.Split('.')[0] + "\\" + qww.ToString() + ".jpg");
+                                    }
+                                }
                             }
+                            string[] da = { ID, Title, "" };
+                            ListViewItem itema = new ListViewItem(da);
 
-                        }
+                            LIST_Download.Items.Add(itema);
+                        }   
 
                     }
 
