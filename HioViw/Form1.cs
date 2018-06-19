@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace HioViw
 {
@@ -18,6 +19,10 @@ namespace HioViw
         public Form1()
         {
             InitializeComponent();
+
+            OptionPanel.Add(new OptionTag(Panel_Language, 125));
+            OptionPanel.Add(new OptionTag(Panel_Type, 110));
+            OptionPanel.Add(new OptionTag(Panel_PageRange, 95));
         }
        
             
@@ -229,15 +234,84 @@ namespace HioViw
 
         }
 
+
+
+        List<OptionTag> OptionPanel = new List<OptionTag>();
+
         private void Panel_Paint(object sender, PaintEventArgs e)
         {
             if (sender is Panel)
             {
                 var panel = (sender as Panel);
                 var graphic = panel.CreateGraphics();
-                Rectangle r = new Rectangle(1,1, panel.Size.Width - 1, panel.Size.Height - 1);
+                graphic.Clear(this.BackColor);
+                Rectangle r = new Rectangle(0,0, panel.Size.Width, panel.Size.Height);
                 graphic.DrawRectangle(new Pen(Color.FromArgb(120,120,120), 2), r);
             }
         }
+
+
+        private void Panel_Activate(object sender, EventArgs e)
+        {
+
+            Panel data;
+
+            if (sender is Panel)
+            {
+                data = (sender as Panel);
+            }
+            else if (sender is Control)
+            {
+                data = (sender as Control).Parent as Panel;
+            }
+            else
+            {
+                return;
+            }
+
+            if (data.Size.Height != 30)
+            {
+                data.Size = new Size(data.Size.Width, 30);
+            }
+            else
+            {
+                data.Size = new Size(data.Size.Width, OptionPanel[int.Parse(data.Tag.ToString())].Height);
+            }
+
+            for (int i = 0; i < OptionPanel.Count - 1 ; i++)
+            {
+                OptionPanel[i + 1].Panel_Data.Location = new Point(OptionPanel[i + 1].Panel_Data.Location.X,
+                    OptionPanel[i].Panel_Data.Location.Y + OptionPanel[i].Panel_Data.Size.Height + 6);
+            }
+
+            foreach (var panel in OptionPanel)
+            {
+                Panel_Paint(panel.Panel_Data, null);
+            }
+
+        }
+
+        private void ChkListBox_Click(object sender, EventArgs e)
+        {
+            var list = (sender as CheckedListBox);
+            int i = list.SelectedIndex;
+            for (int w = 0; w < list.Items.Count; w++)
+            {
+                list.SetItemCheckState(w, CheckState.Unchecked);
+            }
+            (sender as CheckedListBox).SelectedIndex = i;
+        }
     }
+
+    public class OptionTag
+    {
+        public OptionTag(Panel p, int h)
+        {
+            Panel_Data = p;
+            Height = h;
+        }
+        public Panel Panel_Data { get; set; }
+        public int Height { get; set; }
+    }
+
 }
