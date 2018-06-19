@@ -19,7 +19,8 @@ namespace HioViw
         {
             InitializeComponent();
         }
-
+       
+            
         private void Download(object sender, EventArgs e)
         {
             //string str = TEXT_DownloadLink.Text;
@@ -226,6 +227,17 @@ namespace HioViw
                     // LIST_Download.Items.Add(front + i.ToString() + back);
             }
 
+        }
+
+        private void Panel_Paint(object sender, PaintEventArgs e)
+        {
+            if (sender is Panel)
+            {
+                var panel = (sender as Panel);
+                var graphic = panel.CreateGraphics();
+                Rectangle r = new Rectangle(1,1, panel.Size.Width - 1, panel.Size.Height - 1);
+                graphic.DrawRectangle(new Pen(Color.FromArgb(120,120,120), 2), r);
+            }
         }
     }
 }
