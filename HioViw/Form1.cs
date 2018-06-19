@@ -24,7 +24,7 @@ namespace HioViw
         {
             //string str = TEXT_DownloadLink.Text;
 
-            string str = Console.ReadLine();
+            string str = 
             string data = str.Split('{')[1].Split('}')[0];
 
             string front = str.Split('{')[0];
