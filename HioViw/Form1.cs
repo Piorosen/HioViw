@@ -20,11 +20,11 @@ namespace HioViw
             InitializeComponent();
         }
 
-        private void BTN_Download_Click(object sender, EventArgs e)
+        private void Download(object sender, EventArgs e)
         {
             //string str = TEXT_DownloadLink.Text;
 
-            string str = 
+            string str = "https://hitomi.la/index-korean-{1-10}.html";
             string data = str.Split('{')[1].Split('}')[0];
 
             string front = str.Split('{')[0];
@@ -196,7 +196,7 @@ namespace HioViw
                                 sw.Write("Tags : ");
                                 foreach (string tag in tagList)
                                 {
-                                    sw.Write(tag + ", ");
+                                    sw.Write(tag.TrimEnd('\n') + ", ");
                                 }
                                 sw.WriteLine();
 
@@ -211,7 +211,7 @@ namespace HioViw
                                 sw.Close();
 
                                 Console.WriteLine(ww.ToString() + "번째 동인지 다운로드 완료");
-                                LIST_Download.Items.Add(itema);
+                                // LIST_Download.Items.Add(itema);
                             }
                             catch (Exception)
                             {
@@ -223,7 +223,7 @@ namespace HioViw
 
                 }
 
-                    LIST_Download.Items.Add(front + i.ToString() + back);
+                    // LIST_Download.Items.Add(front + i.ToString() + back);
             }
 
         }
