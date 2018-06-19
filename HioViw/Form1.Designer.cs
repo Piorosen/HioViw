@@ -31,6 +31,10 @@
             this.Panel_Top_Option = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Panel_Download_Option = new System.Windows.Forms.Panel();
+            this.Panel_TeamName = new System.Windows.Forms.Panel();
+            this.Label_TeamName = new System.Windows.Forms.Label();
+            this.Panel_Download = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.Panel_DownloadPath = new System.Windows.Forms.Panel();
             this.Btn_DownloadPath = new System.Windows.Forms.Button();
             this.Text_DownloadPath = new System.Windows.Forms.TextBox();
@@ -46,11 +50,13 @@
             this.ChkListBox_Language = new System.Windows.Forms.CheckedListBox();
             this.Label_Language = new System.Windows.Forms.Label();
             this.Panel_Download_Stat = new System.Windows.Forms.Panel();
-            this.Panel_Download = new System.Windows.Forms.Panel();
+            this.Panel_Downloaded = new System.Windows.Forms.Panel();
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Panel_Download_Option.SuspendLayout();
+            this.Panel_TeamName.SuspendLayout();
+            this.Panel_Download.SuspendLayout();
             this.Panel_DownloadPath.SuspendLayout();
             this.Panel_PageRange.SuspendLayout();
             this.Panel_Type.SuspendLayout();
@@ -80,6 +86,9 @@
             // 
             // Panel_Download_Option
             // 
+            this.Panel_Download_Option.AutoScroll = true;
+            this.Panel_Download_Option.Controls.Add(this.Panel_TeamName);
+            this.Panel_Download_Option.Controls.Add(this.Panel_Download);
             this.Panel_Download_Option.Controls.Add(this.Panel_DownloadPath);
             this.Panel_Download_Option.Controls.Add(this.Panel_PageRange);
             this.Panel_Download_Option.Controls.Add(this.Panel_Type);
@@ -87,9 +96,49 @@
             this.Panel_Download_Option.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_Download_Option.Location = new System.Drawing.Point(3, 49);
             this.Panel_Download_Option.Name = "Panel_Download_Option";
-            this.Panel_Download_Option.Size = new System.Drawing.Size(150, 459);
+            this.Panel_Download_Option.Size = new System.Drawing.Size(185, 459);
             this.Panel_Download_Option.TabIndex = 4;
             this.Panel_Download_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            // 
+            // Panel_TeamName
+            // 
+            this.Panel_TeamName.Controls.Add(this.Label_TeamName);
+            this.Panel_TeamName.Location = new System.Drawing.Point(6, 420);
+            this.Panel_TeamName.Name = "Panel_TeamName";
+            this.Panel_TeamName.Size = new System.Drawing.Size(138, 30);
+            this.Panel_TeamName.TabIndex = 7;
+            // 
+            // Label_TeamName
+            // 
+            this.Label_TeamName.AutoSize = true;
+            this.Label_TeamName.ForeColor = System.Drawing.Color.LightGray;
+            this.Label_TeamName.Location = new System.Drawing.Point(29, 9);
+            this.Label_TeamName.Name = "Label_TeamName";
+            this.Label_TeamName.Size = new System.Drawing.Size(81, 12);
+            this.Label_TeamName.TabIndex = 8;
+            this.Label_TeamName.Text = "Team. Reflex";
+            this.Label_TeamName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // Panel_Download
+            // 
+            this.Panel_Download.Controls.Add(this.label1);
+            this.Panel_Download.Location = new System.Drawing.Point(6, 384);
+            this.Panel_Download.Name = "Panel_Download";
+            this.Panel_Download.Size = new System.Drawing.Size(138, 30);
+            this.Panel_Download.TabIndex = 6;
+            this.Panel_Download.Tag = "4";
+            this.Panel_Download.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.LightGray;
+            this.label1.Location = new System.Drawing.Point(36, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 12);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Download";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Panel_DownloadPath
             // 
@@ -98,7 +147,7 @@
             this.Panel_DownloadPath.Controls.Add(this.Label_DownloadPath);
             this.Panel_DownloadPath.Location = new System.Drawing.Point(6, 114);
             this.Panel_DownloadPath.Name = "Panel_DownloadPath";
-            this.Panel_DownloadPath.Size = new System.Drawing.Size(138, 95);
+            this.Panel_DownloadPath.Size = new System.Drawing.Size(138, 30);
             this.Panel_DownloadPath.TabIndex = 5;
             this.Panel_DownloadPath.Tag = "3";
             this.Panel_DownloadPath.Click += new System.EventHandler(this.Panel_Activate);
@@ -116,6 +165,9 @@
             // 
             // Text_DownloadPath
             // 
+            this.Text_DownloadPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Text_DownloadPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Text_DownloadPath.ForeColor = System.Drawing.Color.LightGray;
             this.Text_DownloadPath.Location = new System.Drawing.Point(11, 35);
             this.Text_DownloadPath.Name = "Text_DownloadPath";
             this.Text_DownloadPath.ReadOnly = true;
@@ -136,9 +188,6 @@
             // 
             // Panel_PageRange
             // 
-            this.Panel_PageRange.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_PageRange.Controls.Add(this.Label_PageRangeHow);
             this.Panel_PageRange.Controls.Add(this.Text_PageRange);
             this.Panel_PageRange.Controls.Add(this.Label_PageRange);
@@ -153,7 +202,7 @@
             // Label_PageRangeHow
             // 
             this.Label_PageRangeHow.AutoSize = true;
-            this.Label_PageRangeHow.ForeColor = System.Drawing.Color.Beige;
+            this.Label_PageRangeHow.ForeColor = System.Drawing.Color.LightGray;
             this.Label_PageRangeHow.Location = new System.Drawing.Point(10, 70);
             this.Label_PageRangeHow.Name = "Label_PageRangeHow";
             this.Label_PageRangeHow.Size = new System.Drawing.Size(64, 12);
@@ -162,10 +211,14 @@
             // 
             // Text_PageRange
             // 
+            this.Text_PageRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.Text_PageRange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Text_PageRange.ForeColor = System.Drawing.Color.LightGray;
             this.Text_PageRange.Location = new System.Drawing.Point(11, 38);
             this.Text_PageRange.Name = "Text_PageRange";
             this.Text_PageRange.Size = new System.Drawing.Size(119, 21);
             this.Text_PageRange.TabIndex = 3;
+            this.Text_PageRange.Text = "{1-1}";
             // 
             // Label_PageRange
             // 
@@ -181,9 +234,6 @@
             // 
             // Panel_Type
             // 
-            this.Panel_Type.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_Type.Controls.Add(this.ChkListBox_Type);
             this.Panel_Type.Controls.Add(this.Label_Type);
             this.Panel_Type.Location = new System.Drawing.Point(6, 42);
@@ -225,9 +275,6 @@
             // 
             // Panel_Language
             // 
-            this.Panel_Language.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_Language.Controls.Add(this.ChkListBox_Language);
             this.Panel_Language.Controls.Add(this.Label_Language);
             this.Panel_Language.Location = new System.Drawing.Point(6, 6);
@@ -271,22 +318,22 @@
             // Panel_Download_Stat
             // 
             this.Panel_Download_Stat.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel_Download_Stat.Location = new System.Drawing.Point(153, 459);
+            this.Panel_Download_Stat.Location = new System.Drawing.Point(188, 459);
             this.Panel_Download_Stat.Name = "Panel_Download_Stat";
-            this.Panel_Download_Stat.Size = new System.Drawing.Size(628, 49);
+            this.Panel_Download_Stat.Size = new System.Drawing.Size(593, 49);
             this.Panel_Download_Stat.TabIndex = 5;
             this.Panel_Download_Stat.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
-            // Panel_Download
+            // Panel_Downloaded
             // 
-            this.Panel_Download.AutoScroll = true;
-            this.Panel_Download.BackColor = System.Drawing.Color.Transparent;
-            this.Panel_Download.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel_Download.Location = new System.Drawing.Point(153, 49);
-            this.Panel_Download.Name = "Panel_Download";
-            this.Panel_Download.Size = new System.Drawing.Size(628, 410);
-            this.Panel_Download.TabIndex = 6;
-            this.Panel_Download.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            this.Panel_Downloaded.AutoScroll = true;
+            this.Panel_Downloaded.BackColor = System.Drawing.Color.Transparent;
+            this.Panel_Downloaded.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel_Downloaded.Location = new System.Drawing.Point(188, 49);
+            this.Panel_Downloaded.Name = "Panel_Downloaded";
+            this.Panel_Downloaded.Size = new System.Drawing.Size(593, 410);
+            this.Panel_Downloaded.TabIndex = 6;
+            this.Panel_Downloaded.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Form1
             // 
@@ -294,7 +341,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(784, 511);
-            this.Controls.Add(this.Panel_Download);
+            this.Controls.Add(this.Panel_Downloaded);
             this.Controls.Add(this.Panel_Download_Stat);
             this.Controls.Add(this.Panel_Download_Option);
             this.Controls.Add(this.Panel_Top_Option);
@@ -307,6 +354,10 @@
             this.Panel_Top_Option.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Panel_Download_Option.ResumeLayout(false);
+            this.Panel_TeamName.ResumeLayout(false);
+            this.Panel_TeamName.PerformLayout();
+            this.Panel_Download.ResumeLayout(false);
+            this.Panel_Download.PerformLayout();
             this.Panel_DownloadPath.ResumeLayout(false);
             this.Panel_DownloadPath.PerformLayout();
             this.Panel_PageRange.ResumeLayout(false);
@@ -324,7 +375,7 @@
         private System.Windows.Forms.Panel Panel_Top_Option;
         private System.Windows.Forms.Panel Panel_Download_Option;
         private System.Windows.Forms.Panel Panel_Download_Stat;
-        private System.Windows.Forms.Panel Panel_Download;
+        private System.Windows.Forms.Panel Panel_Downloaded;
         private System.Windows.Forms.Panel Panel_Language;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label Label_Language;
@@ -341,6 +392,10 @@
         private System.Windows.Forms.TextBox Text_DownloadPath;
         private System.Windows.Forms.Label Label_DownloadPath;
         private System.Windows.Forms.FolderBrowserDialog FolderBrowerDialog;
+        private System.Windows.Forms.Panel Panel_Download;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel Panel_TeamName;
+        private System.Windows.Forms.Label Label_TeamName;
     }
 }
 

@@ -24,14 +24,16 @@ namespace HioViw
             OptionPanel.Add(new OptionTag(Panel_Type, 110));
             OptionPanel.Add(new OptionTag(Panel_PageRange, 95));
             OptionPanel.Add(new OptionTag(Panel_DownloadPath, 95));
+            OptionPanel.Add(new OptionTag(Panel_Download, 30));
+            OptionPanel.Add(new OptionTag(Panel_TeamName, 30));
         }
        
             
-        private void Download(object sender, EventArgs e)
+        private void Download()
         {
             //string str = TEXT_DownloadLink.Text;
 
-            string str = "https://hitomi.la/index-korean-{1-10}.html";
+            string str = "https://hitomi.la/index-" + ChkListBox_Language.CheckedItems[0].ToString().ToLower() + "-" + Text_PageRange.Text + ".html";
             string data = str.Split('{')[1].Split('}')[0];
 
             string front = str.Split('{')[0];
@@ -169,7 +171,7 @@ namespace HioViw
                                         try
                                         {
                                             wq.DownloadFile(new Uri("https://aa.hitomi.la/galleries/" + ID.Split('.')[0] + "/" + ext[qww - 1]),
-                                                "C:\\Map\\" + ID.Split('.')[0] + "\\" + qww.ToString() + ".jpg");
+                                                Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\" + qww.ToString() + ".jpg");
                                             Console.WriteLine(qww.ToString() + "번째 다운로드 완료");
                                         }
                                         catch (Exception)
@@ -177,7 +179,7 @@ namespace HioViw
                                             try
                                             {
                                                 wq.DownloadFile(new Uri("https://ba.hitomi.la/galleries/" + ID.Split('.')[0] + "/" + ext[qww - 1]),
-                                                  "C:\\Map\\" + ID.Split('.')[0] + "\\" + qww.ToString() + ".jpg");
+                                                  Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\" + qww.ToString() + ".jpg");
                                                 Console.WriteLine(qww.ToString() + "번째 다운로드 완료");
                                             }
                                             catch (Exception)
@@ -254,7 +256,6 @@ namespace HioViw
 
         private void Panel_Activate(object sender, EventArgs e)
         {
-
             Panel data;
 
             if (sender is Panel)
@@ -270,6 +271,7 @@ namespace HioViw
                 return;
             }
 
+
             if (data.Size.Height != 30)
             {
                 data.Size = new Size(data.Size.Width, 30);
@@ -279,10 +281,27 @@ namespace HioViw
                 data.Size = new Size(data.Size.Width, OptionPanel[int.Parse(data.Tag.ToString())].Height);
             }
 
-            for (int i = 0; i < OptionPanel.Count - 1 ; i++)
+
+            for (int i = 0; i < OptionPanel.Count - 3; i++)
             {
                 OptionPanel[i + 1].Panel_Data.Location = new Point(OptionPanel[i + 1].Panel_Data.Location.X,
                     OptionPanel[i].Panel_Data.Location.Y + OptionPanel[i].Panel_Data.Size.Height + 6);
+            }
+
+            for (int i = OptionPanel.Count -3; i < OptionPanel.Count - 1; i++)
+            {
+                var p = OptionPanel[OptionPanel.Count - 3].Panel_Data;
+                if (p.Location.Y + p.Size.Height + 6 >= 384)
+                {
+                    OptionPanel[i + 1].Panel_Data.Location = new Point(OptionPanel[i + 1].Panel_Data.Location.X,
+                        OptionPanel[i].Panel_Data.Location.Y + OptionPanel[i].Panel_Data.Size.Height + 6);
+                }
+                else
+                {
+                    OptionPanel[4].Panel_Data.Location = new Point(6, 384);
+                    OptionPanel[5].Panel_Data.Location = new Point(6, 420);
+
+                }
             }
 
             foreach (var panel in OptionPanel)
