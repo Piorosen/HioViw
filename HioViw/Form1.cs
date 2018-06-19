@@ -23,6 +23,7 @@ namespace HioViw
             OptionPanel.Add(new OptionTag(Panel_Language, 125));
             OptionPanel.Add(new OptionTag(Panel_Type, 110));
             OptionPanel.Add(new OptionTag(Panel_PageRange, 95));
+            OptionPanel.Add(new OptionTag(Panel_DownloadPath, 95));
         }
        
             
@@ -300,6 +301,14 @@ namespace HioViw
                 list.SetItemCheckState(w, CheckState.Unchecked);
             }
             (sender as CheckedListBox).SelectedIndex = i;
+        }
+
+        private void Btn_DownloadPath_Click(object sender, EventArgs e)
+        {
+            if (FolderBrowerDialog.ShowDialog() == DialogResult.OK)
+            {
+                Text_DownloadPath.Text = FolderBrowerDialog.SelectedPath;
+            }
         }
     }
 
