@@ -107,6 +107,7 @@
             this.Panel_TeamName.Name = "Panel_TeamName";
             this.Panel_TeamName.Size = new System.Drawing.Size(138, 30);
             this.Panel_TeamName.TabIndex = 7;
+            this.Panel_TeamName.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Label_TeamName
             // 
@@ -350,6 +351,7 @@
             this.Padding = new System.Windows.Forms.Padding(3);
             this.Text = "HioViw";
             this.TransparencyKey = System.Drawing.Color.Green;
+            this.ResizeEnd += new System.EventHandler(this.Form_ResizeEnd);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Panel_Top_Option.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

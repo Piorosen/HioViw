@@ -268,19 +268,20 @@ namespace HioViw
             }
             else
             {
-                return;
+                data = null;
             }
 
-
-            if (data.Size.Height != 30)
+            if (data != null)
             {
-                data.Size = new Size(data.Size.Width, 30);
+                if (data.Size.Height != 30)
+                {
+                    data.Size = new Size(data.Size.Width, 30);
+                }
+                else
+                {
+                    data.Size = new Size(data.Size.Width, OptionPanel[int.Parse(data.Tag.ToString())].Height);
+                }
             }
-            else
-            {
-                data.Size = new Size(data.Size.Width, OptionPanel[int.Parse(data.Tag.ToString())].Height);
-            }
-
 
             for (int i = 0; i < OptionPanel.Count - 3; i++)
             {
@@ -291,15 +292,16 @@ namespace HioViw
             for (int i = OptionPanel.Count -3; i < OptionPanel.Count - 1; i++)
             {
                 var p = OptionPanel[OptionPanel.Count - 3].Panel_Data;
-                if (p.Location.Y + p.Size.Height + 6 >= 384)
+                if (p.Location.Y + p.Size.Height + 6 >= this.Size.Height - (550 - 384))
                 {
                     OptionPanel[i + 1].Panel_Data.Location = new Point(OptionPanel[i + 1].Panel_Data.Location.X,
                         OptionPanel[i].Panel_Data.Location.Y + OptionPanel[i].Panel_Data.Size.Height + 6);
                 }
                 else
                 {
-                    OptionPanel[4].Panel_Data.Location = new Point(6, 384);
-                    OptionPanel[5].Panel_Data.Location = new Point(6, 420);
+                    int length = OptionPanel.Count - i + OptionPanel.Count - 4;
+                    OptionPanel[length].Panel_Data.Location =
+                        new Point(6, this.Size.Height - 130 - 36 * (i - (OptionPanel.Count - 3)));
 
                 }
             }
@@ -328,6 +330,11 @@ namespace HioViw
             {
                 Text_DownloadPath.Text = FolderBrowerDialog.SelectedPath;
             }
+        }
+
+        private void Form_ResizeEnd(object sender, EventArgs e)
+        {
+            Panel_Activate(null, null);
         }
     }
 
