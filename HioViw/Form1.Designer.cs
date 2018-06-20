@@ -52,6 +52,10 @@
             this.Panel_Download_Stat = new System.Windows.Forms.Panel();
             this.Panel_Downloaded = new System.Windows.Forms.Panel();
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Panel_Download_Option.SuspendLayout();
@@ -61,6 +65,9 @@
             this.Panel_PageRange.SuspendLayout();
             this.Panel_Type.SuspendLayout();
             this.Panel_Language.SuspendLayout();
+            this.Panel_Downloaded.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Top_Option
@@ -128,6 +135,7 @@
             this.Panel_Download.Size = new System.Drawing.Size(138, 30);
             this.Panel_Download.TabIndex = 6;
             this.Panel_Download.Tag = "4";
+            this.Panel_Download.Click += new System.EventHandler(this.Btn_Download);
             this.Panel_Download.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // label1
@@ -140,6 +148,7 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Download";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Click += new System.EventHandler(this.Btn_Download);
             // 
             // Panel_DownloadPath
             // 
@@ -329,12 +338,51 @@
             // 
             this.Panel_Downloaded.AutoScroll = true;
             this.Panel_Downloaded.BackColor = System.Drawing.Color.Transparent;
+            this.Panel_Downloaded.Controls.Add(this.panel1);
             this.Panel_Downloaded.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Downloaded.Location = new System.Drawing.Point(188, 49);
             this.Panel_Downloaded.Name = "Panel_Downloaded";
             this.Panel_Downloaded.Size = new System.Drawing.Size(593, 410);
             this.Panel_Downloaded.TabIndex = 6;
             this.Panel_Downloaded.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Location = new System.Drawing.Point(6, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(574, 66);
+            this.panel1.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(88, 60);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.LightGray;
+            this.label2.Location = new System.Drawing.Point(97, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Title : ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.LightGray;
+            this.label3.Location = new System.Drawing.Point(97, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Title : ";
             // 
             // Form1
             // 
@@ -368,6 +416,10 @@
             this.Panel_Type.PerformLayout();
             this.Panel_Language.ResumeLayout(false);
             this.Panel_Language.PerformLayout();
+            this.Panel_Downloaded.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -398,6 +450,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Panel_TeamName;
         private System.Windows.Forms.Label Label_TeamName;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

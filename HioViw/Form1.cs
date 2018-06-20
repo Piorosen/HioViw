@@ -26,12 +26,26 @@ namespace HioViw
             OptionPanel.Add(new OptionTag(Panel_DownloadPath, 95));
             OptionPanel.Add(new OptionTag(Panel_Download, 30));
             OptionPanel.Add(new OptionTag(Panel_TeamName, 30));
-        }
-       
+
+            ChkListBox_Language.SetItemCheckState(0, CheckState.Checked);
+            ChkListBox_Type.SetItemCheckState(0, CheckState.Checked);
             
+            worker.DoWork += Worker_DoWork;
+        }
+
+
         private void Download()
         {
-            //string str = TEXT_DownloadLink.Text;
+            if (Text_DownloadPath.Text == "")
+            {
+                MessageBox.Show("Not Found Download Path");
+                return;
+            }
+            if (!new DirectoryInfo(Text_DownloadPath.Text + "\\").Exists)
+            {
+                MessageBox.Show("Not Found Download Path");
+                return;
+            }
 
             string str = "https://hitomi.la/index-" + ChkListBox_Language.CheckedItems[0].ToString().ToLower() + "-" + Text_PageRange.Text + ".html";
             string data = str.Split('{')[1].Split('}')[0];
@@ -39,12 +53,9 @@ namespace HioViw
             string front = str.Split('{')[0];
             string back = str.Split('}')[1];
             
-
-
             int Frange;
             int Lrange;
-
-
+            
             int.TryParse(data.Split('-')[0], out Frange);
             int.TryParse(data.Split('-')[1], out Lrange);
 
@@ -52,6 +63,7 @@ namespace HioViw
             {
                 using (WebClient wc = new WebClient()) 
                 {
+                    wc.Encoding = Encoding.UTF8;
                     // https://hitomi.la/index-all-i.html
                     string web = wc.DownloadString(front + i.ToString() + back);
                     Console.WriteLine(front + i.ToString() + back + ": 다운로드");
@@ -64,7 +76,38 @@ namespace HioViw
                     list.Add("manga");
                     list.Add("acg");
 
-                    for (int loop = 0; loop < 3; loop++) {
+                    for (int loop = -1; loop < 3; loop++) {
+                        var type = ChkListBox_Type.CheckedItems[0].ToString().ToLower();
+                        if (type == "doujinshi")
+                        {
+                            if (loop == 0)
+                            {
+                                break;
+                            }
+                            loop = 0;
+                        }else if (type == "manga")
+                        {
+                            if (loop == 1)
+                            {
+                                break;
+                            }
+                            loop = 1;
+                        }else if (type == "artist cg")
+                        {
+                            if (loop == 2)
+                            {
+                                break;
+                            }
+                            loop = 2;
+                        }else
+                        {
+                            if (loop == -1)
+                            {
+                                loop = 0;
+                            }
+                        }
+
+
                         string[] alldata = Regex.Split(a, "<div class=\"" + list[loop].ToString() + "\">");
                         Console.WriteLine(list[loop] + ": 시작함");
 
@@ -110,7 +153,7 @@ namespace HioViw
                                     var ttt1 = Regex.Split(chara, "<a href=\"/character/");
                                     for (int l3 = 1; l3 < ttt1.Length; l3++)
                                     {
-                                        characterList.Add(ttt1[l3].Split('>')[1].Split('<')[0]);
+                                        characterList.Add(ttt1[l3].Split('>')[1].Split('<')[0].TrimEnd('\n'));
                                     }
 
                                     var ttt2 = Regex.Split(Tag, "<a href=\"/tag/");
@@ -160,7 +203,7 @@ namespace HioViw
 
                                 using (WebClient wq = new WebClient())
                                 {
-                                    DirectoryInfo di = new DirectoryInfo("C:\\Map\\" + ID.Split('.')[0]);
+                                    DirectoryInfo di = new DirectoryInfo(Text_DownloadPath.Text + "\\" + ID.Split('.')[0]);
                                     if (!di.Exists)
                                     {
                                         di.Create();
@@ -194,7 +237,7 @@ namespace HioViw
                                 string[] da = { ID, Title, "" };
                                 ListViewItem itema = new ListViewItem(da);
 
-                                StreamWriter sw = new StreamWriter("C:\\Map\\" + ID.Split('.')[0] + "\\Info.ini", false, Encoding.UTF8);
+                                StreamWriter sw = new StreamWriter(Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\Info.ini", false, Encoding.UTF8);
                                 sw.WriteLine("URL : https://hitomi.la/galleries/" + ID);
                                 sw.WriteLine("ID : " + ID.Split('.')[0]);
                                 sw.WriteLine("Title : " + Title);
@@ -205,14 +248,14 @@ namespace HioViw
                                 sw.Write("Tags : ");
                                 foreach (string tag in tagList)
                                 {
-                                    sw.Write(tag.TrimEnd('\n') + ", ");
+                                    sw.Write(tag + ", ");
                                 }
                                 sw.WriteLine();
 
                                 sw.Write("Character : ");
-                                foreach (string tag in characterList)
+                                foreach (string character in characterList)
                                 {
-                                    sw.WriteLine(tag + ", ");
+                                    sw.Write(character + ", ");
                                 }
                                 sw.WriteLine();
 
@@ -234,11 +277,11 @@ namespace HioViw
 
                     // LIST_Download.Items.Add(front + i.ToString() + back);
             }
-
+            Console.WriteLine("끝났습니다.");
         }
 
 
-
+        BackgroundWorker worker = new BackgroundWorker();
         List<OptionTag> OptionPanel = new List<OptionTag>();
 
         private void Panel_Paint(object sender, PaintEventArgs e)
@@ -252,8 +295,6 @@ namespace HioViw
                 graphic.DrawRectangle(new Pen(Color.FromArgb(120,120,120), 2), r);
             }
         }
-
-
         private void Panel_Activate(object sender, EventArgs e)
         {
             Panel data;
@@ -312,7 +353,6 @@ namespace HioViw
             }
 
         }
-
         private void ChkListBox_Click(object sender, EventArgs e)
         {
             var list = (sender as CheckedListBox);
@@ -323,7 +363,6 @@ namespace HioViw
             }
             (sender as CheckedListBox).SelectedIndex = i;
         }
-
         private void Btn_DownloadPath_Click(object sender, EventArgs e)
         {
             if (FolderBrowerDialog.ShowDialog() == DialogResult.OK)
@@ -331,10 +370,25 @@ namespace HioViw
                 Text_DownloadPath.Text = FolderBrowerDialog.SelectedPath;
             }
         }
-
         private void Form_ResizeEnd(object sender, EventArgs e)
         {
             Panel_Activate(null, null);
+        }
+        private void Btn_Download(object sender, EventArgs e)
+        {
+            if (!worker.IsBusy)
+            {
+                worker.RunWorkerAsync();
+            }
+            else
+            {
+                MessageBox.Show("이미 실행중입니다.");
+            }
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Download();
         }
     }
 
