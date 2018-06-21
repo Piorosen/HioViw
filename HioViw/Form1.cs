@@ -32,6 +32,62 @@ namespace HioViw
             
             worker.DoWork += Worker_DoWork;
         }
+        private void InfoFileWrite(string ID, string Title, string Uploader, string Series, string Type,
+                string Language, List<string> tagList, List<string> characterList, string UploadDate)
+        {
+            Console.WriteLine("URL : https://hitomi.la/galleries/" + ID);
+            Console.WriteLine("ID : " + ID.Split('.')[0]);
+            Console.WriteLine("Title : " + Title);
+            Console.WriteLine("Uploader : " + Uploader);
+            Console.WriteLine("Series : " + Series);
+            Console.WriteLine("Type : " + Type);
+            Console.WriteLine("Language : " + Language);
+            Console.Write("Tags : ");
+            for (int r = 0; r < tagList.Count; r++)
+            {
+                tagList[r] = tagList[r].Replace("%3A", ":");
+                tagList[r] = tagList[r].Replace("%20", " ");
+                Console.Write(tagList[r] + ", ");
+            }
+            Console.WriteLine();
+
+            Console.Write("Character : ");
+            for (int r = 0; r < characterList.Count; r++)
+            {
+                characterList[r] = characterList[r].Replace("%3A", ":");
+                characterList[r] = characterList[r].Replace("%20", " ");
+                Console.Write(characterList[r] + ", ");
+            }
+
+
+
+
+            StreamWriter sw = new StreamWriter(Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\Info.ini", false, Encoding.UTF8);
+            sw.WriteLine("URL : https://hitomi.la/galleries/" + ID);
+            sw.WriteLine("ID : " + ID.Split('.')[0]);
+            sw.WriteLine("Title : " + Title);
+            sw.WriteLine("Group : " + Uploader);
+            sw.WriteLine("Series : " + Series);
+            sw.WriteLine("Type : " + Type);
+            sw.WriteLine("Language : " + Language);
+            sw.Write("Tags : ");
+            foreach (string tag in tagList)
+            {
+                sw.Write(tag + ", ");
+            }
+            sw.WriteLine();
+
+            sw.Write("Character : ");
+            foreach (string character in characterList)
+            {
+                sw.Write(character + ", ");
+            }
+            sw.WriteLine();
+            sw.Write("UploadDate : " + UploadDate);
+            sw.Close();
+
+        }
+
 
 
         private void Download()
@@ -49,13 +105,10 @@ namespace HioViw
 
             string str = "https://hitomi.la/index-" + ChkListBox_Language.CheckedItems[0].ToString().ToLower() + "-" + Text_PageRange.Text + ".html";
             string data = str.Split('{')[1].Split('}')[0];
-
             string front = str.Split('{')[0];
             string back = str.Split('}')[1];
-            
             int Frange;
             int Lrange;
-            
             int.TryParse(data.Split('-')[0], out Frange);
             int.TryParse(data.Split('-')[1], out Lrange);
 
@@ -78,6 +131,7 @@ namespace HioViw
 
                     for (int loop = -1; loop < 3; loop++) {
                         var type = ChkListBox_Type.CheckedItems[0].ToString().ToLower();
+
                         if (type == "doujinshi")
                         {
                             if (loop == 0)
@@ -85,28 +139,31 @@ namespace HioViw
                                 break;
                             }
                             loop = 0;
-                        }else if (type == "manga")
+                        }
+                        else if (type == "manga")
                         {
                             if (loop == 1)
                             {
                                 break;
                             }
                             loop = 1;
-                        }else if (type == "artist cg")
+                        }
+                        else if (type == "artist cg")
                         {
                             if (loop == 2)
                             {
                                 break;
                             }
                             loop = 2;
-                        }else
+                        }
+                        else
                         {
                             if (loop == -1)
                             {
                                 loop = 0;
                             }
                         }
-
+                        
 
                         string[] alldata = Regex.Split(a, "<div class=\"" + list[loop].ToString() + "\">");
                         Console.WriteLine(list[loop] + ": 시작함");
@@ -122,10 +179,13 @@ namespace HioViw
                                 Title = Regex.Split(Title, ">")[1];
                                 Title = Regex.Split(Title, "</a")[0];
                                 int page;
-                                //string Uploader = Regex.Split(alldata[ww], "<div class=\"artist-list\">")[1].Split('<')[0] == "N/A" ? "N/A" :
-                                //    Regex.Split(alldata[ww], "<div class=\"artist-list\">")[1].Split('>')[3].Split('<')[0];
+                                string Uploader = Regex.Split(alldata[ww], "<div class=\"artist-list\">")[1];
+                                Uploader = Uploader.Split('<')[0].Split('\n')[0];
+                                Uploader = Uploader == "N/A" ? "N/A" :
+                                    Regex.Split(alldata[ww], "<div class=\"artist-list\">")[1].Split('>')[3].Split('<')[0];
 
-                                var p = Regex.Split(alldata[ww], "N/A");
+                                string UploadDate = Regex.Split(alldata[ww], "<p class=\"" + list[loop] + "-date date\">")[1];
+                                UploadDate = UploadDate.Split('<')[0];
 
                                 string Series;
                                 try
@@ -138,10 +198,18 @@ namespace HioViw
                                 }
 
                                 string Type = Regex.Split(alldata[ww], "<a href=\"/type/")[1].Split('-')[0];
-                                string Language = Regex.Split(alldata[ww], "<a href=\"/index-")[1].Split('-')[0];
+
+                                string Language;
+                                try
+                                {
+                                    Language = Regex.Split(alldata[ww], "<a href=\"/index-")[1].Split('-')[0];
+
+                                }catch (Exception)
+                                {
+                                    Language = "N/A";
+                                }
                                 List<string> tagList = new List<string>();
                                 List<string> characterList = new List<string>();
-
                                 using (WebClient we = new WebClient())
                                 {
                                     string tags = we.DownloadString("https://hitomi.la/galleries/" + ID);
@@ -163,30 +231,21 @@ namespace HioViw
                                     }
 
                                 }
-
-                                Console.WriteLine("URL : https://hitomi.la/galleries/" + ID);
-                                Console.WriteLine("ID : " + ID.Split('.')[0]);
-                                Console.WriteLine("Title : " + Title);
-                                //Console.WriteLine("Uploader : " + Uploader);
-                                Console.WriteLine("Series : " + Series);
-                                Console.WriteLine("Type : " + Type);
-                                Console.WriteLine("Language : " + Language);
-                                Console.Write("Tags : ");
                                 for (int r = 0; r < tagList.Count; r++)
                                 {
                                     tagList[r] = tagList[r].Replace("%3A", ":");
                                     tagList[r] = tagList[r].Replace("%20", " ");
                                     Console.Write(tagList[r] + ", ");
                                 }
-                                Console.WriteLine();
-
-                                Console.Write("Character : ");
                                 for (int r = 0; r < characterList.Count; r++)
                                 {
                                     characterList[r] = characterList[r].Replace("%3A", ":");
                                     characterList[r] = characterList[r].Replace("%20", " ");
                                     Console.Write(characterList[r] + ", ");
                                 }
+                                
+                                InfoFileWrite(ID, Title, Uploader, Series, Type, Language, tagList, characterList, UploadDate);
+                                
 
                                 List<string> ext = new List<string>();
                                 using (WebClient wq = new WebClient())
@@ -200,6 +259,8 @@ namespace HioViw
                                     page = pagel.Length - 1;
                                     Console.WriteLine(page.ToString() + "갯수 사진 발견");
                                 }
+
+
 
                                 using (WebClient wq = new WebClient())
                                 {
@@ -229,38 +290,15 @@ namespace HioViw
                                             {
                                                 Console.WriteLine(ID.ToString() + "아이디 동인지 다운로드 실..패!");
                                             }
+                                        }
+
+                                        if (qww == 1)
+                                        {
 
                                         }
                                     }
 
                                 }
-                                string[] da = { ID, Title, "" };
-                                ListViewItem itema = new ListViewItem(da);
-
-                                StreamWriter sw = new StreamWriter(Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\Info.ini", false, Encoding.UTF8);
-                                sw.WriteLine("URL : https://hitomi.la/galleries/" + ID);
-                                sw.WriteLine("ID : " + ID.Split('.')[0]);
-                                sw.WriteLine("Title : " + Title);
-                                //sw.WriteLine("Uploader : " + Uploader);
-                                sw.WriteLine("Series : " + Series);
-                                sw.WriteLine("Type : " + Type);
-                                sw.WriteLine("Language : " + Language);
-                                sw.Write("Tags : ");
-                                foreach (string tag in tagList)
-                                {
-                                    sw.Write(tag + ", ");
-                                }
-                                sw.WriteLine();
-
-                                sw.Write("Character : ");
-                                foreach (string character in characterList)
-                                {
-                                    sw.Write(character + ", ");
-                                }
-                                sw.WriteLine();
-
-
-                                sw.Close();
 
                                 Console.WriteLine(ww.ToString() + "번째 동인지 다운로드 완료");
                                 // LIST_Download.Items.Add(itema);
@@ -286,9 +324,9 @@ namespace HioViw
 
         private void Panel_Paint(object sender, PaintEventArgs e)
         {
-            if (sender is Panel)
+            if (sender is Control)
             {
-                var panel = (sender as Panel);
+                var panel = (sender as Control);
                 var graphic = panel.CreateGraphics();
                 graphic.Clear(this.BackColor);
                 Rectangle r = new Rectangle(0,0, panel.Size.Width, panel.Size.Height);
@@ -389,6 +427,11 @@ namespace HioViw
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             Download();
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

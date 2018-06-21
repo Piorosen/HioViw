@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.Panel_Top_Option = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Panel_Download_Option = new System.Windows.Forms.Panel();
             this.Panel_TeamName = new System.Windows.Forms.Panel();
             this.Label_TeamName = new System.Windows.Forms.Label();
@@ -52,12 +51,12 @@
             this.Panel_Download_Stat = new System.Windows.Forms.Panel();
             this.Panel_Downloaded = new System.Windows.Forms.Panel();
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Preview_1 = new HioViw.Preview();
+            this.Preview_2 = new HioViw.Preview();
+            this.Preview_0 = new HioViw.Preview();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.Panel_Top_Option.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Panel_Download_Option.SuspendLayout();
             this.Panel_TeamName.SuspendLayout();
             this.Panel_Download.SuspendLayout();
@@ -65,9 +64,9 @@
             this.Panel_PageRange.SuspendLayout();
             this.Panel_Type.SuspendLayout();
             this.Panel_Language.SuspendLayout();
+            this.Panel_Download_Stat.SuspendLayout();
             this.Panel_Downloaded.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Top_Option
@@ -79,17 +78,6 @@
             this.Panel_Top_Option.Size = new System.Drawing.Size(778, 46);
             this.Panel_Top_Option.TabIndex = 1;
             this.Panel_Top_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::HioViw.Properties.Resources.menu;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // Panel_Download_Option
             // 
@@ -327,6 +315,7 @@
             // 
             // Panel_Download_Stat
             // 
+            this.Panel_Download_Stat.Controls.Add(this.panel1);
             this.Panel_Download_Stat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Panel_Download_Stat.Location = new System.Drawing.Point(188, 459);
             this.Panel_Download_Stat.Name = "Panel_Download_Stat";
@@ -338,7 +327,9 @@
             // 
             this.Panel_Downloaded.AutoScroll = true;
             this.Panel_Downloaded.BackColor = System.Drawing.Color.Transparent;
-            this.Panel_Downloaded.Controls.Add(this.panel1);
+            this.Panel_Downloaded.Controls.Add(this.Preview_0);
+            this.Panel_Downloaded.Controls.Add(this.Preview_2);
+            this.Panel_Downloaded.Controls.Add(this.Preview_1);
             this.Panel_Downloaded.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Downloaded.Location = new System.Drawing.Point(188, 49);
             this.Panel_Downloaded.Name = "Panel_Downloaded";
@@ -346,43 +337,53 @@
             this.Panel_Downloaded.TabIndex = 6;
             this.Panel_Downloaded.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::HioViw.Properties.Resources.menu;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // Preview_1
+            // 
+            this.Preview_1.AutoSize = true;
+            this.Preview_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.Preview_1.Location = new System.Drawing.Point(6, 114);
+            this.Preview_1.Name = "Preview_1";
+            this.Preview_1.Size = new System.Drawing.Size(587, 106);
+            this.Preview_1.TabIndex = 1;
+            // 
+            // Preview_2
+            // 
+            this.Preview_2.AutoSize = true;
+            this.Preview_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.Preview_2.Location = new System.Drawing.Point(6, 226);
+            this.Preview_2.Name = "Preview_2";
+            this.Preview_2.Size = new System.Drawing.Size(587, 106);
+            this.Preview_2.TabIndex = 2;
+            // 
+            // Preview_0
+            // 
+            this.Preview_0.AutoSize = true;
+            this.Preview_0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.Preview_0.Location = new System.Drawing.Point(6, 6);
+            this.Preview_0.Name = "Preview_0";
+            this.Preview_0.Size = new System.Drawing.Size(587, 106);
+            this.Preview_0.TabIndex = 3;
+            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Location = new System.Drawing.Point(6, 6);
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Location = new System.Drawing.Point(33, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(574, 66);
+            this.panel1.Size = new System.Drawing.Size(534, 20);
             this.panel1.TabIndex = 0;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(88, 60);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.LightGray;
-            this.label2.Location = new System.Drawing.Point(97, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Title : ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.LightGray;
-            this.label3.Location = new System.Drawing.Point(97, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Title : ";
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Form1
             // 
@@ -402,7 +403,6 @@
             this.ResizeEnd += new System.EventHandler(this.Form_ResizeEnd);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Panel_Top_Option.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Panel_Download_Option.ResumeLayout(false);
             this.Panel_TeamName.ResumeLayout(false);
             this.Panel_TeamName.PerformLayout();
@@ -416,10 +416,10 @@
             this.Panel_Type.PerformLayout();
             this.Panel_Language.ResumeLayout(false);
             this.Panel_Language.PerformLayout();
+            this.Panel_Download_Stat.ResumeLayout(false);
             this.Panel_Downloaded.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.Panel_Downloaded.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -450,10 +450,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Panel_TeamName;
         private System.Windows.Forms.Label Label_TeamName;
+        private Preview Preview_0;
+        private Preview Preview_2;
+        private Preview Preview_1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
