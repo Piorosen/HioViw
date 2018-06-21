@@ -52,7 +52,7 @@
             this.Panel_Downloaded = new System.Windows.Forms.Panel();
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Panel_DownloadBar = new System.Windows.Forms.Panel();
             this.Panel_Top_Option.SuspendLayout();
             this.Panel_Download_Option.SuspendLayout();
             this.Panel_TeamName.SuspendLayout();
@@ -311,7 +311,7 @@
             // 
             // Panel_Download_Stat
             // 
-            this.Panel_Download_Stat.Controls.Add(this.panel1);
+            this.Panel_Download_Stat.Controls.Add(this.Panel_DownloadBar);
             this.Panel_Download_Stat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Panel_Download_Stat.Location = new System.Drawing.Point(188, 459);
             this.Panel_Download_Stat.Name = "Panel_Download_Stat";
@@ -340,15 +340,15 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // panel1
+            // Panel_DownloadBar
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Panel_DownloadBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Location = new System.Drawing.Point(33, 15);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(534, 20);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            this.Panel_DownloadBar.Location = new System.Drawing.Point(33, 15);
+            this.Panel_DownloadBar.Name = "Panel_DownloadBar";
+            this.Panel_DownloadBar.Size = new System.Drawing.Size(534, 20);
+            this.Panel_DownloadBar.TabIndex = 0;
+            this.Panel_DownloadBar.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Form1
             // 
@@ -413,7 +413,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Panel_TeamName;
         private System.Windows.Forms.Label Label_TeamName;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Panel_DownloadBar;
     }
 }
 

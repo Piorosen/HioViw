@@ -290,6 +290,8 @@ namespace HioViw
                                 }
 
 
+                                var graphic = Panel_DownloadBar.CreateGraphics();
+                                graphic.DrawLine(new Pen(BackColor, 18), 1, 10, Panel_DownloadBar.Size.Width - 1, 10);
 
                                 using (WebClient wq = new WebClient())
                                 {
@@ -320,6 +322,9 @@ namespace HioViw
                                             Preview_Add(Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\1.jpg", ID, Title, Uploader, Series,
                                                 Type, Language, tagList, characterList, UploadDate);
                                         }
+
+
+                                        graphic.DrawLine(new Pen(Color.LightSkyBlue, 18), 1, 10, (Panel_DownloadBar.Size.Width - 1) * ((float)qww / (float)page), 10);
                                     }
 
                                 }
