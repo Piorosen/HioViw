@@ -52,9 +52,6 @@
             this.Panel_Downloaded = new System.Windows.Forms.Panel();
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Preview_1 = new HioViw.Preview();
-            this.Preview_2 = new HioViw.Preview();
-            this.Preview_0 = new HioViw.Preview();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Panel_Top_Option.SuspendLayout();
             this.Panel_Download_Option.SuspendLayout();
@@ -65,7 +62,6 @@
             this.Panel_Type.SuspendLayout();
             this.Panel_Language.SuspendLayout();
             this.Panel_Download_Stat.SuspendLayout();
-            this.Panel_Downloaded.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -325,11 +321,7 @@
             // 
             // Panel_Downloaded
             // 
-            this.Panel_Downloaded.AutoScroll = true;
             this.Panel_Downloaded.BackColor = System.Drawing.Color.Transparent;
-            this.Panel_Downloaded.Controls.Add(this.Preview_0);
-            this.Panel_Downloaded.Controls.Add(this.Preview_2);
-            this.Panel_Downloaded.Controls.Add(this.Preview_1);
             this.Panel_Downloaded.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Downloaded.Location = new System.Drawing.Point(188, 49);
             this.Panel_Downloaded.Name = "Panel_Downloaded";
@@ -347,33 +339,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // Preview_1
-            // 
-            this.Preview_1.AutoSize = true;
-            this.Preview_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.Preview_1.Location = new System.Drawing.Point(6, 114);
-            this.Preview_1.Name = "Preview_1";
-            this.Preview_1.Size = new System.Drawing.Size(587, 106);
-            this.Preview_1.TabIndex = 1;
-            // 
-            // Preview_2
-            // 
-            this.Preview_2.AutoSize = true;
-            this.Preview_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.Preview_2.Location = new System.Drawing.Point(6, 226);
-            this.Preview_2.Name = "Preview_2";
-            this.Preview_2.Size = new System.Drawing.Size(587, 106);
-            this.Preview_2.TabIndex = 2;
-            // 
-            // Preview_0
-            // 
-            this.Preview_0.AutoSize = true;
-            this.Preview_0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.Preview_0.Location = new System.Drawing.Point(6, 6);
-            this.Preview_0.Name = "Preview_0";
-            this.Preview_0.Size = new System.Drawing.Size(587, 106);
-            this.Preview_0.TabIndex = 3;
             // 
             // panel1
             // 
@@ -417,8 +382,6 @@
             this.Panel_Language.ResumeLayout(false);
             this.Panel_Language.PerformLayout();
             this.Panel_Download_Stat.ResumeLayout(false);
-            this.Panel_Downloaded.ResumeLayout(false);
-            this.Panel_Downloaded.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -450,9 +413,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Panel_TeamName;
         private System.Windows.Forms.Label Label_TeamName;
-        private Preview Preview_0;
-        private Preview Preview_2;
-        private Preview Preview_1;
         private System.Windows.Forms.Panel panel1;
     }
 }

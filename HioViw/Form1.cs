@@ -31,7 +31,22 @@ namespace HioViw
             ChkListBox_Type.SetItemCheckState(0, CheckState.Checked);
             
             worker.DoWork += Worker_DoWork;
+
+            for (int i = 112; i <= Panel_Downloaded.Size.Height; i+= 106)
+            {
+                Preview pre = new Preview();
+                pre.Anchor = ((AnchorStyles)(AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right));
+                Panel_Downloaded.Controls.Add(pre);
+                pre.Location = new Point(6, i - 106);
+                pre.Size = new Size(Panel_Downloaded.Size.Width - 12, 100);
+                pre.Name = "Preview_" + (i - 112) / 106;
+                Previews.Add(pre);
+            }
         }
+
+        List<Preview> Previews = new List<Preview>();
+
+
         private void InfoFileWrite(string ID, string Title, string Uploader, string Series, string Type,
                 string Language, List<string> tagList, List<string> characterList, string UploadDate)
         {
@@ -294,7 +309,7 @@ namespace HioViw
 
                                         if (qww == 1)
                                         {
-
+                                            
                                         }
                                     }
 
@@ -408,9 +423,58 @@ namespace HioViw
                 Text_DownloadPath.Text = FolderBrowerDialog.SelectedPath;
             }
         }
+
+        private void Preview_Add(string previewImagePath, string ID, string Title, string Uploader, string Series, string Type,
+                string Language, List<string> tagList, List<string> characterList, string UploadDate)
+        {
+            for (int i = 1; i < Previews.Count - 1; i++)
+            {
+                
+            }
+            
+
+        }
+
         private void Form_ResizeEnd(object sender, EventArgs e)
         {
             Panel_Activate(null, null);
+
+            List<Preview> mPreview = new List<Preview>();
+
+            int prevCount = Previews.Count;
+            int nowCount = 0;
+
+
+            for (int i = 112; i <= Panel_Downloaded.Size.Height; i += 106)
+            {
+                nowCount++;
+            }
+
+            if (prevCount > nowCount)
+            {
+                for (int i = nowCount; i < prevCount; i++)
+                {
+                    Previews[nowCount].Dispose();
+                    Previews.RemoveAt(nowCount);
+                }
+            }
+            else if (prevCount < nowCount)
+            {
+                for (int i = prevCount; i < nowCount; i++)
+                {
+                    Preview pre = new Preview();
+                    pre.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                    Panel_Downloaded.Controls.Add(pre);
+                    pre.Location = new Point(6, (112 + 106 * (i)) - 106);
+                    pre.Size = new Size(Panel_Downloaded.Size.Width - 12, 100);
+                    pre.Name = "Preview_" + i;
+                    Previews.Add(pre);
+                }
+            }
+            else
+            {
+                return;
+            }
         }
         private void Btn_Download(object sender, EventArgs e)
         {
@@ -428,11 +492,7 @@ namespace HioViw
         {
             Download();
         }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 
     public class OptionTag
