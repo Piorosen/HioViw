@@ -258,7 +258,21 @@ namespace HioViw
                                     characterList[r] = characterList[r].Replace("%20", " ");
                                     Console.Write(characterList[r] + ", ");
                                 }
-                                
+
+                                if (tagList.Count == 0)
+                                {
+                                    tagList.Add("N/A");
+                                }
+                                if (characterList.Count == 0)
+                                {
+                                    characterList.Add("N/A");
+                                }
+
+                                DirectoryInfo di = new DirectoryInfo(Text_DownloadPath.Text + "\\" + ID.Split('.')[0]);
+                                if (!di.Exists)
+                                {
+                                    di.Create();
+                                }
                                 InfoFileWrite(ID, Title, Uploader, Series, Type, Language, tagList, characterList, UploadDate);
                                 
 
@@ -279,12 +293,6 @@ namespace HioViw
 
                                 using (WebClient wq = new WebClient())
                                 {
-                                    DirectoryInfo di = new DirectoryInfo(Text_DownloadPath.Text + "\\" + ID.Split('.')[0]);
-                                    if (!di.Exists)
-                                    {
-                                        di.Create();
-                                    }
-
                                     for (int qww = 1; qww <= page; qww++)
                                     {
                                         try
@@ -309,7 +317,8 @@ namespace HioViw
 
                                         if (qww == 1)
                                         {
-                                            
+                                            Preview_Add(Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\1.jpg", ID, Title, Uploader, Series,
+                                                Type, Language, tagList, characterList, UploadDate);
                                         }
                                     }
 
@@ -427,11 +436,58 @@ namespace HioViw
         private void Preview_Add(string previewImagePath, string ID, string Title, string Uploader, string Series, string Type,
                 string Language, List<string> tagList, List<string> characterList, string UploadDate)
         {
-            for (int i = 1; i < Previews.Count - 1; i++)
+
+
+            for (int i = Previews.Count - 2; i >= 0; i--)
             {
-                
+                Previews[i].Invoke(new MethodInvoker(delegate () {
+
+                    Previews[i+1].Pic_Image.Image = Previews[i].Pic_Image.Image;
+
+                    Previews[i+1].Label_ID.Text = Previews[i].Label_ID.Text;
+                    Previews[i+1].Label_Title.Text = Previews[i].Label_Title.Text;
+                    Previews[i+1].Label_Group.Text = Previews[i].Label_Group.Text;
+                    Previews[i+1].Label_Series.Text = Previews[i].Label_Series.Text;
+                    Previews[i+1].Label_Type.Text = Previews[i].Label_Type.Text;
+                    Previews[i+1].Label_Language.Text = Previews[i].Label_Language.Text;
+                    Previews[i+1].Label_Tags.Text = Previews[i].Label_Tags.Text;
+                    Previews[i+1].Label_Character.Text = Previews[i].Label_Character.Text;
+                    Previews[i+1].Label_Date.Text = Previews[i].Label_Date.Text;
+
+                }));
             }
+
+            Preview preview = Previews[0];
             
+
+            
+            preview.Invoke(new MethodInvoker(delegate ()
+            {
+                preview.Clear();
+
+                preview.Pic_Image.Image = Bitmap.FromFile(previewImagePath);
+                preview.Label_ID.Text += ID.Split('.')[0];
+                preview.Label_Title.Text += Title;
+                preview.Label_Group.Text += Uploader;
+                preview.Label_Series.Text += Series;
+                preview.Label_Type.Text += Type;
+                preview.Label_Language.Text += Language;
+                for (int i = 0; i < tagList.Count - 1; i++)
+                {
+                    preview.Label_Tags.Text += tagList[i] + ", ";
+                }
+                preview.Label_Tags.Text += tagList[tagList.Count - 1];
+
+                for (int i = 0; i < characterList.Count - 1; i++)
+                {
+                    preview.Label_Character.Text += characterList[i] + ", ";
+                }
+                preview.Label_Character.Text += characterList[characterList.Count - 1];
+
+                preview.Label_Date.Text += UploadDate;
+            }));
+            
+            Previews[0] = preview;
 
         }
 
