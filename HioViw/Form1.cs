@@ -34,12 +34,14 @@ namespace HioViw
 
             for (int i = 112; i <= Panel_Downloaded.Size.Height; i+= 106)
             {
-                Preview pre = new Preview();
-                pre.Anchor = ((AnchorStyles)(AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right));
+                Preview pre = new Preview
+                {
+                    Anchor = ((AnchorStyles)(AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right)),
+                    Location = new Point(6, i - 106),
+                    Size = new Size(Panel_Downloaded.Size.Width - 12, 100)
+            };
                 Panel_Downloaded.Controls.Add(pre);
-                pre.Location = new Point(6, i - 106);
-                pre.Size = new Size(Panel_Downloaded.Size.Width - 12, 100);
-                pre.Name = "Preview_" + (i - 112) / 106;
+                // pre.Name = "Preview_" + (i - 112) / 106;
                 Previews.Add(pre);
             }
         }
@@ -523,13 +525,15 @@ namespace HioViw
             {
                 for (int i = prevCount; i < nowCount; i++)
                 {
-                    Preview pre = new Preview();
-                    pre.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    Panel_Downloaded.Controls.Add(pre);
-                    pre.Location = new Point(6, (112 + 106 * (i)) - 106);
-                    pre.Size = new Size(Panel_Downloaded.Size.Width - 12, 100);
-                    pre.Name = "Preview_" + i;
+                    Preview pre = new Preview
+                    {
+                        Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
+                        Location = new Point(6, (112 + 106 * (i)) - 106),
+                        Size = new Size(Panel_Downloaded.Size.Width - 12, 100),
+                        // Name = "Preview_" + i
+                    };
                     Previews.Add(pre);
+                    Panel_Downloaded.Controls.Add(pre);
                 }
             }
             else
