@@ -35,6 +35,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialSkin">
+      <HintPath>Resource\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,6 +57,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panel_Downloaded.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Panel_Downloaded.Designer.cs">
+      <DependentUpon>Panel_Downloaded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel_Download_Option.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel_Download_Option.Designer.cs">
+      <DependentUpon>Panel_Download_Option.cs</DependentUpon>
+    </Compile>
     <Compile Include="Preview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -64,6 +79,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel_Downloaded.resx">
+      <DependentUpon>Panel_Downloaded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel_Download_Option.resx">
+      <DependentUpon>Panel_Download_Option.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preview.resx">
       <DependentUpon>Preview.cs</DependentUpon>

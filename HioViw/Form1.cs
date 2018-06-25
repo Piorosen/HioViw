@@ -14,20 +14,19 @@ using System.Threading;
 
 namespace HioViw
 {
-    public partial class Form1 : Form
+    public partial class HioView_Form : Form
     {
-        public Form1()
+        public HioView_Form()
         {
             InitializeComponent();
 
             OptionPanel.Add(new OptionTag(Panel_Language, 125));
-            OptionPanel.Add(new OptionTag(Panel_Type, 110));
+            OptionPanel.Add(new OptionTag(Panel_Type, 125));
             OptionPanel.Add(new OptionTag(Panel_PageRange, 95));
             OptionPanel.Add(new OptionTag(Panel_DownloadPath, 95));
             OptionPanel.Add(new OptionTag(Panel_Download, 30));
             OptionPanel.Add(new OptionTag(Panel_TeamName, 30));
 
-            ChkListBox_Language.SetItemCheckState(0, CheckState.Checked);
             ChkListBox_Type.SetItemCheckState(0, CheckState.Checked);
             
             worker.DoWork += Worker_DoWork;
@@ -120,7 +119,7 @@ namespace HioViw
                 return;
             }
 
-            string str = "https://hitomi.la/index-" + ChkListBox_Language.CheckedItems[0].ToString().ToLower() + "-" + Text_PageRange.Text + ".html";
+            string str = "https://hitomi.la/index-" + ChkListBox_Language.SelectedItems[0].ToString().ToLower() + "-" + Text_PageRange.Text + ".html";
             string data = str.Split('{')[1].Split('}')[0];
             string front = str.Split('{')[0];
             string back = str.Split('}')[1];
@@ -145,8 +144,9 @@ namespace HioViw
                     list.Add("dj");
                     list.Add("manga");
                     list.Add("acg");
+                    list.Add("cg");
 
-                    for (int loop = -1; loop < 3; loop++) {
+                    for (int loop = -1; loop < list.Count; loop++) {
                         var type = ChkListBox_Type.CheckedItems[0].ToString().ToLower();
 
                         if (type == "doujinshi")
@@ -172,6 +172,14 @@ namespace HioViw
                                 break;
                             }
                             loop = 2;
+                        }
+                        else if (type == "game cg")
+                        {
+                            if (loop == 3)
+                            {
+                                break;
+                            }
+                            loop = 3;
                         }
                         else
                         {
@@ -364,6 +372,21 @@ namespace HioViw
                 graphic.DrawRectangle(new Pen(Color.FromArgb(120,120,120), 2), r);
             }
         }
+
+        private void PanelOp_Paint(object sender, PaintEventArgs e)
+        {
+            if (sender is Control)
+            {
+                var panel = (sender as Control);
+                var graphic = panel.CreateGraphics();
+                graphic.Clear(this.BackColor);
+                Rectangle r = new Rectangle(0, 0, panel.Size.Width, panel.Size.Height);
+                graphic.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
+                graphic.DrawLine(new Pen(Color.FromArgb(120, 120, 120), 1), new Point(0, 29),
+                                                                   new Point(panel.Size.Width, 29));
+            }
+        }
+
         private void Panel_Activate(object sender, EventArgs e)
         {
             Panel data;
@@ -418,10 +441,14 @@ namespace HioViw
 
             foreach (var panel in OptionPanel)
             {
-                Panel_Paint(panel.Panel_Data, null);
+                PanelOp_Paint(panel.Panel_Data, null);
             }
 
         }
+
+
+
+
         private void ChkListBox_Click(object sender, EventArgs e)
         {
             var list = (sender as CheckedListBox);
@@ -557,7 +584,30 @@ namespace HioViw
         {
             Download();
         }
-        
+
+        private void Btn_Downloa_Click(object sender, EventArgs e)
+        {
+            var l = sender as Control;
+            Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
+        }
+
+        private void Btn_Option_Click(object sender, EventArgs e)
+        {
+            var l = sender as Control;
+            Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var l = sender as Control;
+            Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var l = sender as Control;
+            Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
+        }
     }
 
     public class OptionTag
