@@ -19,18 +19,17 @@ namespace HioViw
         public HioView_Form()
         {
             InitializeComponent();
-
-            OptionPanel.Add(new OptionTag(Panel_Language, 125));
-            OptionPanel.Add(new OptionTag(Panel_Type, 125));
-            OptionPanel.Add(new OptionTag(Panel_PageRange, 95));
-            OptionPanel.Add(new OptionTag(Panel_DownloadPath, 95));
-            OptionPanel.Add(new OptionTag(Panel_Download, 30));
-            OptionPanel.Add(new OptionTag(Panel_TeamName, 30));
-
-            ChkListBox_Type.SetItemCheckState(0, CheckState.Checked);
             
-            worker.DoWork += Worker_DoWork;
 
+            //OptionPanel.Add(new OptionTag(Panel_Language, 125));
+            //OptionPanel.Add(new OptionTag(Panel_Type, 125));
+            //OptionPanel.Add(new OptionTag(Panel_PageRange, 95));
+            //OptionPanel.Add(new OptionTag(Panel_DownloadPath, 95));
+            //OptionPanel.Add(new OptionTag(Panel_Download, 30));
+            //OptionPanel.Add(new OptionTag(Panel_TeamName, 30));
+
+            //ChkListBox_Type.SetItemCheckState(0, CheckState.Checked);
+            worker.DoWork += Worker_DoWork;
             for (int i = 112; i <= Panel_Downloaded.Size.Height; i+= 106)
             {
                 Preview pre = new Preview
@@ -49,7 +48,7 @@ namespace HioViw
 
 
         private void InfoFileWrite(string ID, string Title, string Uploader, string Series, string Type,
-                string Language, List<string> tagList, List<string> characterList, string UploadDate)
+                string Language, List<string> tagList, List<string> characterList, string UploadDate,string Download_Path)
         {
             Console.WriteLine("URL : https://hitomi.la/galleries/" + ID);
             Console.WriteLine("ID : " + ID.Split('.')[0]);
@@ -78,7 +77,7 @@ namespace HioViw
 
 
 
-            StreamWriter sw = new StreamWriter(Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\Info.ini", false, Encoding.UTF8);
+            StreamWriter sw = new StreamWriter(Download_Path + "\\" + ID.Split('.')[0] + "\\Info.ini", false, Encoding.UTF8);
             sw.WriteLine("URL : https://hitomi.la/galleries/" + ID);
             sw.WriteLine("ID : " + ID.Split('.')[0]);
             sw.WriteLine("Title : " + Title);
@@ -108,18 +107,25 @@ namespace HioViw
 
         private void Download()
         {
-            if (Text_DownloadPath.Text == "")
+            string Download_Path = Panel_Download_Option.Text_DownloadPath.Text;
+
+
+            if (Download_Path == "")
             {
                 MessageBox.Show("Not Found Download Path");
                 return;
             }
-            if (!new DirectoryInfo(Text_DownloadPath.Text + "\\").Exists)
+            if (!new DirectoryInfo(Download_Path + "\\").Exists)
             {
                 MessageBox.Show("Not Found Download Path");
                 return;
             }
 
-            string str = "https://hitomi.la/index-" + ChkListBox_Language.SelectedItems[0].ToString().ToLower() + "-" + Text_PageRange.Text + ".html";
+            
+
+
+            string str = "https://hitomi.la/index-" + Panel_Download_Option.ChkListBox_Language.SelectedItems[0].ToString().ToLower() +
+                "-{" + Panel_Download_Option.Text_PageRange.Text + "}.html";
             string data = str.Split('{')[1].Split('}')[0];
             string front = str.Split('{')[0];
             string back = str.Split('}')[1];
@@ -147,7 +153,7 @@ namespace HioViw
                     list.Add("cg");
 
                     for (int loop = -1; loop < list.Count; loop++) {
-                        var type = ChkListBox_Type.CheckedItems[0].ToString().ToLower();
+                        var type = Panel_Download_Option.ChkListBox_Type.CheckedItems[0].ToString().ToLower();
 
                         if (type == "doujinshi")
                         {
@@ -278,12 +284,12 @@ namespace HioViw
                                     characterList.Add("N/A");
                                 }
 
-                                DirectoryInfo di = new DirectoryInfo(Text_DownloadPath.Text + "\\" + ID.Split('.')[0]);
+                                DirectoryInfo di = new DirectoryInfo(Download_Path + "\\" + ID.Split('.')[0]);
                                 if (!di.Exists)
                                 {
                                     di.Create();
                                 }
-                                InfoFileWrite(ID, Title, Uploader, Series, Type, Language, tagList, characterList, UploadDate);
+                                InfoFileWrite(ID, Title, Uploader, Series, Type, Language, tagList, characterList, UploadDate, Download_Path);
                                 
 
                                 List<string> ext = new List<string>();
@@ -310,7 +316,7 @@ namespace HioViw
                                         try
                                         {
                                             wq.DownloadFile(new Uri("https://aa.hitomi.la/galleries/" + ID.Split('.')[0] + "/" + ext[qww - 1]),
-                                                Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\" + qww.ToString() + ".jpg");
+                                                Download_Path + "\\" + ID.Split('.')[0] + "\\" + qww.ToString() + ".jpg");
                                             Console.WriteLine(qww.ToString() + "번째 다운로드 완료");
                                         }
                                         catch (Exception)
@@ -318,7 +324,7 @@ namespace HioViw
                                             try
                                             {
                                                 wq.DownloadFile(new Uri("https://ba.hitomi.la/galleries/" + ID.Split('.')[0] + "/" + ext[qww - 1]),
-                                                  Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\" + qww.ToString() + ".jpg");
+                                                  Download_Path + "\\" + ID.Split('.')[0] + "\\" + qww.ToString() + ".jpg");
                                                 Console.WriteLine(qww.ToString() + "번째 다운로드 완료");
                                             }
                                             catch (Exception)
@@ -329,7 +335,7 @@ namespace HioViw
 
                                         if (qww == 1)
                                         {
-                                            Preview_Add(Text_DownloadPath.Text + "\\" + ID.Split('.')[0] + "\\1.jpg", ID, Title, Uploader, Series,
+                                            Preview_Add(Download_Path + "\\" + ID.Split('.')[0] + "\\1.jpg", ID, Title, Uploader, Series,
                                                 Type, Language, tagList, characterList, UploadDate);
                                         }
 
@@ -359,7 +365,6 @@ namespace HioViw
 
 
         BackgroundWorker worker = new BackgroundWorker();
-        List<OptionTag> OptionPanel = new List<OptionTag>();
 
         private void Panel_Paint(object sender, PaintEventArgs e)
         {
@@ -373,78 +378,78 @@ namespace HioViw
             }
         }
 
-        private void PanelOp_Paint(object sender, PaintEventArgs e)
-        {
-            if (sender is Control)
-            {
-                var panel = (sender as Control);
-                var graphic = panel.CreateGraphics();
-                graphic.Clear(this.BackColor);
-                Rectangle r = new Rectangle(0, 0, panel.Size.Width, panel.Size.Height);
-                graphic.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
-                graphic.DrawLine(new Pen(Color.FromArgb(120, 120, 120), 1), new Point(0, 29),
-                                                                   new Point(panel.Size.Width, 29));
-            }
-        }
+        //private void PanelOp_Paint(object sender, PaintEventArgs e)
+        //{
+        //    if (sender is Control)
+        //    {
+        //        var panel = (sender as Control);
+        //        var graphic = panel.CreateGraphics();
+        //        graphic.Clear(this.BackColor);
+        //        Rectangle r = new Rectangle(0, 0, panel.Size.Width, panel.Size.Height);
+        //        graphic.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
+        //        graphic.DrawLine(new Pen(Color.FromArgb(120, 120, 120), 1), new Point(0, 29),
+        //                                                           new Point(panel.Size.Width, 29));
+        //    }
+        //}
 
-        private void Panel_Activate(object sender, EventArgs e)
-        {
-            Panel data;
+        //private void Panel_Activate(object sender, EventArgs e)
+        //{
+        //    Panel data;
 
-            if (sender is Panel)
-            {
-                data = (sender as Panel);
-            }
-            else if (sender is Control)
-            {
-                data = (sender as Control).Parent as Panel;
-            }
-            else
-            {
-                data = null;
-            }
+        //    if (sender is Panel)
+        //    {
+        //        data = (sender as Panel);
+        //    }
+        //    else if (sender is Control)
+        //    {
+        //        data = (sender as Control).Parent as Panel;
+        //    }
+        //    else
+        //    {
+        //        data = null;
+        //    }
 
-            if (data != null)
-            {
-                if (data.Size.Height != 30)
-                {
-                    data.Size = new Size(data.Size.Width, 30);
-                }
-                else
-                {
-                    data.Size = new Size(data.Size.Width, OptionPanel[int.Parse(data.Tag.ToString())].Height);
-                }
-            }
+        //    if (data != null)
+        //    {
+        //        if (data.Size.Height != 30)
+        //        {
+        //            data.Size = new Size(data.Size.Width, 30);
+        //        }
+        //        else
+        //        {
+        //            data.Size = new Size(data.Size.Width, OptionPanel[int.Parse(data.Tag.ToString())].Height);
+        //        }
+        //    }
 
-            for (int i = 0; i < OptionPanel.Count - 3; i++)
-            {
-                OptionPanel[i + 1].Panel_Data.Location = new Point(OptionPanel[i + 1].Panel_Data.Location.X,
-                    OptionPanel[i].Panel_Data.Location.Y + OptionPanel[i].Panel_Data.Size.Height + 6);
-            }
+        //    for (int i = 0; i < OptionPanel.Count - 3; i++)
+        //    {
+        //        OptionPanel[i + 1].Panel_Data.Location = new Point(OptionPanel[i + 1].Panel_Data.Location.X,
+        //            OptionPanel[i].Panel_Data.Location.Y + OptionPanel[i].Panel_Data.Size.Height + 6);
+        //    }
 
-            for (int i = OptionPanel.Count -3; i < OptionPanel.Count - 1; i++)
-            {
-                var p = OptionPanel[OptionPanel.Count - 3].Panel_Data;
-                if (p.Location.Y + p.Size.Height + 6 >= this.Size.Height - (550 - 384))
-                {
-                    OptionPanel[i + 1].Panel_Data.Location = new Point(OptionPanel[i + 1].Panel_Data.Location.X,
-                        OptionPanel[i].Panel_Data.Location.Y + OptionPanel[i].Panel_Data.Size.Height + 6);
-                }
-                else
-                {
-                    int length = OptionPanel.Count - i + OptionPanel.Count - 4;
-                    OptionPanel[length].Panel_Data.Location =
-                        new Point(6, this.Size.Height - 130 - 36 * (i - (OptionPanel.Count - 3)));
+        //    for (int i = OptionPanel.Count -3; i < OptionPanel.Count - 1; i++)
+        //    {
+        //        var p = OptionPanel[OptionPanel.Count - 3].Panel_Data;
+        //        if (p.Location.Y + p.Size.Height + 6 >= this.Size.Height - (550 - 384))
+        //        {
+        //            OptionPanel[i + 1].Panel_Data.Location = new Point(OptionPanel[i + 1].Panel_Data.Location.X,
+        //                OptionPanel[i].Panel_Data.Location.Y + OptionPanel[i].Panel_Data.Size.Height + 6);
+        //        }
+        //        else
+        //        {
+        //            int length = OptionPanel.Count - i + OptionPanel.Count - 4;
+        //            OptionPanel[length].Panel_Data.Location =
+        //                new Point(6, this.Size.Height - 130 - 36 * (i - (OptionPanel.Count - 3)));
 
-                }
-            }
+        //        }
+        //    }
 
-            foreach (var panel in OptionPanel)
-            {
-                PanelOp_Paint(panel.Panel_Data, null);
-            }
+        //    foreach (var panel in OptionPanel)
+        //    {
+        //        PanelOp_Paint(panel.Panel_Data, null);
+        //    }
 
-        }
+        //}
 
 
 
@@ -459,13 +464,14 @@ namespace HioViw
             }
             (sender as CheckedListBox).SelectedIndex = i;
         }
-        private void Btn_DownloadPath_Click(object sender, EventArgs e)
-        {
-            if (FolderBrowerDialog.ShowDialog() == DialogResult.OK)
-            {
-                Text_DownloadPath.Text = FolderBrowerDialog.SelectedPath;
-            }
-        }
+
+        //private void Btn_DownloadPath_Click(object sender, EventArgs e)
+        //{
+        //    if (FolderBrowerDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        Text_DownloadPath.Text = FolderBrowerDialog.SelectedPath;
+        //    }
+        //}
 
         private void Preview_Add(string previewImagePath, string ID, string Title, string Uploader, string Series, string Type,
                 string Language, List<string> tagList, List<string> characterList, string UploadDate)
@@ -527,8 +533,6 @@ namespace HioViw
 
         private void Form_ResizeEnd(object sender, EventArgs e)
         {
-            Panel_Activate(null, null);
-
             List<Preview> mPreview = new List<Preview>();
 
             int prevCount = Previews.Count;
@@ -568,17 +572,18 @@ namespace HioViw
                 return;
             }
         }
-        private void Btn_Download(object sender, EventArgs e)
-        {
-            if (!worker.IsBusy)
-            {
-                worker.RunWorkerAsync();
-            }
-            else
-            {
-                MessageBox.Show("이미 실행중입니다.");
-            }
-        }
+
+        //private void Btn_Download(object sender, EventArgs e)
+        //{
+        //    if (!worker.IsBusy)
+        //    {
+        //        worker.RunWorkerAsync();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("이미 실행중입니다.");
+        //    }
+        //}
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -589,12 +594,14 @@ namespace HioViw
         {
             var l = sender as Control;
             Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
+            Panel_Downloaded.BringToFront();
         }
 
         private void Btn_Option_Click(object sender, EventArgs e)
         {
             var l = sender as Control;
             Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
+            Panel_Download_Option.BringToFront();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -610,15 +617,5 @@ namespace HioViw
         }
     }
 
-    public class OptionTag
-    {
-        public OptionTag(Panel p, int h)
-        {
-            Panel_Data = p;
-            Height = h;
-        }
-        public Panel Panel_Data { get; set; }
-        public int Height { get; set; }
-    }
 
 }
