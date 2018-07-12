@@ -32,13 +32,16 @@
             this.ChkListBox_Language = new System.Windows.Forms.ListBox();
             this.Text_DownloadPath = new System.Windows.Forms.TextBox();
             this.Text_PageRange = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.Panel_Language = new System.Windows.Forms.FlowLayoutPanel();
+            this.Btn_Lang_All = new System.Windows.Forms.Button();
+            this.Btn_Lang_Korean = new System.Windows.Forms.Button();
+            this.Btn_Lang_English = new System.Windows.Forms.Button();
+            this.Btn_Lang_Japanese = new System.Windows.Forms.Button();
+            this.Btn_Lang_Chinese = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Panel_Language.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ChkListBox_Type
@@ -54,7 +57,7 @@
             "Doujinshi",
             "Artist CG",
             "Game CG"});
-            this.ChkListBox_Type.Location = new System.Drawing.Point(517, 93);
+            this.ChkListBox_Type.Location = new System.Drawing.Point(302, 107);
             this.ChkListBox_Type.Name = "ChkListBox_Type";
             this.ChkListBox_Type.Size = new System.Drawing.Size(115, 80);
             this.ChkListBox_Type.TabIndex = 11;
@@ -84,7 +87,7 @@
             this.Text_DownloadPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.Text_DownloadPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Text_DownloadPath.ForeColor = System.Drawing.Color.LightGray;
-            this.Text_DownloadPath.Location = new System.Drawing.Point(373, 258);
+            this.Text_DownloadPath.Location = new System.Drawing.Point(245, 325);
             this.Text_DownloadPath.Name = "Text_DownloadPath";
             this.Text_DownloadPath.ReadOnly = true;
             this.Text_DownloadPath.Size = new System.Drawing.Size(119, 21);
@@ -95,120 +98,158 @@
             this.Text_PageRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.Text_PageRange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Text_PageRange.ForeColor = System.Drawing.Color.LightGray;
-            this.Text_PageRange.Location = new System.Drawing.Point(555, 302);
+            this.Text_PageRange.Location = new System.Drawing.Point(22, 70);
             this.Text_PageRange.Name = "Text_PageRange";
-            this.Text_PageRange.Size = new System.Drawing.Size(119, 21);
+            this.Text_PageRange.Size = new System.Drawing.Size(231, 21);
             this.Text_PageRange.TabIndex = 3;
-            this.Text_PageRange.Text = "{1-1}";
+            this.Text_PageRange.Text = "1-1";
             // 
-            // flowLayoutPanel1
+            // Panel_Language
             // 
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Controls.Add(this.button3);
-            this.flowLayoutPanel1.Controls.Add(this.button4);
-            this.flowLayoutPanel1.Controls.Add(this.button5);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(127, 45);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(140, 287);
-            this.flowLayoutPanel1.TabIndex = 17;
+            this.Panel_Language.Controls.Add(this.Btn_Lang_All);
+            this.Panel_Language.Controls.Add(this.Btn_Lang_Korean);
+            this.Panel_Language.Controls.Add(this.Btn_Lang_English);
+            this.Panel_Language.Controls.Add(this.Btn_Lang_Japanese);
+            this.Panel_Language.Controls.Add(this.Btn_Lang_Chinese);
+            this.Panel_Language.Location = new System.Drawing.Point(129, 82);
+            this.Panel_Language.Name = "Panel_Language";
+            this.Panel_Language.Size = new System.Drawing.Size(140, 175);
+            this.Panel_Language.TabIndex = 17;
+            this.Panel_Language.Tag = "all";
             // 
-            // button1
+            // Btn_Lang_All
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.LightGray;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(140, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "ALL";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Btn_Lang_All.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Lang_All.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Lang_All.FlatAppearance.BorderSize = 0;
+            this.Btn_Lang_All.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Lang_All.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Lang_All.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Lang_All.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Lang_All.Location = new System.Drawing.Point(0, 0);
+            this.Btn_Lang_All.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Lang_All.Name = "Btn_Lang_All";
+            this.Btn_Lang_All.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Btn_Lang_All.Size = new System.Drawing.Size(140, 35);
+            this.Btn_Lang_All.TabIndex = 0;
+            this.Btn_Lang_All.Text = "ALL";
+            this.Btn_Lang_All.UseVisualStyleBackColor = false;
+            this.Btn_Lang_All.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Btn_Lang_Down);
+            this.Btn_Lang_All.MouseEnter += new System.EventHandler(this.Btn_Lang_Enter);
+            this.Btn_Lang_All.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Btn_Lang_Up);
             // 
-            // button2
+            // Btn_Lang_Korean
             // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.LightGray;
-            this.button2.Location = new System.Drawing.Point(0, 35);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(140, 35);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Korean";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Btn_Lang_Korean.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Lang_Korean.FlatAppearance.BorderSize = 0;
+            this.Btn_Lang_Korean.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Lang_Korean.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Lang_Korean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Lang_Korean.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Lang_Korean.Location = new System.Drawing.Point(0, 35);
+            this.Btn_Lang_Korean.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Lang_Korean.Name = "Btn_Lang_Korean";
+            this.Btn_Lang_Korean.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Btn_Lang_Korean.Size = new System.Drawing.Size(140, 35);
+            this.Btn_Lang_Korean.TabIndex = 1;
+            this.Btn_Lang_Korean.Text = "Korean";
+            this.Btn_Lang_Korean.UseVisualStyleBackColor = true;
+            this.Btn_Lang_Korean.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Btn_Lang_Down);
+            this.Btn_Lang_Korean.MouseEnter += new System.EventHandler(this.Btn_Lang_Enter);
+            this.Btn_Lang_Korean.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Btn_Lang_Up);
             // 
-            // button3
+            // Btn_Lang_English
             // 
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.LightGray;
-            this.button3.Location = new System.Drawing.Point(0, 70);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(140, 35);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "English";
-            this.button3.UseVisualStyleBackColor = true;
+            this.Btn_Lang_English.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Lang_English.FlatAppearance.BorderSize = 0;
+            this.Btn_Lang_English.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Lang_English.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Lang_English.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Lang_English.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Lang_English.Location = new System.Drawing.Point(0, 70);
+            this.Btn_Lang_English.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Lang_English.Name = "Btn_Lang_English";
+            this.Btn_Lang_English.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Btn_Lang_English.Size = new System.Drawing.Size(140, 35);
+            this.Btn_Lang_English.TabIndex = 2;
+            this.Btn_Lang_English.Text = "English";
+            this.Btn_Lang_English.UseVisualStyleBackColor = true;
+            this.Btn_Lang_English.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Btn_Lang_Down);
+            this.Btn_Lang_English.MouseEnter += new System.EventHandler(this.Btn_Lang_Enter);
+            this.Btn_Lang_English.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Btn_Lang_Up);
             // 
-            // button4
+            // Btn_Lang_Japanese
             // 
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.LightGray;
-            this.button4.Location = new System.Drawing.Point(0, 105);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button4.Size = new System.Drawing.Size(140, 35);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Japanese";
-            this.button4.UseVisualStyleBackColor = true;
+            this.Btn_Lang_Japanese.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Lang_Japanese.FlatAppearance.BorderSize = 0;
+            this.Btn_Lang_Japanese.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Lang_Japanese.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Lang_Japanese.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Lang_Japanese.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Lang_Japanese.Location = new System.Drawing.Point(0, 105);
+            this.Btn_Lang_Japanese.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Lang_Japanese.Name = "Btn_Lang_Japanese";
+            this.Btn_Lang_Japanese.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Btn_Lang_Japanese.Size = new System.Drawing.Size(140, 35);
+            this.Btn_Lang_Japanese.TabIndex = 3;
+            this.Btn_Lang_Japanese.Text = "Japanese";
+            this.Btn_Lang_Japanese.UseVisualStyleBackColor = true;
+            this.Btn_Lang_Japanese.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Btn_Lang_Down);
+            this.Btn_Lang_Japanese.MouseEnter += new System.EventHandler(this.Btn_Lang_Enter);
+            this.Btn_Lang_Japanese.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Btn_Lang_Up);
             // 
-            // button5
+            // Btn_Lang_Chinese
             // 
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.LightGray;
-            this.button5.Location = new System.Drawing.Point(0, 140);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button5.Size = new System.Drawing.Size(140, 35);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Chinese";
-            this.button5.UseVisualStyleBackColor = true;
+            this.Btn_Lang_Chinese.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Lang_Chinese.FlatAppearance.BorderSize = 0;
+            this.Btn_Lang_Chinese.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Lang_Chinese.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Lang_Chinese.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Lang_Chinese.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Lang_Chinese.Location = new System.Drawing.Point(0, 140);
+            this.Btn_Lang_Chinese.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Lang_Chinese.Name = "Btn_Lang_Chinese";
+            this.Btn_Lang_Chinese.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Btn_Lang_Chinese.Size = new System.Drawing.Size(140, 35);
+            this.Btn_Lang_Chinese.TabIndex = 4;
+            this.Btn_Lang_Chinese.Text = "Chinese";
+            this.Btn_Lang_Chinese.UseVisualStyleBackColor = true;
+            this.Btn_Lang_Chinese.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Btn_Lang_Down);
+            this.Btn_Lang_Chinese.MouseEnter += new System.EventHandler(this.Btn_Lang_Enter);
+            this.Btn_Lang_Chinese.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Btn_Lang_Up);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.Text_PageRange);
+            this.panel1.Location = new System.Drawing.Point(556, 332);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(281, 103);
+            this.panel1.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.LightGray;
+            this.label1.Location = new System.Drawing.Point(20, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(166, 12);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Download Range : ex) 1-100";
             // 
             // Panel_Download_Option
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Panel_Language);
             this.Controls.Add(this.Text_DownloadPath);
             this.Controls.Add(this.ChkListBox_Type);
-            this.Controls.Add(this.Text_PageRange);
             this.Controls.Add(this.ChkListBox_Language);
             this.Name = "Panel_Download_Option";
             this.Size = new System.Drawing.Size(840, 435);
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.Panel_Language.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,11 +261,13 @@
         public System.Windows.Forms.ListBox ChkListBox_Language;
         public System.Windows.Forms.TextBox Text_DownloadPath;
         public System.Windows.Forms.TextBox Text_PageRange;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button Btn_Lang_All;
+        private System.Windows.Forms.Button Btn_Lang_Korean;
+        private System.Windows.Forms.Button Btn_Lang_English;
+        private System.Windows.Forms.Button Btn_Lang_Japanese;
+        private System.Windows.Forms.Button Btn_Lang_Chinese;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.FlowLayoutPanel Panel_Language;
     }
 }

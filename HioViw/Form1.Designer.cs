@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.Panel_Top_Option = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Btn_Menu = new System.Windows.Forms.PictureBox();
             this.Panel_Download_OptionList = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -41,15 +41,17 @@
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.Panel_Download_Option = new HioViw.Panel_Download_Option();
             this.Panel_Downloaded = new HioViw.Panel_Downloaded();
+            this.button3 = new System.Windows.Forms.Button();
             this.Panel_Top_Option.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).BeginInit();
             this.Panel_Download_OptionList.SuspendLayout();
             this.Panel_Download_Stat.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Top_Option
             // 
-            this.Panel_Top_Option.Controls.Add(this.pictureBox1);
+            this.Panel_Top_Option.Controls.Add(this.button3);
+            this.Panel_Top_Option.Controls.Add(this.Btn_Menu);
             this.Panel_Top_Option.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel_Top_Option.Location = new System.Drawing.Point(3, 3);
             this.Panel_Top_Option.Name = "Panel_Top_Option";
@@ -57,16 +59,17 @@
             this.Panel_Top_Option.TabIndex = 1;
             this.Panel_Top_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
-            // pictureBox1
+            // Btn_Menu
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::HioViw.Properties.Resources.menu;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.Btn_Menu.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Menu.Image = global::HioViw.Properties.Resources.menu;
+            this.Btn_Menu.Location = new System.Drawing.Point(10, 8);
+            this.Btn_Menu.Name = "Btn_Menu";
+            this.Btn_Menu.Size = new System.Drawing.Size(30, 30);
+            this.Btn_Menu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Btn_Menu.TabIndex = 0;
+            this.Btn_Menu.TabStop = false;
+            this.Btn_Menu.Click += new System.EventHandler(this.Btn_Menu_Click);
             // 
             // Panel_Download_OptionList
             // 
@@ -176,27 +179,32 @@
             // 
             // Panel_Download_Option
             // 
-            this.Panel_Download_Option.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_Download_Option.BackColor = System.Drawing.Color.Transparent;
+            this.Panel_Download_Option.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Download_Option.Location = new System.Drawing.Point(153, 49);
             this.Panel_Download_Option.Name = "Panel_Download_Option";
             this.Panel_Download_Option.Size = new System.Drawing.Size(840, 435);
             this.Panel_Download_Option.TabIndex = 0;
             this.Panel_Download_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            this.Panel_Download_Option.Resize += new System.EventHandler(this.Panel_Download_Option_Resize);
             // 
             // Panel_Downloaded
             // 
-            this.Panel_Downloaded.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_Downloaded.BackColor = System.Drawing.Color.Transparent;
             this.Panel_Downloaded.Location = new System.Drawing.Point(153, 49);
             this.Panel_Downloaded.Name = "Panel_Downloaded";
             this.Panel_Downloaded.Size = new System.Drawing.Size(840, 435);
             this.Panel_Downloaded.TabIndex = 6;
             this.Panel_Downloaded.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(64, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(70, 37);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // HioView_Form
             // 
@@ -217,7 +225,7 @@
             this.ResizeEnd += new System.EventHandler(this.Form_ResizeEnd);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Panel_Top_Option.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).EndInit();
             this.Panel_Download_OptionList.ResumeLayout(false);
             this.Panel_Download_Stat.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -229,7 +237,7 @@
         private System.Windows.Forms.Panel Panel_Top_Option;
         private System.Windows.Forms.Panel Panel_Download_OptionList;
         private System.Windows.Forms.Panel Panel_Download_Stat;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Btn_Menu;
         private System.Windows.Forms.FolderBrowserDialog FolderBrowerDialog;
         private System.Windows.Forms.Panel Panel_DownloadBar;
         private System.Windows.Forms.Panel Panel_Download_Select;
@@ -239,6 +247,7 @@
         private System.Windows.Forms.Button button1;
         private Panel_Downloaded Panel_Downloaded;
         private Panel_Download_Option Panel_Download_Option;
+        private System.Windows.Forms.Button button3;
     }
 }
 

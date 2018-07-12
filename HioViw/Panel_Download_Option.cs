@@ -21,6 +21,22 @@ namespace HioViw
         {
 
         }
+
+        private void Btn_Lang_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Lang_Up(object sender, MouseEventArgs e)
+        {
+            if ((sender as Control).Focused)
+                Panel_Language.Tag = (sender as Control).Text.ToLower();
+        }
+
+        private void Btn_Lang_Down(object sender, MouseEventArgs e)
+        {
+            
+        }
     }
 
 

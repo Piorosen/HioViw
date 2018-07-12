@@ -615,6 +615,31 @@ namespace HioViw
             var l = sender as Control;
             Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
         }
+
+        bool ch = false;
+        private void Btn_Menu_Click(object sender, EventArgs e)
+        {
+            if (ch)
+            {
+                for (int i = 0; i <= 10; i++)
+                {
+                    Panel_Download_OptionList.Size = new Size(150, Panel_Download_OptionList.Size.Height);
+                }
+                ch = !ch;
+            }
+            else
+            {
+                Panel_Download_OptionList.Size = new Size(0, Panel_Download_OptionList.Size.Height);
+                ch = !ch;
+            }
+        }
+
+        private void Panel_Download_Option_Resize(object sender, EventArgs e)
+        {
+            Panel_Downloaded.Location = Panel_Download_Option.Location;
+            Panel_Downloaded.Size = Panel_Download_Option.Size;
+
+        }
     }
 
 
