@@ -252,12 +252,17 @@ namespace HioViw
 
         private void Btn_Search_Series_Click(object sender, EventArgs e)
         {
-
+            Panel_Search_Type.Visible = !Panel_Search_Type.Visible;
         }
 
         private void Btn_Search_Language_Click(object sender, EventArgs e)
         {
             Panel_Search_Language.Visible = !Panel_Search_Language.Visible;
+        }
+
+        private void Btn_Search_Character_Click(object sender, EventArgs e)
+        {
+            Panel_Search_Character.Visible = !Panel_Search_Character.Visible;
         }
     }
 }
