@@ -63,9 +63,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.Panel_Search_Title = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
@@ -245,11 +243,12 @@
             this.Panel_Search.Controls.Add(this.Btn_Search_Character);
             this.Panel_Search.Controls.Add(this.Btn_Search_Language);
             this.Panel_Search.Controls.Add(this.Btn_Search_Title);
-            this.Panel_Search.Location = new System.Drawing.Point(23, 164);
+            this.Panel_Search.Location = new System.Drawing.Point(0, 165);
             this.Panel_Search.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_Search.Name = "Panel_Search";
-            this.Panel_Search.Size = new System.Drawing.Size(127, 387);
+            this.Panel_Search.Size = new System.Drawing.Size(150, 387);
             this.Panel_Search.TabIndex = 21;
+            this.Panel_Search.Visible = false;
             this.Panel_Search.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // button1
@@ -263,7 +262,7 @@
             this.button1.Location = new System.Drawing.Point(1, 331);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 55);
+            this.button1.Size = new System.Drawing.Size(148, 55);
             this.button1.TabIndex = 21;
             this.button1.Text = "범위 지정";
             this.button1.UseVisualStyleBackColor = false;
@@ -279,7 +278,7 @@
             this.Btn_Search_Range.Location = new System.Drawing.Point(1, 276);
             this.Btn_Search_Range.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Search_Range.Name = "Btn_Search_Range";
-            this.Btn_Search_Range.Size = new System.Drawing.Size(125, 55);
+            this.Btn_Search_Range.Size = new System.Drawing.Size(148, 55);
             this.Btn_Search_Range.TabIndex = 20;
             this.Btn_Search_Range.Text = "범위 지정";
             this.Btn_Search_Range.UseVisualStyleBackColor = false;
@@ -295,7 +294,7 @@
             this.Btn_Search_Series.Location = new System.Drawing.Point(1, 111);
             this.Btn_Search_Series.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Search_Series.Name = "Btn_Search_Series";
-            this.Btn_Search_Series.Size = new System.Drawing.Size(125, 55);
+            this.Btn_Search_Series.Size = new System.Drawing.Size(148, 55);
             this.Btn_Search_Series.TabIndex = 17;
             this.Btn_Search_Series.Text = "종류";
             this.Btn_Search_Series.UseVisualStyleBackColor = false;
@@ -312,7 +311,7 @@
             this.Btn_Search_Tags.Location = new System.Drawing.Point(1, 56);
             this.Btn_Search_Tags.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Search_Tags.Name = "Btn_Search_Tags";
-            this.Btn_Search_Tags.Size = new System.Drawing.Size(125, 55);
+            this.Btn_Search_Tags.Size = new System.Drawing.Size(148, 55);
             this.Btn_Search_Tags.TabIndex = 16;
             this.Btn_Search_Tags.Text = "태그";
             this.Btn_Search_Tags.UseVisualStyleBackColor = false;
@@ -329,7 +328,7 @@
             this.Btn_Search_Character.Location = new System.Drawing.Point(1, 221);
             this.Btn_Search_Character.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Search_Character.Name = "Btn_Search_Character";
-            this.Btn_Search_Character.Size = new System.Drawing.Size(125, 55);
+            this.Btn_Search_Character.Size = new System.Drawing.Size(148, 55);
             this.Btn_Search_Character.TabIndex = 19;
             this.Btn_Search_Character.Text = "캐릭터명";
             this.Btn_Search_Character.UseVisualStyleBackColor = false;
@@ -345,7 +344,7 @@
             this.Btn_Search_Language.Location = new System.Drawing.Point(1, 166);
             this.Btn_Search_Language.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Search_Language.Name = "Btn_Search_Language";
-            this.Btn_Search_Language.Size = new System.Drawing.Size(125, 55);
+            this.Btn_Search_Language.Size = new System.Drawing.Size(148, 55);
             this.Btn_Search_Language.TabIndex = 18;
             this.Btn_Search_Language.Text = "언어";
             this.Btn_Search_Language.UseVisualStyleBackColor = false;
@@ -362,7 +361,7 @@
             this.Btn_Search_Title.Location = new System.Drawing.Point(1, 1);
             this.Btn_Search_Title.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Search_Title.Name = "Btn_Search_Title";
-            this.Btn_Search_Title.Size = new System.Drawing.Size(125, 55);
+            this.Btn_Search_Title.Size = new System.Drawing.Size(148, 55);
             this.Btn_Search_Title.TabIndex = 15;
             this.Btn_Search_Title.Text = "제목";
             this.Btn_Search_Title.UseVisualStyleBackColor = false;
@@ -373,10 +372,12 @@
             this.Panel_Search_Language.Controls.Add(this.listBox2);
             this.Panel_Search_Language.Controls.Add(this.listBox1);
             this.Panel_Search_Language.Controls.Add(this.button6);
-            this.Panel_Search_Language.Location = new System.Drawing.Point(-1, 330);
+            this.Panel_Search_Language.Location = new System.Drawing.Point(-1, 331);
             this.Panel_Search_Language.Name = "Panel_Search_Language";
             this.Panel_Search_Language.Size = new System.Drawing.Size(389, 207);
             this.Panel_Search_Language.TabIndex = 12;
+            this.Panel_Search_Language.Visible = false;
+            this.Panel_Search_Language.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // button6
             // 
@@ -412,6 +413,7 @@
             // 
             // Panel_Downloaded
             // 
+            this.Panel_Downloaded.BackColor = System.Drawing.Color.Transparent;
             this.Panel_Downloaded.Controls.Add(this.Panel_Search_Language);
             this.Panel_Downloaded.Controls.Add(this.Panel_Search_Tags);
             this.Panel_Downloaded.Controls.Add(this.Panel_Search_Title);
@@ -436,10 +438,11 @@
             this.Panel_Search_Tags.Controls.Add(this.pictureBox3);
             this.Panel_Search_Tags.Controls.Add(this.button4);
             this.Panel_Search_Tags.Controls.Add(this.button3);
-            this.Panel_Search_Tags.Location = new System.Drawing.Point(0, 220);
+            this.Panel_Search_Tags.Location = new System.Drawing.Point(-1, 221);
             this.Panel_Search_Tags.Name = "Panel_Search_Tags";
             this.Panel_Search_Tags.Size = new System.Drawing.Size(777, 218);
             this.Panel_Search_Tags.TabIndex = 1;
+            this.Panel_Search_Tags.Visible = false;
             this.Panel_Search_Tags.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // label1
@@ -525,30 +528,14 @@
             // 
             // Panel_Search_Title
             // 
-            this.Panel_Search_Title.Controls.Add(this.button5);
             this.Panel_Search_Title.Controls.Add(this.textBox1);
-            this.Panel_Search_Title.Controls.Add(this.button2);
-            this.Panel_Search_Title.Location = new System.Drawing.Point(-1, 164);
+            this.Panel_Search_Title.Location = new System.Drawing.Point(-1, 165);
             this.Panel_Search_Title.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_Search_Title.Name = "Panel_Search_Title";
             this.Panel_Search_Title.Size = new System.Drawing.Size(427, 56);
             this.Panel_Search_Title.TabIndex = 0;
+            this.Panel_Search_Title.Visible = false;
             this.Panel_Search_Title.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
-            // 
-            // button5
-            // 
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.LightGray;
-            this.button5.Location = new System.Drawing.Point(388, 12);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(30, 30);
-            this.button5.TabIndex = 24;
-            this.button5.Text = "X";
-            this.button5.UseVisualStyleBackColor = false;
             // 
             // textBox1
             // 
@@ -558,23 +545,8 @@
             this.textBox1.ForeColor = System.Drawing.Color.LightGray;
             this.textBox1.Location = new System.Drawing.Point(8, 12);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(338, 29);
+            this.textBox1.Size = new System.Drawing.Size(406, 29);
             this.textBox1.TabIndex = 23;
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.LightGray;
-            this.button2.Location = new System.Drawing.Point(352, 11);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "○";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // listBox1
             // 
@@ -5726,7 +5698,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.Controls.Add(this.Panel_Downloaded);
             this.Controls.Add(this.Panel_Download_Stat);
             this.Controls.Add(this.Panel_Download_OptionList);
@@ -5780,7 +5752,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel Panel_Search_Title;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel Panel_Search_Tags;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button button4;
@@ -5791,7 +5762,6 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel Panel_Search_Language;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ListBox listBox2;

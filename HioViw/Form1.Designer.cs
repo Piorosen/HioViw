@@ -30,27 +30,27 @@
         private void InitializeComponent()
         {
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.downloadPage = new HioViw.DownloadPage();
+            this.downloadPage1 = new HioViw.DownloadPage();
             this.SuspendLayout();
             // 
-            // downloadPage
+            // downloadPage1
             // 
-            this.downloadPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.downloadPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.downloadPage.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.downloadPage.Location = new System.Drawing.Point(3, 3);
-            this.downloadPage.Name = "downloadPage";
-            this.downloadPage.Padding = new System.Windows.Forms.Padding(3);
-            this.downloadPage.Size = new System.Drawing.Size(1053, 562);
-            this.downloadPage.TabIndex = 1;
+            this.downloadPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.downloadPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.downloadPage1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.downloadPage1.Location = new System.Drawing.Point(3, 3);
+            this.downloadPage1.Name = "downloadPage1";
+            this.downloadPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.downloadPage1.Size = new System.Drawing.Size(1053, 562);
+            this.downloadPage1.TabIndex = 0;
             // 
             // HioView_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(1059, 568);
-            this.Controls.Add(this.downloadPage);
+            this.Controls.Add(this.downloadPage1);
             this.ForeColor = System.Drawing.Color.Transparent;
             this.Name = "HioView_Form";
             this.Padding = new System.Windows.Forms.Padding(3);
@@ -62,7 +62,7 @@
 
         #endregion
 
-        private HioViw.DownloadPage downloadPage;
+        private DownloadPage downloadPage1;
     }
 }
 

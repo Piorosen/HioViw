@@ -10,8 +10,11 @@ namespace HioViw_TagDownloader
     {
         static void Main(string[] args)
         {
+            string DownloadLink = "https://hitomi.la/allseries-";
+
+
             WebClient wc = new WebClient();
-            string data = wc.DownloadString("https://hitomi.la/alltags-123.html");
+            string data = wc.DownloadString(DownloadLink + "123.html");
 
             data = Regex.Split(data, "<ul class=\"posts\">")[1];
             data = Regex.Split(data, "<div class=\"page-content\">")[0];
@@ -25,7 +28,7 @@ namespace HioViw_TagDownloader
             
             for (int i = 'a'; i <= 'z'; i++)
             {
-                data = wc.DownloadString("https://hitomi.la/alltags-" + (char)i +".html");
+                data = wc.DownloadString(DownloadLink + (char)i +".html");
 
                 data = Regex.Split(data, "<div class=\"content\">")[1];
                 data = Regex.Split(data, "<div class=\"page-content\">")[0];

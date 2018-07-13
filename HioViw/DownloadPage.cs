@@ -36,12 +36,12 @@ namespace HioViw
             Menu_Button.Add(Btn_SearchResult);
             Menu_Button.Add(Btn_Option);
 
-            StreamReader sr = new StreamReader("DB\\Tags.Info", Encoding.UTF8);
-            while (!sr.EndOfStream)
-            {
-                Tags.Add(sr.ReadLine());
-            }
-            sr.Close();
+            //StreamReader sr = new StreamReader("DB\\Tags.Info", Encoding.UTF8);
+            //while (!sr.EndOfStream)
+            //{
+            //    Tags.Add(sr.ReadLine());
+            //}
+            //sr.Close();
 
         }
 
@@ -183,7 +183,7 @@ namespace HioViw
             foreach (var c in Menu_Button)
             {
                 c.Tag = false;
-                c.BackColor = Color.FromArgb(40, 40, 40);
+                c.BackColor = Color.FromArgb(20, 20, 20);
             }
 
             if (sen)
