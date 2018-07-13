@@ -103,8 +103,6 @@ namespace HioViw
 
         }
 
-
-
         private void Download()
         {
             string Download_Path = Panel_Download_Option.Text_DownloadPath.Text;
@@ -365,7 +363,6 @@ namespace HioViw
             Console.WriteLine("끝났습니다.");
         }
 
-
         BackgroundWorker worker = new BackgroundWorker();
 
         private void Panel_Paint(object sender, PaintEventArgs e)
@@ -452,9 +449,6 @@ namespace HioViw
         //    }
 
         //}
-
-
-
 
         private void ChkListBox_Click(object sender, EventArgs e)
         {
@@ -595,27 +589,31 @@ namespace HioViw
         private void Btn_Downloa_Click(object sender, EventArgs e)
         {
             var l = sender as Control;
-            Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
+            
             Panel_Downloaded.BringToFront();
+        }
+       
+        private void Btn_Color(Control sender)
+        {
+            bool t = (bool)sender.Tag;
+            sender.Tag = !t;
+            
+            Panel_Search.Visible = t;
+            if (t)
+            {
+                sender.BackColor = Color.FromArgb(80, 80, 80);
+            }
+            else
+            {
+                sender.BackColor = Color.FromArgb(40, 40, 40);
+            }
         }
 
         private void Btn_Option_Click(object sender, EventArgs e)
         {
-            var l = sender as Control;
-            Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
-            Panel_Download_Option.BringToFront();
-        }
+            Btn_Color(sender as Control);
+            
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var l = sender as Control;
-            Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var l = sender as Control;
-            Panel_Download_Select.Location = new Point(l.Location.X - 10, l.Location.Y);
         }
 
         bool ch = false;
@@ -640,6 +638,11 @@ namespace HioViw
         {
             Panel_Downloaded.Location = Panel_Download_Option.Location;
             Panel_Downloaded.Size = Panel_Download_Option.Size;
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
 
         }
     }

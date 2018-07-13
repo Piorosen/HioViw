@@ -63,12 +63,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Panel_Downloaded.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Panel_Downloaded.Designer.cs">
-      <DependentUpon>Panel_Downloaded.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Gallerie.cs" />
     <Compile Include="Panel_Download_Option.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,9 +83,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panel_Downloaded.resx">
-      <DependentUpon>Panel_Downloaded.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel_Download_Option.resx">
       <DependentUpon>Panel_Download_Option.cs</DependentUpon>
@@ -123,6 +115,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\download-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
