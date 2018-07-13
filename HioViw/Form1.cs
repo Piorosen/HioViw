@@ -19,6 +19,8 @@ namespace HioViw
         public HioView_Form()
         {
             InitializeComponent();
+
+            
             
         }
     }

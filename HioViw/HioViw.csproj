@@ -64,6 +64,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Gallerie.cs" />
+    <Compile Include="HioDownloader.cs" />
     <Compile Include="Panel_Download_Option.cs">
       <SubType>UserControl</SubType>
     </Compile>
