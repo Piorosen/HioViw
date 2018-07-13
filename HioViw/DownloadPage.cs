@@ -36,9 +36,16 @@ namespace HioViw
             Menu_Button.Add(Btn_SearchResult);
             Menu_Button.Add(Btn_Option);
 
+            StreamReader sr = new StreamReader("DB\\Tags.Info", Encoding.UTF8);
+            while (!sr.EndOfStream)
+            {
+                Tags.Add(sr.ReadLine());
+            }
+            sr.Close();
 
         }
 
+        List<string> Tags = new List<string>();
         List<Preview> Previews = new List<Preview>();
 
 
@@ -230,12 +237,27 @@ namespace HioViw
 
         private void Panel_Download_Option_Resize(object sender, EventArgs e)
         {
-            Panel_Downloaded.Location = Panel_Download_Option.Location;
-            Panel_Downloaded.Size = Panel_Download_Option.Size;
 
         }
-        
 
-        
+        private void Btn_Search_Title_Click(object sender, EventArgs e)
+        {
+            Panel_Search_Title.Visible = !Panel_Search_Title.Visible;
+        }
+
+        private void Btn_Search_Tags_Click(object sender, EventArgs e)
+        {
+            Panel_Search_Tags.Visible = !Panel_Search_Tags.Visible;
+        }
+
+        private void Btn_Search_Series_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Search_Language_Click(object sender, EventArgs e)
+        {
+            Panel_Search_Language.Visible = !Panel_Search_Language.Visible;
+        }
     }
 }
