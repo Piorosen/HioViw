@@ -74,10 +74,9 @@ namespace HioViw
         }
 
 
-        private void Preview_Add(string previewImagePath, string ID, string Title, string Uploader, string Series, string Type,
-                string Language, List<string> tagList, List<string> characterList, string UploadDate)
+        private void Preview_Add(Gallerie gallerie)
         {
-
+                  
 
             for (int i = Previews.Count - 2; i >= 0; i--)
             {
@@ -106,26 +105,26 @@ namespace HioViw
             {
                 preview.Clear();
 
-                preview.Pic_Image.Image = Bitmap.FromFile(previewImagePath);
-                preview.Label_ID.Text += ID.Split('.')[0];
-                preview.Label_Title.Text += Title;
-                preview.Label_Group.Text += Uploader;
-                preview.Label_Series.Text += Series;
-                preview.Label_Type.Text += Type;
-                preview.Label_Language.Text += Language;
-                for (int i = 0; i < tagList.Count - 1; i++)
+                preview.Pic_Image.Image = Bitmap.FromFile(gallerie.ThumnailImage);
+                preview.Label_ID.Text += gallerie.ID.Split('.')[0];
+                preview.Label_Title.Text += gallerie.Title;
+                preview.Label_Group.Text += gallerie.Uploader;
+                preview.Label_Series.Text += gallerie.Series;
+                preview.Label_Type.Text += gallerie.Type;
+                preview.Label_Language.Text += gallerie.Language;
+                for (int i = 0; i < gallerie.Tags.Count - 1; i++)
                 {
-                    preview.Label_Tags.Text += tagList[i] + ", ";
+                    preview.Label_Tags.Text += gallerie.Tags[i] + ", ";
                 }
-                preview.Label_Tags.Text += tagList[tagList.Count - 1];
+                preview.Label_Tags.Text += gallerie.Tags[gallerie.Tags.Count - 1];
 
-                for (int i = 0; i < characterList.Count - 1; i++)
+                for (int i = 0; i < gallerie.Character.Count - 1; i++)
                 {
-                    preview.Label_Character.Text += characterList[i] + ", ";
+                    preview.Label_Character.Text += gallerie.Character[i] + ", ";
                 }
-                preview.Label_Character.Text += characterList[characterList.Count - 1];
+                preview.Label_Character.Text += gallerie.Character[gallerie.Character.Count - 1];
 
-                preview.Label_Date.Text += UploadDate;
+                preview.Label_Date.Text += gallerie.UploadDate;
             }));
 
             Previews[0] = preview;
@@ -200,6 +199,7 @@ namespace HioViw
 
         }
 
+
         private void Btn_Option_Click(object sender, EventArgs e)
         {
             Btn_Color(sender as Control);
@@ -215,6 +215,8 @@ namespace HioViw
         private void Btn_SearchResult_Click(object sender, EventArgs e)
         {
             Btn_Color(sender as Control);
+            
+            
         }
 
         bool ch = false;
@@ -240,29 +242,47 @@ namespace HioViw
 
         }
 
+
+
         private void Btn_Search_Title_Click(object sender, EventArgs e)
         {
             Panel_Search_Title.Visible = !Panel_Search_Title.Visible;
+            Panel_Search_Title.BringToFront();
         }
 
         private void Btn_Search_Tags_Click(object sender, EventArgs e)
         {
             Panel_Search_Tags.Visible = !Panel_Search_Tags.Visible;
+            Panel_Search_Tags.BringToFront();
         }
 
         private void Btn_Search_Series_Click(object sender, EventArgs e)
         {
             Panel_Search_Type.Visible = !Panel_Search_Type.Visible;
+            Panel_Search_Type.BringToFront();
         }
 
         private void Btn_Search_Language_Click(object sender, EventArgs e)
         {
             Panel_Search_Language.Visible = !Panel_Search_Language.Visible;
+            Panel_Search_Language.BringToFront();
         }
 
         private void Btn_Search_Character_Click(object sender, EventArgs e)
         {
-            Panel_Search_Character.Visible = !Panel_Search_Character.Visible;
+            Panel_Search_Series.Visible = !Panel_Search_Series.Visible;
+            Panel_Search_Series.BringToFront();
+        }
+
+        private void Btn_Search_Range_Click(object sender, EventArgs e)
+        {
+            Panel_Search_Range.Visible = !Panel_Search_Type.Visible;
+            Panel_Search_Range.BringToFront();
+        }
+
+        private void Btn_DownloadStart_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
