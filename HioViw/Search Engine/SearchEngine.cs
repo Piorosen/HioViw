@@ -37,7 +37,7 @@ namespace HioViw
                     JArray list = JArray.Parse(sr.ReadToEnd());
                     for (int w = 0; w < list.Count; w++)
                     {
-                        MessageBox.Show(list[w]["n"].ToString());
+                        MessageBox.Show(list[w]["t"].ToString());
                     }
 
 
