@@ -19,7 +19,17 @@ namespace HioViw
         public DownloadPage()
         {
             InitializeComponent();
-            
+
+
+            Panel_Search_Title.Location = new Point(-1, 165);
+            Panel_Search_Tags.Location = new Point(-1, 165 + 55 * 1);
+            Panel_Search_Type.Location = new Point(-1, 165 + 55 * 2);
+            Panel_Search_Language.Location = new Point(-1, 165 + 55 * 3);
+            Panel_Search_Series.Location = new Point(-1, 165 + 55 * 4);
+            Panel_Search_Character.Location = new Point(-1, 165 + 55 * 5);
+            Panel_Search_Range.Location = new Point(-1, 165 + 55 * 6);
+
+
             for (int i = 112; i <= Panel_Downloaded.Size.Height; i += 106)
             {
                 Preview pre = new Preview
@@ -253,12 +263,14 @@ namespace HioViw
         private void Btn_Search_Tags_Click(object sender, EventArgs e)
         {
             Panel_Search_Tags.Visible = !Panel_Search_Tags.Visible;
+            
             Panel_Search_Tags.BringToFront();
         }
 
-        private void Btn_Search_Series_Click(object sender, EventArgs e)
+        private void Btn_Search_Type_Click(object sender, EventArgs e)
         {
             Panel_Search_Type.Visible = !Panel_Search_Type.Visible;
+           
             Panel_Search_Type.BringToFront();
         }
 
@@ -268,15 +280,21 @@ namespace HioViw
             Panel_Search_Language.BringToFront();
         }
 
-        private void Btn_Search_Character_Click(object sender, EventArgs e)
+        private void Btn_Search_Series_Click(object sender, EventArgs e)
         {
             Panel_Search_Series.Visible = !Panel_Search_Series.Visible;
             Panel_Search_Series.BringToFront();
         }
 
+        private void Btn_Search_Character_Click(object sender, EventArgs e)
+        {
+            Panel_Search_Character.Visible = !Panel_Search_Character.Visible;
+            Panel_Search_Series.BringToFront();
+        }
+
         private void Btn_Search_Range_Click(object sender, EventArgs e)
         {
-            Panel_Search_Range.Visible = !Panel_Search_Type.Visible;
+            Panel_Search_Range.Visible = !Panel_Search_Range.Visible;
             Panel_Search_Range.BringToFront();
         }
 
@@ -284,5 +302,7 @@ namespace HioViw
         {
 
         }
+
+        
     }
 }
