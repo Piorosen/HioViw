@@ -92,7 +92,7 @@ namespace HioViw
                     Previews[i + 1].Label_Language.Text = Previews[i].Label_Language.Text;
                     Previews[i + 1].Label_Tags.Text = Previews[i].Label_Tags.Text;
                     Previews[i + 1].Label_Character.Text = Previews[i].Label_Character.Text;
-                    Previews[i + 1].Label_Date.Text = Previews[i].Label_Date.Text;
+                    Previews[i + 1].Label_Date.Text = "Test";
 
                 }));
             }

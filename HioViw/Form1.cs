@@ -22,7 +22,24 @@ namespace HioViw
 
 
             SearchEngine engine = new SearchEngine();
-            engine.Find_Start(new SearchData());
+            engine.Find += Engine_Find;
+            SearchData sd = new SearchData();
+
+            sd.Title = string.Empty;
+            sd.Tags = new List<string>();
+            sd.Type = new List<string>();
+            sd.Series = new List<string>();
+            sd.Language = new List<string>();
+            sd.Character = new List<string>();
+            sd.Character.Add("asuna yuuki".ToLower());
+            engine.Find_Start(sd);
+        }
+
+        private void Engine_Find(object sender, Gallerie e)
+        {
+            StreamWriter sw = new StreamWriter("C:\\Map\\result.txt", true);
+            sw.WriteLine(e.ID + " " + e.Title);
+            sw.Close();
         }
     }
 

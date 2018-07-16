@@ -18,9 +18,61 @@ namespace HioViw
     {
         public event Finder Find;
         
-        private void Finded(Gallerie e)
+        private void OnFind(Gallerie e)
         {
             Find?.Invoke(this, e);
+        }
+
+        private bool IsSearchData(SearchData search, JObject j)
+        {
+            bool Return = true;
+            if (search.Title.Length != 0)
+            {
+                if (j["id"] == null)
+                {
+                    Return = false;
+                }
+            }
+            if (search.Character.Count != 0)
+            {
+                if (j["c"] == null)
+                {
+                    Return = false;
+                }
+            }
+            if (search.Series.Count != 0)
+            {
+                if (j["p"] == null)
+                {
+                    Return = false;
+                }
+            }
+            if (search.Tags.Count != 0)
+            {
+                if (j["t"] == null)
+                {
+                    Return = false;
+                }
+            }
+            if (search.Type.Count != 0)
+            {
+                if (j["type"] == null)
+                {
+                    Return = false;
+                }
+            }
+            if (search.Language.Count != 0)
+            {
+                if (j["l"] == null)
+                {
+                    Return = false;
+                }
+            }
+            if (!Return)
+            {
+
+            }
+            return Return;
         }
 
         public void Find_Start(SearchData search, bool IsOld = false)
@@ -28,43 +80,128 @@ namespace HioViw
             if (!IsOld)
             {
                 var result = new List<JToken>();
-                for (int i = 8; i < 20; i++)
-                {
-                   
-                    var serializer = new JsonSerializer();
-                    StreamReader sr = new StreamReader("Hitomi_DB\\text" + i + ".txt");
 
+                // DB가 0부터 19까지 존재합니다.
+                for (int i = 0; i < 20; i++)
+                {
+
+                    StreamReader sr = new StreamReader("Hitomi_DB\\text" + i + ".txt");
                     JArray list = JArray.Parse(sr.ReadToEnd());
+
+                    // 검색한 자료만큼 반복을 합니다.
                     for (int w = 0; w < list.Count; w++)
                     {
                         JObject j = list[w].ToObject<JObject>();
-                        
-                        foreach (var content in j)
+
+                        // 이 자료가 찾은 검색에 적합한지에 조사합니다.
+                        if (IsSearchData(search, j))
                         {
-                            if (search.Title.Length != 0 && content.Key == "n")
-                            {
 
+                            bool IsSearch = true;
+                            // 찾은 검색에 적합한지에 조사한 자료에 본격적인 조사를 합니다.
+                            foreach (var content in j)
+                            {
+                                if (search.Title.Length != 0 && content.Key == "n")
+                                {
+                                    if (content.Value.ToString().ToLower().IndexOf(search.Title, 0) == -1)
+                                        IsSearch = false;
+                                }
+                                else if (search.Language.Count != 0 && content.Key == "l")
+                                {
+                                    bool chk = false;
+
+                                    foreach (var data in search.Language)
+                                    {
+                                        if (content.Value.ToString().ToUpper() == data)
+                                        {
+                                            chk = true;
+                                        }
+                                    }
+                                    IsSearch = chk;
+                                }
+                                else if (search.Type.Count != 0 && content.Key == "type")
+                                {
+                                    bool chk = false;
+
+                                    foreach (var data in search.Type)
+                                    {
+                                        if (content.Value.ToString().ToUpper() == data)
+                                        {
+                                            chk = true;
+                                        }
+                                    }
+                                    IsSearch = chk;
+                                }
+                                else if (search.Character.Count != 0 && content.Key == "c")
+                                {
+                                    bool chk = false;
+
+                                    foreach (var data in search.Character)
+                                    {
+                                        foreach (var contentName in content.Value)
+                                        {
+                                            if (contentName.ToString().ToLower() == data)
+                                            {
+                                                chk = true;
+                                            }
+                                            if (chk) break;
+                                        }
+                                        if (chk) break;
+                                    }
+                                    IsSearch = chk;
+                                }
+                                else if (search.Series.Count != 0 && content.Key == "p")
+                                {
+
+                                }
+                                else if (search.Tags.Count != 0 && content.Key == "t")
+                                {
+
+                                }
                             }
-                            else if (search.Language.Count != 0 && content.Key == "l")
-                            {
 
-                            }
-                            else if (search.Type.Count != 0 && content.Key == "type")
+                            // 검색한 결과를 OnFind 이벤트를 통해서 전달합니다.
+                            if (IsSearch)
                             {
+                                Gallerie g = new Gallerie();
+                                g.Tags = new List<string>();
+                                g.Character = new List<string>();
 
-                            }
-                            else if (search.Character.Count != 0 && content.Key == "c")
-                            {
+                                if (j["n"] != null)
+                                    g.Title = j["n"].ToString();
+                                if (j["id"] != null)
+                                    g.ID = j["id"].ToString();
+                                if (j["g"] != null)
+                                    g.Uploader = j["g"].ToString();
+                                if (j["type"] != null)
+                                    g.Type = j["type"].ToString();
+                                if (j["l"] != null)
+                                    g.Language = j["l"].ToString();
+                                if (j["p"] != null)
+                                    g.Series = j["p"].ToString();
 
-                            }
-                            else if (search.Series.Count != 0 && content.Key == "p")
-                            {
+                                if (j["t"] != null)
+                                {
+                                    foreach (var value in j["t"].Values<string>())
+                                    {
+                                        g.Tags.Add(value);
+                                    }
+                                }
 
-                            }else if (search.Tags.Count != 0 && content.Key == "t")
-                            {
+                                if (j["c"] != null)
+                                {
+                                    foreach (var value in j["c"].Values<string>())
+                                    {
+                                        g.Character.Add(value);
+                                    }
+                                }
 
+
+
+                                OnFind(g);
                             }
                         }
+
                     }
 
 
@@ -72,6 +209,6 @@ namespace HioViw
             }
 
         }
-
+       
     }
 }
