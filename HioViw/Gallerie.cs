@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HioViw
 {
-    class Gallerie
+    public class Gallerie
     {
         public string Title { get; set; }
         public string Type { get; set; }
