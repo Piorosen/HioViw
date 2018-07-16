@@ -20,8 +20,9 @@ namespace HioViw
         {
             InitializeComponent();
 
-            
-            
+
+            SearchEngine engine = new SearchEngine();
+            engine.Find_Start(new SearchData());
         }
     }
 

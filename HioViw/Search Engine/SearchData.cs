@@ -6,20 +6,15 @@ using System.Threading.Tasks;
 
 namespace HioViw
 {
-    class SearchData
+    public class SearchData
     {
-            public string Title { get; set; }
-            public string Type { get; set; }
-            public string Language { get; set; }
-            public string Series { get; set; }
-            public List<string> Character { get; set; }
-            public List<string> Tags { get; set; }
-            public string ID { get; set; }
-            public string PictureNum { get; set; }
-            public string URL { get; set; }
-            public string ImagePath { get; set; }
-            public string ThumnailImage { get; set; }
-            public string Uploader { get; set; }
-            public string UploadDate { get; set; }
+        public string Title { get; set; }
+        public List<string> Type { get; set; }
+        public List<string> Language { get; set; }
+        public List<string> Series { get; set; }
+        public List<string> Character { get; set; }
+        public List<string> Tags { get; set; }
+        public UInt64 Start_Range { get; set; }
+        public UInt64 End_Range { get; set; }
     }
 }

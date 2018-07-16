@@ -94,6 +94,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.Panel_Search_Title = new System.Windows.Forms.Panel();
             this.Text_Search_Title = new System.Windows.Forms.TextBox();
+            this.Btn_Search_Character = new System.Windows.Forms.Button();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -265,6 +266,7 @@
             // 
             // Panel_Search
             // 
+            this.Panel_Search.Controls.Add(this.Btn_Search_Character);
             this.Panel_Search.Controls.Add(this.Btn_Search_Range);
             this.Panel_Search.Controls.Add(this.Btn_Search_Type);
             this.Panel_Search.Controls.Add(this.Btn_Search_Tags);
@@ -274,7 +276,7 @@
             this.Panel_Search.Location = new System.Drawing.Point(0, 165);
             this.Panel_Search.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_Search.Name = "Panel_Search";
-            this.Panel_Search.Size = new System.Drawing.Size(150, 332);
+            this.Panel_Search.Size = new System.Drawing.Size(150, 387);
             this.Panel_Search.TabIndex = 21;
             this.Panel_Search.Visible = false;
             this.Panel_Search.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
@@ -287,7 +289,7 @@
             this.Btn_Search_Range.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
             this.Btn_Search_Range.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Search_Range.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_Search_Range.Location = new System.Drawing.Point(1, 276);
+            this.Btn_Search_Range.Location = new System.Drawing.Point(1, 331);
             this.Btn_Search_Range.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Search_Range.Name = "Btn_Search_Range";
             this.Btn_Search_Range.Size = new System.Drawing.Size(148, 55);
@@ -486,7 +488,7 @@
             this.Panel_Search_Range.Controls.Add(this.label5);
             this.Panel_Search_Range.Controls.Add(this.textBox11);
             this.Panel_Search_Range.Controls.Add(this.textBox10);
-            this.Panel_Search_Range.Location = new System.Drawing.Point(-1, 441);
+            this.Panel_Search_Range.Location = new System.Drawing.Point(-1, 496);
             this.Panel_Search_Range.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_Search_Range.Name = "Panel_Search_Range";
             this.Panel_Search_Range.Size = new System.Drawing.Size(353, 75);
@@ -11115,6 +11117,22 @@
             this.Text_Search_Title.Size = new System.Drawing.Size(406, 29);
             this.Text_Search_Title.TabIndex = 23;
             // 
+            // Btn_Search_Character
+            // 
+            this.Btn_Search_Character.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Search_Character.FlatAppearance.BorderSize = 0;
+            this.Btn_Search_Character.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Search_Character.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Search_Character.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Search_Character.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Search_Character.Location = new System.Drawing.Point(1, 276);
+            this.Btn_Search_Character.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Search_Character.Name = "Btn_Search_Character";
+            this.Btn_Search_Character.Size = new System.Drawing.Size(148, 55);
+            this.Btn_Search_Character.TabIndex = 21;
+            this.Btn_Search_Character.Text = "캐릭터명";
+            this.Btn_Search_Character.UseVisualStyleBackColor = false;
+            // 
             // DownloadPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -11221,5 +11239,6 @@
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_Search_Character;
     }
 }
