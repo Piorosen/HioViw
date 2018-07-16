@@ -30,8 +30,12 @@ namespace HioViw
             sd.Type = new List<string>();
             sd.Series = new List<string>();
             sd.Language = new List<string>();
+            sd.Language.Add("korean".ToLower());
+
             sd.Character = new List<string>();
             sd.Character.Add("asuna yuuki".ToLower());
+            sd.Character.Add("kazuto kirigaya".ToLower());
+
             engine.Find_Start(sd);
         }
 
