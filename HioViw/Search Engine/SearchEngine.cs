@@ -11,8 +11,6 @@ using Newtonsoft.Json;
 
 namespace HioViw
 {
-
-
     public delegate void Finder(Object sender, Gallerie e);
     class SearchEngine
     {
@@ -221,13 +219,13 @@ namespace HioViw
                                 if (j["id"] != null)
                                     g.ID = j["id"].ToString();
                                 if (j["g"] != null)
-                                    g.Uploader = j["g"].ToString();
+                                    g.Uploader = j["g"].ToString().Split('\"')[1];
                                 if (j["type"] != null)
                                     g.Type = j["type"].ToString();
                                 if (j["l"] != null)
                                     g.Language = j["l"].ToString();
                                 if (j["p"] != null)
-                                    g.Series = j["p"].ToString();
+                                    g.Series = j["p"].ToString().Split('\"')[1];
 
                                 if (j["t"] != null)
                                 {

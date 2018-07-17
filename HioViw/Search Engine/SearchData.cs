@@ -8,6 +8,17 @@ namespace HioViw
 {
     public class SearchData
     {
+        public SearchData()
+        {
+            Title = String.Empty;
+            Type = new List<string>();
+            Series = new List<string>();
+            Character = new List<string>();
+            Tags = new List<string>();
+            Start_Range = 0;
+            End_Range = 10;
+
+        }
         public string Title { get; set; }
         public List<string> Type { get; set; }
         public List<string> Language { get; set; }

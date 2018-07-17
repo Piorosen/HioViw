@@ -20,14 +20,36 @@ namespace HioViw
         {
             InitializeComponent();
 
+            {
+                Panel_Search_Title.Location = new Point(-1, 165);
+                Panel_Search_Tags.Location = new Point(-1, 165 + 55 * 1);
+                Panel_Search_Type.Location = new Point(-1, 165 + 55 * 2);
+                Panel_Search_Language.Location = new Point(-1, 165 + 55 * 3);
+                Panel_Search_Series.Location = new Point(-1, 165 + 55 * 4);
+                Panel_Search_Character.Location = new Point(-1, 165 + 55 * 5);
+                Panel_Search_Range.Location = new Point(-1, 165 + 55 * 6);
 
-            Panel_Search_Title.Location = new Point(-1, 165);
-            Panel_Search_Tags.Location = new Point(-1, 165 + 55 * 1);
-            Panel_Search_Type.Location = new Point(-1, 165 + 55 * 2);
-            Panel_Search_Language.Location = new Point(-1, 165 + 55 * 3);
-            Panel_Search_Series.Location = new Point(-1, 165 + 55 * 4);
-            Panel_Search_Character.Location = new Point(-1, 165 + 55 * 5);
-            Panel_Search_Range.Location = new Point(-1, 165 + 55 * 6);
+                SearchPairs[listBox_Type.Name] = listBox_Type;
+                SearchPairs[listBox_AddType.Name] = listBox_AddType;
+
+                SearchPairs[listBox_TagDelete.Name] = listBox_TagDelete;
+                SearchPairs[listBox_AddTagDelete.Name] = listBox_AddTagDelete;
+                SearchPairs[listBox_TagAdd.Name] = listBox_TagAdd;
+                SearchPairs[listBox_AddTagAdd.Name] = listBox_AddTagAdd;
+
+                SearchPairs[listBox_Language.Name] = listBox_Language;
+                SearchPairs[listBox_AddLanguage.Name] = listBox_AddLanguage;
+
+                SearchPairs[listBox_SeriesDelete.Name] = listBox_SeriesDelete;
+                SearchPairs[listBox_AddSeriesDelete.Name] = listBox_AddSeriesDelete;
+                SearchPairs[listBox_SeriesAdd.Name] = listBox_SeriesAdd;
+                SearchPairs[listBox_AddSeriesAdd.Name] = listBox_AddSeriesAdd;
+
+                SearchPairs[listBox_CharacterDelete.Name] = listBox_CharacterDelete;
+                SearchPairs[listBox_AddCharacterDelete.Name] = listBox_AddCharacterDelete;
+                SearchPairs[listBox_CharacterAdd.Name] = listBox_CharacterAdd;
+                SearchPairs[listBox_AddCharacterAdd.Name] = listBox_AddCharacterAdd;
+            }
 
 
             for (int i = 112; i <= Panel_Downloaded.Size.Height; i += 106)
@@ -46,17 +68,27 @@ namespace HioViw
             Menu_Button.Add(Btn_SearchResult);
             Menu_Button.Add(Btn_Option);
 
-            //StreamReader sr = new StreamReader("DB\\Tags.Info", Encoding.UTF8);
-            //while (!sr.EndOfStream)
-            //{
-            //    Tags.Add(sr.ReadLine());
-            //}
-            //sr.Close();
+            bgw.DoWork += Bgw_DoWork;
+            se.Find += Se_Find;
+        }
 
+        private void Se_Find(object sender, Gallerie e)
+        {
+            Preview_Add(e);
+        }
+
+        private void Bgw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            se.Find_Start(sd);
         }
 
         List<string> Tags = new List<string>();
-        List<Preview> Previews = new List<Preview>();
+
+        SearchEngine se = new SearchEngine();
+        SearchData sd = new SearchData();
+        BackgroundWorker bgw = new BackgroundWorker();
+
+
 
 
         private void Panel_Paint(object sender, PaintEventArgs e)
@@ -83,6 +115,7 @@ namespace HioViw
             (sender as CheckedListBox).SelectedIndex = i;
         }
 
+        List<Preview> Previews = new List<Preview>();
 
         private void Preview_Add(Gallerie gallerie)
         {
@@ -92,8 +125,7 @@ namespace HioViw
             {
                 Previews[i].Invoke(new MethodInvoker(delegate () {
 
-                    Previews[i + 1].Pic_Image.Image = Previews[i].Pic_Image.Image;
-
+                    
                     Previews[i + 1].Label_ID.Text = Previews[i].Label_ID.Text;
                     Previews[i + 1].Label_Title.Text = Previews[i].Label_Title.Text;
                     Previews[i + 1].Label_Group.Text = Previews[i].Label_Group.Text;
@@ -108,38 +140,47 @@ namespace HioViw
             }
 
             Preview preview = Previews[0];
-
-
-
+            
             preview.Invoke(new MethodInvoker(delegate ()
             {
                 preview.Clear();
-
-                preview.Pic_Image.Image = Bitmap.FromFile(gallerie.ThumnailImage);
-                preview.Label_ID.Text += gallerie.ID.Split('.')[0];
+                preview.Label_ID.Text += gallerie.ID;
                 preview.Label_Title.Text += gallerie.Title;
                 preview.Label_Group.Text += gallerie.Uploader;
                 preview.Label_Series.Text += gallerie.Series;
                 preview.Label_Type.Text += gallerie.Type;
                 preview.Label_Language.Text += gallerie.Language;
+
+
                 for (int i = 0; i < gallerie.Tags.Count - 1; i++)
                 {
                     preview.Label_Tags.Text += gallerie.Tags[i] + ", ";
                 }
-                preview.Label_Tags.Text += gallerie.Tags[gallerie.Tags.Count - 1];
+                if (gallerie.Tags.Count != 0)
+                    preview.Label_Tags.Text += gallerie.Tags[gallerie.Tags.Count - 1];
 
                 for (int i = 0; i < gallerie.Character.Count - 1; i++)
                 {
                     preview.Label_Character.Text += gallerie.Character[i] + ", ";
                 }
-                preview.Label_Character.Text += gallerie.Character[gallerie.Character.Count - 1];
+
+                if (gallerie.Character.Count != 0)
+                    preview.Label_Character.Text += gallerie.Character[gallerie.Character.Count - 1];
 
                 preview.Label_Date.Text += gallerie.UploadDate;
             }));
 
-            Previews[0] = preview;
-
+            Previews[0].Invoke(new MethodInvoker(delegate () { Previews[0] = preview; }));
+            
+            foreach (var pre in Previews)
+            {
+                pre.Invoke(new MethodInvoker(delegate ()
+                {
+                    pre.Refresh();
+                }));
+            }
         }
+
 
         private void Form_ResizeEnd(object sender, EventArgs e)
         {
@@ -184,6 +225,7 @@ namespace HioViw
         }
 
 
+        #region Download Menubar Draw Color Button ( need Code : SearchResult_Click )
         List<Control> Menu_Button = new List<Control>();
         private void Btn_Color(Control sender)
         {
@@ -213,7 +255,6 @@ namespace HioViw
         private void Btn_Option_Click(object sender, EventArgs e)
         {
             Btn_Color(sender as Control);
-
             Panel_Search.Visible = (bool)(sender as Control).Tag;
         }
         private void Btn_Downloa_Click(object sender, EventArgs e)
@@ -225,9 +266,32 @@ namespace HioViw
         private void Btn_SearchResult_Click(object sender, EventArgs e)
         {
             Btn_Color(sender as Control);
+
+            sd.Title = Text_Search_Title.Text;
+            sd.Tags = listBox_AddTagAdd.Items.Cast<string>().ToList();
+            sd.Type = listBox_AddType.Items.Cast<string>().ToList();
+            sd.Language = listBox_AddLanguage.Items.Cast<string>().ToList();
+            sd.Series = listBox_AddSeriesAdd.Items.Cast<string>().ToList();
+            sd.Character = listBox_AddCharacterAdd.Items.Cast<string>().ToList();
+            sd.Start_Range = ulong.Parse(Text_StartRange.Text);
+            sd.End_Range = ulong.Parse(Text_EndRange.Text);
             
-            
+            if (bgw.IsBusy)
+            {
+                if (MessageBox.Show("지금 현재 실행중입니다. 종료하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bgw.CancelAsync();
+                }
+
+                
+            }
+            else
+            {
+                bgw.RunWorkerAsync();
+            }
+
         }
+        #endregion
 
         bool ch = false;
         private void Btn_Menu_Click(object sender, EventArgs e)
@@ -247,13 +311,8 @@ namespace HioViw
             }
         }
 
-        private void Panel_Download_Option_Resize(object sender, EventArgs e)
-        {
 
-        }
-
-
-
+        #region Btn_Search_Click ( Visible != Visible )
         private void Btn_Search_Title_Click(object sender, EventArgs e)
         {
             Panel_Search_Title.Visible = !Panel_Search_Title.Visible;
@@ -297,12 +356,36 @@ namespace HioViw
             Panel_Search_Range.Visible = !Panel_Search_Range.Visible;
             Panel_Search_Range.BringToFront();
         }
+        #endregion
 
         private void Btn_DownloadStart_Click(object sender, EventArgs e)
         {
 
         }
 
-        
+        Dictionary<string, ListBox> SearchPairs = new Dictionary<string, ListBox>();
+
+        private void Btn_Search_Add(object sender, EventArgs e)
+        {
+            var v = SearchPairs[("listBox_" + (sender as Control).Tag)];
+            var p = SearchPairs[("listBox_Add" + (sender as Control).Tag)];
+
+            if (v.SelectedItem == null)
+                return;
+            if (!p.Items.Contains(v.SelectedItem))
+            {
+                p.Items
+                .Add(v.SelectedItem);
+            }
+            
+        }
+
+        private void Btn_Search_Delete(object sender, EventArgs e)
+        {
+            var v = SearchPairs[("listBox_Add" + (sender as Control).Tag)];
+            if (v.SelectedIndex == -1)
+                return;
+            v.Items.RemoveAt(v.SelectedIndex);
+        }
     }
 }
