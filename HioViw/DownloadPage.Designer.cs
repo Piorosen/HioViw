@@ -536,6 +536,7 @@
             this.Panel_Downloaded.Name = "Panel_Downloaded";
             this.Panel_Downloaded.Size = new System.Drawing.Size(1251, 700);
             this.Panel_Downloaded.TabIndex = 6;
+            this.Panel_Downloaded.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Panel_Search_Character
             // 

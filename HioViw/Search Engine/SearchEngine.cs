@@ -283,7 +283,7 @@ namespace HioViw
                     }
 
                     using (var draw = Bar.CreateGraphics())
-                        draw.DrawLine(new Pen(Color.FromArgb(100, 200, 100), Bar.Size.Height / 2), 0, Bar.Size.Height / 2.0f, Bar.Size.Width / 19.0f * i, Bar.Size.Height / 2.0f);
+                        draw.DrawLine(new Pen(Color.FromArgb(100, 200, 100), Bar.Size.Height / 2), 5, Bar.Size.Height / 2.0f, Bar.Size.Width / 19.0f * i - 5 , Bar.Size.Height / 2.0f);
 
 
                 }

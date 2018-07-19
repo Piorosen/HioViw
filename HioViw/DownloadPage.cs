@@ -98,7 +98,6 @@ namespace HioViw
 
         private void Se_Find(object sender, Gallerie e)
         {
-            Int_Preview_List = Previews.Count;
             StreamWriter sw = new StreamWriter("Result\\data.txt", true);
             sw.WriteLine(e.ID + " - " + e.Title);
             sw.Close();
@@ -108,6 +107,7 @@ namespace HioViw
 
         private void Bgw_DoWork(object sender, DoWorkEventArgs e)
         {
+            Int_Preview_List = 0;
             SearchResult.Clear();
             se.Find_Start(sd, Panel_DownloadBar);
         }
@@ -152,36 +152,42 @@ namespace HioViw
 
 
         static int Int_Preview_List = 0;
-        private void Preview_AddReverse(Gallerie g)
+        private void Preview_AddReverse(Gallerie gallerie)
         {
             if (Int_Preview_List < Previews.Count)
             {
-                Preview p = Previews[Int_Preview_List];
-                p.Invoke(new MethodInvoker(() =>
+                Preview preview = Previews[Int_Preview_List];
+                preview.Invoke(new MethodInvoker(() =>
                 {
-                    p.Clear();
+                    preview.Clear();
+                    preview.Label_ID.Text += gallerie.ID;
+                    preview.Label_Title.Text += gallerie.Title;
+                    preview.Label_Group.Text += gallerie.Uploader;
+                    preview.Label_Series.Text += gallerie.Series;
+                    preview.Label_Type.Text += gallerie.Type;
+                    preview.Label_Language.Text += gallerie.Language;
 
-                    for (int i = 0; i < g.Character.Count - 1; i++)
-                        p.Label_Character.Text += g.Character[i] + ", ";
-                    if (g.Character.Count != 0)
-                        p.Label_Character.Text += g.Character[g.Character.Count - 1];
 
-                    p.Label_Group.Text = g.Uploader;
-                    p.Label_ID.Text = g.ID;
-                    p.Label_Language.Text = g.Language;
-                    p.Label_Series.Text = g.Series;
+                    for (int i = 0; i < gallerie.Tags.Count - 1; i++)
+                    {
+                        preview.Label_Tags.Text += gallerie.Tags[i] + ", ";
+                    }
+                    if (gallerie.Tags.Count != 0)
+                        preview.Label_Tags.Text += gallerie.Tags[gallerie.Tags.Count - 1];
 
-                    for (int i = 0; i < g.Tags.Count - 1; i++)
-                        p.Label_Tags.Text += g.Tags[i] + ", ";
-                    if (g.Tags.Count != 0)
-                        p.Label_Tags.Text += g.Tags[g.Tags.Count - 1];
+                    for (int i = 0; i < gallerie.Character.Count - 1; i++)
+                    {
+                        preview.Label_Character.Text += gallerie.Character[i] + ", ";
+                    }
 
-                    p.Label_Title.Text = g.Title;
-                    p.Label_Type.Text = g.Type;
+                    if (gallerie.Character.Count != 0)
+                        preview.Label_Character.Text += gallerie.Character[gallerie.Character.Count - 1];
+
+                    preview.Label_Date.Text += gallerie.UploadDate;
 
                 }));
                 
-                Previews[Int_Preview_List].Invoke(new MethodInvoker(delegate() { Previews[Int_Preview_List] = p; }));
+                Previews[Int_Preview_List].Invoke(new MethodInvoker(delegate() { Previews[Int_Preview_List] = preview; }));
 
                 for (int i = 0; i < Int_Preview_List; i++)
                 {
