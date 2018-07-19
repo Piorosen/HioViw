@@ -94,7 +94,6 @@ namespace HioViw
                         // 이 자료가 찾은 검색에 적합한지에 조사합니다.
                         if (IsSearchData(search, j))
                         {
-
                             bool IsSearch = true;
                             // 찾은 검색에 적합한지에 조사한 자료에 본격적인 조사를 합니다.
                             foreach (var content in j)
@@ -118,24 +117,15 @@ namespace HioViw
                                 }
                                 else if (search.Type.Count != 0 && content.Key == "type")
                                 {
-                                    int count = 0;
                                     bool chk = false;
-
-                                    foreach (var data in search.Type)
+                                    foreach (var Type in search.Type)
                                     {
-                                        foreach (var contentName in content.Value)
+                                        if (Type == content.Value.ToString())
                                         {
-                                            chk = false;
-                                            if (contentName.ToString().ToLower() == data)
-                                            {
-                                                count++;
-                                                chk = true;
-                                            }
-                                            if (chk) break;
+                                            chk = true;
                                         }
                                     }
-                                    if (count != search.Type.Count)
-                                        IsSearch = false;
+                                    IsSearch = chk;
                                 }
                                 else if (search.Character.Count != 0 && content.Key == "c")
                                 {
@@ -210,9 +200,11 @@ namespace HioViw
                             // 검색한 결과를 OnFind 이벤트를 통해서 전달합니다.
                             if (IsSearch)
                             {
-                                Gallerie g = new Gallerie();
-                                g.Tags = new List<string>();
-                                g.Character = new List<string>();
+                                Gallerie g = new Gallerie
+                                {
+                                    Tags = new List<string>(),
+                                    Character = new List<string>()
+                                };
 
                                 if (j["n"] != null)
                                     g.Title = j["n"].ToString();

@@ -5776,6 +5776,8 @@
             this.Text_CharacterAdd.Name = "Text_CharacterAdd";
             this.Text_CharacterAdd.Size = new System.Drawing.Size(167, 21);
             this.Text_CharacterAdd.TabIndex = 9;
+            this.Text_CharacterAdd.Tag = "CharacterAdd";
+            this.Text_CharacterAdd.TextChanged += new System.EventHandler(this.Text_Search_Changed);
             // 
             // Text_AddCharacterDelete
             // 
@@ -5796,6 +5798,8 @@
             this.Text_CharacterDelete.Name = "Text_CharacterDelete";
             this.Text_CharacterDelete.Size = new System.Drawing.Size(167, 21);
             this.Text_CharacterDelete.TabIndex = 7;
+            this.Text_CharacterDelete.Tag = "CharacterDelete";
+            this.Text_CharacterDelete.TextChanged += new System.EventHandler(this.Text_Search_Changed);
             // 
             // pictureBox5
             // 
@@ -11101,6 +11105,8 @@
             this.Text_SeriesAdd.Name = "Text_SeriesAdd";
             this.Text_SeriesAdd.Size = new System.Drawing.Size(167, 21);
             this.Text_SeriesAdd.TabIndex = 9;
+            this.Text_SeriesAdd.Tag = "SeriesAdd";
+            this.Text_SeriesAdd.TextChanged += new System.EventHandler(this.Text_Search_Changed);
             // 
             // Text_AddSeriesDelete
             // 
@@ -11121,6 +11127,8 @@
             this.Text_SeriesDelete.Name = "Text_SeriesDelete";
             this.Text_SeriesDelete.Size = new System.Drawing.Size(167, 21);
             this.Text_SeriesDelete.TabIndex = 7;
+            this.Text_SeriesDelete.Tag = "TagDelete";
+            this.Text_SeriesDelete.TextChanged += new System.EventHandler(this.Text_Search_Changed);
             // 
             // pictureBox4
             // 
@@ -16412,6 +16420,8 @@
             this.Text_TagAdd.Name = "Text_TagAdd";
             this.Text_TagAdd.Size = new System.Drawing.Size(167, 21);
             this.Text_TagAdd.TabIndex = 9;
+            this.Text_TagAdd.Tag = "TagAdd";
+            this.Text_TagAdd.TextChanged += new System.EventHandler(this.Text_Search_Changed);
             // 
             // Text_AddTagDelete
             // 
@@ -16432,6 +16442,8 @@
             this.Text_TagDelete.Name = "Text_TagDelete";
             this.Text_TagDelete.Size = new System.Drawing.Size(167, 21);
             this.Text_TagDelete.TabIndex = 7;
+            this.Text_TagDelete.Tag = "TagDelete";
+            this.Text_TagDelete.TextChanged += new System.EventHandler(this.Text_Search_Changed);
             // 
             // pictureBox3
             // 

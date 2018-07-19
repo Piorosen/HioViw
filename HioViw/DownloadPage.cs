@@ -68,6 +68,28 @@ namespace HioViw
             Menu_Button.Add(Btn_SearchResult);
             Menu_Button.Add(Btn_Option);
 
+            StreamReader sr = new StreamReader("Hitomi_DB\\_Tags.txt");
+            while (!sr.EndOfStream)
+            {
+                TagsList.Add(sr.ReadLine());
+            }
+            sr.Close();
+
+            sr = new StreamReader("Hitomi_DB\\_Series.txt");
+            while (!sr.EndOfStream)
+            {
+                SeriesList.Add(sr.ReadLine());
+            }
+            sr.Close();
+
+            sr = new StreamReader("Hitomi_DB\\_Character.txt");
+            while (!sr.EndOfStream)
+            {
+                CharacterList.Add(sr.ReadLine());
+            }
+            sr.Close();
+
+
             bgw.DoWork += Bgw_DoWork;
             se.Find += Se_Find;
         }
@@ -88,6 +110,9 @@ namespace HioViw
         SearchData sd = new SearchData();
         BackgroundWorker bgw = new BackgroundWorker();
 
+        List<string> TagsList = new List<string>();
+        List<string> CharacterList = new List<string>();
+        List<string> SeriesList = new List<string>();
 
 
 
@@ -102,8 +127,6 @@ namespace HioViw
                 graphic.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
             }
         }
-        
-
         private void ChkListBox_Click(object sender, EventArgs e)
         {
             var list = (sender as CheckedListBox);
@@ -114,7 +137,6 @@ namespace HioViw
             }
             (sender as CheckedListBox).SelectedIndex = i;
         }
-
         List<Preview> Previews = new List<Preview>();
 
         private void Preview_Add(Gallerie gallerie)
@@ -265,14 +287,26 @@ namespace HioViw
 
         private void Btn_SearchResult_Click(object sender, EventArgs e)
         {
+
+
+
             Btn_Color(sender as Control);
 
             sd.Title = Text_Search_Title.Text;
             sd.Tags = listBox_AddTagAdd.Items.Cast<string>().ToList();
+
             sd.Type = listBox_AddType.Items.Cast<string>().ToList();
             sd.Language = listBox_AddLanguage.Items.Cast<string>().ToList();
+
             sd.Series = listBox_AddSeriesAdd.Items.Cast<string>().ToList();
+            sd.Series_Delete = listBox_AddSeriesDelete.Items.Cast<string>().ToList();
+
             sd.Character = listBox_AddCharacterAdd.Items.Cast<string>().ToList();
+            sd.Character_Delete = listBox_AddCharacterDelete.Items.Cast<string>().ToList();
+
+            sd.Tags = listBox_AddTagAdd.Items.Cast<string>().ToList();
+            sd.Tags_Delete = listBox_AddTagDelete.Items.Cast<string>().ToList();
+
             sd.Start_Range = ulong.Parse(Text_StartRange.Text);
             sd.End_Range = ulong.Parse(Text_EndRange.Text);
             
@@ -363,6 +397,12 @@ namespace HioViw
 
         }
 
+
+
+
+
+
+
         Dictionary<string, ListBox> SearchPairs = new Dictionary<string, ListBox>();
 
         private void Btn_Search_Add(object sender, EventArgs e)
@@ -386,6 +426,33 @@ namespace HioViw
             if (v.SelectedIndex == -1)
                 return;
             v.Items.RemoveAt(v.SelectedIndex);
+        }
+
+        
+        private void Text_Search_Changed(object sender, EventArgs e)
+        {
+            var v = sender as Control;
+
+            var listbox = SearchPairs["listBox_" + v.Name.Split('_')[1]];
+            listbox.Items.Clear();
+
+            switch (v.Name.Split('_')[1][0])
+            {
+                case 'T':
+                    listbox.Items.AddRange(SearchListBox.GetListBox(TagsList, v.Text));
+                    break;
+
+                case 'S':
+                    listbox.Items.AddRange(SearchListBox.GetListBox(SeriesList, v.Text));
+                    break;
+
+                case 'C':
+                    listbox.Items.AddRange(SearchListBox.GetListBox(CharacterList, v.Text));
+                    break;
+            }
+
+
+            
         }
     }
 }
