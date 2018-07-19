@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Drawing;
 
 namespace HioViw
 {
@@ -73,7 +74,7 @@ namespace HioViw
             return Return;
         }
 
-        public void Find_Start(SearchData search, bool IsOld = false)
+        public void Find_Start(SearchData search, Panel Bar, bool IsOld = false)
         {
             if (!IsOld)
             {
@@ -126,7 +127,7 @@ namespace HioViw
                                         }
                                     }
                                     IsSearch = chk;
-                                }
+                                }               
                                 else if (search.Character.Count != 0 && content.Key == "c")
                                 {
                                     int count = 0;
@@ -191,6 +192,43 @@ namespace HioViw
                                         IsSearch = false;
                                 }
 
+                                if (search.Character_Delete.Count != 0 && content.Key == "c")
+                                {
+                                    bool chk = true;
+                                    foreach (var delete in search.Character_Delete)
+                                    {
+                                        if (delete == content.Value.ToString())
+                                        {
+                                            chk = false;
+                                        }
+                                    }
+                                    IsSearch = chk;
+                                }
+                                else if (search.Series_Delete.Count != 0 && content.Key == "p")
+                                {
+                                    bool chk = true;
+                                    foreach (var delete in search.Series_Delete)
+                                    {
+                                        if (delete == content.Value.ToString())
+                                        {
+                                            chk = false;
+                                        }
+                                    }
+                                    IsSearch = chk;
+                                }
+                                else if (search.Tags_Delete.Count != 0 && content.Key == "t")
+                                {
+                                    bool chk = true;
+                                    foreach (var delete in search.Tags_Delete)
+                                    {
+                                        if (delete == content.Value.ToString())
+                                        {
+                                            chk = false;
+                                        }
+                                    }
+                                    IsSearch = chk;
+                                }
+
                                 if (!IsSearch)
                                 {
                                     break;
@@ -239,9 +277,13 @@ namespace HioViw
 
                                 OnFind(g);
                             }
+
                         }
 
                     }
+
+                    using (var draw = Bar.CreateGraphics())
+                        draw.DrawLine(new Pen(Color.FromArgb(100, 200, 100), Bar.Size.Height / 2), 0, Bar.Size.Height / 2.0f, Bar.Size.Width / 19.0f * i, Bar.Size.Height / 2.0f);
 
 
                 }
