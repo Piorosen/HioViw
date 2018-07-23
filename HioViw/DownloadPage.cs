@@ -40,8 +40,6 @@ namespace HioViw
                 SearchPairs[listBox_Language.Name] = listBox_Language;
                 SearchPairs[listBox_AddLanguage.Name] = listBox_AddLanguage;
 
-                SearchPairs[listBox_SeriesDelete.Name] = listBox_SeriesDelete;
-                SearchPairs[listBox_AddSeriesDelete.Name] = listBox_AddSeriesDelete;
                 SearchPairs[listBox_SeriesAdd.Name] = listBox_SeriesAdd;
                 SearchPairs[listBox_AddSeriesAdd.Name] = listBox_AddSeriesAdd;
 
@@ -358,8 +356,7 @@ namespace HioViw
             sd.Language = listBox_AddLanguage.Items.Cast<string>().ToList();
 
             sd.Series = listBox_AddSeriesAdd.Items.Cast<string>().ToList();
-            sd.Series_Delete = listBox_AddSeriesDelete.Items.Cast<string>().ToList();
-
+            
             sd.Character = listBox_AddCharacterAdd.Items.Cast<string>().ToList();
             sd.Character_Delete = listBox_AddCharacterDelete.Items.Cast<string>().ToList();
 
