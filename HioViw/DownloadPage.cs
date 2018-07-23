@@ -89,18 +89,44 @@ namespace HioViw
             sr.Close();
             #endregion
 
-
             bgw.DoWork += Bgw_DoWork;
             se.Find += Se_Find;
+            bgw.WorkerSupportsCancellation = true;
         }
 
+        int Test = 1;
         private void Se_Find(object sender, Gallerie e)
         {
-            StreamWriter sw = new StreamWriter("Result\\data.txt", true);
-            sw.WriteLine(e.ID + " - " + e.Title);
-            sw.Close();
             SearchResult.Add(e);
             Preview_AddReverse(e);
+            if (SearchResult.Count > 100000 * Test)
+            {
+                Test++;
+            }
+        }
+
+        private void Text_Select_Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                int num = 0;
+                if (int.TryParse(Text_Select_Page.Text, out num))
+                {
+                    if (num < 1)
+                    {
+                        return;
+                    }
+
+                    Int_Preview_List = 0;
+                    for (int i = Previews.Count * (num -1); i < Previews.Count * num; i++)
+                    {
+                        if (i < SearchResult.Count)
+                        {
+                            Preview_AddReverse(SearchResult[i]);
+                        }
+                    }
+                }
+            }
         }
 
         private void Bgw_DoWork(object sender, DoWorkEventArgs e)
@@ -108,6 +134,7 @@ namespace HioViw
             Int_Preview_List = 0;
             SearchResult.Clear();
             se.Find_Start(sd, Panel_DownloadBar);
+
         }
 
         List<Gallerie> SearchResult = new List<Gallerie>();
@@ -136,6 +163,7 @@ namespace HioViw
                 graphic.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
             }
         }
+
         private void ChkListBox_Click(object sender, EventArgs e)
         {
             var list = (sender as CheckedListBox);
@@ -148,13 +176,34 @@ namespace HioViw
         }
         List<Preview> Previews = new List<Preview>();
 
+        
+        private Image GetThumbnail(Gallerie g)
+        {
+            FileInfo fi = new FileInfo("Download\\Thumbnail\\" + g.ID + ".jpg");
+            if (fi.Exists)
+            {
+                return Image.FromFile(fi.FullName);
+            }
+            else
+            {
+                WebClient wc = new WebClient();
+                string str = wc.DownloadString(g.ThumnailImage);
+                string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
+                wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, "Download\\Thumbnail\\" + g.ID + ".jpg");
+                return Image.FromFile(fi.FullName);
+            }
 
-        static int Int_Preview_List = 0;
+
+        }
+
+        int Int_Preview_List = 0;
         private void Preview_AddReverse(Gallerie gallerie)
         {
+
             if (Int_Preview_List < Previews.Count)
             {
-                Preview preview = Previews[Int_Preview_List];
+                
+                Preview preview = Previews[index: Int_Preview_List];
                 preview.Invoke(new MethodInvoker(() =>
                 {
                     preview.Clear();
@@ -165,36 +214,28 @@ namespace HioViw
                     preview.Label_Type.Text += gallerie.Type;
                     preview.Label_Language.Text += gallerie.Language;
 
-
                     for (int i = 0; i < gallerie.Tags.Count - 1; i++)
-                    {
                         preview.Label_Tags.Text += gallerie.Tags[i] + ", ";
-                    }
                     if (gallerie.Tags.Count != 0)
                         preview.Label_Tags.Text += gallerie.Tags[gallerie.Tags.Count - 1];
-
                     for (int i = 0; i < gallerie.Character.Count - 1; i++)
-                    {
                         preview.Label_Character.Text += gallerie.Character[i] + ", ";
-                    }
-
                     if (gallerie.Character.Count != 0)
                         preview.Label_Character.Text += gallerie.Character[gallerie.Character.Count - 1];
 
                     preview.Label_Date.Text += gallerie.UploadDate;
 
+                    preview.Pic_Image.Image = GetThumbnail(gallerie);
                 }));
-                
-                Previews[Int_Preview_List].Invoke(new MethodInvoker(delegate() { Previews[Int_Preview_List] = preview; }));
+
+                Previews[Int_Preview_List].Invoke(new MethodInvoker(delegate () { Previews[Int_Preview_List] = preview; }));
 
                 for (int i = 0; i < Int_Preview_List; i++)
                 {
                     Previews[i].Invoke(new MethodInvoker(() => { Previews[i].Refresh(); }));
                 }
-
                 Int_Preview_List++;
             }
-
         }
 
         private void Preview_Add(Gallerie gallerie)
@@ -343,7 +384,13 @@ namespace HioViw
 
         private void Btn_SearchResult_Click(object sender, EventArgs e)
         {
-
+            Panel_Search_Character.Visible = false;
+            Panel_Search_Language.Visible = false;
+            Panel_Search_Range.Visible = false;
+            Panel_Search_Series.Visible = false;
+            Panel_Search_Tags.Visible = false;
+            Panel_Search_Type.Visible = false;
+            Panel_Search_Title.Visible = false;
 
 
 
@@ -370,6 +417,7 @@ namespace HioViw
             {
                 if (MessageBox.Show("지금 현재 실행중입니다. 종료하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    
                     bgw.CancelAsync();
                 }
 
@@ -510,5 +558,7 @@ namespace HioViw
 
             
         }
+
+        
     }
 }

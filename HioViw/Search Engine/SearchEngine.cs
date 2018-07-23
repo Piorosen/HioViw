@@ -127,7 +127,7 @@ namespace HioViw
                                         }
                                     }
                                     IsSearch = chk;
-                                }               
+                                }
                                 else if (search.Character.Count != 0 && content.Key == "c")
                                 {
                                     int count = 0;
@@ -166,8 +166,9 @@ namespace HioViw
                                             }
                                             if (chk) break;
                                         }
+                                        if (chk) break;
                                     }
-                                    if (count != search.Series.Count)
+                                    if (count == 0)
                                         IsSearch = false;
                                 }
                                 else if (search.Tags.Count != 0 && content.Key == "t")
@@ -273,6 +274,7 @@ namespace HioViw
                                     }
                                 }
 
+                                g.ThumnailImage = "https://ltn.hitomi.la/galleryblock/" + g.ID + ".html";
 
 
                                 OnFind(g);
