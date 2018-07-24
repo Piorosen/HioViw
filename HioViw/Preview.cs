@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.IO;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace HioViw
 {
@@ -17,6 +21,28 @@ namespace HioViw
             InitializeComponent();
         }
     
+        public void GetThumbnail(Gallerie g)
+        {
+            Thread th = new Thread(new ThreadStart(() =>
+            {
+                FileInfo fi = new FileInfo("Download\\Thumbnail\\" + g.ID + ".jpg");
+                if (fi.Exists)
+                {
+                    Pic_Image.Image = Image.FromFile(fi.FullName);
+                }
+                else
+                {
+                    WebClient wc = new WebClient();
+                    string str = wc.DownloadString(g.ThumnailImage);
+                    string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
+                    wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, "Download\\Thumbnail\\" + g.ID + ".jpg");
+                    Pic_Image.Image = Image.FromFile(fi.FullName);
+                }
+
+            }));
+            th.Start();
+        }
+
         public void Clear()
         {
             Label_Character.Text = "Character : ";

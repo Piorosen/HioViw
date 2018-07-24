@@ -34,7 +34,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
             this.Panel_Search_Page = new System.Windows.Forms.Panel();
-            this.Text_Select_Page = new System.Windows.Forms.TextBox();
             this.Btn_Preview = new System.Windows.Forms.Button();
             this.Btn_Option = new System.Windows.Forms.Button();
             this.Btn_Hompage = new System.Windows.Forms.Button();
@@ -112,6 +111,9 @@
             this.Panel_Search_Title = new System.Windows.Forms.Panel();
             this.Text_Search_Title = new System.Windows.Forms.TextBox();
             this.Panel_Inner = new System.Windows.Forms.Panel();
+            this.Text_Select_Page = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.Label_Select_Page = new System.Windows.Forms.Label();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -184,29 +186,15 @@
             // 
             // Panel_Search_Page
             // 
+            this.Panel_Search_Page.Controls.Add(this.Label_Select_Page);
+            this.Panel_Search_Page.Controls.Add(this.label10);
             this.Panel_Search_Page.Controls.Add(this.Text_Select_Page);
             this.Panel_Search_Page.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel_Search_Page.Location = new System.Drawing.Point(0, 669);
+            this.Panel_Search_Page.Location = new System.Drawing.Point(0, 666);
             this.Panel_Search_Page.Name = "Panel_Search_Page";
-            this.Panel_Search_Page.Size = new System.Drawing.Size(1251, 31);
+            this.Panel_Search_Page.Size = new System.Drawing.Size(1251, 34);
             this.Panel_Search_Page.TabIndex = 7;
             this.Panel_Search_Page.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
-            // 
-            // Text_Select_Page
-            // 
-            this.Text_Select_Page.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Text_Select_Page.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.Text_Select_Page.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Text_Select_Page.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Text_Select_Page.ForeColor = System.Drawing.Color.LightGray;
-            this.Text_Select_Page.Location = new System.Drawing.Point(4, 6);
-            this.Text_Select_Page.Name = "Text_Select_Page";
-            this.Text_Select_Page.Size = new System.Drawing.Size(1242, 19);
-            this.Text_Select_Page.TabIndex = 0;
-            this.Text_Select_Page.Text = "1";
-            this.Text_Select_Page.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Text_Select_Page.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Text_Select_Page_KeyDown);
             // 
             // Btn_Preview
             // 
@@ -569,7 +557,7 @@
             this.Panel_Downloaded.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Downloaded.Location = new System.Drawing.Point(0, 0);
             this.Panel_Downloaded.Name = "Panel_Downloaded";
-            this.Panel_Downloaded.Size = new System.Drawing.Size(1251, 669);
+            this.Panel_Downloaded.Size = new System.Drawing.Size(1251, 666);
             this.Panel_Downloaded.TabIndex = 10;
             this.Panel_Downloaded.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
@@ -13924,6 +13912,44 @@
             this.Panel_Inner.Size = new System.Drawing.Size(1251, 700);
             this.Panel_Inner.TabIndex = 11;
             // 
+            // Text_Select_Page
+            // 
+            this.Text_Select_Page.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Text_Select_Page.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Text_Select_Page.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Text_Select_Page.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Text_Select_Page.ForeColor = System.Drawing.Color.LightGray;
+            this.Text_Select_Page.Location = new System.Drawing.Point(554, 7);
+            this.Text_Select_Page.Name = "Text_Select_Page";
+            this.Text_Select_Page.Size = new System.Drawing.Size(141, 19);
+            this.Text_Select_Page.TabIndex = 0;
+            this.Text_Select_Page.TabStop = false;
+            this.Text_Select_Page.Text = "1";
+            this.Text_Select_Page.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Text_Select_Page.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Text_Select_Page_KeyDown);
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.LightGray;
+            this.label10.Location = new System.Drawing.Point(524, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(24, 12);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "1 ~";
+            // 
+            // Label_Select_Page
+            // 
+            this.Label_Select_Page.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Label_Select_Page.AutoSize = true;
+            this.Label_Select_Page.ForeColor = System.Drawing.Color.LightGray;
+            this.Label_Select_Page.Location = new System.Drawing.Point(701, 12);
+            this.Label_Select_Page.Name = "Label_Select_Page";
+            this.Label_Select_Page.Size = new System.Drawing.Size(24, 12);
+            this.Label_Select_Page.TabIndex = 2;
+            this.Label_Select_Page.Text = "~ 1";
+            // 
             // DownloadPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -14054,6 +14080,8 @@
         private System.Windows.Forms.Panel Panel_Inner;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Label_Select_Page;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox Text_Select_Page;
     }
 }

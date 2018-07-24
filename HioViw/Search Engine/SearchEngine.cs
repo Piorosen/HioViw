@@ -74,6 +74,8 @@ namespace HioViw
             return Return;
         }
 
+        public static bool Stop = false;
+
         public void Find_Start(SearchData search, Panel Bar, bool IsOld = false)
         {
             if (!IsOld)
@@ -90,6 +92,11 @@ namespace HioViw
                     // 검색한 자료만큼 반복을 합니다.
                     for (int w = 0; w < list.Count; w++)
                     {
+                        if (Stop)
+                        {
+                            return;
+                        }
+
                         JObject j = list[w].ToObject<JObject>();
 
                         // 이 자료가 찾은 검색에 적합한지에 조사합니다.
@@ -236,6 +243,7 @@ namespace HioViw
                                 }
                             }
 
+
                             // 검색한 결과를 OnFind 이벤트를 통해서 전달합니다.
                             if (IsSearch)
                             {
@@ -281,7 +289,7 @@ namespace HioViw
                             }
 
                         }
-
+                        
                     }
 
                     using (var draw = Bar.CreateGraphics())
