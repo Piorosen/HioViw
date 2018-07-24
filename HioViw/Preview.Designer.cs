@@ -44,107 +44,127 @@
             // Label_Language
             // 
             this.Label_Language.AutoSize = true;
+            this.Label_Language.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_Language.ForeColor = System.Drawing.Color.LightGray;
             this.Label_Language.Location = new System.Drawing.Point(95, 79);
             this.Label_Language.Name = "Label_Language";
             this.Label_Language.Size = new System.Drawing.Size(73, 12);
             this.Label_Language.TabIndex = 15;
             this.Label_Language.Text = "Language : ";
+            this.Label_Language.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
             // Label_Type
             // 
             this.Label_Type.AutoSize = true;
+            this.Label_Type.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_Type.ForeColor = System.Drawing.Color.LightGray;
             this.Label_Type.Location = new System.Drawing.Point(95, 62);
             this.Label_Type.Name = "Label_Type";
             this.Label_Type.Size = new System.Drawing.Size(46, 12);
             this.Label_Type.TabIndex = 14;
             this.Label_Type.Text = "Type : ";
+            this.Label_Type.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
             // Label_Series
             // 
             this.Label_Series.AutoSize = true;
+            this.Label_Series.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_Series.ForeColor = System.Drawing.Color.LightGray;
             this.Label_Series.Location = new System.Drawing.Point(95, 45);
             this.Label_Series.Name = "Label_Series";
             this.Label_Series.Size = new System.Drawing.Size(53, 12);
             this.Label_Series.TabIndex = 13;
             this.Label_Series.Text = "Series : ";
+            this.Label_Series.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
             // Label_Title
             // 
             this.Label_Title.AutoSize = true;
+            this.Label_Title.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_Title.ForeColor = System.Drawing.Color.LightGray;
             this.Label_Title.Location = new System.Drawing.Point(95, 27);
             this.Label_Title.Name = "Label_Title";
             this.Label_Title.Size = new System.Drawing.Size(41, 12);
             this.Label_Title.TabIndex = 12;
             this.Label_Title.Text = "Title : ";
+            this.Label_Title.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
             // Label_ID
             // 
             this.Label_ID.AutoSize = true;
+            this.Label_ID.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_ID.ForeColor = System.Drawing.Color.LightGray;
             this.Label_ID.Location = new System.Drawing.Point(96, 9);
             this.Label_ID.Name = "Label_ID";
             this.Label_ID.Size = new System.Drawing.Size(28, 12);
             this.Label_ID.TabIndex = 11;
             this.Label_ID.Text = "ID : ";
+            this.Label_ID.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
             // Pic_Image
             // 
             this.Pic_Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Pic_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Pic_Image.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Pic_Image.Location = new System.Drawing.Point(3, 3);
             this.Pic_Image.Name = "Pic_Image";
             this.Pic_Image.Size = new System.Drawing.Size(88, 94);
             this.Pic_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Image.TabIndex = 10;
             this.Pic_Image.TabStop = false;
+            this.Pic_Image.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
             // Label_Date
             // 
             this.Label_Date.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label_Date.AutoSize = true;
+            this.Label_Date.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_Date.ForeColor = System.Drawing.Color.LightGray;
             this.Label_Date.Location = new System.Drawing.Point(321, 79);
             this.Label_Date.Name = "Label_Date";
             this.Label_Date.Size = new System.Drawing.Size(99, 12);
             this.Label_Date.TabIndex = 16;
             this.Label_Date.Text = "Uploaded Date : ";
+            this.Label_Date.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
             // Label_Tags
             // 
             this.Label_Tags.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label_Tags.AutoSize = true;
+            this.Label_Tags.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_Tags.ForeColor = System.Drawing.Color.LightGray;
             this.Label_Tags.Location = new System.Drawing.Point(321, 8);
             this.Label_Tags.Name = "Label_Tags";
             this.Label_Tags.Size = new System.Drawing.Size(46, 12);
             this.Label_Tags.TabIndex = 17;
             this.Label_Tags.Text = "Tags : ";
+            this.Label_Tags.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
             // Label_Character
             // 
             this.Label_Character.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label_Character.AutoSize = true;
+            this.Label_Character.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_Character.ForeColor = System.Drawing.Color.LightGray;
             this.Label_Character.Location = new System.Drawing.Point(321, 45);
             this.Label_Character.Name = "Label_Character";
             this.Label_Character.Size = new System.Drawing.Size(72, 12);
             this.Label_Character.TabIndex = 18;
             this.Label_Character.Text = "Character : ";
+            this.Label_Character.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
             // Label_Group
             // 
             this.Label_Group.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label_Group.AutoSize = true;
+            this.Label_Group.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_Group.ForeColor = System.Drawing.Color.LightGray;
             this.Label_Group.Location = new System.Drawing.Point(321, 62);
             this.Label_Group.Name = "Label_Group";
             this.Label_Group.Size = new System.Drawing.Size(51, 12);
             this.Label_Group.TabIndex = 19;
             this.Label_Group.Text = "Group : ";
+            this.Label_Group.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
             // Preview
             // 
@@ -161,9 +181,11 @@
             this.Controls.Add(this.Label_Title);
             this.Controls.Add(this.Label_ID);
             this.Controls.Add(this.Pic_Image);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "Preview";
             this.Size = new System.Drawing.Size(600, 100);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            this.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

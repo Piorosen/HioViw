@@ -20,10 +20,14 @@ namespace HioViw
         {
             InitializeComponent();
         }
-    
+        private Gallerie gallerie = null;
+        private Thread th;
         public void GetThumbnail(Gallerie g)
         {
-            Thread th = new Thread(new ThreadStart(() =>
+            gallerie = g;
+            
+            
+            th = new Thread(new ThreadStart(() =>
             {
                 FileInfo fi = new FileInfo("Download\\Thumbnail\\" + g.ID + ".jpg");
                 if (fi.Exists)
@@ -32,11 +36,13 @@ namespace HioViw
                 }
                 else 
                 {
-                    WebClient wc = new WebClient();
-                    string str = wc.DownloadString(g.ThumnailImage);
-                    string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
-                    wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, "Download\\Thumbnail\\" + g.ID + ".jpg");
-                    Pic_Image.Image = Image.FromFile(fi.FullName);
+                    using (WebClient wc = new WebClient())
+                    {
+                        string str = wc.DownloadString(g.ThumnailImage);
+                        string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
+                        wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, "Download\\Thumbnail\\" + g.ID + ".jpg");
+                        Pic_Image.Image = Image.FromFile(fi.FullName);
+                    }
                 }
 
             }));
@@ -45,6 +51,7 @@ namespace HioViw
 
         public void Clear()
         {
+            gallerie = null;
             Label_Character.Text = "Character : ";
             Label_ID.Text = "ID : ";
             Label_Title.Text = "Title : ";
@@ -54,7 +61,7 @@ namespace HioViw
             Label_Tags.Text = "Tags : ";
             Label_Group.Text = "Group : ";
             Label_Date.Text = "Uploaded Date : ";
-
+            Pic_Image.Image = null;
         }
 
         private void Panel_Paint(object sender, PaintEventArgs e)
@@ -67,6 +74,20 @@ namespace HioViw
                 Rectangle r = new Rectangle(0, 0, panel.Size.Width, panel.Size.Height);
                 graphic.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
             }
+        }
+
+        private void This_DoubleClick(object sender, EventArgs e)
+        {
+            if (gallerie == null)
+            {
+                return;
+            }
+            Thread th = new Thread(new ThreadStart(() =>
+            {
+                new HioDownloader(gallerie).Download();
+            }));
+
+            th.Start();
         }
     }
 }

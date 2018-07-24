@@ -93,8 +93,7 @@ namespace HioViw
             se.Find += Se_Find;
             bgw.WorkerSupportsCancellation = true;
         }
-
-        int Test = 1;
+        
         private void Se_Find(object sender, Gallerie e)
         {
             SearchResult.Add(e);
@@ -125,6 +124,7 @@ namespace HioViw
                     Int_Preview_List = 0;
                     for (int i = Previews.Count * (num -1); i < Previews.Count * num; i++)
                     {
+                        
                         if (i < SearchResult.Count)
                         {
                             Preview_AddReverse(SearchResult[i]);
@@ -190,8 +190,9 @@ namespace HioViw
 
             if (Int_Preview_List < Previews.Count)
             {
-                
-                Preview preview = Previews[index: Int_Preview_List];
+                Previews[Int_Preview_List].Clear();
+
+                Preview preview = Previews[Int_Preview_List];
                 preview.Invoke(new MethodInvoker(() =>
                 {
                     preview.Clear();
@@ -320,6 +321,7 @@ namespace HioViw
                         Size = new Size(Panel_Downloaded.Size.Width - 12, 100),
                         // Name = "Preview_" + i
                     };
+                    pre.Clear();
                     Previews.Add(pre);
                     Panel_Downloaded.Controls.Add(pre);
                 }

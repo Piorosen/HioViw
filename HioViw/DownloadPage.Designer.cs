@@ -34,6 +34,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
             this.Panel_Search_Page = new System.Windows.Forms.Panel();
+            this.Label_Select_Page = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.Text_Select_Page = new System.Windows.Forms.TextBox();
             this.Btn_Preview = new System.Windows.Forms.Button();
             this.Btn_Option = new System.Windows.Forms.Button();
             this.Btn_Hompage = new System.Windows.Forms.Button();
@@ -111,9 +114,6 @@
             this.Panel_Search_Title = new System.Windows.Forms.Panel();
             this.Text_Search_Title = new System.Windows.Forms.TextBox();
             this.Panel_Inner = new System.Windows.Forms.Panel();
-            this.Text_Select_Page = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.Label_Select_Page = new System.Windows.Forms.Label();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -196,6 +196,44 @@
             this.Panel_Search_Page.TabIndex = 7;
             this.Panel_Search_Page.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
+            // Label_Select_Page
+            // 
+            this.Label_Select_Page.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Label_Select_Page.AutoSize = true;
+            this.Label_Select_Page.ForeColor = System.Drawing.Color.LightGray;
+            this.Label_Select_Page.Location = new System.Drawing.Point(701, 12);
+            this.Label_Select_Page.Name = "Label_Select_Page";
+            this.Label_Select_Page.Size = new System.Drawing.Size(24, 12);
+            this.Label_Select_Page.TabIndex = 2;
+            this.Label_Select_Page.Text = "~ 1";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.LightGray;
+            this.label10.Location = new System.Drawing.Point(524, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(24, 12);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "1 ~";
+            // 
+            // Text_Select_Page
+            // 
+            this.Text_Select_Page.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Text_Select_Page.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Text_Select_Page.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Text_Select_Page.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Text_Select_Page.ForeColor = System.Drawing.Color.LightGray;
+            this.Text_Select_Page.Location = new System.Drawing.Point(554, 7);
+            this.Text_Select_Page.Name = "Text_Select_Page";
+            this.Text_Select_Page.Size = new System.Drawing.Size(141, 19);
+            this.Text_Select_Page.TabIndex = 0;
+            this.Text_Select_Page.TabStop = false;
+            this.Text_Select_Page.Text = "1";
+            this.Text_Select_Page.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Text_Select_Page.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Text_Select_Page_KeyDown);
+            // 
             // Btn_Preview
             // 
             this.Btn_Preview.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -255,7 +293,7 @@
             this.Btn_DownloadStart.FlatAppearance.BorderSize = 0;
             this.Btn_DownloadStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.Btn_DownloadStart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.Btn_DownloadStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_DownloadStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_DownloadStart.ForeColor = System.Drawing.Color.LightGray;
             this.Btn_DownloadStart.Location = new System.Drawing.Point(1, 638);
             this.Btn_DownloadStart.Name = "Btn_DownloadStart";
@@ -13911,44 +13949,6 @@
             this.Panel_Inner.Name = "Panel_Inner";
             this.Panel_Inner.Size = new System.Drawing.Size(1251, 700);
             this.Panel_Inner.TabIndex = 11;
-            // 
-            // Text_Select_Page
-            // 
-            this.Text_Select_Page.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Text_Select_Page.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.Text_Select_Page.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Text_Select_Page.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Text_Select_Page.ForeColor = System.Drawing.Color.LightGray;
-            this.Text_Select_Page.Location = new System.Drawing.Point(554, 7);
-            this.Text_Select_Page.Name = "Text_Select_Page";
-            this.Text_Select_Page.Size = new System.Drawing.Size(141, 19);
-            this.Text_Select_Page.TabIndex = 0;
-            this.Text_Select_Page.TabStop = false;
-            this.Text_Select_Page.Text = "1";
-            this.Text_Select_Page.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Text_Select_Page.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Text_Select_Page_KeyDown);
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.LightGray;
-            this.label10.Location = new System.Drawing.Point(524, 12);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(24, 12);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "1 ~";
-            // 
-            // Label_Select_Page
-            // 
-            this.Label_Select_Page.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Label_Select_Page.AutoSize = true;
-            this.Label_Select_Page.ForeColor = System.Drawing.Color.LightGray;
-            this.Label_Select_Page.Location = new System.Drawing.Point(701, 12);
-            this.Label_Select_Page.Name = "Label_Select_Page";
-            this.Label_Select_Page.Size = new System.Drawing.Size(24, 12);
-            this.Label_Select_Page.TabIndex = 2;
-            this.Label_Select_Page.Text = "~ 1";
             // 
             // DownloadPage
             // 
