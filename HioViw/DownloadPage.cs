@@ -417,8 +417,9 @@ namespace HioViw
             {
                 if (MessageBox.Show("지금 현재 실행중입니다. 종료하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    
-                    bgw.CancelAsync();
+
+
+
                 }
 
                 
