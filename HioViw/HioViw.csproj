@@ -82,6 +82,12 @@
     <Compile Include="Search Engine\SearchData.cs" />
     <Compile Include="Search Engine\SearchEngine.cs" />
     <Compile Include="Search Engine\SearchListBox.cs" />
+    <Compile Include="ViewerPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewerPage.Designer.cs">
+      <DependentUpon>ViewerPage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DownloadPage.resx">
       <DependentUpon>DownloadPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +110,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ViewerPage.resx">
+      <DependentUpon>ViewerPage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -30,19 +30,27 @@
         private void InitializeComponent()
         {
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.downloadPage1 = new HioViw.DownloadPage();
+            this.downloadPage = new HioViw.DownloadPage();
+            this.viewerPage = new HioViw.ViewerPage();
             this.SuspendLayout();
             // 
-            // downloadPage1
+            // downloadPage
             // 
-            this.downloadPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.downloadPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.downloadPage1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.downloadPage1.Location = new System.Drawing.Point(3, 3);
-            this.downloadPage1.Name = "downloadPage1";
-            this.downloadPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.downloadPage1.Size = new System.Drawing.Size(1053, 562);
-            this.downloadPage1.TabIndex = 0;
+            this.downloadPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.downloadPage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.downloadPage.Name = "downloadPage";
+            this.downloadPage.Size = new System.Drawing.Size(1059, 568);
+            this.downloadPage.TabIndex = 0;
+            this.downloadPage.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            this.downloadPage.Change += Page_Change;
+
+            this.viewerPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.viewerPage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.viewerPage.Name = "viewerPage";
+            this.viewerPage.Size = new System.Drawing.Size(1059, 568);
+            this.viewerPage.TabIndex = 0;
+            this.viewerPage.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            this.viewerPage.Change += Page_Change;
             // 
             // HioView_Form
             // 
@@ -50,7 +58,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(1059, 568);
-            this.Controls.Add(this.downloadPage1);
+
+            this.Controls.Add(downloadPage);
+            this.Controls.Add(viewerPage);
+            this.Resize += HioView_Form_Resize;
             this.ForeColor = System.Drawing.Color.Transparent;
             this.Name = "HioView_Form";
             this.Padding = new System.Windows.Forms.Padding(3);
@@ -62,7 +73,8 @@
 
         #endregion
 
-        private DownloadPage downloadPage1;
+        private DownloadPage downloadPage;
+        private ViewerPage viewerPage;
     }
 }
 

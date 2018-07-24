@@ -38,10 +38,17 @@ namespace HioViw
                 {
                     using (WebClient wc = new WebClient())
                     {
-                        string str = wc.DownloadString(g.ThumnailImage);
-                        string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
-                        wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, "Download\\Thumbnail\\" + g.ID + ".jpg");
-                        Pic_Image.Image = Image.FromFile(fi.FullName);
+                        try
+                        {
+
+                            string str = wc.DownloadString(g.ThumnailImage);
+                            string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
+                            wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, "Download\\Thumbnail\\" + g.ID + ".jpg");
+                            Pic_Image.Image = Image.FromFile(fi.FullName);
+                        }catch (Exception e1)
+                        {
+
+                        }
                     }
                 }
 

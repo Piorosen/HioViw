@@ -14,8 +14,18 @@ using System.Threading;
 
 namespace HioViw
 {
+    public delegate void Change(bool IsDownloadPage);
+
     public partial class DownloadPage : UserControl
     {
+        public event Change Change;
+
+        private void OnChange()
+        {
+            Change?.Invoke(true);
+        }
+
+
         public DownloadPage()
         {
             InitializeComponent();
@@ -549,6 +559,9 @@ namespace HioViw
             
         }
 
-        
+        private void Btn_Viewer_Click(object sender, EventArgs e)
+        {
+            OnChange();
+        }
     }
 }

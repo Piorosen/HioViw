@@ -21,7 +21,27 @@ namespace HioViw
             InitializeComponent();
             
         }
+
+
+        private void HioView_Form_Resize(object sender, System.EventArgs e)
+        {
+        }
         
+        private void Page_Change(bool IsDownloadPage)
+        {
+            if (IsDownloadPage)
+            {
+                downloadPage.Visible = false;
+                viewerPage.Visible = true;
+            }
+            else
+            {
+                downloadPage.Visible = true;
+                viewerPage.Visible = false;
+            }
+        }
+
+
     }
 
 
