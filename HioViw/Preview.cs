@@ -30,7 +30,7 @@ namespace HioViw
                 {
                     Pic_Image.Image = Image.FromFile(fi.FullName);
                 }
-                else
+                else 
                 {
                     WebClient wc = new WebClient();
                     string str = wc.DownloadString(g.ThumnailImage);
