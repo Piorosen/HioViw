@@ -60,15 +60,15 @@ namespace HioViw
             }
 
             /// <summary> Add List Preivew </summary>
-            for (int i = 112; i <= Panel_Downloaded.Size.Height; i += 106)
+            for (int i = 112; i <= Panel_Search_Download.Panel_Downloaded.Size.Height; i += 106)
             {
                 Preview pre = new Preview
                 {
                     Anchor = ((AnchorStyles)(AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right)),
                     Location = new Point(6, i - 106),
-                    Size = new Size(Panel_Downloaded.Size.Width - 12, 100)
+                    Size = new Size(Panel_Search_Download.Panel_Downloaded.Size.Width - 12, 100)
                 };
-                Panel_Downloaded.Controls.Add(pre);
+                Panel_Search_Download.Panel_Downloaded.Controls.Add(pre);
                 Previews.Add(pre);
             }
 
@@ -103,18 +103,18 @@ namespace HioViw
             se.Find += Se_Find;
             bgw.WorkerSupportsCancellation = true;
         }
-        int qwer = 1;
+
         private void Se_Find(object sender, Gallerie e)
         {
             SearchResult.Add(e);
 
             try
             {
-                Label_Select_Page?.Invoke(new MethodInvoker(() =>
+                Panel_Search_Download.Label_Select_Page?.Invoke(new MethodInvoker(() =>
                 {
-                    if (Math.Round((double)SearchResult.Count / Previews.Count) != int.Parse(Label_Select_Page.Text.Split(' ')[1]))
+                    if (Math.Round((double)SearchResult.Count / Previews.Count) != int.Parse(Panel_Search_Download.Label_Select_Page.Text.Split(' ')[1]))
                     {
-                        Label_Select_Page.Text = "~ " + Math.Round((double)SearchResult.Count / Previews.Count).ToString();
+                        Panel_Search_Download.Label_Select_Page.Text = "~ " + Math.Round((double)SearchResult.Count / Previews.Count).ToString();
                     }
                 }));
 
@@ -139,6 +139,7 @@ namespace HioViw
         }
 
         List<Preview> Previews = new List<Preview>();
+        List<DownloadLog> DownloadLogs = new List<DownloadLog>();
 
         int Int_Preview_List = 0;
         private void Preview_AddReverse(Gallerie gallerie)
@@ -170,8 +171,7 @@ namespace HioViw
                             Previews[Int_Preview_List].Label_Character.Text += gallerie.Character[i] + ", ";
                         if (gallerie.Character.Count != 0)
                             Previews[Int_Preview_List].Label_Character.Text += gallerie.Character[gallerie.Character.Count - 1];
-
-                        Previews[Int_Preview_List].Label_Date.Text += gallerie.UploadDate;
+                        
                         Previews[Int_Preview_List].GetThumbnail(gallerie);
                     }));
                 }
@@ -204,7 +204,6 @@ namespace HioViw
                     Previews[i + 1].Label_Language.Text = Previews[i].Label_Language.Text;
                     Previews[i + 1].Label_Tags.Text = Previews[i].Label_Tags.Text;
                     Previews[i + 1].Label_Character.Text = Previews[i].Label_Character.Text;
-                    Previews[i + 1].Label_Date.Text = "Test";
 
                 }));
             }
@@ -236,8 +235,7 @@ namespace HioViw
 
                 if (gallerie.Character.Count != 0)
                     preview.Label_Character.Text += gallerie.Character[gallerie.Character.Count - 1];
-
-                preview.Label_Date.Text += gallerie.UploadDate;
+                
             }));
 
             Previews[0].Invoke(new MethodInvoker(delegate () { Previews[0] = preview; }));
@@ -253,11 +251,16 @@ namespace HioViw
 
         private void Form_ResizeEnd(object sender, EventArgs e)
         {
+            
+        }
+
+        private void Panel_Search_Download_Resize(object sender, EventArgs e)
+        {
             int prevCount = Previews.Count;
             int nowCount = 0;
 
 
-            for (int i = 112; i <= Panel_Downloaded.Size.Height; i += 106)
+            for (int i = 112; i <= Panel_Search_Download.Panel_Downloaded.Size.Height; i += 106)
             {
                 nowCount++;
             }
@@ -278,12 +281,12 @@ namespace HioViw
                     {
                         Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
                         Location = new Point(6, (112 + 106 * (i)) - 106),
-                        Size = new Size(Panel_Downloaded.Size.Width - 12, 100),
+                        Size = new Size(Panel_Search_Download.Panel_Downloaded.Size.Width - 12, 100),
                         // Name = "Preview_" + i
                     };
                     pre.Clear();
                     Previews.Add(pre);
-                    Panel_Downloaded.Controls.Add(pre);
+                    Panel_Search_Download.Panel_Downloaded.Controls.Add(pre);
                 }
             }
             else
@@ -292,56 +295,104 @@ namespace HioViw
             }
 
             if (SearchResult.Count != 0)
-                if (Math.Round((double)SearchResult.Count / Previews.Count).ToString() != Label_Select_Page.Text.Split(' ')[1])
-                    Label_Select_Page.Text = "~ " + Math.Round((double)SearchResult.Count / Previews.Count).ToString();
+                if (Math.Round((double)SearchResult.Count / Previews.Count).ToString() != Panel_Search_Download.Label_Select_Page.Text.Split(' ')[1])
+                    Panel_Search_Download.Label_Select_Page.Text = "~ " + Math.Round((double)SearchResult.Count / Previews.Count).ToString();
 
             Text_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
 
         }
 
+        private void Panel_Download_List_Resize(object sender, EventArgs e)
+        {
+            int prevCount = DownloadLogs.Count;
+            int nowCount = 0;
+
+
+            for (int i = 112; i <= Panel_Download_List.Panel_Downloaded.Size.Height; i += 106)
+            {
+                nowCount++;
+            }
+
+            if (prevCount > nowCount)
+            {
+                for (int i = nowCount; i < prevCount; i++)
+                {
+                    DownloadLogs[nowCount].Dispose();
+                    DownloadLogs.RemoveAt(nowCount);
+                }
+            }
+            else if (prevCount < nowCount)
+            {
+                for (int i = prevCount; i < nowCount; i++)
+                {
+                    DownloadLog pre = new DownloadLog
+                    {
+                        Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
+                        Location = new Point(6, (112 + 106 * (i)) - 106),
+                        Size = new Size(Panel_Search_Download.Panel_Downloaded.Size.Width - 12, 100),
+                        // Name = "Preview_" + i
+                    };
+                    pre.Clear();
+                    DownloadLogs.Add(pre);
+                    Panel_Download_List.Panel_Downloaded.Controls.Add(pre);
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            if (DownloadList != 0)
+                if (Math.Round((double)SearchResult.Count / DownloadLogs.Count).ToString() != Panel_Download_List.Label_Select_Page.Text.Split(' ')[1])
+                    Panel_Search_Download.Label_Select_Page.Text = "~ " + Math.Round((double)DownloadList / DownloadLogs.Count).ToString();
+
+            Text_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
+        }
+        int DownloadList = 0;
+        
 
         private void Text_Select_Page_KeyDown(object sender, KeyEventArgs e)
         {
             bool state = true;
             if (e.Control && e.KeyCode == Keys.Left && state)
-                if (int.TryParse(Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Search_Download.Text_Select_Page.Text, out int i))
                 {
-                    Text_Select_Page.Text = (i - 5).ToString();
+                    Panel_Search_Download.Text_Select_Page.Text = (i - 5).ToString();
                     state = !state;
                 }
 
             if (e.Control && e.KeyCode == Keys.Right && state)
-                if (int.TryParse(Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Search_Download.Text_Select_Page.Text, out int i))
                 {
-                    Text_Select_Page.Text = (i + 5).ToString();
+                    Panel_Search_Download.Text_Select_Page.Text = (i + 5).ToString();
                     state = !state;
                 }
 
             if (e.Shift && e.KeyCode == Keys.Left && state)
-                if (int.TryParse(Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Search_Download.Text_Select_Page.Text, out int i))
                 {
-                    Text_Select_Page.Text = (i - 10).ToString();
+                    Panel_Search_Download.Text_Select_Page.Text = (i - 10).ToString();
                     state = !state;
                 }
 
             if (e.Shift && e.KeyCode == Keys.Right && state)
-                if (int.TryParse(Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Search_Download.Text_Select_Page.Text, out int i))
                 {
-                    Text_Select_Page.Text = (i + 10).ToString();
+                    Panel_Search_Download.Text_Select_Page.Text = (i + 10).ToString();
                     state = !state;
                 }
 
             if (e.KeyCode == Keys.Left && state)
-                if (int.TryParse(Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Search_Download.Text_Select_Page.Text, out int i))
                 {
-                    Text_Select_Page.Text = (i - 1).ToString();
+                    Panel_Search_Download.Text_Select_Page.Text = (i - 1).ToString();
                     state = !state;
                 }
 
             if (e.KeyCode == Keys.Right && state)
-                if (int.TryParse(Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Search_Download.Text_Select_Page.Text, out int i))
                 {
-                    Text_Select_Page.Text = (i + 1).ToString();
+                    Panel_Search_Download.Text_Select_Page.Text = (i + 1).ToString();
                     state = !state;
                 }
 
@@ -349,7 +400,7 @@ namespace HioViw
             if (e.KeyCode == Keys.Enter || !state)
             {
                 int num = 0;
-                if (int.TryParse(Text_Select_Page.Text, out num) && SearchResult.Count != 0)
+                if (int.TryParse(Panel_Search_Download.Text_Select_Page.Text, out num) && SearchResult.Count != 0)
                 {
                     if (num < 1)
                     {
@@ -357,16 +408,11 @@ namespace HioViw
                     }
 
                     Int_Preview_List = 0;
-                    for (int i = Previews.Count * (num -1); i < Previews.Count * num; i++)
+                    for (int i = Previews.Count * (num - 1); i < Previews.Count * num; i++)
                     {
-                        
+
                         if (i < SearchResult.Count)
                         {
-                            StreamWriter sw = new StreamWriter("Debug\\Result.txt", true);
-                            sw.WriteLine(qwer.ToString() + SearchResult[i].ID + " " + SearchResult[i].Title);
-                            sw.Close();
-
-                            qwer++;
                             Preview_AddReverse(SearchResult[i]);
                         }
                     }
@@ -374,7 +420,7 @@ namespace HioViw
             }
         }
 
-        
+
 
         private void Panel_Paint(object sender, PaintEventArgs e)
         {
@@ -430,13 +476,23 @@ namespace HioViw
 
         private void Btn_Option_Click(object sender, EventArgs e)
         {
+            Panel_Search_Download.Visible = true;
+            Panel_Download_List.Visible = false;
+
+            Text_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
+
+            Panel_Search.Location = new Point(0, Btn_Option.Location.Y + 55);
             Btn_Color(sender as Control);
             Panel_Search.Visible = (bool)(sender as Control).Tag;
         }
+
+
         private void Btn_Downloa_Click(object sender, EventArgs e)
         {
+            Panel_Search_Download.Visible = false;
+            Panel_Download_List.Visible = true;
+
             Btn_Color(sender as Control);
-            Panel_Downloaded.BringToFront();
         }
 
         private void Btn_SearchResult_Click(object sender, EventArgs e)
@@ -599,15 +655,26 @@ namespace HioViw
         {
             if (ch)
             {
-                for (int i = 0; i <= 10; i++)
-                {
-                    Panel_Download_OptionList.Size = new Size(150, Panel_Download_OptionList.Size.Height);
-                }
+                Panel_Download_OptionList.Size = new Size(150, Panel_Download_OptionList.Size.Height);
+
+                Panel_Download_List.Width -= 150;
+                Panel_Download_List.Location = new Point(Panel_Download_List.Location.X + 150, Panel_Download_List.Location.Y);
+
+                Panel_Search_Download.Size = Panel_Download_List.Size;
+                Panel_Search_Download.Location = Panel_Download_List.Location;
+
                 ch = !ch;
             }
             else
             {
                 Panel_Download_OptionList.Size = new Size(0, Panel_Download_OptionList.Size.Height);
+
+                Panel_Download_List.Width += 150;
+                Panel_Download_List.Location = new Point(Panel_Download_List.Location.X - 150, Panel_Download_List.Location.Y);
+
+                Panel_Search_Download.Size = Panel_Download_List.Size;
+                Panel_Search_Download.Location = Panel_Download_List.Location;
+
                 ch = !ch;
             }
         }
@@ -616,5 +683,6 @@ namespace HioViw
         {
             OnChange();
         }
+
     }
 }

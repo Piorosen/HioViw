@@ -52,11 +52,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DownloadLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DownloadLog.Designer.cs">
+      <DependentUpon>DownloadLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="DownloadPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DownloadPage.Designer.cs">
       <DependentUpon>DownloadPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DownloadViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DownloadViewer.Designer.cs">
+      <DependentUpon>DownloadViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -66,12 +78,6 @@
     </Compile>
     <Compile Include="Gallerie.cs" />
     <Compile Include="HioDownloader.cs" />
-    <Compile Include="Panel_Download_Option.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Panel_Download_Option.Designer.cs">
-      <DependentUpon>Panel_Download_Option.cs</DependentUpon>
-    </Compile>
     <Compile Include="Preview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,14 +95,17 @@
     <Compile Include="ViewerPage.Designer.cs">
       <DependentUpon>ViewerPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DownloadLog.resx">
+      <DependentUpon>DownloadLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DownloadPage.resx">
       <DependentUpon>DownloadPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DownloadViewer.resx">
+      <DependentUpon>DownloadViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panel_Download_Option.resx">
-      <DependentUpon>Panel_Download_Option.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preview.resx">
       <DependentUpon>Preview.cs</DependentUpon>

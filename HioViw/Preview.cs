@@ -87,7 +87,6 @@ namespace HioViw
             Label_Language.Text = "Language : ";
             Label_Tags.Text = "Tags : ";
             Label_Group.Text = "Group : ";
-            Label_Date.Text = "Uploaded Date : ";
             Pic_Image.Image = null;
         }
 

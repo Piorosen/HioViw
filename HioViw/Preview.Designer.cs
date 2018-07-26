@@ -34,7 +34,6 @@
             this.Label_Title = new System.Windows.Forms.Label();
             this.Label_ID = new System.Windows.Forms.Label();
             this.Pic_Image = new System.Windows.Forms.PictureBox();
-            this.Label_Date = new System.Windows.Forms.Label();
             this.Label_Tags = new System.Windows.Forms.Label();
             this.Label_Character = new System.Windows.Forms.Label();
             this.Label_Group = new System.Windows.Forms.Label();
@@ -114,19 +113,6 @@
             this.Pic_Image.TabStop = false;
             this.Pic_Image.DoubleClick += new System.EventHandler(this.This_DoubleClick);
             // 
-            // Label_Date
-            // 
-            this.Label_Date.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Label_Date.AutoSize = true;
-            this.Label_Date.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Label_Date.ForeColor = System.Drawing.Color.LightGray;
-            this.Label_Date.Location = new System.Drawing.Point(321, 79);
-            this.Label_Date.Name = "Label_Date";
-            this.Label_Date.Size = new System.Drawing.Size(99, 12);
-            this.Label_Date.TabIndex = 16;
-            this.Label_Date.Text = "Uploaded Date : ";
-            this.Label_Date.DoubleClick += new System.EventHandler(this.This_DoubleClick);
-            // 
             // Label_Tags
             // 
             this.Label_Tags.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -174,7 +160,6 @@
             this.Controls.Add(this.Label_Group);
             this.Controls.Add(this.Label_Character);
             this.Controls.Add(this.Label_Tags);
-            this.Controls.Add(this.Label_Date);
             this.Controls.Add(this.Label_Language);
             this.Controls.Add(this.Label_Type);
             this.Controls.Add(this.Label_Series);
@@ -199,7 +184,6 @@
         public System.Windows.Forms.Label Label_Title;
         public System.Windows.Forms.Label Label_ID;
         public System.Windows.Forms.PictureBox Pic_Image;
-        public System.Windows.Forms.Label Label_Date;
         public System.Windows.Forms.Label Label_Tags;
         public System.Windows.Forms.Label Label_Character;
         public System.Windows.Forms.Label Label_Group;

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.Panel_Top_Option = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Btn_Download = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -51,15 +51,6 @@
             this.Panel_Top_Option.Size = new System.Drawing.Size(813, 46);
             this.Panel_Top_Option.TabIndex = 2;
             this.Panel_Top_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(3, 49);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(164, 421);
-            this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // pictureBox2
             // 
@@ -97,6 +88,15 @@
             this.Btn_Menu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Btn_Menu.TabIndex = 0;
             this.Btn_Menu.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(3, 49);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(164, 421);
+            this.panel1.TabIndex = 3;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // panel2
             // 

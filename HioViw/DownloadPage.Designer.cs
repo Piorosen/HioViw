@@ -33,10 +33,6 @@
             this.Btn_Viewer = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
-            this.Panel_Search_Page = new System.Windows.Forms.Panel();
-            this.Label_Select_Page = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.Text_Select_Page = new System.Windows.Forms.TextBox();
             this.Btn_Preview = new System.Windows.Forms.Button();
             this.Btn_Option = new System.Windows.Forms.Button();
             this.Btn_Hompage = new System.Windows.Forms.Button();
@@ -59,7 +55,6 @@
             this.listBox_Language = new System.Windows.Forms.ListBox();
             this.Panel_DownloadBar = new System.Windows.Forms.Panel();
             this.Panel_Download_Stat = new System.Windows.Forms.Panel();
-            this.Panel_Downloaded = new System.Windows.Forms.Panel();
             this.Panel_Search_Character = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -113,12 +108,12 @@
             this.button4 = new System.Windows.Forms.Button();
             this.Panel_Search_Title = new System.Windows.Forms.Panel();
             this.Text_Search_Title = new System.Windows.Forms.TextBox();
-            this.Panel_Inner = new System.Windows.Forms.Panel();
+            this.Panel_Download_List = new HioViw.DownloadViewer();
+            this.Panel_Search_Download = new HioViw.DownloadViewer();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).BeginInit();
-            this.Panel_Search_Page.SuspendLayout();
             this.Panel_Download_OptionList.SuspendLayout();
             this.Panel_Search.SuspendLayout();
             this.Panel_Search_Language.SuspendLayout();
@@ -131,7 +126,6 @@
             this.Panel_Search_Tags.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.Panel_Search_Title.SuspendLayout();
-            this.Panel_Inner.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Top_Option
@@ -184,56 +178,6 @@
             this.Btn_Menu.TabStop = false;
             this.Btn_Menu.Click += new System.EventHandler(this.Btn_Menu_Click);
             // 
-            // Panel_Search_Page
-            // 
-            this.Panel_Search_Page.Controls.Add(this.Label_Select_Page);
-            this.Panel_Search_Page.Controls.Add(this.label10);
-            this.Panel_Search_Page.Controls.Add(this.Text_Select_Page);
-            this.Panel_Search_Page.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel_Search_Page.Location = new System.Drawing.Point(0, 666);
-            this.Panel_Search_Page.Name = "Panel_Search_Page";
-            this.Panel_Search_Page.Size = new System.Drawing.Size(1251, 34);
-            this.Panel_Search_Page.TabIndex = 7;
-            this.Panel_Search_Page.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
-            // 
-            // Label_Select_Page
-            // 
-            this.Label_Select_Page.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Label_Select_Page.AutoSize = true;
-            this.Label_Select_Page.ForeColor = System.Drawing.Color.LightGray;
-            this.Label_Select_Page.Location = new System.Drawing.Point(701, 12);
-            this.Label_Select_Page.Name = "Label_Select_Page";
-            this.Label_Select_Page.Size = new System.Drawing.Size(24, 12);
-            this.Label_Select_Page.TabIndex = 2;
-            this.Label_Select_Page.Text = "~ 1";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.LightGray;
-            this.label10.Location = new System.Drawing.Point(524, 12);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(24, 12);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "1 ~";
-            // 
-            // Text_Select_Page
-            // 
-            this.Text_Select_Page.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Text_Select_Page.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.Text_Select_Page.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Text_Select_Page.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Text_Select_Page.ForeColor = System.Drawing.Color.LightGray;
-            this.Text_Select_Page.Location = new System.Drawing.Point(554, 9);
-            this.Text_Select_Page.Name = "Text_Select_Page";
-            this.Text_Select_Page.Size = new System.Drawing.Size(141, 19);
-            this.Text_Select_Page.TabIndex = 0;
-            this.Text_Select_Page.TabStop = false;
-            this.Text_Select_Page.Text = "1";
-            this.Text_Select_Page.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Text_Select_Page.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Text_Select_Page_KeyDown);
-            // 
             // Btn_Preview
             // 
             this.Btn_Preview.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -248,7 +192,7 @@
             this.Btn_Preview.Size = new System.Drawing.Size(148, 55);
             this.Btn_Preview.TabIndex = 9;
             this.Btn_Preview.Tag = false;
-            this.Btn_Preview.Text = "다운로드 된 목록";
+            this.Btn_Preview.Text = "다운로드 중인 목록";
             this.Btn_Preview.UseVisualStyleBackColor = false;
             this.Btn_Preview.Click += new System.EventHandler(this.Btn_Downloa_Click);
             // 
@@ -326,7 +270,7 @@
             this.Panel_Search.Controls.Add(this.Btn_Search_Series);
             this.Panel_Search.Controls.Add(this.Btn_Search_Language);
             this.Panel_Search.Controls.Add(this.Btn_Search_Title);
-            this.Panel_Search.Location = new System.Drawing.Point(0, 110);
+            this.Panel_Search.Location = new System.Drawing.Point(-164, 110);
             this.Panel_Search.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_Search.Name = "Panel_Search";
             this.Panel_Search.Size = new System.Drawing.Size(150, 387);
@@ -581,16 +525,6 @@
             this.Panel_Download_Stat.Size = new System.Drawing.Size(1251, 49);
             this.Panel_Download_Stat.TabIndex = 5;
             this.Panel_Download_Stat.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
-            // 
-            // Panel_Downloaded
-            // 
-            this.Panel_Downloaded.BackColor = System.Drawing.Color.Transparent;
-            this.Panel_Downloaded.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel_Downloaded.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Downloaded.Name = "Panel_Downloaded";
-            this.Panel_Downloaded.Size = new System.Drawing.Size(1251, 666);
-            this.Panel_Downloaded.TabIndex = 10;
-            this.Panel_Downloaded.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Panel_Search_Character
             // 
@@ -3579,7 +3513,7 @@
             this.Panel_Search_Tags.Controls.Add(this.Text_TagAdd);
             this.Panel_Search_Tags.Controls.Add(this.label2);
             this.Panel_Search_Tags.Controls.Add(this.button4);
-            this.Panel_Search_Tags.Location = new System.Drawing.Point(444, 12);
+            this.Panel_Search_Tags.Location = new System.Drawing.Point(444, 10);
             this.Panel_Search_Tags.Name = "Panel_Search_Tags";
             this.Panel_Search_Tags.Size = new System.Drawing.Size(778, 210);
             this.Panel_Search_Tags.TabIndex = 1;
@@ -3783,21 +3717,40 @@
             this.Text_Search_Title.Size = new System.Drawing.Size(406, 29);
             this.Text_Search_Title.TabIndex = 23;
             // 
-            // Panel_Inner
+            // Panel_Download_List
             // 
-            this.Panel_Inner.Controls.Add(this.Panel_Downloaded);
-            this.Panel_Inner.Controls.Add(this.Panel_Search_Page);
-            this.Panel_Inner.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel_Inner.Location = new System.Drawing.Point(153, 49);
-            this.Panel_Inner.Name = "Panel_Inner";
-            this.Panel_Inner.Size = new System.Drawing.Size(1251, 700);
-            this.Panel_Inner.TabIndex = 11;
+            this.Panel_Download_List.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_Download_List.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Panel_Download_List.Location = new System.Drawing.Point(153, 49);
+            this.Panel_Download_List.Margin = new System.Windows.Forms.Padding(0);
+            this.Panel_Download_List.Name = "Panel_Download_List";
+            this.Panel_Download_List.Size = new System.Drawing.Size(1251, 700);
+            this.Panel_Download_List.TabIndex = 19;
+            this.Panel_Download_List.Resize += new System.EventHandler(this.Panel_Download_List_Resize);
+            // 
+            // Panel_Search_Download
+            // 
+            this.Panel_Search_Download.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_Search_Download.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Panel_Search_Download.Location = new System.Drawing.Point(153, 49);
+            this.Panel_Search_Download.Margin = new System.Windows.Forms.Padding(0);
+            this.Panel_Search_Download.Name = "Panel_Search_Download";
+            this.Panel_Search_Download.Size = new System.Drawing.Size(1251, 700);
+            this.Panel_Search_Download.TabIndex = 18;
+            this.Panel_Search_Download.Resize += new System.EventHandler(this.Panel_Search_Download_Resize);
             // 
             // DownloadPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Controls.Add(this.Panel_Download_Stat);
+            this.Controls.Add(this.Panel_Download_OptionList);
+            this.Controls.Add(this.Panel_Top_Option);
             this.Controls.Add(this.Panel_Search_Character);
             this.Controls.Add(this.Panel_Search_Range);
             this.Controls.Add(this.Panel_Search_Series);
@@ -3805,10 +3758,8 @@
             this.Controls.Add(this.Panel_Search_Type);
             this.Controls.Add(this.Panel_Search_Tags);
             this.Controls.Add(this.Panel_Search_Title);
-            this.Controls.Add(this.Panel_Inner);
-            this.Controls.Add(this.Panel_Download_Stat);
-            this.Controls.Add(this.Panel_Download_OptionList);
-            this.Controls.Add(this.Panel_Top_Option);
+            this.Controls.Add(this.Panel_Download_List);
+            this.Controls.Add(this.Panel_Search_Download);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "DownloadPage";
             this.Padding = new System.Windows.Forms.Padding(3);
@@ -3819,8 +3770,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).EndInit();
-            this.Panel_Search_Page.ResumeLayout(false);
-            this.Panel_Search_Page.PerformLayout();
             this.Panel_Download_OptionList.ResumeLayout(false);
             this.Panel_Search.ResumeLayout(false);
             this.Panel_Search_Language.ResumeLayout(false);
@@ -3840,7 +3789,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.Panel_Search_Title.ResumeLayout(false);
             this.Panel_Search_Title.PerformLayout();
-            this.Panel_Inner.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3858,7 +3806,6 @@
         private System.Windows.Forms.Panel Panel_Download_OptionList;
         private System.Windows.Forms.Panel Panel_DownloadBar;
         private System.Windows.Forms.Panel Panel_Download_Stat;
-        private System.Windows.Forms.Panel Panel_Downloaded;
         private System.Windows.Forms.Button Btn_SearchResult;
         private System.Windows.Forms.Panel Panel_Search;
         private System.Windows.Forms.Button Btn_Search_Range;
@@ -3925,12 +3872,9 @@
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Panel Panel_Search_Page;
-        private System.Windows.Forms.Panel Panel_Inner;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label Label_Select_Page;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox Text_Select_Page;
+        private DownloadViewer Panel_Search_Download;
+        private DownloadViewer Panel_Download_List;
     }
 }
