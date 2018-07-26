@@ -175,7 +175,7 @@ namespace HioViw
                         Previews[Int_Preview_List].GetThumbnail(gallerie);
                     }));
                 }
-                catch (Exception e123)
+                catch (Exception)
                 {
                     // MessageBox.Show(e123.ToString() + " " + gallerie.ID + " " + gallerie.Title);
                 }
