@@ -22,37 +22,57 @@ namespace HioViw
         }
         private Gallerie gallerie = null;
         private Thread th;
+        private static List<string> DownloadedID = new List<string>();
+
         public void GetThumbnail(Gallerie g)
         {
             gallerie = g;
-            
-            
-            th = new Thread(new ThreadStart(() =>
+            FileInfo fi = new FileInfo("Download\\Thumbnail\\" + g.ID + ".jpg");
+            if (fi.Exists)
             {
-                FileInfo fi = new FileInfo("Download\\Thumbnail\\" + g.ID + ".jpg");
-                if (fi.Exists)
-                {
-                    Pic_Image.Image = Image.FromFile(fi.FullName);
-                }
-                else 
+                Pic_Image.Image = Image.FromFile(fi.FullName);
+                return;
+            }
+
+            if (DownloadedID.IndexOf(g.ID) == -1)
+            {
+                DownloadedID.Add(g.ID);
+                th = new Thread(new ThreadStart(() =>
                 {
                     using (WebClient wc = new WebClient())
                     {
+                        string ID = gallerie.ID;
+                        string Images = gallerie.ThumnailImage;
+                        string str = wc.DownloadString(Images);
+                        string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
+
+                        
+
                         try
                         {
-
-                            string str = wc.DownloadString(g.ThumnailImage);
-                            string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
-                            wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, "Download\\Thumbnail\\" + g.ID + ".jpg");
-                            Pic_Image.Image = Image.FromFile(fi.FullName);
-                        }catch (Exception e1)
-                        {
-
+                            wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, "Download\\Thumbnail\\" + ID + ".jpg");
+                            if (gallerie.ID == ID)
+                            {
+                                Pic_Image?.Invoke(new MethodInvoker(() =>
+                                {
+                                    Pic_Image.Image = Image.FromFile(fi.FullName);
+                                }));
+                            }
                         }
-                    }
-                }
+                        catch (Exception e1)
+                        {
+                            if (e1.HResult != -2147467261)
+                            {
+                                MessageBox.Show(e1.ToString());
+                            }
+                        }
 
-            }));
+                    }
+                    DownloadedID.Remove(g.ID);
+                }));
+
+            }
+
             th.Start();
         }
 
@@ -89,12 +109,8 @@ namespace HioViw
             {
                 return;
             }
-            Thread th = new Thread(new ThreadStart(() =>
-            {
-                new HioDownloader(gallerie).Download();
-            }));
+            Clipboard.SetText(gallerie.ID + " " + gallerie.Title);
 
-            th.Start();
         }
     }
 }

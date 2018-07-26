@@ -30,6 +30,9 @@
         {
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.Panel_Top_Option = new System.Windows.Forms.Panel();
+            this.Btn_Viewer = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Btn_Menu = new System.Windows.Forms.PictureBox();
             this.Panel_Search_Page = new System.Windows.Forms.Panel();
             this.Label_Select_Page = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -39,7 +42,6 @@
             this.Btn_Hompage = new System.Windows.Forms.Button();
             this.Btn_DownloadStart = new System.Windows.Forms.Button();
             this.Panel_Download_OptionList = new System.Windows.Forms.Panel();
-            this.Btn_SearchResult = new System.Windows.Forms.Button();
             this.Panel_Search = new System.Windows.Forms.Panel();
             this.Btn_Search_Character = new System.Windows.Forms.Button();
             this.Btn_Search_Range = new System.Windows.Forms.Button();
@@ -48,6 +50,7 @@
             this.Btn_Search_Series = new System.Windows.Forms.Button();
             this.Btn_Search_Language = new System.Windows.Forms.Button();
             this.Btn_Search_Title = new System.Windows.Forms.Button();
+            this.Btn_SearchResult = new System.Windows.Forms.Button();
             this.Panel_Search_Language = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
@@ -72,6 +75,7 @@
             this.Text_CharacterAdd = new System.Windows.Forms.TextBox();
             this.Text_AddCharacterDelete = new System.Windows.Forms.TextBox();
             this.Text_CharacterDelete = new System.Windows.Forms.TextBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.Panel_Search_Range = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -101,6 +105,7 @@
             this.Text_AddTagDelete = new System.Windows.Forms.TextBox();
             this.listBox_TagAdd = new System.Windows.Forms.ListBox();
             this.Text_TagDelete = new System.Windows.Forms.TextBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.Text_AddTagAdd = new System.Windows.Forms.TextBox();
             this.Text_TagAdd = new System.Windows.Forms.TextBox();
@@ -109,30 +114,24 @@
             this.Panel_Search_Title = new System.Windows.Forms.Panel();
             this.Text_Search_Title = new System.Windows.Forms.TextBox();
             this.Panel_Inner = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.Btn_Viewer = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Btn_Menu = new System.Windows.Forms.PictureBox();
             this.Panel_Top_Option.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).BeginInit();
             this.Panel_Search_Page.SuspendLayout();
             this.Panel_Download_OptionList.SuspendLayout();
             this.Panel_Search.SuspendLayout();
             this.Panel_Search_Language.SuspendLayout();
             this.Panel_Download_Stat.SuspendLayout();
-            this.Panel_Downloaded.SuspendLayout();
             this.Panel_Search_Character.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.Panel_Search_Range.SuspendLayout();
             this.Panel_Search_Series.SuspendLayout();
             this.Panel_Search_Type.SuspendLayout();
             this.Panel_Search_Tags.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.Panel_Search_Title.SuspendLayout();
             this.Panel_Inner.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Top_Option
@@ -146,6 +145,44 @@
             this.Panel_Top_Option.Size = new System.Drawing.Size(1401, 46);
             this.Panel_Top_Option.TabIndex = 1;
             this.Panel_Top_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            // 
+            // Btn_Viewer
+            // 
+            this.Btn_Viewer.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Viewer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Viewer.Image = global::HioViw.Properties.Resources.image;
+            this.Btn_Viewer.Location = new System.Drawing.Point(124, 8);
+            this.Btn_Viewer.Name = "Btn_Viewer";
+            this.Btn_Viewer.Size = new System.Drawing.Size(40, 30);
+            this.Btn_Viewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Btn_Viewer.TabIndex = 2;
+            this.Btn_Viewer.TabStop = false;
+            this.Btn_Viewer.Click += new System.EventHandler(this.Btn_Viewer_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::HioViw.Properties.Resources.download_button;
+            this.pictureBox1.Location = new System.Drawing.Point(71, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(40, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // Btn_Menu
+            // 
+            this.Btn_Menu.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Menu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Menu.Image = global::HioViw.Properties.Resources.menu;
+            this.Btn_Menu.Location = new System.Drawing.Point(10, 8);
+            this.Btn_Menu.Name = "Btn_Menu";
+            this.Btn_Menu.Size = new System.Drawing.Size(30, 30);
+            this.Btn_Menu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Btn_Menu.TabIndex = 0;
+            this.Btn_Menu.TabStop = false;
+            this.Btn_Menu.Click += new System.EventHandler(this.Btn_Menu_Click);
             // 
             // Panel_Search_Page
             // 
@@ -188,7 +225,7 @@
             this.Text_Select_Page.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Text_Select_Page.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Text_Select_Page.ForeColor = System.Drawing.Color.LightGray;
-            this.Text_Select_Page.Location = new System.Drawing.Point(554, 7);
+            this.Text_Select_Page.Location = new System.Drawing.Point(554, 9);
             this.Text_Select_Page.Name = "Text_Select_Page";
             this.Text_Select_Page.Size = new System.Drawing.Size(141, 19);
             this.Text_Select_Page.TabIndex = 0;
@@ -264,7 +301,6 @@
             this.Btn_DownloadStart.TabIndex = 13;
             this.Btn_DownloadStart.Text = "다운로드 시작";
             this.Btn_DownloadStart.UseVisualStyleBackColor = false;
-            this.Btn_DownloadStart.Click += new System.EventHandler(this.Btn_DownloadStart_Click);
             // 
             // Panel_Download_OptionList
             // 
@@ -280,25 +316,6 @@
             this.Panel_Download_OptionList.Size = new System.Drawing.Size(150, 749);
             this.Panel_Download_OptionList.TabIndex = 4;
             this.Panel_Download_OptionList.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
-            // 
-            // Btn_SearchResult
-            // 
-            this.Btn_SearchResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Btn_SearchResult.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.Btn_SearchResult.FlatAppearance.BorderSize = 0;
-            this.Btn_SearchResult.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.Btn_SearchResult.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.Btn_SearchResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_SearchResult.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_SearchResult.Location = new System.Drawing.Point(1, 583);
-            this.Btn_SearchResult.Margin = new System.Windows.Forms.Padding(0);
-            this.Btn_SearchResult.Name = "Btn_SearchResult";
-            this.Btn_SearchResult.Size = new System.Drawing.Size(148, 55);
-            this.Btn_SearchResult.TabIndex = 14;
-            this.Btn_SearchResult.Tag = false;
-            this.Btn_SearchResult.Text = "검색";
-            this.Btn_SearchResult.UseVisualStyleBackColor = false;
-            this.Btn_SearchResult.Click += new System.EventHandler(this.Btn_SearchResult_Click);
             // 
             // Panel_Search
             // 
@@ -436,6 +453,25 @@
             this.Btn_Search_Title.UseVisualStyleBackColor = false;
             this.Btn_Search_Title.Click += new System.EventHandler(this.Btn_Search_Title_Click);
             // 
+            // Btn_SearchResult
+            // 
+            this.Btn_SearchResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Btn_SearchResult.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_SearchResult.FlatAppearance.BorderSize = 0;
+            this.Btn_SearchResult.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_SearchResult.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_SearchResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_SearchResult.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_SearchResult.Location = new System.Drawing.Point(1, 583);
+            this.Btn_SearchResult.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_SearchResult.Name = "Btn_SearchResult";
+            this.Btn_SearchResult.Size = new System.Drawing.Size(148, 55);
+            this.Btn_SearchResult.TabIndex = 14;
+            this.Btn_SearchResult.Tag = false;
+            this.Btn_SearchResult.Text = "검색";
+            this.Btn_SearchResult.UseVisualStyleBackColor = false;
+            this.Btn_SearchResult.Click += new System.EventHandler(this.Btn_SearchResult_Click);
+            // 
             // Panel_Search_Language
             // 
             this.Panel_Search_Language.Controls.Add(this.label3);
@@ -549,13 +585,6 @@
             // Panel_Downloaded
             // 
             this.Panel_Downloaded.BackColor = System.Drawing.Color.Transparent;
-            this.Panel_Downloaded.Controls.Add(this.Panel_Search_Character);
-            this.Panel_Downloaded.Controls.Add(this.Panel_Search_Range);
-            this.Panel_Downloaded.Controls.Add(this.Panel_Search_Series);
-            this.Panel_Downloaded.Controls.Add(this.Panel_Search_Language);
-            this.Panel_Downloaded.Controls.Add(this.Panel_Search_Type);
-            this.Panel_Downloaded.Controls.Add(this.Panel_Search_Tags);
-            this.Panel_Downloaded.Controls.Add(this.Panel_Search_Title);
             this.Panel_Downloaded.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Downloaded.Location = new System.Drawing.Point(0, 0);
             this.Panel_Downloaded.Name = "Panel_Downloaded";
@@ -580,7 +609,7 @@
             this.Panel_Search_Character.Controls.Add(this.Text_AddCharacterDelete);
             this.Panel_Search_Character.Controls.Add(this.Text_CharacterDelete);
             this.Panel_Search_Character.Controls.Add(this.pictureBox5);
-            this.Panel_Search_Character.Location = new System.Drawing.Point(6, 386);
+            this.Panel_Search_Character.Location = new System.Drawing.Point(159, 387);
             this.Panel_Search_Character.Name = "Panel_Search_Character";
             this.Panel_Search_Character.Size = new System.Drawing.Size(777, 218);
             this.Panel_Search_Character.TabIndex = 17;
@@ -750,6 +779,15 @@
             this.Text_CharacterDelete.TabIndex = 7;
             this.Text_CharacterDelete.Tag = "CharacterDelete";
             this.Text_CharacterDelete.TextChanged += new System.EventHandler(this.Text_Search_Changed);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.pictureBox5.Location = new System.Drawing.Point(387, 14);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(4, 191);
+            this.pictureBox5.TabIndex = 6;
+            this.pictureBox5.TabStop = false;
             // 
             // Panel_Search_Range
             // 
@@ -3450,7 +3488,7 @@
             this.Panel_Search_Type.Controls.Add(this.button5);
             this.Panel_Search_Type.Controls.Add(this.listBox_AddType);
             this.Panel_Search_Type.Controls.Add(this.listBox_Type);
-            this.Panel_Search_Type.Location = new System.Drawing.Point(20, 77);
+            this.Panel_Search_Type.Location = new System.Drawing.Point(250, 307);
             this.Panel_Search_Type.Name = "Panel_Search_Type";
             this.Panel_Search_Type.Size = new System.Drawing.Size(389, 172);
             this.Panel_Search_Type.TabIndex = 13;
@@ -3654,6 +3692,15 @@
             this.Text_TagDelete.Tag = "TagDelete";
             this.Text_TagDelete.TextChanged += new System.EventHandler(this.Text_Search_Changed);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.pictureBox3.Location = new System.Drawing.Point(387, 14);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(4, 184);
+            this.pictureBox3.TabIndex = 6;
+            this.pictureBox3.TabStop = false;
+            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Transparent;
@@ -3717,7 +3764,7 @@
             // Panel_Search_Title
             // 
             this.Panel_Search_Title.Controls.Add(this.Text_Search_Title);
-            this.Panel_Search_Title.Location = new System.Drawing.Point(10, 11);
+            this.Panel_Search_Title.Location = new System.Drawing.Point(153, 159);
             this.Panel_Search_Title.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_Search_Title.Name = "Panel_Search_Title";
             this.Panel_Search_Title.Size = new System.Drawing.Size(427, 56);
@@ -3746,67 +3793,18 @@
             this.Panel_Inner.Size = new System.Drawing.Size(1251, 700);
             this.Panel_Inner.TabIndex = 11;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.pictureBox5.Location = new System.Drawing.Point(387, 14);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(4, 191);
-            this.pictureBox5.TabIndex = 6;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.pictureBox3.Location = new System.Drawing.Point(387, 14);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(4, 184);
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
-            // 
-            // Btn_Viewer
-            // 
-            this.Btn_Viewer.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_Viewer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Btn_Viewer.Image = global::HioViw.Properties.Resources.image;
-            this.Btn_Viewer.Location = new System.Drawing.Point(124, 8);
-            this.Btn_Viewer.Name = "Btn_Viewer";
-            this.Btn_Viewer.Size = new System.Drawing.Size(40, 30);
-            this.Btn_Viewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Btn_Viewer.TabIndex = 2;
-            this.Btn_Viewer.TabStop = false;
-            this.Btn_Viewer.Click += new System.EventHandler(this.Btn_Viewer_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::HioViw.Properties.Resources.download_button;
-            this.pictureBox1.Location = new System.Drawing.Point(71, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // Btn_Menu
-            // 
-            this.Btn_Menu.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_Menu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Btn_Menu.Image = global::HioViw.Properties.Resources.menu;
-            this.Btn_Menu.Location = new System.Drawing.Point(10, 8);
-            this.Btn_Menu.Name = "Btn_Menu";
-            this.Btn_Menu.Size = new System.Drawing.Size(30, 30);
-            this.Btn_Menu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Btn_Menu.TabIndex = 0;
-            this.Btn_Menu.TabStop = false;
-            this.Btn_Menu.Click += new System.EventHandler(this.Btn_Menu_Click);
-            // 
             // DownloadPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Controls.Add(this.Panel_Search_Character);
+            this.Controls.Add(this.Panel_Search_Range);
+            this.Controls.Add(this.Panel_Search_Series);
+            this.Controls.Add(this.Panel_Search_Language);
+            this.Controls.Add(this.Panel_Search_Type);
+            this.Controls.Add(this.Panel_Search_Tags);
+            this.Controls.Add(this.Panel_Search_Title);
             this.Controls.Add(this.Panel_Inner);
             this.Controls.Add(this.Panel_Download_Stat);
             this.Controls.Add(this.Panel_Download_OptionList);
@@ -3818,6 +3816,9 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Resize += new System.EventHandler(this.Form_ResizeEnd);
             this.Panel_Top_Option.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).EndInit();
             this.Panel_Search_Page.ResumeLayout(false);
             this.Panel_Search_Page.PerformLayout();
             this.Panel_Download_OptionList.ResumeLayout(false);
@@ -3825,9 +3826,9 @@
             this.Panel_Search_Language.ResumeLayout(false);
             this.Panel_Search_Language.PerformLayout();
             this.Panel_Download_Stat.ResumeLayout(false);
-            this.Panel_Downloaded.ResumeLayout(false);
             this.Panel_Search_Character.ResumeLayout(false);
             this.Panel_Search_Character.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.Panel_Search_Range.ResumeLayout(false);
             this.Panel_Search_Range.PerformLayout();
             this.Panel_Search_Series.ResumeLayout(false);
@@ -3836,14 +3837,10 @@
             this.Panel_Search_Type.PerformLayout();
             this.Panel_Search_Tags.ResumeLayout(false);
             this.Panel_Search_Tags.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.Panel_Search_Title.ResumeLayout(false);
             this.Panel_Search_Title.PerformLayout();
             this.Panel_Inner.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -31,13 +31,13 @@ namespace HioViw
             InitializeComponent();
 
             {
-                Panel_Search_Title.Location = new Point(-1, 165);
-                Panel_Search_Tags.Location = new Point(-1, 165 + 55 * 1);
-                Panel_Search_Type.Location = new Point(-1, 165 + 55 * 2);
-                Panel_Search_Language.Location = new Point(-1, 165 + 55 * 3);
-                Panel_Search_Series.Location = new Point(-1, 165 + 55 * 4);
-                Panel_Search_Character.Location = new Point(-1, 165 + 55 * 5);
-                Panel_Search_Range.Location = new Point(-1, 165 + 55 * 6);
+                Panel_Search_Title.Location = new Point(Panel_Search.Size.Width + 3, 160);
+                Panel_Search_Tags.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 1);
+                Panel_Search_Type.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 2);
+                Panel_Search_Language.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 3);
+                Panel_Search_Series.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 4);
+                Panel_Search_Character.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 5);
+                Panel_Search_Range.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 6);
 
                 SearchPairs[listBox_Type.Name] = listBox_Type;
                 SearchPairs[listBox_AddType.Name] = listBox_AddType;
@@ -103,131 +103,84 @@ namespace HioViw
             se.Find += Se_Find;
             bgw.WorkerSupportsCancellation = true;
         }
-        
+        int qwer = 1;
         private void Se_Find(object sender, Gallerie e)
         {
             SearchResult.Add(e);
-            Preview_AddReverse(e);
 
-            if (Math.Round((double)SearchResult.Count / Previews.Count).ToString() != Label_Select_Page.Text.Split(' ')[1])
+            try
             {
                 Label_Select_Page?.Invoke(new MethodInvoker(() =>
                 {
-                    Label_Select_Page.Text = "~ " + Math.Round((double)SearchResult.Count / Previews.Count).ToString();
+                    if (Math.Round((double)SearchResult.Count / Previews.Count) != int.Parse(Label_Select_Page.Text.Split(' ')[1]))
+                    {
+                        Label_Select_Page.Text = "~ " + Math.Round((double)SearchResult.Count / Previews.Count).ToString();
+                    }
                 }));
+
             }
-
-        }
-
-        private void Text_Select_Page_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            catch (Exception e1)
             {
-                int num = 0;
-                if (int.TryParse(Text_Select_Page.Text, out num))
-                {
-                    if (num < 1)
-                    {
-                        return;
-                    }
-
-                    Int_Preview_List = 0;
-                    for (int i = Previews.Count * (num -1); i < Previews.Count * num; i++)
-                    {
-                        
-                        if (i < SearchResult.Count)
-                        {
-                            Preview_AddReverse(SearchResult[i]);
-                        }
-                    }
-                }
+                MessageBox.Show("Se_Find " + e1.ToString());
             }
         }
 
         private void Bgw_DoWork(object sender, DoWorkEventArgs e)
         {
+            SearchEngine.Stop = false;
             Int_Preview_List = 0;
             SearchResult.Clear();
+            foreach (var data in Previews)
+            {
+                this.Invoke(new MethodInvoker(() => { data.Clear(); }));
+            }
             se.Find_Start(sd, Panel_DownloadBar);
 
         }
 
-        List<Gallerie> SearchResult = new List<Gallerie>();
-
-
-        List<string> Tags = new List<string>();
-
-        SearchEngine se = new SearchEngine();
-        SearchData sd = new SearchData();
-        BackgroundWorker bgw = new BackgroundWorker();
-
-        List<string> TagsList = new List<string>();
-        List<string> CharacterList = new List<string>();
-        List<string> SeriesList = new List<string>();
-
-
-
-        private void Panel_Paint(object sender, PaintEventArgs e)
-        {
-            if (sender is Control)
-            {
-                var panel = (sender as Control);
-                var graphic = panel.CreateGraphics();
-                graphic.Clear(this.BackColor);
-                Rectangle r = new Rectangle(0, 0, panel.Size.Width, panel.Size.Height);
-                graphic.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
-            }
-        }
-
-        private void ChkListBox_Click(object sender, EventArgs e)
-        {
-            var list = (sender as CheckedListBox);
-            int i = list.SelectedIndex;
-            for (int w = 0; w < list.Items.Count; w++)
-            {
-                list.SetItemCheckState(w, CheckState.Unchecked);
-            }
-            (sender as CheckedListBox).SelectedIndex = i;
-        }
         List<Preview> Previews = new List<Preview>();
 
-
-
         int Int_Preview_List = 0;
-
         private void Preview_AddReverse(Gallerie gallerie)
         {
-
+            
             if (Int_Preview_List < Previews.Count)
             {
+                
+
                 Previews[Int_Preview_List].Clear();
-
-                Preview preview = Previews[Int_Preview_List];
-                preview.Invoke(new MethodInvoker(() =>
+                try
                 {
-                    preview.Clear();
-                    preview.Label_ID.Text += gallerie.ID;
-                    preview.Label_Title.Text += gallerie.Title;
-                    preview.Label_Group.Text += gallerie.Uploader;
-                    preview.Label_Series.Text += gallerie.Series;
-                    preview.Label_Type.Text += gallerie.Type;
-                    preview.Label_Language.Text += gallerie.Language;
+                    Previews[Int_Preview_List].Invoke(new MethodInvoker(() =>
+                    {
+                        Previews[Int_Preview_List].Clear();
+                        Previews[Int_Preview_List].Label_ID.Text += gallerie.ID;
+                        Previews[Int_Preview_List].Label_Title.Text += gallerie.Title;
+                        Previews[Int_Preview_List].Label_Group.Text += gallerie.Uploader;
+                        Previews[Int_Preview_List].Label_Series.Text += gallerie.Series;
+                        Previews[Int_Preview_List].Label_Type.Text += gallerie.Type;
+                        Previews[Int_Preview_List].Label_Language.Text += gallerie.Language;
 
-                    for (int i = 0; i < gallerie.Tags.Count - 1; i++)
-                        preview.Label_Tags.Text += gallerie.Tags[i] + ", ";
-                    if (gallerie.Tags.Count != 0)
-                        preview.Label_Tags.Text += gallerie.Tags[gallerie.Tags.Count - 1];
-                    for (int i = 0; i < gallerie.Character.Count - 1; i++)
-                        preview.Label_Character.Text += gallerie.Character[i] + ", ";
-                    if (gallerie.Character.Count != 0)
-                        preview.Label_Character.Text += gallerie.Character[gallerie.Character.Count - 1];
+                        for (int i = 0; i < gallerie.Tags.Count - 1; i++)
+                            Previews[Int_Preview_List].Label_Tags.Text += gallerie.Tags[i] + ", ";
+                        if (gallerie.Tags.Count != 0)
+                            Previews[Int_Preview_List].Label_Tags.Text += gallerie.Tags[gallerie.Tags.Count - 1];
 
-                    preview.Label_Date.Text += gallerie.UploadDate;
+                        for (int i = 0; i < gallerie.Character.Count - 1; i++)
+                            Previews[Int_Preview_List].Label_Character.Text += gallerie.Character[i] + ", ";
+                        if (gallerie.Character.Count != 0)
+                            Previews[Int_Preview_List].Label_Character.Text += gallerie.Character[gallerie.Character.Count - 1];
 
-                    preview.GetThumbnail(gallerie);
-                }));
+                        Previews[Int_Preview_List].Label_Date.Text += gallerie.UploadDate;
+                        Previews[Int_Preview_List].GetThumbnail(gallerie);
+                    }));
+                }
+                catch (Exception e123)
+                {
+                    // MessageBox.Show(e123.ToString() + " " + gallerie.ID + " " + gallerie.Title);
+                }
 
-                Previews[Int_Preview_List].Invoke(new MethodInvoker(delegate () { Previews[Int_Preview_List] = preview; }));
+
 
                 for (int i = 0; i < Int_Preview_List; i++)
                 {
@@ -242,7 +195,7 @@ namespace HioViw
             {
                 Previews[i].Invoke(new MethodInvoker(delegate () {
 
-                    
+
                     Previews[i + 1].Label_ID.Text = Previews[i].Label_ID.Text;
                     Previews[i + 1].Label_Title.Text = Previews[i].Label_Title.Text;
                     Previews[i + 1].Label_Group.Text = Previews[i].Label_Group.Text;
@@ -257,7 +210,7 @@ namespace HioViw
             }
 
             Preview preview = Previews[0];
-            
+
             preview.Invoke(new MethodInvoker(delegate ()
             {
                 preview.Clear();
@@ -288,7 +241,7 @@ namespace HioViw
             }));
 
             Previews[0].Invoke(new MethodInvoker(delegate () { Previews[0] = preview; }));
-            
+
             foreach (var pre in Previews)
             {
                 pre.Invoke(new MethodInvoker(delegate ()
@@ -298,11 +251,8 @@ namespace HioViw
             }
         }
 
-
         private void Form_ResizeEnd(object sender, EventArgs e)
         {
-            List<Preview> mPreview = new List<Preview>();
-
             int prevCount = Previews.Count;
             int nowCount = 0;
 
@@ -340,7 +290,115 @@ namespace HioViw
             {
                 return;
             }
+
+            if (SearchResult.Count != 0)
+                if (Math.Round((double)SearchResult.Count / Previews.Count).ToString() != Label_Select_Page.Text.Split(' ')[1])
+                    Label_Select_Page.Text = "~ " + Math.Round((double)SearchResult.Count / Previews.Count).ToString();
+
+            Text_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
+
         }
+
+
+        private void Text_Select_Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            bool state = true;
+            if (e.Control && e.KeyCode == Keys.Left && state)
+                if (int.TryParse(Text_Select_Page.Text, out int i))
+                {
+                    Text_Select_Page.Text = (i - 5).ToString();
+                    state = !state;
+                }
+
+            if (e.Control && e.KeyCode == Keys.Right && state)
+                if (int.TryParse(Text_Select_Page.Text, out int i))
+                {
+                    Text_Select_Page.Text = (i + 5).ToString();
+                    state = !state;
+                }
+
+            if (e.Shift && e.KeyCode == Keys.Left && state)
+                if (int.TryParse(Text_Select_Page.Text, out int i))
+                {
+                    Text_Select_Page.Text = (i - 10).ToString();
+                    state = !state;
+                }
+
+            if (e.Shift && e.KeyCode == Keys.Right && state)
+                if (int.TryParse(Text_Select_Page.Text, out int i))
+                {
+                    Text_Select_Page.Text = (i + 10).ToString();
+                    state = !state;
+                }
+
+            if (e.KeyCode == Keys.Left && state)
+                if (int.TryParse(Text_Select_Page.Text, out int i))
+                {
+                    Text_Select_Page.Text = (i - 1).ToString();
+                    state = !state;
+                }
+
+            if (e.KeyCode == Keys.Right && state)
+                if (int.TryParse(Text_Select_Page.Text, out int i))
+                {
+                    Text_Select_Page.Text = (i + 1).ToString();
+                    state = !state;
+                }
+
+
+            if (e.KeyCode == Keys.Enter || !state)
+            {
+                int num = 0;
+                if (int.TryParse(Text_Select_Page.Text, out num) && SearchResult.Count != 0)
+                {
+                    if (num < 1)
+                    {
+                        return;
+                    }
+
+                    Int_Preview_List = 0;
+                    for (int i = Previews.Count * (num -1); i < Previews.Count * num; i++)
+                    {
+                        
+                        if (i < SearchResult.Count)
+                        {
+                            StreamWriter sw = new StreamWriter("Debug\\Result.txt", true);
+                            sw.WriteLine(qwer.ToString() + SearchResult[i].ID + " " + SearchResult[i].Title);
+                            sw.Close();
+
+                            qwer++;
+                            Preview_AddReverse(SearchResult[i]);
+                        }
+                    }
+                }
+            }
+        }
+
+        
+
+        private void Panel_Paint(object sender, PaintEventArgs e)
+        {
+            if (sender is Control)
+            {
+                var panel = (sender as Control);
+                var graphic = panel.CreateGraphics();
+                graphic.Clear(this.BackColor);
+                Rectangle r = new Rectangle(0, 0, panel.Size.Width, panel.Size.Height);
+                graphic.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
+            }
+        }
+
+        private void ChkListBox_Click(object sender, EventArgs e)
+        {
+            var list = (sender as CheckedListBox);
+            int i = list.SelectedIndex;
+            for (int w = 0; w < list.Items.Count; w++)
+            {
+                list.SetItemCheckState(w, CheckState.Unchecked);
+            }
+            (sender as CheckedListBox).SelectedIndex = i;
+        }
+
 
 
         #region Download Menubar Draw Color Button ( need Code : SearchResult_Click )
@@ -419,36 +477,15 @@ namespace HioViw
                 if (MessageBox.Show("지금 현재 실행중입니다. 종료하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     SearchEngine.Stop = true;
-                    bgw.CancelAsync();
                 }
             }
             else
             {
-                SearchEngine.Stop = false;
                 bgw.RunWorkerAsync();
             }
 
         }
         #endregion
-
-        bool ch = false;
-        private void Btn_Menu_Click(object sender, EventArgs e)
-        {
-            if (ch)
-            {
-                for (int i = 0; i <= 10; i++)
-                {
-                    Panel_Download_OptionList.Size = new Size(150, Panel_Download_OptionList.Size.Height);
-                }
-                ch = !ch;
-            }
-            else
-            {
-                Panel_Download_OptionList.Size = new Size(0, Panel_Download_OptionList.Size.Height);
-                ch = !ch;
-            }
-        }
-
 
         #region Btn_Search_Click ( Visible != Visible )
         private void Btn_Search_Title_Click(object sender, EventArgs e)
@@ -496,19 +533,20 @@ namespace HioViw
         }
         #endregion
 
-        private void Btn_DownloadStart_Click(object sender, EventArgs e)
-        {
+        #region Search Engine
+        List<Gallerie> SearchResult = new List<Gallerie>();
+        
+        List<string> Tags = new List<string>();
 
-        }
+        SearchEngine se = new SearchEngine();
+        SearchData sd = new SearchData();
+        BackgroundWorker bgw = new BackgroundWorker();
 
-
-
-
-
-
-
+        List<string> TagsList = new List<string>();
+        List<string> CharacterList = new List<string>();
+        List<string> SeriesList = new List<string>();
+        
         Dictionary<string, ListBox> SearchPairs = new Dictionary<string, ListBox>();
-
         private void Btn_Search_Add(object sender, EventArgs e)
         {
             var v = SearchPairs[("listBox_" + (sender as Control).Tag)];
@@ -521,9 +559,7 @@ namespace HioViw
                 p.Items
                 .Add(v.SelectedItem);
             }
-            
         }
-
         private void Btn_Search_Delete(object sender, EventArgs e)
         {
             var v = SearchPairs[("listBox_Add" + (sender as Control).Tag)];
@@ -531,8 +567,6 @@ namespace HioViw
                 return;
             v.Items.RemoveAt(v.SelectedIndex);
         }
-
-        
         private void Text_Search_Changed(object sender, EventArgs e)
         {
             var v = sender as Control;
@@ -557,6 +591,25 @@ namespace HioViw
 
 
             
+        }
+        #endregion
+
+        bool ch = false;
+        private void Btn_Menu_Click(object sender, EventArgs e)
+        {
+            if (ch)
+            {
+                for (int i = 0; i <= 10; i++)
+                {
+                    Panel_Download_OptionList.Size = new Size(150, Panel_Download_OptionList.Size.Height);
+                }
+                ch = !ch;
+            }
+            else
+            {
+                Panel_Download_OptionList.Size = new Size(0, Panel_Download_OptionList.Size.Height);
+                ch = !ch;
+            }
         }
 
         private void Btn_Viewer_Click(object sender, EventArgs e)

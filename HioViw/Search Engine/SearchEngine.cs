@@ -16,7 +16,7 @@ namespace HioViw
     class SearchEngine
     {
         public event Finder Find;
-        
+
         private void OnFind(Gallerie e)
         {
             Find?.Invoke(this, e);
@@ -85,220 +85,232 @@ namespace HioViw
                 // DB가 0부터 19까지 존재합니다.
                 for (int i = 0; i < 20; i++)
                 {
-
-                    using (StreamReader sr = new StreamReader("Hitomi_DB\\text" + i + ".txt"))
+                    int we = 0;
+                    try
                     {
-                        JArray list = JArray.Parse(sr.ReadToEnd());
-
-                        // 검색한 자료만큼 반복을 합니다.
-                        for (int w = 0; w < list.Count; w++)
+                        using (StreamReader sr = new StreamReader("Hitomi_DB\\text" + i + ".txt"))
                         {
-                            if (Stop)
+                           
+                            JArray list = JArray.Parse(sr.ReadToEnd());
+                            we = 1;
+                            // 검색한 자료만큼 반복을 합니다.
+                            for (int w = 0; w < list.Count; w++)
                             {
-                                return;
-                            }
-
-                            JObject j = list[w].ToObject<JObject>();
-
-                            // 이 자료가 찾은 검색에 적합한지에 조사합니다.
-                            if (IsSearchData(search, j))
-                            {
-                                bool IsSearch = true;
-                                // 찾은 검색에 적합한지에 조사한 자료에 본격적인 조사를 합니다.
-                                foreach (var content in j)
+                                if (Stop)
                                 {
-                                    if (search.Title.Length != 0 && content.Key == "n")
-                                    {
-                                        if (content.Value.ToString().ToLower().IndexOf(search.Title, 0) == -1)
-                                            IsSearch = false;
-                                    }
-                                    else if (search.Language.Count != 0 && content.Key == "l")
-                                    {
-                                        bool chk = false;
-                                        foreach (var lang in search.Language)
-                                        {
-                                            if (lang == content.Value.ToString())
-                                            {
-                                                chk = true;
-                                            }
-                                        }
-                                        IsSearch = chk;
-                                    }
-                                    else if (search.Type.Count != 0 && content.Key == "type")
-                                    {
-                                        bool chk = false;
-                                        foreach (var Type in search.Type)
-                                        {
-                                            if (Type == content.Value.ToString())
-                                            {
-                                                chk = true;
-                                            }
-                                        }
-                                        IsSearch = chk;
-                                    }
-                                    else if (search.Character.Count != 0 && content.Key == "c")
-                                    {
-                                        int count = 0;
-                                        bool chk = false;
-
-                                        foreach (var data in search.Character)
-                                        {
-                                            foreach (var contentName in content.Value)
-                                            {
-                                                chk = false;
-                                                if (contentName.ToString().ToLower() == data)
-                                                {
-                                                    count++;
-                                                    chk = true;
-                                                }
-                                                if (chk) break;
-                                            }
-                                        }
-                                        if (count != search.Character.Count)
-                                            IsSearch = false;
-                                    }
-                                    else if (search.Series.Count != 0 && content.Key == "p")
-                                    {
-                                        int count = 0;
-                                        bool chk = false;
-
-                                        foreach (var data in search.Series)
-                                        {
-                                            foreach (var contentName in content.Value)
-                                            {
-                                                chk = false;
-                                                if (contentName.ToString().ToLower() == data)
-                                                {
-                                                    count++;
-                                                    chk = true;
-                                                }
-                                                if (chk) break;
-                                            }
-                                            if (chk) break;
-                                        }
-                                        if (count == 0)
-                                            IsSearch = false;
-                                    }
-                                    else if (search.Tags.Count != 0 && content.Key == "t")
-                                    {
-                                        int count = 0;
-                                        bool chk = false;
-
-                                        foreach (var data in search.Tags)
-                                        {
-                                            foreach (var contentName in content.Value)
-                                            {
-                                                chk = false;
-                                                if (contentName.ToString().ToLower() == data)
-                                                {
-                                                    count++;
-                                                    chk = true;
-                                                }
-                                                if (chk) break;
-                                            }
-                                        }
-                                        if (count != search.Tags.Count)
-                                            IsSearch = false;
-                                    }
-
-                                    if (search.Character_Delete.Count != 0 && content.Key == "c")
-                                    {
-                                        bool chk = true;
-                                        foreach (var delete in search.Character_Delete)
-                                        {
-                                            if (delete == content.Value.ToString())
-                                            {
-                                                chk = false;
-                                            }
-                                        }
-                                        IsSearch = chk;
-                                    }
-                                    else if (search.Series_Delete.Count != 0 && content.Key == "p")
-                                    {
-                                        bool chk = true;
-                                        foreach (var delete in search.Series_Delete)
-                                        {
-                                            if (delete == content.Value.ToString())
-                                            {
-                                                chk = false;
-                                            }
-                                        }
-                                        IsSearch = chk;
-                                    }
-                                    else if (search.Tags_Delete.Count != 0 && content.Key == "t")
-                                    {
-                                        bool chk = true;
-                                        foreach (var delete in search.Tags_Delete)
-                                        {
-                                            if (delete == content.Value.ToString())
-                                            {
-                                                chk = false;
-                                            }
-                                        }
-                                        IsSearch = chk;
-                                    }
-
-                                    if (!IsSearch)
-                                    {
-                                        break;
-                                    }
+                                    return;
                                 }
+                                we = 2;
+                                JObject j = list[w].ToObject<JObject>();
 
-
-                                // 검색한 결과를 OnFind 이벤트를 통해서 전달합니다.
-                                if (IsSearch)
+                                // 이 자료가 찾은 검색에 적합한지에 조사합니다.
+                                if (IsSearchData(search, j))
                                 {
-                                    Gallerie g = new Gallerie
+                                    we = 3;
+                                    bool IsSearch = true;
+                                    // 찾은 검색에 적합한지에 조사한 자료에 본격적인 조사를 합니다.
+                                    foreach (var content in j)
                                     {
-                                        Tags = new List<string>(),
-                                        Character = new List<string>()
-                                    };
-
-                                    if (j["n"] != null)
-                                        g.Title = j["n"].ToString();
-                                    if (j["id"] != null)
-                                        g.ID = j["id"].ToString();
-                                    if (j["g"] != null)
-                                        g.Uploader = j["g"].ToString().Split('\"')[1];
-                                    if (j["type"] != null)
-                                        g.Type = j["type"].ToString();
-                                    if (j["l"] != null)
-                                        g.Language = j["l"].ToString();
-                                    if (j["p"] != null)
-                                        g.Series = j["p"].ToString().Split('\"')[1];
-
-                                    if (j["t"] != null)
-                                    {
-                                        foreach (var value in j["t"].Values<string>())
+                                        we = 4;
+                                        if (search.Title.Length != 0 && content.Key == "n")
                                         {
-                                            g.Tags.Add(value);
+                                            if (content.Value.ToString().ToLower().IndexOf(search.Title, 0) == -1)
+                                                IsSearch = false;
                                         }
-                                    }
-
-                                    if (j["c"] != null)
-                                    {
-                                        foreach (var value in j["c"].Values<string>())
+                                        else if (search.Language.Count != 0 && content.Key == "l")
                                         {
-                                            g.Character.Add(value);
+                                            bool chk = false;
+                                            foreach (var lang in search.Language)
+                                            {
+                                                if (lang == content.Value.ToString())
+                                                {
+                                                    chk = true;
+                                                }
+                                            }
+                                            IsSearch = chk;
                                         }
+                                        else if (search.Type.Count != 0 && content.Key == "type")
+                                        {
+                                            bool chk = false;
+                                            foreach (var Type in search.Type)
+                                            {
+                                                if (Type == content.Value.ToString())
+                                                {
+                                                    chk = true;
+                                                }
+                                            }
+                                            IsSearch = chk;
+                                        }
+                                        else if (search.Character.Count != 0 && content.Key == "c")
+                                        {
+                                            int count = 0;
+                                            bool chk = false;
+
+                                            foreach (var data in search.Character)
+                                            {
+                                                foreach (var contentName in content.Value)
+                                                {
+                                                    chk = false;
+                                                    if (contentName.ToString().ToLower() == data)
+                                                    {
+                                                        count++;
+                                                        chk = true;
+                                                    }
+                                                    if (chk) break;
+                                                }
+                                            }
+                                            if (count != search.Character.Count)
+                                                IsSearch = false;
+                                        }
+                                        else if (search.Series.Count != 0 && content.Key == "p")
+                                        {
+                                            int count = 0;
+                                            bool chk = false;
+
+                                            foreach (var data in search.Series)
+                                            {
+                                                foreach (var contentName in content.Value)
+                                                {
+                                                    chk = false;
+                                                    if (contentName.ToString().ToLower() == data)
+                                                    {
+                                                        count++;
+                                                        chk = true;
+                                                    }
+                                                    if (chk) break;
+                                                }
+                                                if (chk) break;
+                                            }
+                                            if (count == 0)
+                                                IsSearch = false;
+                                        }
+                                        else if (search.Tags.Count != 0 && content.Key == "t")
+                                        {
+                                            int count = 0;
+                                            bool chk = false;
+
+                                            foreach (var data in search.Tags)
+                                            {
+                                                foreach (var contentName in content.Value)
+                                                {
+                                                    chk = false;
+                                                    if (contentName.ToString().ToLower() == data)
+                                                    {
+                                                        count++;
+                                                        chk = true;
+                                                    }
+                                                    if (chk) break;
+                                                }
+                                            }
+                                            if (count != search.Tags.Count)
+                                                IsSearch = false;
+                                        }
+
+                                        if (search.Character_Delete.Count != 0 && content.Key == "c")
+                                        {
+                                            bool chk = true;
+                                            foreach (var delete in search.Character_Delete)
+                                            {
+                                                if (delete == content.Value.ToString())
+                                                {
+                                                    chk = false;
+                                                }
+                                            }
+                                            IsSearch = chk;
+                                        }
+                                        else if (search.Series_Delete.Count != 0 && content.Key == "p")
+                                        {
+                                            bool chk = true;
+                                            foreach (var delete in search.Series_Delete)
+                                            {
+                                                if (delete == content.Value.ToString())
+                                                {
+                                                    chk = false;
+                                                }
+                                            }
+                                            IsSearch = chk;
+                                        }
+                                        else if (search.Tags_Delete.Count != 0 && content.Key == "t")
+                                        {
+                                            bool chk = true;
+                                            foreach (var delete in search.Tags_Delete)
+                                            {
+                                                if (delete == content.Value.ToString())
+                                                {
+                                                    chk = false;
+                                                }
+                                            }
+                                            IsSearch = chk;
+                                        }
+
+                                        if (!IsSearch)
+                                        {
+                                            break;
+                                        }
+                                       
                                     }
+                                    we = 5;
 
-                                    g.ThumnailImage = "https://ltn.hitomi.la/galleryblock/" + g.ID + ".html";
+                                    // 검색한 결과를 OnFind 이벤트를 통해서 전달합니다.
+                                    if (IsSearch)
+                                    {
+                                        we = 6;
+                                        Gallerie g = new Gallerie
+                                        {
+                                            Tags = new List<string>(),
+                                            Character = new List<string>()
+                                        };
+                                        we = 7;
+                                        if (j["n"] != null)
+                                            g.Title = j["n"].ToString();
+                                        if (j["id"] != null)
+                                            g.ID = j["id"].ToString();
+                                        if (j["g"] != null)
+                                            g.Uploader = j["g"].ToString().Split('\"')[1];
+                                        if (j["type"] != null)
+                                            g.Type = j["type"].ToString();
+                                        if (j["l"] != null)
+                                            g.Language = j["l"].ToString();
+                                        if (j["p"] != null)
+                                            g.Series = j["p"].ToString().Split('\"')[1];
 
+                                        if (j["t"] != null)
+                                        {
+                                            foreach (var value in j["t"].Values<string>())
+                                            {
+                                                g.Tags.Add(value);
+                                            }
+                                        }
+                                        we = 8;
+                                        if (j["c"] != null)
+                                        {
+                                            foreach (var value in j["c"].Values<string>())
+                                            {
+                                                g.Character.Add(value);
+                                            }
+                                        }
+                                        we = 9;
+                                        g.ThumnailImage = "https://ltn.hitomi.la/galleryblock/" + g.ID + ".html";
+                                        we = 10;
 
-                                    OnFind(g);
+                                        OnFind(g);
+                                        we = 11;
+                                    }
+                                    we = 12;
                                 }
-
+                                we = 13;
                             }
+                            we = 14;
+                            using (var draw = Bar.CreateGraphics())
+                                draw.DrawLine(new Pen(Color.FromArgb(100, 200, 100), Bar.Size.Height / 2), 0, Bar.Size.Height / 2.0f, Bar.Size.Width / 19.0f * i, Bar.Size.Height / 2.0f);
 
+                            sr.Close();
+                            we = 15;
                         }
-
-                        using (var draw = Bar.CreateGraphics())
-                            draw.DrawLine(new Pen(Color.FromArgb(100, 200, 100), Bar.Size.Height / 2), 0, Bar.Size.Height / 2.0f, Bar.Size.Width / 19.0f * i, Bar.Size.Height / 2.0f);
-
-                        sr.Close();
+                    }catch(Exception e1)
+                    {
+                        MessageBox.Show(e1.ToString() + "\n\n\n" + we);
                     }
-                    
                     
                 }
             }
