@@ -14,6 +14,13 @@ namespace HioViw
 {
     class HioDownloader
     {
+        public event Download Downloads;
+        
+        private void OnDownload(Gallerie e, float f)
+        {
+            Downloads?.Invoke(this, e, f);
+        }
+
         Gallerie g;
         public HioDownloader(Gallerie gallerie)
         {
@@ -23,7 +30,6 @@ namespace HioViw
 
         public void Download(string Download_Path = "Download\\")
         {
-
             DirectoryInfo di = new DirectoryInfo(Download_Path + g.ID + "\\");
             if (!di.Exists)
             {
@@ -42,7 +48,6 @@ namespace HioViw
                     ext.Add(pagel[i].Split('<')[0]);
                 }
                 page = ext.Count;
-                Console.WriteLine(page.ToString() + " 갯수 사진 발견");
             }
 
             InfoFileWrite(g, page, Download_Path);
@@ -55,7 +60,6 @@ namespace HioViw
                     {
                         wc.DownloadFile(new Uri("https://aa.hitomi.la/galleries/" + g.ID + "/" + ext[i]),
                             Download_Path + "\\" + g.ID + "\\" + (i+1).ToString() + ".jpg");
-                        Console.WriteLine(i.ToString() + "번째 다운로드 완료");
                     }
                     catch (Exception)
                     {
@@ -63,13 +67,14 @@ namespace HioViw
                         {
                             wc.DownloadFile(new Uri("https://ba.hitomi.la/galleries/" + g.ID + "/" + ext[i]),
                               Download_Path + "\\" + g.ID + "\\" + (i+1).ToString() + ".jpg");
-                            Console.WriteLine(i.ToString() + "번째 다운로드 완료");
                         }
                         catch (Exception)
                         {
                             Console.WriteLine(g.ID.ToString() + "아이디 동인지 다운로드 실..패!");
                         }
                     }
+
+                    OnDownload(g, (float)(i + 1) / page);
                 }
             }
         }

@@ -198,6 +198,7 @@
             // 
             // Btn_Option
             // 
+            this.Btn_Option.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.Btn_Option.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.Btn_Option.FlatAppearance.BorderSize = 0;
             this.Btn_Option.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
@@ -543,7 +544,7 @@
             this.Panel_Search_Character.Controls.Add(this.Text_AddCharacterDelete);
             this.Panel_Search_Character.Controls.Add(this.Text_CharacterDelete);
             this.Panel_Search_Character.Controls.Add(this.pictureBox5);
-            this.Panel_Search_Character.Location = new System.Drawing.Point(159, 387);
+            this.Panel_Search_Character.Location = new System.Drawing.Point(159, 291);
             this.Panel_Search_Character.Name = "Panel_Search_Character";
             this.Panel_Search_Character.Size = new System.Drawing.Size(777, 218);
             this.Panel_Search_Character.TabIndex = 17;
@@ -3728,6 +3729,7 @@
             this.Panel_Download_List.Name = "Panel_Download_List";
             this.Panel_Download_List.Size = new System.Drawing.Size(1251, 700);
             this.Panel_Download_List.TabIndex = 19;
+            this.Panel_Download_List.Visible = false;
             this.Panel_Download_List.Resize += new System.EventHandler(this.Panel_Download_List_Resize);
             // 
             // Panel_Search_Download
@@ -3765,7 +3767,6 @@
             this.Padding = new System.Windows.Forms.Padding(3);
             this.Size = new System.Drawing.Size(1407, 801);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
-            this.Resize += new System.EventHandler(this.Form_ResizeEnd);
             this.Panel_Top_Option.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

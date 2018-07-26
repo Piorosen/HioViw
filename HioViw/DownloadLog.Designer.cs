@@ -32,7 +32,7 @@
             this.Label_ID = new System.Windows.Forms.Label();
             this.Pic_Image = new System.Windows.Forms.PictureBox();
             this.Label_Language = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Panel_Download = new System.Windows.Forms.Panel();
             this.Label_Type = new System.Windows.Forms.Label();
             this.Label_Series = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Image)).BeginInit();
@@ -84,15 +84,15 @@
             this.Label_Language.TabIndex = 15;
             this.Label_Language.Text = "Language : ";
             // 
-            // panel1
+            // Panel_Download
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Panel_Download.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Location = new System.Drawing.Point(103, 69);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(480, 17);
-            this.panel1.TabIndex = 16;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            this.Panel_Download.Location = new System.Drawing.Point(103, 69);
+            this.Panel_Download.Name = "Panel_Download";
+            this.Panel_Download.Size = new System.Drawing.Size(480, 17);
+            this.Panel_Download.TabIndex = 16;
+            this.Panel_Download.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Label_Type
             // 
@@ -123,7 +123,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.Controls.Add(this.Label_Type);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Panel_Download);
             this.Controls.Add(this.Label_Series);
             this.Controls.Add(this.Label_Language);
             this.Controls.Add(this.Label_Title);
@@ -144,7 +144,7 @@
         public System.Windows.Forms.Label Label_ID;
         public System.Windows.Forms.PictureBox Pic_Image;
         public System.Windows.Forms.Label Label_Language;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Panel_Download;
         public System.Windows.Forms.Label Label_Type;
         public System.Windows.Forms.Label Label_Series;
     }

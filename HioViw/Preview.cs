@@ -14,12 +14,23 @@ using System.Text.RegularExpressions;
 
 namespace HioViw
 {
+    public delegate void Download(object sender, Gallerie e, float Percentage);
     public partial class Preview : UserControl
     {
+        public event Download Download;
+
+        private bool bIsDownload = false;
+
+        private void OnDownload(Gallerie e, float f)
+        {
+            Download?.Invoke(this, e, f);
+        }
+
         public Preview()
         {
             InitializeComponent();
         }
+
         private Gallerie gallerie = null;
         private Thread th;
         private static List<string> DownloadedID = new List<string>();
@@ -75,7 +86,6 @@ namespace HioViw
 
             th.Start();
         }
-
         public void Clear()
         {
             gallerie = null;
@@ -108,8 +118,25 @@ namespace HioViw
             {
                 return;
             }
+            
             Clipboard.SetText(gallerie.ID + " " + gallerie.Title);
+            Thread th = new Thread(new ThreadStart(() =>
+            {
+                if (!bIsDownload)
+                {
+                    HioDownloader hio = new HioDownloader(gallerie);
+                    hio.Downloads += Hio_Downloads;
+                    hio.Download();
+                    OnDownload(gallerie, 0);
+                }
+            }));
 
+            th.Start();
+        }
+
+        private void Hio_Downloads(object sender, Gallerie e, float Percentage)
+        {
+            OnDownload(e, Percentage);
         }
     }
 }
