@@ -30,6 +30,7 @@
         {
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.Panel_Top_Option = new System.Windows.Forms.Panel();
+            this.Btn_Setting = new System.Windows.Forms.PictureBox();
             this.Btn_Viewer = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
@@ -111,6 +112,7 @@
             this.Panel_Download_List = new HioViw.DownloadViewer();
             this.Panel_Search_Download = new HioViw.DownloadViewer();
             this.Panel_Top_Option.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Setting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).BeginInit();
@@ -130,6 +132,7 @@
             // 
             // Panel_Top_Option
             // 
+            this.Panel_Top_Option.Controls.Add(this.Btn_Setting);
             this.Panel_Top_Option.Controls.Add(this.Btn_Viewer);
             this.Panel_Top_Option.Controls.Add(this.pictureBox1);
             this.Panel_Top_Option.Controls.Add(this.Btn_Menu);
@@ -140,12 +143,25 @@
             this.Panel_Top_Option.TabIndex = 1;
             this.Panel_Top_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
+            // Btn_Setting
+            // 
+            this.Btn_Setting.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Setting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Setting.Image = global::HioViw.Properties.Resources.settings_cogwheel_button;
+            this.Btn_Setting.Location = new System.Drawing.Point(170, 8);
+            this.Btn_Setting.Name = "Btn_Setting";
+            this.Btn_Setting.Size = new System.Drawing.Size(40, 30);
+            this.Btn_Setting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Btn_Setting.TabIndex = 3;
+            this.Btn_Setting.TabStop = false;
+            this.Btn_Setting.Click += new System.EventHandler(this.Btn_Setting_Click);
+            // 
             // Btn_Viewer
             // 
             this.Btn_Viewer.BackColor = System.Drawing.Color.Transparent;
             this.Btn_Viewer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Viewer.Image = global::HioViw.Properties.Resources.image;
-            this.Btn_Viewer.Location = new System.Drawing.Point(124, 8);
+            this.Btn_Viewer.Location = new System.Drawing.Point(120, 8);
             this.Btn_Viewer.Name = "Btn_Viewer";
             this.Btn_Viewer.Size = new System.Drawing.Size(40, 30);
             this.Btn_Viewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -158,7 +174,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::HioViw.Properties.Resources.download_button;
-            this.pictureBox1.Location = new System.Drawing.Point(71, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(70, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(40, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3768,6 +3784,7 @@
             this.Size = new System.Drawing.Size(1407, 801);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Panel_Top_Option.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Setting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).EndInit();
@@ -3877,5 +3894,6 @@
         private System.Windows.Forms.Label label9;
         private DownloadViewer Panel_Search_Download;
         private DownloadViewer Panel_Download_List;
+        private System.Windows.Forms.PictureBox Btn_Setting;
     }
 }

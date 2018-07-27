@@ -10,19 +10,20 @@ using System.Windows.Forms;
 
 namespace HioViw
 {
-    public partial class ViewerPage : UserControl
+    public partial class OptionPage : UserControl
     {
         public event Change Change;
 
-        private void OnChange()
+        private void OnChange(int page)
         {
-            Change?.Invoke(false);
+            Change?.Invoke(page);
         }
 
-        public ViewerPage()
+        public OptionPage()
         {
             InitializeComponent();
         }
+
 
         private void Panel_Paint(object sender, PaintEventArgs e)
         {
@@ -38,8 +39,27 @@ namespace HioViw
 
         private void Btn_Download_Click(object sender, EventArgs e)
         {
-            OnChange();
+            OnChange(0);
+        }
+
+        private void Btn_Viewer_Click(object sender, EventArgs e)
+        {
+            OnChange(1);
+        }
+
+        bool ch = false;
+        private void Btn_Menu_Click(object sender, EventArgs e)
+        {
+            if (ch)
+            {
+
+                ch = !ch;
+            }
+            else
+            {
+
+                ch = !ch;
+            }
         }
     }
-    
 }

@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.Panel_Top_Option = new System.Windows.Forms.Panel();
+            this.Btn_Setting = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Btn_Download = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Panel_Top_Option.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Setting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Download)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).BeginInit();
@@ -42,22 +44,36 @@
             // 
             // Panel_Top_Option
             // 
+            this.Panel_Top_Option.Controls.Add(this.Btn_Setting);
             this.Panel_Top_Option.Controls.Add(this.pictureBox2);
             this.Panel_Top_Option.Controls.Add(this.Btn_Download);
             this.Panel_Top_Option.Controls.Add(this.Btn_Menu);
             this.Panel_Top_Option.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel_Top_Option.Location = new System.Drawing.Point(3, 3);
             this.Panel_Top_Option.Name = "Panel_Top_Option";
-            this.Panel_Top_Option.Size = new System.Drawing.Size(813, 46);
+            this.Panel_Top_Option.Size = new System.Drawing.Size(1014, 46);
             this.Panel_Top_Option.TabIndex = 2;
             this.Panel_Top_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            // 
+            // Btn_Setting
+            // 
+            this.Btn_Setting.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Setting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Setting.Image = global::HioViw.Properties.Resources.settings_cogwheel_button;
+            this.Btn_Setting.Location = new System.Drawing.Point(170, 8);
+            this.Btn_Setting.Name = "Btn_Setting";
+            this.Btn_Setting.Size = new System.Drawing.Size(40, 30);
+            this.Btn_Setting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Btn_Setting.TabIndex = 3;
+            this.Btn_Setting.TabStop = false;
+            this.Btn_Setting.Click += new System.EventHandler(this.Btn_Setting_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::HioViw.Properties.Resources.image;
-            this.pictureBox2.Location = new System.Drawing.Point(124, 8);
+            this.pictureBox2.Location = new System.Drawing.Point(120, 8);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(40, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -69,7 +85,7 @@
             this.Btn_Download.BackColor = System.Drawing.Color.Transparent;
             this.Btn_Download.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Download.Image = global::HioViw.Properties.Resources.download_button;
-            this.Btn_Download.Location = new System.Drawing.Point(71, 8);
+            this.Btn_Download.Location = new System.Drawing.Point(70, 8);
             this.Btn_Download.Name = "Btn_Download";
             this.Btn_Download.Size = new System.Drawing.Size(40, 30);
             this.Btn_Download.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -94,16 +110,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 49);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(164, 421);
+            this.panel1.Size = new System.Drawing.Size(150, 602);
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(167, 49);
+            this.panel2.Location = new System.Drawing.Point(153, 49);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(649, 421);
+            this.panel2.Size = new System.Drawing.Size(864, 602);
             this.panel2.TabIndex = 4;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
@@ -117,8 +133,10 @@
             this.Controls.Add(this.Panel_Top_Option);
             this.Name = "ViewerPage";
             this.Padding = new System.Windows.Forms.Padding(3);
-            this.Size = new System.Drawing.Size(819, 473);
+            this.Size = new System.Drawing.Size(1020, 654);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Panel_Top_Option.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_Setting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Download)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).EndInit();
@@ -134,5 +152,6 @@
         private System.Windows.Forms.PictureBox Btn_Menu;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox Btn_Setting;
     }
 }

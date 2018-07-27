@@ -26,18 +26,32 @@ namespace HioViw
         private void HioView_Form_Resize(object sender, System.EventArgs e)
         {
         }
-        
-        private void Page_Change(bool IsDownloadPage)
+       
+        //
+        // 0 : downloadPage
+        // 1 : viewPage
+        // 2 : optionPage
+        //
+        //
+        private void Page_Change(int page)
         {
-            if (IsDownloadPage)
-            {
-                downloadPage.Visible = false;
-                viewerPage.Visible = true;
-            }
-            else
+            if (page == 0)
             {
                 downloadPage.Visible = true;
                 viewerPage.Visible = false;
+                optionPage.Visible = false; 
+            }
+            else if (page == 1)
+            {
+                downloadPage.Visible = false;
+                viewerPage.Visible = true;
+                optionPage.Visible = false;
+            }
+            else
+            {
+                downloadPage.Visible = false;
+                viewerPage.Visible = false;
+                optionPage.Visible = true;
             }
         }
 

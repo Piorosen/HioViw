@@ -14,15 +14,15 @@ using System.Threading;
 
 namespace HioViw
 {
-    public delegate void Change(bool IsDownloadPage);
+    public delegate void Change(int page);
 
     public partial class DownloadPage : UserControl
     {
         public event Change Change;
 
-        private void OnChange()
+        private void OnChange(int page)
         {
-            Change?.Invoke(true);
+            Change?.Invoke(page);
         }
 
 
@@ -86,8 +86,8 @@ namespace HioViw
                 CharacterList.Add(sr.ReadLine());
             }
             sr.Close();
-            #endregion
 
+            #endregion
 
             Panel_Download_List.Text_Select_Page.KeyDown += LText_Select_Page_KeyDown;
             Panel_Search_Download.Text_Select_Page.KeyDown += DText_Select_Page_KeyDown;
@@ -96,7 +96,7 @@ namespace HioViw
             se.Find += Se_Find;
             bgw.WorkerSupportsCancellation = true;
         }
-
+        
         private List<Gallerie> DownloadLists = new List<Gallerie>();
 
         private void Pre_Download(object sender, Gallerie e, float Percentage)
@@ -424,42 +424,44 @@ namespace HioViw
         private void LText_Select_Page_KeyDown(object sender, KeyEventArgs e)
         {
             bool state = true;
+            int i = 0;
             if (e.Control && e.KeyCode == Keys.Left && state)
-                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out i))
                 {
                     Panel_Download_List.Text_Select_Page.Text = (i - 5).ToString();
                     state = !state;
                 }
             if (e.Control && e.KeyCode == Keys.Right && state)
-                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out i))
                 {
                     Panel_Download_List.Text_Select_Page.Text = (i + 5).ToString();
                     state = !state;
                 }
             if (e.Shift && e.KeyCode == Keys.Left && state)
-                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out i))
                 {
                     Panel_Download_List.Text_Select_Page.Text = (i - 10).ToString();
                     state = !state;
                 }
             if (e.Shift && e.KeyCode == Keys.Right && state)
-                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out i))
                 {
                     Panel_Download_List.Text_Select_Page.Text = (i + 10).ToString();
                     state = !state;
                 }
             if (e.KeyCode == Keys.Left && state)
-                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out i))
                 {
                     Panel_Download_List.Text_Select_Page.Text = (i - 1).ToString();
                     state = !state;
                 }
             if (e.KeyCode == Keys.Right && state)
-                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out int i))
+                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out i))
                 {
                     Panel_Download_List.Text_Select_Page.Text = (i + 1).ToString();
                     state = !state;
                 }
+
 
             if (e.KeyCode == Keys.Enter || !state)
             {
@@ -472,9 +474,9 @@ namespace HioViw
                     }
 
                     Int_Preview_List = 0;
-                    for (int i = DownloadLists.Count - 1; i >= DownloadLogs.Count * (num - 1); i--)
+                    for (int w = DownloadLists.Count - 1; w >= DownloadLogs.Count * (num - 1); w--)
                     {
-                        Preview_AddReverse(DownloadLists[i]);
+                        Preview_AddReverse(DownloadLists[w]);
                     }
                 }
             }
@@ -729,8 +731,12 @@ namespace HioViw
 
         private void Btn_Viewer_Click(object sender, EventArgs e)
         {
-            OnChange();
+            OnChange(1);
         }
 
+        private void Btn_Setting_Click(object sender, EventArgs e)
+        {
+            OnChange(2);
+        }
     }
 }
