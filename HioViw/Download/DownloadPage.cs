@@ -66,21 +66,21 @@ namespace HioViw
             Menu_Button.Add(Btn_Option);
 
             #region Read DB
-            StreamReader sr = new StreamReader("Hitomi_DB\\_Tags.txt");
+            StreamReader sr = new StreamReader(Global.DBPath + Global.DBTags + Global.DBExt);
             while (!sr.EndOfStream)
             {
                 TagsList.Add(sr.ReadLine());
             }
             sr.Close();
 
-            sr = new StreamReader("Hitomi_DB\\_Series.txt");
+            sr = new StreamReader(Global.DBPath + Global.DBSeries + Global.DBExt);
             while (!sr.EndOfStream)
             {
                 SeriesList.Add(sr.ReadLine());
             }
             sr.Close();
 
-            sr = new StreamReader("Hitomi_DB\\_Character.txt");
+            sr = new StreamReader(Global.DBPath + Global.DBCharcter + Global.DBExt);
             while (!sr.EndOfStream)
             {
                 CharacterList.Add(sr.ReadLine());

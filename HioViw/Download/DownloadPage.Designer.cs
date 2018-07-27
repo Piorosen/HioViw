@@ -202,7 +202,7 @@
             this.Btn_Preview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
             this.Btn_Preview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Preview.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_Preview.Location = new System.Drawing.Point(1, 0);
+            this.Btn_Preview.Location = new System.Drawing.Point(1, 1);
             this.Btn_Preview.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Preview.Name = "Btn_Preview";
             this.Btn_Preview.Size = new System.Drawing.Size(148, 55);
@@ -221,7 +221,7 @@
             this.Btn_Option.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
             this.Btn_Option.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Option.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_Option.Location = new System.Drawing.Point(1, 55);
+            this.Btn_Option.Location = new System.Drawing.Point(1, 56);
             this.Btn_Option.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Option.Name = "Btn_Option";
             this.Btn_Option.Size = new System.Drawing.Size(148, 55);

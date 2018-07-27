@@ -75,7 +75,6 @@ namespace HioViw
         }
 
         public static bool Stop = false;
-
         public void Find_Start(SearchData search, Panel Bar, bool IsOld = false)
         {
             if (!IsOld)
@@ -88,9 +87,9 @@ namespace HioViw
                     int we = 0;
                     try
                     {
-                        using (StreamReader sr = new StreamReader("Hitomi_DB\\text" + i + ".txt"))
+                        using (StreamReader sr = new StreamReader(Global.DBPath + Global.DBName + i.ToString() + Global.DBExt))
                         {
-                           
+
                             JArray list = JArray.Parse(sr.ReadToEnd());
                             we = 1;
                             // 검색한 자료만큼 반복을 합니다.
@@ -247,7 +246,7 @@ namespace HioViw
                                         {
                                             break;
                                         }
-                                       
+
                                     }
                                     we = 5;
 

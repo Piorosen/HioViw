@@ -38,7 +38,7 @@ namespace HioViw
         public void GetThumbnail(Gallerie g)
         {
             gallerie = g;
-            FileInfo fi = new FileInfo("Download\\Thumbnail\\" + g.ID + ".jpg");
+            FileInfo fi = new FileInfo(Global.Thumbnail + g.ID + ".jpg");
             if (fi.Exists)
             {
                 Pic_Image.Image = Image.FromFile(fi.FullName);
@@ -61,7 +61,7 @@ namespace HioViw
 
                         try
                         {
-                            wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, "Download\\Thumbnail\\" + ID + ".jpg");
+                            wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, Global.Thumbnail + ID + ".jpg");
                             if (gallerie.ID == ID)
                             {
                                 Pic_Image?.Invoke(new MethodInvoker(() =>

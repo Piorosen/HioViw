@@ -35,6 +35,9 @@
             this.Btn_Viewer = new System.Windows.Forms.PictureBox();
             this.Btn_Download = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
+            this.Btn_Preview = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Panel_Option.SuspendLayout();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).BeginInit();
@@ -53,6 +56,8 @@
             // 
             // Panel_Option
             // 
+            this.Panel_Option.Controls.Add(this.button1);
+            this.Panel_Option.Controls.Add(this.Btn_Preview);
             this.Panel_Option.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_Option.Location = new System.Drawing.Point(3, 49);
             this.Panel_Option.Name = "Panel_Option";
@@ -124,6 +129,40 @@
             this.Btn_Menu.TabStop = false;
             this.Btn_Menu.Click += new System.EventHandler(this.Btn_Menu_Click);
             // 
+            // Btn_Preview
+            // 
+            this.Btn_Preview.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Preview.FlatAppearance.BorderSize = 0;
+            this.Btn_Preview.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Preview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Preview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Preview.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Preview.Location = new System.Drawing.Point(1, 1);
+            this.Btn_Preview.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Preview.Name = "Btn_Preview";
+            this.Btn_Preview.Size = new System.Drawing.Size(148, 55);
+            this.Btn_Preview.TabIndex = 10;
+            this.Btn_Preview.Tag = false;
+            this.Btn_Preview.Text = "업데이트";
+            this.Btn_Preview.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.LightGray;
+            this.button1.Location = new System.Drawing.Point(1, 56);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(148, 55);
+            this.button1.TabIndex = 11;
+            this.button1.Tag = false;
+            this.button1.Text = "경로 설정";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // OptionPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -136,6 +175,7 @@
             this.Padding = new System.Windows.Forms.Padding(3);
             this.Size = new System.Drawing.Size(806, 495);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            this.Panel_Option.ResumeLayout(false);
             this.Panel_Top_Option.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).EndInit();
@@ -154,5 +194,7 @@
         private System.Windows.Forms.PictureBox Btn_Menu;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox Btn_Viewer;
+        private System.Windows.Forms.Button Btn_Preview;
+        private System.Windows.Forms.Button button1;
     }
 }

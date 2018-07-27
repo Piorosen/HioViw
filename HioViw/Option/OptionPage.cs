@@ -47,17 +47,23 @@ namespace HioViw
             OnChange(1);
         }
 
-        bool ch = false;
+        bool ch = true;
         private void Btn_Menu_Click(object sender, EventArgs e)
         {
             if (ch)
             {
+                Panel_Option.Size = new Size(0, Panel_Option.Size.Height);
 
+                Panel_Setting.Size = new Size(Panel_Setting.Width + 150, Panel_Setting.Height);
+                Panel_Setting.Location = new Point(Panel_Setting.Location.X - 150, Panel_Setting.Location.Y);
                 ch = !ch;
             }
             else
             {
+                Panel_Option.Size = new Size(150, Panel_Option.Size.Height);
 
+                Panel_Setting.Size = new Size(Panel_Setting.Width - 150, Panel_Setting.Height);
+                Panel_Setting.Location = new Point(Panel_Setting.Location.X + 150, Panel_Setting.Location.Y);
                 ch = !ch;
             }
         }

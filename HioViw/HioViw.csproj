@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="Gallerie.cs" />
     <Compile Include="Download\HioDownloader.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="Option\OptionPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +90,12 @@
     </Compile>
     <Compile Include="Download\Preview.Designer.cs">
       <DependentUpon>Preview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Option\Option_Update.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Option\Option_Update.Designer.cs">
+      <DependentUpon>Option_Update.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Download\Preview.resx">
       <DependentUpon>Preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Option\Option_Update.resx">
+      <DependentUpon>Option_Update.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
