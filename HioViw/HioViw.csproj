@@ -79,7 +79,6 @@
     <Compile Include="Gallerie.cs" />
     <Compile Include="Download\HioDownloader.cs" />
     <Compile Include="Global.cs" />
-    <Compile Include="Option\DBDownloader.cs" />
     <Compile Include="Option\OptionPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,12 +107,6 @@
     </Compile>
     <Compile Include="Viewer\ViewerPage.Designer.cs">
       <DependentUpon>ViewerPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Viewer\ViewInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Viewer\ViewInfo.Designer.cs">
-      <DependentUpon>ViewInfo.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Download\DownloadLog.resx">
       <DependentUpon>DownloadLog.cs</DependentUpon>
@@ -148,9 +141,6 @@
     </Compile>
     <EmbeddedResource Include="Viewer\ViewerPage.resx">
       <DependentUpon>ViewerPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Viewer\ViewInfo.resx">
-      <DependentUpon>ViewInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

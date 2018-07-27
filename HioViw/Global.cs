@@ -9,17 +9,16 @@ namespace HioViw
 {
     public static class Global
     {
-        public static string DBPath = Application.StartupPath + "\\Hitomi_DB\\";
-        public readonly static string DBName = "DB_";
+        public readonly static string DBPath = Application.StartupPath + "\\Hitomi_DB\\";
+        public readonly static string DBName = "DB";
         public readonly static string DBArtist = "_Artist";
         public readonly static string DBCharcter = "_Character";
         public readonly static string DBSeries = "_Series";
         public readonly static string DBTags = "_Tags";
-        public readonly static string DBExt = ".db";
+        public readonly static string DBExt = ".txt";
         public static string DownloadPath = Application.StartupPath + "\\Download\\";
-        public static string Thumbnail = DownloadPath + "Thumbnail\\";
+        public static string Thumbnail = DownloadPath + "Thubnail\\";
 
-        public static string ThumbnailExt = ".tumbimage";
 
     }
 }

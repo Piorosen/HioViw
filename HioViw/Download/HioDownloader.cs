@@ -30,13 +30,7 @@ namespace HioViw
 
         public void Download(string Download_Path = "Download\\")
         {
-            DirectoryInfo di = new DirectoryInfo(Download_Path);
-       
-            if (!di.Exists)
-            {
-                di.Create();
-            }
-            di = new DirectoryInfo(Download_Path + g.ID + "\\");
+            DirectoryInfo di = new DirectoryInfo(Download_Path + g.ID + "\\");
             if (!di.Exists)
             {
                 di.Create();

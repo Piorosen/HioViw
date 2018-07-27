@@ -67,11 +67,5 @@ namespace HioViw
                 ch = !ch;
             }
         }
-
-        private void Panel_Setting_Resize(object sender, EventArgs e)
-        {
-            Panel_Update.Size = Panel_Setting.Size;
-            Panel_Update.Location = new Point(Panel_Setting.Location.X - 153, 0);
-        }
     }
 }

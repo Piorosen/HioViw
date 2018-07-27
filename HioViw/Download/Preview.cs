@@ -37,14 +37,8 @@ namespace HioViw
 
         public void GetThumbnail(Gallerie g)
         {
-            DirectoryInfo di = new DirectoryInfo(Global.Thumbnail);
-            if (!di.Exists)
-            {
-                di.Create();
-            }
-
             gallerie = g;
-            FileInfo fi = new FileInfo(Global.Thumbnail + g.ID + Global.ThumbnailExt);
+            FileInfo fi = new FileInfo(Global.Thumbnail + g.ID + ".jpg");
             if (fi.Exists)
             {
                 Pic_Image.Image = Image.FromFile(fi.FullName);
@@ -62,10 +56,12 @@ namespace HioViw
                         string Images = gallerie.ThumnailImage;
                         string str = wc.DownloadString(Images);
                         string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
+
                         
+
                         try
                         {
-                            wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, Global.Thumbnail + ID + Global.ThumbnailExt);
+                            wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, Global.Thumbnail + ID + ".jpg");
                             if (gallerie.ID == ID)
                             {
                                 Pic_Image?.Invoke(new MethodInvoker(() =>
@@ -130,7 +126,7 @@ namespace HioViw
                 {
                     HioDownloader hio = new HioDownloader(gallerie);
                     hio.Downloads += Hio_Downloads;
-                    hio.Download(Global.DownloadPath);
+                    hio.Download();
                     OnDownload(gallerie, 0);
                 }
             }));
