@@ -66,26 +66,52 @@ namespace HioViw
             Menu_Button.Add(Btn_Option);
 
             #region Read DB
-            StreamReader sr = new StreamReader(Global.DBPath + Global.DBTags + Global.DBExt);
-            while (!sr.EndOfStream)
+            Thread tagsDB = new Thread(new ThreadStart(() =>
             {
-                TagsList.Add(sr.ReadLine());
-            }
-            sr.Close();
+                FileInfo fis = new FileInfo(Global.DBPath + Global.DBTags + Global.DBExt);
+                if (!fis.Exists)
+                {
+                    DBDownloader.InfoDownload("tags");
+                }
+                StreamReader sr = new StreamReader(Global.DBPath + Global.DBTags + Global.DBExt);
+                while (!sr.EndOfStream)
+                {
+                    TagsList.Add(sr.ReadLine());
+                }
+                sr.Close();
+            }));
+            Thread seriesDB = new Thread(new ThreadStart(() =>
+            {
+                FileInfo fi = new FileInfo(Global.DBPath + Global.DBSeries + Global.DBExt);
+                if (!fi.Exists)
+                {
+                    DBDownloader.InfoDownload("series");
+                }
+                StreamReader sr = new StreamReader(Global.DBPath + Global.DBSeries + Global.DBExt);
+                while (!sr.EndOfStream)
+                {
+                    SeriesList.Add(sr.ReadLine());
+                }
+                sr.Close();
+            }));
+            Thread characterDB = new Thread(new ThreadStart(() =>
+            {
+                FileInfo fi = new FileInfo(Global.DBPath + Global.DBCharcter + Global.DBExt);
+                if (!fi.Exists)
+                {
+                    DBDownloader.InfoDownload("characters");
+                }
+                StreamReader sr = new StreamReader(Global.DBPath + Global.DBCharcter + Global.DBExt);
+                while (!sr.EndOfStream)
+                {
+                    CharacterList.Add(sr.ReadLine());
+                }
+                sr.Close();
+            }));
 
-            sr = new StreamReader(Global.DBPath + Global.DBSeries + Global.DBExt);
-            while (!sr.EndOfStream)
-            {
-                SeriesList.Add(sr.ReadLine());
-            }
-            sr.Close();
-
-            sr = new StreamReader(Global.DBPath + Global.DBCharcter + Global.DBExt);
-            while (!sr.EndOfStream)
-            {
-                CharacterList.Add(sr.ReadLine());
-            }
-            sr.Close();
+            tagsDB.Start();
+            seriesDB.Start();
+            characterDB.Start();
 
             #endregion
 
@@ -400,8 +426,7 @@ namespace HioViw
 
             if (e.KeyCode == Keys.Enter || !state)
             {
-                int num = 0;
-                if (int.TryParse(Panel_Search_Download.Text_Select_Page.Text, out num) && SearchResult.Count != 0)
+                if (int.TryParse(Panel_Search_Download.Text_Select_Page.Text, out int num) && SearchResult.Count != 0)
                 {
                     if (num < 1)
                     {

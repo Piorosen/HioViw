@@ -9,39 +9,41 @@ namespace HioViw_TagDownloader
     class Program
     {
         static void Main(string[] args)
-        {
-            string DownloadLink = "https://hitomi.la/allseries-";
+        { 
+        //{
+        //    string DownloadLink = "https://hitomi.la/allseries-";
 
 
-            WebClient wc = new WebClient();
-            string data = wc.DownloadString(DownloadLink + "123.html");
+        //    WebClient wc = new WebClient();
+        //    string data = wc.DownloadString(DownloadLink + "123.html");
 
-            data = Regex.Split(data, "<ul class=\"posts\">")[1];
-            data = Regex.Split(data, "<div class=\"page-content\">")[0];
-            string[] list = Regex.Split(data, "<li><a href=");
+        //    data = Regex.Split(data, "<ul class=\"posts\">")[1];
+        //    data = Regex.Split(data, "<div class=\"page-content\">")[0];
+        //    string[] list = Regex.Split(data, "<li><a href=");
 
-            StreamWriter sw = new StreamWriter("C:\\Map\\Tags.txt", false, Encoding.UTF8);
-            for (int i = 1; i < list.Length; i++)
-            {
-                sw.WriteLine(list[i].Split('>')[1].Split('<')[0]);
-            }
+        //    StreamWriter sw = new StreamWriter("C:\\Map\\Tags.txt", false, Encoding.UTF8);
+        //    for (int i = 1; i < list.Length; i++)
+        //    {
+        //        sw.WriteLine(list[i].Split('>')[1].Split('<')[0]);
+        //    }
             
-            for (int i = 'a'; i <= 'z'; i++)
-            {
-                data = wc.DownloadString(DownloadLink + (char)i +".html");
+        //    for (int i = 'a'; i <= 'z'; i++)
+        //    {
+        //        data = wc.DownloadString(DownloadLink + (char)i +".html");
 
-                data = Regex.Split(data, "<div class=\"content\">")[1];
-                data = Regex.Split(data, "<div class=\"page-content\">")[0];
-                string[] file = Regex.Split(data, "<li><a href=");
+        //        data = Regex.Split(data, "<div class=\"content\">")[1];
+        //        data = Regex.Split(data, "<div class=\"page-content\">")[0];
+        //        string[] file = Regex.Split(data, "<li><a href=");
 
-                for (int w = 1; w < file.Length; w++)
-                {
-                    sw.WriteLine(file[w].Split('>')[1].Split('<')[0]);
-                }
-                Console.WriteLine((char)i);
-            }
+        //        for (int w = 1; w < file.Length; w++)
+        //        {
+        //            sw.WriteLine(file[w].Split('>')[1].Split('<')[0]);
+        //        }
+        //        Console.WriteLine((char)i);
+        //    }
            
-            sw.Close();
+        //    sw.Close();
+
         }
     }
 }

@@ -30,9 +30,6 @@
         private void InitializeComponent()
         {
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.downloadPage = new HioViw.DownloadPage();
-            this.viewerPage = new HioViw.ViewerPage();
-            this.optionPage = new HioViw.OptionPage();
             this.SuspendLayout();
             // 
             // downloadPage
@@ -81,13 +78,12 @@
             this.ResumeLayout(false);
 
         }
-
-
-
+        
         #endregion
-        private OptionPage optionPage;
-        private DownloadPage downloadPage;
-        private ViewerPage viewerPage;
+
+        private OptionPage optionPage = new HioViw.OptionPage();
+        private DownloadPage downloadPage = new HioViw.DownloadPage();
+        private ViewerPage viewerPage = new HioViw.ViewerPage();
     }
 }
 
