@@ -77,6 +77,17 @@ namespace HioViw
         public static bool Stop = false;
         public void Find_Start(SearchData search, Panel Bar, bool IsOld = false)
         {
+            for (int i = 0; i < 20; i++)
+            {
+                FileInfo fi = new FileInfo(Global.DBPath + Global.DBName + i.ToString() + Global.DBExt);
+                if (!fi.Exists)
+                {
+                    DBDownloader.DBDownload();
+                    MessageBox.Show("DB가 아직 다운로드가 다 되지 않았습니다.");
+                    return;
+                }
+            }
+
             if (!IsOld)
             {
                 var result = new List<JToken>();
@@ -306,16 +317,17 @@ namespace HioViw
                             sr.Close();
                             we = 15;
                         }
-                    }catch(Exception e1)
+                    }
+                    catch (Exception e1)
                     {
                         MessageBox.Show(e1.ToString() + "\n\n\n" + we);
 
                     }
-                    
+
                 }
             }
 
         }
-       
+
     }
 }
