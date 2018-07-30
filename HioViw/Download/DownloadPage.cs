@@ -173,9 +173,9 @@ namespace HioViw
             if (DownloadLogs.Count != 0)
                 Panel_Download_List.Label_Select_Page?.Invoke(new MethodInvoker(() =>
                 {
-                    if (Math.Round((double)(DownloadLists.galleries.Count) / DownloadLogs.Count) != int.Parse(Panel_Download_List.Label_Select_Page.Text.Split(' ')[1]))
+                    if (Math.Ceiling((double)(DownloadLists.galleries.Count) / DownloadLogs.Count) != int.Parse(Panel_Download_List.Label_Select_Page.Text.Split(' ')[1]))
                     {
-                        Panel_Download_List.Label_Select_Page.Text = "~ " + Math.Round((double)DownloadLists.galleries.Count / DownloadLogs.Count).ToString();
+                        Panel_Download_List.Label_Select_Page.Text = "~ " + Math.Ceiling((double)DownloadLists.galleries.Count / DownloadLogs.Count).ToString();
                     }
                 }));
         }
@@ -234,6 +234,7 @@ namespace HioViw
                     }
 
                     Int_DownloadLog_List = 0;
+                    DownloadLog_Clear();
                     for (int w = DownloadLogs.Count * (num - 1); w < DownloadLogs.Count * num; w++)
                     {
                         if (w < DownloadLists.galleries.Count)
@@ -244,7 +245,6 @@ namespace HioViw
                 }
             }
         }
-
         private void DText_Select_Page_KeyDown(object sender, KeyEventArgs e)
         {
             bool state = true;
@@ -302,6 +302,7 @@ namespace HioViw
                     }
 
                     Int_Preview_List = 0;
+                    Preview_Clear();
                     for (int i = Previews.Count * (num - 1); i < Previews.Count * num; i++)
                     {
                         if (i < SearchResult.Count)
@@ -321,9 +322,9 @@ namespace HioViw
                 Preview_AddReverse(e);
                 Panel_Search_Download.Label_Select_Page?.Invoke(new MethodInvoker(() =>
                 {
-                    if (Math.Round((double)SearchResult.Count / Previews.Count) != int.Parse(Panel_Search_Download.Label_Select_Page.Text.Split(' ')[1]))
+                    if (Math.Ceiling((double)SearchResult.Count / Previews.Count) != int.Parse(Panel_Search_Download.Label_Select_Page.Text.Split(' ')[1]))
                     {
-                        Panel_Search_Download.Label_Select_Page.Text = "~ " + Math.Round((double)SearchResult.Count / Previews.Count).ToString();
+                        Panel_Search_Download.Label_Select_Page.Text = "~ " + Math.Ceiling((double)SearchResult.Count / Previews.Count).ToString();
                     }
                 }));
 
@@ -433,16 +434,48 @@ namespace HioViw
                     // MessageBox.Show(e123.ToString() + " " + gallerie.ID + " " + gallerie.Title);
                 }
 
-
-
                 for (int i = 0; i < Int_DownloadLog_List; i++)
                 {
                     DownloadLogs[i].Invoke(new MethodInvoker(() => { DownloadLogs[i].Refresh(); }));
                 }
                 Int_DownloadLog_List++;
             }
+
+            
         }
 
+        /// <summary>
+        /// 
+        /// 
+        /// 
+        /// 
+        /// CLear 구현하기.
+        /// 
+        /// 
+        /// 
+        /// </summary>
+        private void Preview_Clear()
+        {
+            foreach (var data in Previews)
+            {
+                data?.Invoke(new MethodInvoker(() =>
+                {
+                    data.Clear();
+                    data.Refresh();
+                }));
+            }
+        }
+        private void DownloadLog_Clear()
+        {
+            foreach (var data in DownloadLogs)
+            {
+                data?.Invoke(new MethodInvoker(() =>
+                {
+                    data.Clear();
+                    data.Refresh();
+                }));
+            }
+        }
 
         private void Panel_Search_Download_Resize(object sender, EventArgs e)
         {
@@ -486,8 +519,8 @@ namespace HioViw
             }
 
             if (SearchResult.Count != 0)
-                if (Math.Round((double)SearchResult.Count / Previews.Count).ToString() != Panel_Search_Download.Label_Select_Page.Text.Split(' ')[1])
-                    Panel_Search_Download.Label_Select_Page.Text = "~ " + Math.Round((double)SearchResult.Count / Previews.Count).ToString();
+                if (Math.Ceiling((double)SearchResult.Count / Previews.Count).ToString() != Panel_Search_Download.Label_Select_Page.Text.Split(' ')[1])
+                    Panel_Search_Download.Label_Select_Page.Text = "~ " + Math.Ceiling((double)SearchResult.Count / Previews.Count).ToString();
 
             DText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
 
@@ -533,8 +566,8 @@ namespace HioViw
             }
 
             if (DownloadLists.galleries.Count != 0)
-                if (Math.Round((double)SearchResult.Count / DownloadLogs.Count).ToString() != Panel_Download_List.Label_Select_Page.Text.Split(' ')[1])
-                    Panel_Search_Download.Label_Select_Page.Text = "~ " + Math.Round((double)DownloadLists.galleries.Count / DownloadLogs.Count).ToString();
+                if (Math.Ceiling((double)SearchResult.Count / DownloadLogs.Count).ToString() != Panel_Download_List.Label_Select_Page.Text.Split(' ')[1])
+                    Panel_Search_Download.Label_Select_Page.Text = "~ " + Math.Ceiling((double)DownloadLists.galleries.Count / DownloadLogs.Count).ToString();
 
             DText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
         }

@@ -53,6 +53,47 @@ namespace HioViw
 
         private void Text_Select_Page_KeyDown(object sender, KeyEventArgs e)
         {
+            bool state = true;
+            {
+                int i = 0;
+                if (e.Control && e.KeyCode == Keys.Left && state)
+                    if (int.TryParse(Text_Select_Page.Text, out i))
+                    {
+                        Text_Select_Page.Text = (i - 5).ToString();
+                        state = !state;
+                    }
+                if (e.Control && e.KeyCode == Keys.Right && state)
+                    if (int.TryParse(Text_Select_Page.Text, out i))
+                    {
+                        Text_Select_Page.Text = (i + 5).ToString();
+                        state = !state;
+                    }
+                if (e.Shift && e.KeyCode == Keys.Left && state)
+                    if (int.TryParse(Text_Select_Page.Text, out i))
+                    {
+                        Text_Select_Page.Text = (i - 10).ToString();
+                        state = !state;
+                    }
+                if (e.Shift && e.KeyCode == Keys.Right && state)
+                    if (int.TryParse(Text_Select_Page.Text, out i))
+                    {
+                        Text_Select_Page.Text = (i + 10).ToString();
+                        state = !state;
+                    }
+                if (e.KeyCode == Keys.Left && state)
+                    if (int.TryParse(Text_Select_Page.Text, out i))
+                    {
+                        Text_Select_Page.Text = (i - 1).ToString();
+                        state = !state;
+                    }
+                if (e.KeyCode == Keys.Right && state)
+                    if (int.TryParse(Text_Select_Page.Text, out i))
+                    {
+                        Text_Select_Page.Text = (i + 1).ToString();
+                        state = !state;
+                    }
+            }
+
             Explorer_Set(e);
         }
         public void Explorer_Set(KeyEventArgs e)
@@ -79,8 +120,8 @@ namespace HioViw
                 }
             }
             if (infos.Count != 0)
-                if (Math.Round((double)infos.Count / viewInfo.Count).ToString() != Label_Select_Page.Text.Split(' ')[1])
-                    Label_Select_Page.Text = "~ " + Math.Round((double)infos.Count / viewInfo.Count).ToString();
+                if (Math.Ceiling((double)infos.Count / viewInfo.Count).ToString() != Label_Select_Page.Text.Split(' ')[1])
+                    Label_Select_Page.Text = "~ " + Math.Ceiling((double)infos.Count / viewInfo.Count).ToString();
 
         }
 
@@ -135,8 +176,8 @@ namespace HioViw
             }
 
             if (infos.Count != 0)
-                if (Math.Round((double)infos.Count / viewInfo.Count).ToString() != Label_Select_Page.Text.Split(' ')[1])
-                    Label_Select_Page.Text = "~ " + Math.Round((double)infos.Count / viewInfo.Count).ToString();
+                if (Math.Ceiling((double)infos.Count / viewInfo.Count).ToString() != Label_Select_Page.Text.Split(' ')[1])
+                    Label_Select_Page.Text = "~ " + Math.Ceiling((double)infos.Count / viewInfo.Count).ToString();
 
             Text_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
 
@@ -144,6 +185,7 @@ namespace HioViw
 
         private void Text_Page_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (int.TryParse(Text_Page.Text, out int result))
             {
                 bool state = false;

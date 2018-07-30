@@ -89,7 +89,6 @@ namespace HioViw
         }
         public void Clear()
         {
-            gallerie = null;
             Label_Character.Text = "Character : ";
             Label_ID.Text = "ID : ";
             Label_Title.Text = "Title : ";
