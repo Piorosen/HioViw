@@ -112,7 +112,7 @@ namespace HioViw
                     DBRun = false;
                 }
                 wc.Dispose();
-                
+                MessageBox.Show("DB 다운로드가 완료되었습니다.");
             }));
             th.Start();
         }

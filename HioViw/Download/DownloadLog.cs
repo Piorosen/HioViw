@@ -44,7 +44,7 @@ namespace HioViw
             Panel_Download.Paint += Panel_Download_Paint;
         }
 
-        private void Panel_Download_Paint(object sender, PaintEventArgs e)
+        public void Panel_Download_Paint(object sender, PaintEventArgs e)
         {
             DrawPercent();
         }
@@ -54,29 +54,33 @@ namespace HioViw
             if (sender is Control)
             {
                 var panel = (sender as Control);
-                var graphic = panel.CreateGraphics();
-                graphic.Clear(this.BackColor);
+                e.Graphics.Clear(this.BackColor);
                 Rectangle r = new Rectangle(0, 0, panel.Size.Width, panel.Size.Height);
-                graphic.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
+                e.Graphics.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
             }
         }
 
         private Thread th;
-        private static List<string> DownloadedID = new List<string>();
 
         public void GetThumbnail(Gallerie g)
         {
+            DirectoryInfo di = new DirectoryInfo(Global.Thumbnail);
+            if (!di.Exists)
+            {
+                di.Create();
+            }
+
             gallerie = g;
-            FileInfo fi = new FileInfo("Download\\Thumbnail\\" + g.ID + ".jpg");
+            FileInfo fi = new FileInfo(Global.Thumbnail + g.ID + Global.ThumbnailExt);
             if (fi.Exists)
             {
                 Pic_Image.Image = Image.FromFile(fi.FullName);
                 return;
             }
 
-            if (DownloadedID.IndexOf(g.ID) == -1)
+            if (Global.DownloadedID.IndexOf(g.ID) == -1)
             {
-                DownloadedID.Add(g.ID);
+                Global.DownloadedID.Add(g.ID);
                 th = new Thread(new ThreadStart(() =>
                 {
                     using (WebClient wc = new WebClient())
@@ -86,11 +90,9 @@ namespace HioViw
                         string str = wc.DownloadString(Images);
                         string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
 
-
-
                         try
                         {
-                            wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, "Download\\Thumbnail\\" + ID + ".jpg");
+                            wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, Global.Thumbnail + ID + Global.ThumbnailExt);
                             if (gallerie.ID == ID)
                             {
                                 Pic_Image?.Invoke(new MethodInvoker(() =>
@@ -108,7 +110,7 @@ namespace HioViw
                         }
 
                     }
-                    DownloadedID.Remove(g.ID);
+                    Global.DownloadedID.Remove(g.ID);
                 }));
 
             }
@@ -119,14 +121,17 @@ namespace HioViw
 
         public void Clear()
         {
-            gallerie = null;
-            Percentage = 0;
-            Label_ID.Text = "ID : ";
-            Label_Title.Text = "Title : ";
-            Label_Language.Text = "Language : ";
-            Label_Type.Text = "Type : ";
-            Label_Series.Text = "Series : ";
-            Pic_Image.Image = null;
+                gallerie = null;
+                Percentage = 0;
+                Label_ID.Text = "ID : ";
+                Label_Title.Text = "Title : ";
+                Label_Language.Text = "Language : ";
+                Label_Type.Text = "Type : ";
+                Label_Series.Text = "Series : ";
+
+                Pic_Image.Image = null;
+
+            
         }
 
     }

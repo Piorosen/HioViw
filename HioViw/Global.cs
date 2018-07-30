@@ -19,7 +19,17 @@ namespace HioViw
         public static string DownloadPath = Application.StartupPath + "\\Download\\";
         public static string Thumbnail = DownloadPath + "Thumbnail\\";
 
+        /// <summary>
+        ///  Thumbnail
+        /// </summary>
+        public static List<string> DownloadedID = new List<string>();
+        /// <summary>
+        /// DownloadImage List
+        /// </summary>
+        public static List<string> CheckDownloadID = new List<string>();
+
         public static string ThumbnailExt = ".tumbimage";
 
+        public readonly static string DownloadDBName = "DL";
     }
 }

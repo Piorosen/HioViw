@@ -43,6 +43,29 @@ namespace HioViw
             }
             else if (page == 1)
             {
+
+                viewerPage.infos.Clear();
+                FileInfo fi = new FileInfo(Global.DownloadPath + Global.DownloadDBName + Global.DBExt);
+                if (fi.Exists)
+                {
+                    using (StreamReader sr = new StreamReader(Global.DownloadPath + Global.DownloadDBName + Global.DBExt))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            var data = sr.ReadLine().Split((char)255);
+                            Gallerie g = new Gallerie();
+                            g.ID = data[0];
+                            g.Type = data[1];
+                            g.Language = data[2];
+                            g.Series = data[3];
+                            g.Title = data[4];
+                            viewerPage.infos.Add(g);
+                        }
+
+                        sr.Close();
+                    }
+                    viewerPage.Explorer_Set(new KeyEventArgs(Keys.Enter));
+                }
                 downloadPage.Visible = false;
                 viewerPage.Visible = true;
                 optionPage.Visible = false;

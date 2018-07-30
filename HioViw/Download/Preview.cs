@@ -19,8 +19,6 @@ namespace HioViw
     {
         public event Download Download;
 
-        private bool bIsDownload = false;
-
         private void OnDownload(Gallerie e, float f)
         {
             Download?.Invoke(this, e, f);
@@ -33,7 +31,6 @@ namespace HioViw
 
         private Gallerie gallerie = null;
         private Thread th;
-        private static List<string> DownloadedID = new List<string>();
 
         public void GetThumbnail(Gallerie g)
         {
@@ -51,9 +48,9 @@ namespace HioViw
                 return;
             }
 
-            if (DownloadedID.IndexOf(g.ID) == -1)
+            if (Global.DownloadedID.IndexOf(g.ID) == -1)
             {
-                DownloadedID.Add(g.ID);
+                Global.DownloadedID.Add(g.ID);
                 th = new Thread(new ThreadStart(() =>
                 {
                     using (WebClient wc = new WebClient())
@@ -83,7 +80,7 @@ namespace HioViw
                         }
 
                     }
-                    DownloadedID.Remove(g.ID);
+                    Global.DownloadedID.Remove(g.ID);
                 }));
 
             }
@@ -124,18 +121,23 @@ namespace HioViw
             }
             
             Clipboard.SetText(gallerie.ID + " " + gallerie.Title);
-            Thread th = new Thread(new ThreadStart(() =>
+            
+            if (Global.CheckDownloadID.IndexOf(gallerie.ID) == -1)
             {
-                if (!bIsDownload)
+                Global.CheckDownloadID.Add(gallerie.ID);
+                Thread th = new Thread(new ThreadStart(() =>
                 {
+                    OnDownload(gallerie, 0);
                     HioDownloader hio = new HioDownloader(gallerie);
                     hio.Downloads += Hio_Downloads;
                     hio.Download(Global.DownloadPath);
-                    OnDownload(gallerie, 0);
-                }
-            }));
+                    Global.CheckDownloadID.Remove(gallerie.ID);
+                }));
+                th.Start();
+            }
+           
 
-            th.Start();
+            
         }
 
         private void Hio_Downloads(object sender, Gallerie e, float Percentage)
