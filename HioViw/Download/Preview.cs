@@ -44,7 +44,7 @@ namespace HioViw
             InitializeComponent();
         }
 
-        private Gallerie gallerie = null;
+        public Gallerie gallerie = null;
         private Thread th;
 
         public void GetThumbnail(Gallerie g)
@@ -127,7 +127,7 @@ namespace HioViw
             }
         }
 
-        private void This_DoubleClick(object sender, EventArgs e)
+        public void This_DoubleClick(object sender, EventArgs e)
         {
             if (gallerie == null)
             {

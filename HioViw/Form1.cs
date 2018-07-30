@@ -64,7 +64,7 @@ namespace HioViw
 
                         sr.Close();
                     }
-                    viewerPage.Explorer_Set(new KeyEventArgs(Keys.Enter));
+                    viewerPage.Explorer_Set(new KeyEventArgs(Keys.Enter), true);
                 }
                 downloadPage.Visible = false;
                 viewerPage.Visible = true;

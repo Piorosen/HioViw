@@ -35,6 +35,7 @@
             this.Btn_Download = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
             this.Panel_Viewer = new System.Windows.Forms.Panel();
+            this.Pic_Viewer = new System.Windows.Forms.PictureBox();
             this.Panel_Explorer = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Label_Select_Page = new System.Windows.Forms.Label();
@@ -45,16 +46,15 @@
             this.Label_Page = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Text_Page = new System.Windows.Forms.TextBox();
-            this.Pic_Viewer = new System.Windows.Forms.PictureBox();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Setting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Download)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).BeginInit();
             this.Panel_Viewer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Viewer)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Viewer)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Top_Option
@@ -131,6 +131,20 @@
             this.Panel_Viewer.Size = new System.Drawing.Size(765, 516);
             this.Panel_Viewer.TabIndex = 4;
             this.Panel_Viewer.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            // 
+            // Pic_Viewer
+            // 
+            this.Pic_Viewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Pic_Viewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Pic_Viewer.Location = new System.Drawing.Point(6, 6);
+            this.Pic_Viewer.Name = "Pic_Viewer";
+            this.Pic_Viewer.Size = new System.Drawing.Size(754, 504);
+            this.Pic_Viewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Viewer.TabIndex = 0;
+            this.Pic_Viewer.TabStop = false;
+            this.Pic_Viewer.Click += new System.EventHandler(this.Pic_Viewer_Click);
             // 
             // Panel_Explorer
             // 
@@ -250,19 +264,6 @@
             this.Text_Page.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Text_Page.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Text_Page_KeyDown);
             // 
-            // Pic_Viewer
-            // 
-            this.Pic_Viewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Pic_Viewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Pic_Viewer.Location = new System.Drawing.Point(6, 6);
-            this.Pic_Viewer.Name = "Pic_Viewer";
-            this.Pic_Viewer.Size = new System.Drawing.Size(754, 504);
-            this.Pic_Viewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pic_Viewer.TabIndex = 0;
-            this.Pic_Viewer.TabStop = false;
-            // 
             // ViewerPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -283,11 +284,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Download)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).EndInit();
             this.Panel_Viewer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Viewer)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Viewer)).EndInit();
             this.ResumeLayout(false);
 
         }

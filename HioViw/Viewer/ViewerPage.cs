@@ -94,12 +94,18 @@ namespace HioViw
                     }
             }
 
-            Explorer_Set(e);
+            Explorer_Set(e, state);
         }
-        public void Explorer_Set(KeyEventArgs e)
+        public void Explorer_Set(KeyEventArgs e, bool state)
         {
-            if (e.KeyCode == Keys.Enter && int.TryParse(Text_Select_Page.Text, out int result))
+            int result = 0;
+            bool dw = int.TryParse(Text_Select_Page.Text, out result);
+            if ((e.KeyCode == Keys.Enter && dw) || !state)
             {
+                if (result < 1)
+                {
+                    result = 1;
+                }
                 for (int i = (result -1) * viewInfo.Count, w = 0; i < result * viewInfo.Count; i++, w++)
                 {
                     if (i < infos.Count && w < viewInfo.Count)
@@ -224,6 +230,11 @@ namespace HioViw
             
 
 
+        }
+
+        private void Pic_Viewer_Click(object sender, EventArgs e)
+        {
+            Text_Page_KeyDown(null, new KeyEventArgs(Keys.Right));
         }
     }
     

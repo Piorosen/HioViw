@@ -394,7 +394,7 @@ namespace HioViw
 
 
 
-                for (int i = 0; i < Int_Preview_List; i++)
+                for (int i = 0; i < Previews.Count; i++)
                 {
                     Previews[i].Invoke(new MethodInvoker(() => { Previews[i].Refresh(); }));
                 }
@@ -498,7 +498,7 @@ namespace HioViw
                     // MessageBox.Show(e123.ToString() + " " + gallerie.ID + " " + gallerie.Title);
                 }
 
-                for (int i = 0; i < Int_DownloadLog_List; i++)
+                for (int i = 0; i < Previews.Count; i++)
                 {
                     DownloadLogs[i].Invoke(new MethodInvoker(() => { DownloadLogs[i].Refresh(); }));
                 }
@@ -892,6 +892,32 @@ namespace HioViw
         private void Btn_Setting_Click(object sender, EventArgs e)
         {
             OnChange(2);
+        }
+
+        private void Btn_DownloadStart_Click(object sender, EventArgs e)
+        {
+            Int_DownloadLog_List = 0;
+            if (int.TryParse(Text_StartRange.Text, out int start) && int.TryParse(Text_EndRange.Text, out int end))
+            {
+                if (start < 1)
+                {
+                    start = 1;
+                }if (end > int.Parse(Panel_Search_Download.Label_Select_Page.Text.Split(' ')[1]))
+                {
+                    end = int.Parse(Panel_Search_Download.Label_Select_Page.Text.Split(' ')[1]);
+                }
+
+                for (int i = (start - 1) * Previews.Count; i < end * Previews.Count; i++)
+                {
+                    Preview p = new Preview();
+                    p.Clear();
+                    p.gallerie = SearchResult[i];
+                    p.Download += Pre_Download;
+                    p.This_DoubleClick(null, null);
+                }
+
+            }
+            
         }
     }
 
