@@ -48,6 +48,8 @@
             this.Label_Title.Size = new System.Drawing.Size(41, 12);
             this.Label_Title.TabIndex = 12;
             this.Label_Title.Text = "Title : ";
+            this.Label_Title.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Title.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Label_ID
             // 
@@ -59,6 +61,8 @@
             this.Label_ID.Size = new System.Drawing.Size(28, 12);
             this.Label_ID.TabIndex = 11;
             this.Label_ID.Text = "ID : ";
+            this.Label_ID.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_ID.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Pic_Image
             // 
@@ -71,6 +75,8 @@
             this.Pic_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Image.TabIndex = 10;
             this.Pic_Image.TabStop = false;
+            this.Pic_Image.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Pic_Image.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Label_Language
             // 
@@ -83,6 +89,8 @@
             this.Label_Language.Size = new System.Drawing.Size(73, 12);
             this.Label_Language.TabIndex = 15;
             this.Label_Language.Text = "Language : ";
+            this.Label_Language.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Language.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Panel_Download
             // 
@@ -105,6 +113,8 @@
             this.Label_Type.Size = new System.Drawing.Size(46, 12);
             this.Label_Type.TabIndex = 16;
             this.Label_Type.Text = "Type : ";
+            this.Label_Type.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Type.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Label_Series
             // 
@@ -116,6 +126,8 @@
             this.Label_Series.Size = new System.Drawing.Size(53, 12);
             this.Label_Series.TabIndex = 15;
             this.Label_Series.Text = "Series : ";
+            this.Label_Series.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Series.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // DownloadLog
             // 

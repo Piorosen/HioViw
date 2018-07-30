@@ -16,6 +16,11 @@ namespace HioViw
         [STAThread]
         static void Main()
         {
+            if (!new CheckProgram().CheckVersion())
+            {
+                return;
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new HioView_Form());

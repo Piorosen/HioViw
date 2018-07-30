@@ -157,7 +157,6 @@ namespace HioViw
                     DownloadLog_AddReverse(e, Percentage);
                     DownloadLists.Remove(e);
                     StreamWriter sw = new StreamWriter(Global.DownloadPath + Global.DownloadDBName + Global.DBExt, true, Encoding.UTF8);
-
                     sw.WriteLine(e.ID + (char)255 + e.Type + (char)255 + e.Language + (char)255 + e.Series + (char)255 + e.Title);
                     sw.Close();
                 }));
@@ -381,7 +380,10 @@ namespace HioViw
                             Previews[Int_Preview_List].Label_Character.Text += gallerie.Character[i] + ", ";
                         if (gallerie.Character.Count != 0)
                             Previews[Int_Preview_List].Label_Character.Text += gallerie.Character[gallerie.Character.Count - 1];
-                        
+
+                        Previews[Int_Preview_List].DetailHover += Preview_DetailHover;
+                        Previews[Int_Preview_List].DetailLeave += Preview_DetailLeave;
+
                         Previews[Int_Preview_List].GetThumbnail(gallerie);
                     }));
                 }
@@ -398,6 +400,65 @@ namespace HioViw
                 }
                 Int_Preview_List++;
             }
+        }
+
+        private void Preview_DetailLeave()
+        {
+            Panel_Detail.Visible = false;
+        }
+
+        private void Preview_DetailHover(string data)
+        {
+            Panel_Detail.Visible = true;
+            var position = PointToClient(MousePosition);
+            position.Y += Panel_Detail.Size.Height;
+            
+
+
+            if (position.X > Panel_Download_List.Size.Width)
+            {
+                position.X -= Panel_Detail.Size.Width;
+                position.X -= 1;
+            }
+            else
+            {
+                position.X += 1;
+            }
+            if (position.Y > Panel_Download_List.Size.Height)
+            {
+                position.Y -= Panel_Detail.Size.Height * 2;
+                position.Y -= 1;
+            }
+            else
+            {
+                position.Y -= Panel_Detail.Size.Height;
+                position.Y += 1;
+            }
+            Panel_Detail.Location = position;
+
+            if (data.Split(' ')[0] == "pic")
+            {
+                Pic_Detail.Visible = true;
+                Text_Detail.Visible = false;
+                if (new FileInfo(Global.Thumbnail + data.Split(' ')[1] + Global.ThumbnailExt).Exists)
+                {
+                    Pic_Detail.Image = Image.FromFile(Global.Thumbnail + data.Split(' ')[1] + Global.ThumbnailExt);
+                }
+            }
+            else
+            {
+                Pic_Detail.Visible = false;
+                Text_Detail.Visible = true;
+
+                var list = Regex.Split(data, " : ")[1];
+                var lists = Regex.Split(list, ", ");
+                Text_Detail.Text = "";
+                foreach (var d in lists)
+                {
+                    Text_Detail.Text += d + "\r\n";
+                }
+            }
+
         }
 
         int Int_DownloadLog_List = 0;
@@ -419,15 +480,18 @@ namespace HioViw
                     DownloadLogs[Int_DownloadLog_List].Invoke(new MethodInvoker(() =>
                     {
                         DownloadLogs[Int_DownloadLog_List].Clear();
+                        DownloadLogs[Int_DownloadLog_List].Percentage = percentage;
                         DownloadLogs[Int_DownloadLog_List].Label_ID.Text += gallerie.ID;
                         DownloadLogs[Int_DownloadLog_List].Label_Title.Text += gallerie.Title;
                         DownloadLogs[Int_DownloadLog_List].Label_Series.Text += gallerie.Series;
                         DownloadLogs[Int_DownloadLog_List].Label_Type.Text += gallerie.Type;
                         DownloadLogs[Int_DownloadLog_List].Label_Language.Text += gallerie.Language;
-
+                        
                         DownloadLogs[Int_DownloadLog_List].GetThumbnail(gallerie);
-                        DownloadLogs[Int_DownloadLog_List].DrawPercent();
                     }));
+                    DownloadLogs[Int_DownloadLog_List].DetailHover += Preview_DetailHover;
+                    DownloadLogs[Int_DownloadLog_List].DetailLeave += Preview_DetailLeave;
+
                 }
                 catch (Exception)
                 {

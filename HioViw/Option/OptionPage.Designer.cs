@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.Panel_Setting = new System.Windows.Forms.Panel();
+            this.Panel_Update = new HioViw.Option.Option_Update();
             this.Panel_Option = new System.Windows.Forms.Panel();
-            this.Panel_Top_Option = new System.Windows.Forms.Panel();
             this.Btn_Preview = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Panel_Top_Option = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_Viewer = new System.Windows.Forms.PictureBox();
             this.Btn_Download = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
-            this.Panel_Update = new HioViw.Option.Option_Update();
             this.Panel_Setting.SuspendLayout();
             this.Panel_Option.SuspendLayout();
             this.Panel_Top_Option.SuspendLayout();
@@ -58,9 +57,17 @@
             this.Panel_Setting.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Panel_Setting.Resize += new System.EventHandler(this.Panel_Setting_Resize);
             // 
+            // Panel_Update
+            // 
+            this.Panel_Update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Panel_Update.Location = new System.Drawing.Point(0, 0);
+            this.Panel_Update.Margin = new System.Windows.Forms.Padding(0);
+            this.Panel_Update.Name = "Panel_Update";
+            this.Panel_Update.Size = new System.Drawing.Size(627, 415);
+            this.Panel_Update.TabIndex = 0;
+            // 
             // Panel_Option
             // 
-            this.Panel_Option.Controls.Add(this.button1);
             this.Panel_Option.Controls.Add(this.Btn_Preview);
             this.Panel_Option.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_Option.Location = new System.Drawing.Point(3, 49);
@@ -68,19 +75,6 @@
             this.Panel_Option.Size = new System.Drawing.Size(150, 443);
             this.Panel_Option.TabIndex = 6;
             this.Panel_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
-            // 
-            // Panel_Top_Option
-            // 
-            this.Panel_Top_Option.Controls.Add(this.pictureBox1);
-            this.Panel_Top_Option.Controls.Add(this.Btn_Viewer);
-            this.Panel_Top_Option.Controls.Add(this.Btn_Download);
-            this.Panel_Top_Option.Controls.Add(this.Btn_Menu);
-            this.Panel_Top_Option.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel_Top_Option.Location = new System.Drawing.Point(3, 3);
-            this.Panel_Top_Option.Name = "Panel_Top_Option";
-            this.Panel_Top_Option.Size = new System.Drawing.Size(800, 46);
-            this.Panel_Top_Option.TabIndex = 5;
-            this.Panel_Top_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Btn_Preview
             // 
@@ -99,22 +93,18 @@
             this.Btn_Preview.Text = "업데이트";
             this.Btn_Preview.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // Panel_Top_Option
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.LightGray;
-            this.button1.Location = new System.Drawing.Point(1, 56);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 55);
-            this.button1.TabIndex = 11;
-            this.button1.Tag = false;
-            this.button1.Text = "경로 설정";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Panel_Top_Option.Controls.Add(this.pictureBox1);
+            this.Panel_Top_Option.Controls.Add(this.Btn_Viewer);
+            this.Panel_Top_Option.Controls.Add(this.Btn_Download);
+            this.Panel_Top_Option.Controls.Add(this.Btn_Menu);
+            this.Panel_Top_Option.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Panel_Top_Option.Location = new System.Drawing.Point(3, 3);
+            this.Panel_Top_Option.Name = "Panel_Top_Option";
+            this.Panel_Top_Option.Size = new System.Drawing.Size(800, 46);
+            this.Panel_Top_Option.TabIndex = 5;
+            this.Panel_Top_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // pictureBox1
             // 
@@ -167,15 +157,6 @@
             this.Btn_Menu.TabStop = false;
             this.Btn_Menu.Click += new System.EventHandler(this.Btn_Menu_Click);
             // 
-            // Panel_Update
-            // 
-            this.Panel_Update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.Panel_Update.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Update.Margin = new System.Windows.Forms.Padding(0);
-            this.Panel_Update.Name = "Panel_Update";
-            this.Panel_Update.Size = new System.Drawing.Size(395, 321);
-            this.Panel_Update.TabIndex = 0;
-            // 
             // OptionPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -209,7 +190,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox Btn_Viewer;
         private System.Windows.Forms.Button Btn_Preview;
-        private System.Windows.Forms.Button button1;
         private Option.Option_Update Panel_Update;
     }
 }

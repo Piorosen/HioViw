@@ -14,10 +14,23 @@ using System.Text.RegularExpressions;
 
 namespace HioViw
 {
-    public partial class DownloadLog : UserControl
-    {
+        public partial class DownloadLog : UserControl
+        {
+        public event DetailHover DetailHover;
+        public event DetailLeave DetailLeave;
+
+        private void OnDetailHover(string data)
+        {
+            DetailHover?.Invoke(data);
+        }
+        private void OnDetailLeave()
+        {
+            DetailLeave?.Invoke();
+        }
+
         public Gallerie gallerie = null;
-        public float Percentage {
+        public float Percentage
+        {
             get
             {
                 return percent;
@@ -32,9 +45,16 @@ namespace HioViw
 
         public void DrawPercent()
         {
-            using (var graphic = Panel_Download.CreateGraphics())
+            try
             {
-                graphic.DrawLine(new Pen(Color.Aqua, Panel_Download.Height), 0, Panel_Download.Height / 2, Panel_Download.Width * percent, Panel_Download.Height / 2);
+                using (var graphic = Panel_Download.CreateGraphics())
+                {
+                    graphic.DrawLine(new Pen(Color.Aqua, Panel_Download.Height), 0, Panel_Download.Height / 2, Panel_Download.Width * percent, Panel_Download.Height / 2);
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -134,5 +154,27 @@ namespace HioViw
             
         }
 
+        private void Detail_Hover(object sender, EventArgs e)
+        {
+            if (sender == null || gallerie == null)
+            {
+                return;
+            }
+
+            if (sender is Label)
+            {
+                DetailHover((sender as Label).Text);
+            }
+            else
+            {
+                DetailHover("pic " + gallerie.ID);
+            }
+
+        }
+
+        private void Detail_Leave(object sender, EventArgs e)
+        {
+            OnDetailLeave();
+        }
     }
 }

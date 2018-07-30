@@ -14,9 +14,24 @@ using System.Text.RegularExpressions;
 
 namespace HioViw
 {
+    public delegate void DetailHover(string data);
     public delegate void Download(object sender, Gallerie e, float Percentage);
+    public delegate void DetailLeave();
+
     public partial class Preview : UserControl
     {
+        public event DetailHover DetailHover;
+        public event DetailLeave DetailLeave;
+
+        private void OnDetailHover(string data)
+        {
+            DetailHover?.Invoke(data);
+        }
+        private void OnDetailLeave()
+        {
+            DetailLeave?.Invoke();
+        }
+
         public event Download Download;
 
         private void OnDownload(Gallerie e, float f)
@@ -142,6 +157,29 @@ namespace HioViw
         private void Hio_Downloads(object sender, Gallerie e, float Percentage)
         {
             OnDownload(e, Percentage);
+        }
+
+        private void Detail_Hover(object sender, EventArgs e)
+        {
+            if (sender == null || gallerie == null || gallerie.ID == null)
+            {
+                return;
+            }
+
+            if (sender is Label)
+            {
+                DetailHover((sender as Label).Text);
+            }
+            else
+            {
+                DetailHover("pic " + gallerie.ID);
+            }
+            
+        }
+
+        private void Detail_Leave(object sender, EventArgs e)
+        {
+            OnDetailLeave();
         }
     }
 }

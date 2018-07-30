@@ -51,6 +51,8 @@
             this.Label_Language.TabIndex = 15;
             this.Label_Language.Text = "Language : ";
             this.Label_Language.DoubleClick += new System.EventHandler(this.This_DoubleClick);
+            this.Label_Language.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Language.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Label_Type
             // 
@@ -63,6 +65,8 @@
             this.Label_Type.TabIndex = 14;
             this.Label_Type.Text = "Type : ";
             this.Label_Type.DoubleClick += new System.EventHandler(this.This_DoubleClick);
+            this.Label_Type.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Type.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Label_Series
             // 
@@ -75,6 +79,8 @@
             this.Label_Series.TabIndex = 13;
             this.Label_Series.Text = "Series : ";
             this.Label_Series.DoubleClick += new System.EventHandler(this.This_DoubleClick);
+            this.Label_Series.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Series.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Label_Title
             // 
@@ -87,6 +93,8 @@
             this.Label_Title.TabIndex = 12;
             this.Label_Title.Text = "Title : ";
             this.Label_Title.DoubleClick += new System.EventHandler(this.This_DoubleClick);
+            this.Label_Title.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Title.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Label_ID
             // 
@@ -99,6 +107,8 @@
             this.Label_ID.TabIndex = 11;
             this.Label_ID.Text = "ID : ";
             this.Label_ID.DoubleClick += new System.EventHandler(this.This_DoubleClick);
+            this.Label_ID.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_ID.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Pic_Image
             // 
@@ -112,6 +122,8 @@
             this.Pic_Image.TabIndex = 10;
             this.Pic_Image.TabStop = false;
             this.Pic_Image.DoubleClick += new System.EventHandler(this.This_DoubleClick);
+            this.Pic_Image.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Pic_Image.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Label_Tags
             // 
@@ -125,6 +137,8 @@
             this.Label_Tags.TabIndex = 17;
             this.Label_Tags.Text = "Tags : ";
             this.Label_Tags.DoubleClick += new System.EventHandler(this.This_DoubleClick);
+            this.Label_Tags.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Tags.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Label_Character
             // 
@@ -138,6 +152,8 @@
             this.Label_Character.TabIndex = 18;
             this.Label_Character.Text = "Character : ";
             this.Label_Character.DoubleClick += new System.EventHandler(this.This_DoubleClick);
+            this.Label_Character.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Character.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Label_Group
             // 
@@ -151,6 +167,8 @@
             this.Label_Group.TabIndex = 19;
             this.Label_Group.Text = "Group : ";
             this.Label_Group.DoubleClick += new System.EventHandler(this.This_DoubleClick);
+            this.Label_Group.MouseLeave += new System.EventHandler(this.Detail_Leave);
+            this.Label_Group.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
             // Preview
             // 

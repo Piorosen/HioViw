@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckProgram.cs" />
     <Compile Include="Download\DownloadLog.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -28,7 +28,7 @@ namespace HioViw
         /// </summary>
         public static List<string> CheckDownloadID = new List<string>();
 
-        public static string ThumbnailExt = ".tumbimage";
+        public static string ThumbnailExt = ".tmp";
 
         public readonly static string DownloadDBName = "DL";
     }
