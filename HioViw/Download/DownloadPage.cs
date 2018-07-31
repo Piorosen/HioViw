@@ -690,7 +690,16 @@ namespace HioViw
             Panel_Search.Location = new Point(0, Btn_Option.Location.Y + 55);
             Btn_Color(sender as Control);
             if (Panel_Download_List.Visible != true)
+            {
                 Panel_Search.Visible = !Panel_Search.Visible;
+                Panel_Search_Character.Visible = false;
+                Panel_Search_Language.Visible = false;
+                Panel_Search_Range.Visible = false;
+                Panel_Search_Series.Visible = false;
+                Panel_Search_Tags.Visible = false;
+                Panel_Search_Type.Visible = false;
+                Panel_Search_Title.Visible = false;
+            }
             Panel_Search_Download.Visible = true;
             Panel_Download_List.Visible = false;
 
