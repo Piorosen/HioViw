@@ -442,7 +442,13 @@ namespace HioViw
                 Text_Detail.Visible = false;
                 if (new FileInfo(Global.Thumbnail + data.Split(' ')[1] + Global.ThumbnailExt).Exists)
                 {
-                    Pic_Detail.Image = Image.FromFile(Global.Thumbnail + data.Split(' ')[1] + Global.ThumbnailExt);
+                    try
+                    {
+                        Pic_Detail.Image = Image.FromFile(Global.Thumbnail + data.Split(' ')[1] + Global.ThumbnailExt);
+                    }catch (Exception)
+                    {
+                        MessageBox.Show("썸네일 이미지 다운로드 중 입니다.");
+                    }
                 }
             }
             else
@@ -907,6 +913,12 @@ namespace HioViw
                     end = int.Parse(Panel_Search_Download.Label_Select_Page.Text.Split(' ')[1]);
                 }
 
+                if (SearchResult.Count == 0)
+                {
+                    MessageBox.Show("검색을 하신뒤에 다운로드를 실행 시켜주세요.");
+
+                    return;
+                }
                 for (int i = (start - 1) * Previews.Count; i < end * Previews.Count; i++)
                 {
                     Preview p = new Preview();
