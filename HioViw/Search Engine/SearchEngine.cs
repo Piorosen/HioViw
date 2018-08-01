@@ -75,7 +75,7 @@ namespace HioViw
         }
 
         public static bool Stop = false;
-        public void Find_Start(SearchData search, Panel Bar, bool IsOld = false)
+        public void Find_Start(SearchData search, Panel Bar, Control text, bool IsOld = false)
         {
             for (int i = 0; i < 20; i++)
             {
@@ -98,6 +98,9 @@ namespace HioViw
                     int we = 0;
                     try
                     {
+                        ///
+                        /// 검색기능
+                        ///
                         using (StreamReader sr = new StreamReader(Global.DBPath + Global.DBName + i.ToString() + Global.DBExt))
                         {
 
@@ -330,7 +333,7 @@ namespace HioViw
 
                 }
             }
-
+            text.Text = "검색";
         }
 
     }

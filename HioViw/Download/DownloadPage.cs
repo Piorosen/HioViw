@@ -360,8 +360,8 @@ namespace HioViw
             {
                 this.Invoke(new MethodInvoker(() => { data.Clear(); }));
             }
-            se.Find_Start(sd, Panel_DownloadBar);
-            Btn_SearchResult.Text = "검색";
+            se.Find_Start(sd, Panel_DownloadBar, Btn_SearchResult);
+            
         }
 
         List<Preview> Previews = new List<Preview>();
@@ -734,8 +734,6 @@ namespace HioViw
 
         private void Btn_SearchResult_Click(object sender, EventArgs e)
         {
-            
-
             Panel_Search_Character.Visible = false;
             Panel_Search_Language.Visible = false;
             Panel_Search_Range.Visible = false;
@@ -769,6 +767,8 @@ namespace HioViw
             {
                 if (MessageBox.Show("지금 현재 실행중입니다. 종료하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    Panel_DownloadBar.Refresh();
+                    Panel_Paint(Panel_DownloadBar, null);
                     Btn_SearchResult.Text = "검색";
                     GC.Collect();
                     SearchEngine.Stop = true;
