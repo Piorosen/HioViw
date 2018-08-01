@@ -159,6 +159,8 @@ namespace HioViw
                     StreamWriter sw = new StreamWriter(Global.DownloadPath + Global.DownloadDBName + Global.DBExt, true, Encoding.UTF8);
                     sw.WriteLine(e.ID + (char)255 + e.Type + (char)255 + e.Language + (char)255 + e.Series + (char)255 + e.Title);
                     sw.Close();
+                    DownloadLog_Clear();
+                    LText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
                 }));
             }
             else
@@ -319,6 +321,7 @@ namespace HioViw
             try
             {
                 Preview_AddReverse(e);
+
                 Panel_Search_Download.Label_Select_Page?.Invoke(new MethodInvoker(() =>
                 {
                     if (Math.Ceiling((double)SearchResult.Count / Previews.Count) != int.Parse(Panel_Search_Download.Label_Select_Page.Text.Split(' ')[1]))
@@ -326,11 +329,14 @@ namespace HioViw
                         Panel_Search_Download.Label_Select_Page.Text = "~ " + Math.Ceiling((double)SearchResult.Count / Previews.Count).ToString();
                     }
                 }));
-
+                ///
+                /// MessageBox.show Preview.Count가 0이라서 생기는 오류 
+                ///
+                ///
             }
-            catch (Exception e1)
+            catch (Exception)
             {
-                MessageBox.Show("Se_Find " + e1.ToString());
+                
             }
         }
 
@@ -344,7 +350,7 @@ namespace HioViw
                 this.Invoke(new MethodInvoker(() => { data.Clear(); }));
             }
             se.Find_Start(sd, Panel_DownloadBar);
-
+            Btn_SearchResult.Text = "검색";
         }
 
         List<Preview> Previews = new List<Preview>();
@@ -752,11 +758,15 @@ namespace HioViw
             {
                 if (MessageBox.Show("지금 현재 실행중입니다. 종료하시겠습니까?", "확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    Btn_SearchResult.Text = "검색";
+                    GC.Collect();
                     SearchEngine.Stop = true;
                 }
             }
             else
             {
+                Btn_SearchResult.Text = "검색 중지";
+                GC.Collect();
                 bgw.RunWorkerAsync();
             }
 
@@ -911,6 +921,7 @@ namespace HioViw
 
         private void Btn_DownloadStart_Click(object sender, EventArgs e)
         {
+
             Int_DownloadLog_List = 0;
             if (int.TryParse(Text_StartRange.Text, out int start) && int.TryParse(Text_EndRange.Text, out int end))
             {
@@ -925,18 +936,24 @@ namespace HioViw
                 if (SearchResult.Count == 0)
                 {
                     MessageBox.Show("검색을 하신뒤에 다운로드를 실행 시켜주세요.");
-
                     return;
                 }
-                for (int i = (start - 1) * Previews.Count; i < end * Previews.Count; i++)
+                try
                 {
-                    Preview p = new Preview();
-                    p.Clear();
-                    p.gallerie = SearchResult[i];
-                    p.Download += Pre_Download;
-                    p.This_DoubleClick(null, null);
+                    for (int i = (start - 1) * Previews.Count; i < end * Previews.Count; i++)
+                    {
+                        Preview p = new Preview();
+                        p.Clear();
+                        p.gallerie = SearchResult[i];
+                        p.Download += Pre_Download;
+                        p.This_DoubleClick(null, null);
+                        DownloadLog_AddReverse(SearchResult[i], 0);
+                    }
+                }catch (Exception e1)
+                {
+                    MessageBox.Show(e1.ToString());
                 }
-
+                
             }
             
         }

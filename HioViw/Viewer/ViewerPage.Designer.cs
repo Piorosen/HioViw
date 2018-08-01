@@ -138,10 +138,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Pic_Viewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Pic_Viewer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Pic_Viewer.Location = new System.Drawing.Point(6, 6);
             this.Pic_Viewer.Name = "Pic_Viewer";
             this.Pic_Viewer.Size = new System.Drawing.Size(754, 504);
-            this.Pic_Viewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Viewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Pic_Viewer.TabIndex = 0;
             this.Pic_Viewer.TabStop = false;
             this.Pic_Viewer.Click += new System.EventHandler(this.Pic_Viewer_Click);

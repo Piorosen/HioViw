@@ -7,6 +7,14 @@ using System.Windows.Forms;
 
 namespace HioViw
 {
+    public class DownloadGallerie
+    {
+        public string ID { get; set; }
+        public string DownloadPage { get; set; }
+        public string TotalPage { get; set; }
+    }
+
+
     public static class Global
     {
         public static string DBPath = Application.StartupPath + "\\Hitomi_DB\\";
@@ -31,5 +39,8 @@ namespace HioViw
         public static string ThumbnailExt = ".tmp";
 
         public readonly static string DownloadDBName = "DL";
+
+
+        public static List<DownloadGallerie> HioDownGalleries = new List<DownloadGallerie>();
     }
 }

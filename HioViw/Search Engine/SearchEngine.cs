@@ -316,6 +316,7 @@ namespace HioViw
 
                             sr.Close();
                             we = 15;
+                            GC.Collect();
                         }
                     }
                     catch (Exception e1)

@@ -41,6 +41,7 @@
             this.Panel_Download_OptionList = new System.Windows.Forms.Panel();
             this.Panel_Search = new System.Windows.Forms.Panel();
             this.Btn_Search_Character = new System.Windows.Forms.Button();
+            this.Btn_Search_Range = new System.Windows.Forms.Button();
             this.Btn_Search_Type = new System.Windows.Forms.Button();
             this.Btn_Search_Tags = new System.Windows.Forms.Button();
             this.Btn_Search_Series = new System.Windows.Forms.Button();
@@ -113,7 +114,6 @@
             this.Panel_Detail = new System.Windows.Forms.Panel();
             this.Pic_Detail = new System.Windows.Forms.PictureBox();
             this.Text_Detail = new System.Windows.Forms.TextBox();
-            this.Btn_Search_Range = new System.Windows.Forms.Button();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Setting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).BeginInit();
@@ -317,6 +317,23 @@
             this.Btn_Search_Character.Text = "캐릭터명";
             this.Btn_Search_Character.UseVisualStyleBackColor = false;
             this.Btn_Search_Character.Click += new System.EventHandler(this.Btn_Search_Character_Click);
+            // 
+            // Btn_Search_Range
+            // 
+            this.Btn_Search_Range.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Search_Range.FlatAppearance.BorderSize = 0;
+            this.Btn_Search_Range.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Search_Range.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Search_Range.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Search_Range.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Search_Range.Location = new System.Drawing.Point(1, 331);
+            this.Btn_Search_Range.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Search_Range.Name = "Btn_Search_Range";
+            this.Btn_Search_Range.Size = new System.Drawing.Size(148, 55);
+            this.Btn_Search_Range.TabIndex = 20;
+            this.Btn_Search_Range.Text = "다운 범위 지정";
+            this.Btn_Search_Range.UseVisualStyleBackColor = false;
+            this.Btn_Search_Range.Click += new System.EventHandler(this.Btn_Search_Range_Click);
             // 
             // Btn_Search_Type
             // 
@@ -771,7 +788,7 @@
             this.Text_EndRange.Name = "Text_EndRange";
             this.Text_EndRange.Size = new System.Drawing.Size(141, 21);
             this.Text_EndRange.TabIndex = 1;
-            this.Text_EndRange.Text = "10";
+            this.Text_EndRange.Text = "1";
             // 
             // Text_StartRange
             // 
@@ -1242,33 +1259,16 @@
             this.Text_Detail.Size = new System.Drawing.Size(208, 194);
             this.Text_Detail.TabIndex = 2;
             // 
-            // Btn_Search_Range
-            // 
-            this.Btn_Search_Range.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.Btn_Search_Range.FlatAppearance.BorderSize = 0;
-            this.Btn_Search_Range.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.Btn_Search_Range.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.Btn_Search_Range.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Search_Range.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_Search_Range.Location = new System.Drawing.Point(1, 331);
-            this.Btn_Search_Range.Margin = new System.Windows.Forms.Padding(0);
-            this.Btn_Search_Range.Name = "Btn_Search_Range";
-            this.Btn_Search_Range.Size = new System.Drawing.Size(148, 55);
-            this.Btn_Search_Range.TabIndex = 20;
-            this.Btn_Search_Range.Text = "범위 지정";
-            this.Btn_Search_Range.UseVisualStyleBackColor = false;
-            this.Btn_Search_Range.Click += new System.EventHandler(this.Btn_Search_Range_Click);
-            // 
             // DownloadPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Controls.Add(this.Panel_Search_Character);
             this.Controls.Add(this.Panel_Detail);
             this.Controls.Add(this.Panel_Download_Stat);
             this.Controls.Add(this.Panel_Download_OptionList);
             this.Controls.Add(this.Panel_Top_Option);
-            this.Controls.Add(this.Panel_Search_Character);
             this.Controls.Add(this.Panel_Search_Range);
             this.Controls.Add(this.Panel_Search_Series);
             this.Controls.Add(this.Panel_Search_Language);
