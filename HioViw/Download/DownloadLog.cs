@@ -176,5 +176,16 @@ namespace HioViw
         {
             OnDetailLeave();
         }
+
+        private void Form_DoubleClick(object sender, EventArgs e)
+        {
+            if (gallerie != null && Global.HioDownGalleries.IsData(gallerie.ID))
+            {
+                if (MessageBox.Show("다운로드를 중지 하시겠습니까?", "중지?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Global.HioDownGalleries.Remove(gallerie.ID);
+                }
+            }
+        }
     }
 }

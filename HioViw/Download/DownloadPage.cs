@@ -161,7 +161,15 @@ namespace HioViw
         /// <param name="Percentage"></param>
         private void Pre_Download(object sender, Gallerie e, float Percentage)
         {
-            if (Percentage >= 1.0f)
+            if (Percentage <= -1.0f)
+            {
+                Panel_Download_List?.Invoke(new MethodInvoker(() =>
+                {
+                    DownloadLists.Remove(e);
+                    LText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
+                }));
+            }
+            else if (Percentage >= 1.0f)
             {
                 Panel_Download_List?.Invoke(new MethodInvoker(() =>
                 {
@@ -170,7 +178,6 @@ namespace HioViw
                     StreamWriter sw = new StreamWriter(Global.DownloadPath + Global.DownloadDBName + Global.DBExt, true, Encoding.UTF8);
                     sw.WriteLine(e.ID + (char)255 + e.Type + (char)255 + e.Language + (char)255 + e.Series + (char)255 + e.Title);
                     sw.Close();
-                    DownloadLog_Clear();
                     LText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
                 }));
             }

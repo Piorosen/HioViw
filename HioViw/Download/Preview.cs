@@ -136,9 +136,11 @@ namespace HioViw
             
             Clipboard.SetText(gallerie.ID + " " + gallerie.Title);
             
+
             if (Global.CheckDownloadID.IndexOf(gallerie.ID) == -1)
             {
                 Global.CheckDownloadID.Add(gallerie.ID);
+                MessageBox.Show("다운로드를 시작합니다.");
                 Thread th = new Thread(new ThreadStart(() =>
                 {
                     OnDownload(gallerie, 0);
@@ -148,6 +150,10 @@ namespace HioViw
                     Global.CheckDownloadID.Remove(gallerie.ID);
                 }));
                 th.Start();
+            }
+            else
+            {
+                MessageBox.Show("이미 다운로드 중입니다.");
             }
            
 

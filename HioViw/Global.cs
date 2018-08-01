@@ -9,9 +9,44 @@ namespace HioViw
 {
     public class DownloadGallerie
     {
-        public string ID { get; set; }
-        public string DownloadPage { get; set; }
-        public string TotalPage { get; set; }
+        public void Add(string mID, int mDownloadPage, int mTotalPage)
+        {
+            int num = ID.IndexOf(mID);
+            if (num == -1)
+            {
+                if (mDownloadPage == 0)
+                {
+                    ID.Add(mID);
+                    DownloadPage.Add(mDownloadPage);
+                    TotalPage.Add(mTotalPage);
+                }
+            }
+            else
+            {
+                DownloadPage[num] = mDownloadPage;
+                TotalPage[num] = mTotalPage;
+            }
+        }
+
+        public void Remove(string mID)
+        {
+            int num = ID.IndexOf(mID);
+            if (num != -1)
+            {
+                ID.RemoveAt(num);
+                DownloadPage.RemoveAt(num);
+                TotalPage.RemoveAt(num);
+            }
+        }
+
+        public bool IsData(string mID)
+        {
+            return ID.IndexOf(mID) == -1 ? false : true;
+        }
+
+        public List<string> ID { get; private set; } = new List<string>();
+        public List<int> DownloadPage { get; private set; } = new List<int>();
+        public List<int> TotalPage { get; private set; } = new List<int>();
     }
 
 
@@ -41,6 +76,6 @@ namespace HioViw
         public readonly static string DownloadDBName = "DL";
 
 
-        public static List<DownloadGallerie> HioDownGalleries = new List<DownloadGallerie>();
+        public static DownloadGallerie HioDownGalleries = new DownloadGallerie();
     }
 }

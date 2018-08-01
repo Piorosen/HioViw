@@ -48,6 +48,7 @@
             this.Label_Title.Size = new System.Drawing.Size(41, 12);
             this.Label_Title.TabIndex = 12;
             this.Label_Title.Text = "Title : ";
+            this.Label_Title.DoubleClick += new System.EventHandler(this.Form_DoubleClick);
             this.Label_Title.MouseLeave += new System.EventHandler(this.Detail_Leave);
             this.Label_Title.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
@@ -61,6 +62,7 @@
             this.Label_ID.Size = new System.Drawing.Size(28, 12);
             this.Label_ID.TabIndex = 11;
             this.Label_ID.Text = "ID : ";
+            this.Label_ID.DoubleClick += new System.EventHandler(this.Form_DoubleClick);
             this.Label_ID.MouseLeave += new System.EventHandler(this.Detail_Leave);
             this.Label_ID.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
@@ -75,6 +77,7 @@
             this.Pic_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Image.TabIndex = 10;
             this.Pic_Image.TabStop = false;
+            this.Pic_Image.DoubleClick += new System.EventHandler(this.Form_DoubleClick);
             this.Pic_Image.MouseLeave += new System.EventHandler(this.Detail_Leave);
             this.Pic_Image.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
@@ -89,6 +92,7 @@
             this.Label_Language.Size = new System.Drawing.Size(73, 12);
             this.Label_Language.TabIndex = 15;
             this.Label_Language.Text = "Language : ";
+            this.Label_Language.DoubleClick += new System.EventHandler(this.Form_DoubleClick);
             this.Label_Language.MouseLeave += new System.EventHandler(this.Detail_Leave);
             this.Label_Language.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
@@ -101,6 +105,7 @@
             this.Panel_Download.Size = new System.Drawing.Size(480, 17);
             this.Panel_Download.TabIndex = 16;
             this.Panel_Download.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            this.Panel_Download.DoubleClick += new System.EventHandler(this.Form_DoubleClick);
             // 
             // Label_Type
             // 
@@ -113,6 +118,7 @@
             this.Label_Type.Size = new System.Drawing.Size(46, 12);
             this.Label_Type.TabIndex = 16;
             this.Label_Type.Text = "Type : ";
+            this.Label_Type.DoubleClick += new System.EventHandler(this.Form_DoubleClick);
             this.Label_Type.MouseLeave += new System.EventHandler(this.Detail_Leave);
             this.Label_Type.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
@@ -126,6 +132,7 @@
             this.Label_Series.Size = new System.Drawing.Size(53, 12);
             this.Label_Series.TabIndex = 15;
             this.Label_Series.Text = "Series : ";
+            this.Label_Series.DoubleClick += new System.EventHandler(this.Form_DoubleClick);
             this.Label_Series.MouseLeave += new System.EventHandler(this.Detail_Leave);
             this.Label_Series.MouseHover += new System.EventHandler(this.Detail_Hover);
             // 
@@ -145,6 +152,7 @@
             this.Name = "DownloadLog";
             this.Size = new System.Drawing.Size(598, 100);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            this.DoubleClick += new System.EventHandler(this.Form_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

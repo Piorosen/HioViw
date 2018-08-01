@@ -25,7 +25,6 @@ namespace HioViw
         public HioDownloader(Gallerie gallerie)
         {
             g = gallerie;
-
         }
 
         public void Download(string Download_Path = "Download\\")
@@ -57,11 +56,18 @@ namespace HioViw
             }
 
             InfoFileWrite(g, page, Download_Path);
+            Global.HioDownGalleries.Add(g.ID, 0, page);
 
             using (WebClient wc = new WebClient())
             {
                 for (int i = 0; i < page; i++)
                 {
+                    if (!Global.HioDownGalleries.IsData(g.ID))
+                    {
+                        OnDownload(g, -5.0f);
+                        return;
+                    }
+
                     try
                     {
                         wc.DownloadFile(new Uri("https://aa.hitomi.la/galleries/" + g.ID + "/" + ext[i]),
@@ -79,12 +85,12 @@ namespace HioViw
                             Console.WriteLine(g.ID.ToString() + "아이디 동인지 다운로드 실..패!");
                         }
                     }
-
+                    Global.HioDownGalleries.Add(g.ID, (i + 1), page);
                     OnDownload(g, (float)(i + 1) / page);
                 }
+                Global.HioDownGalleries.Remove(g.ID);
             }
         }
-
         
 
 
