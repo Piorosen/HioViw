@@ -57,6 +57,17 @@ namespace HioViw
                 SearchPairs[listBox_AddCharacterDelete.Name] = listBox_AddCharacterDelete;
                 SearchPairs[listBox_CharacterAdd.Name] = listBox_CharacterAdd;
                 SearchPairs[listBox_AddCharacterAdd.Name] = listBox_AddCharacterAdd;
+
+
+
+                Dic_Search_List[Btn_Search_Title.Name] = Panel_Search_Title;
+                Dic_Search_List[Btn_Search_Type.Name] = Panel_Search_Type;
+                Dic_Search_List[Btn_Search_Tags.Name] = Panel_Search_Tags;
+                Dic_Search_List[Btn_Search_Series.Name] = Panel_Search_Series;
+                Dic_Search_List[Btn_Search_Range.Name] = Panel_Search_Range;
+                Dic_Search_List[Btn_Search_Language.Name] = Panel_Search_Language;
+                Dic_Search_List[Btn_Search_Character.Name] = Panel_Search_Character;
+
             }
 
             Menu_Button.Add(Btn_Preview);
@@ -774,48 +785,32 @@ namespace HioViw
         #endregion
 
         #region Btn_Search_Click ( Visible != Visible )
-        private void Btn_Search_Title_Click(object sender, EventArgs e)
-        {
-            Panel_Search_Title.Visible = !Panel_Search_Title.Visible;
-            Panel_Search_Title.BringToFront();
-        }
+        Dictionary<string, Panel> Dic_Search_List = new Dictionary<string, Panel>();
 
-        private void Btn_Search_Tags_Click(object sender, EventArgs e)
+        private void Btn_Search_Unvisible(object sender)
         {
-            Panel_Search_Tags.Visible = !Panel_Search_Tags.Visible;
-            
-            Panel_Search_Tags.BringToFront();
-        }
+            bool b = false;
+            if (sender is Control)
+            {
+                var d = Dic_Search_List[(sender as Control).Name];
 
-        private void Btn_Search_Type_Click(object sender, EventArgs e)
-        {
-            Panel_Search_Type.Visible = !Panel_Search_Type.Visible;
-           
-            Panel_Search_Type.BringToFront();
-        }
+                b = !d.Visible;
+                Panel_Search_Title.Visible = false;
+                Panel_Search_Tags.Visible = false;
+                Panel_Search_Type.Visible = false;
+                Panel_Search_Language.Visible = false;
+                Panel_Search_Series.Visible = false;
+                Panel_Search_Character.Visible = false;
+                Panel_Search_Range.Visible = false;
 
-        private void Btn_Search_Language_Click(object sender, EventArgs e)
-        {
-            Panel_Search_Language.Visible = !Panel_Search_Language.Visible;
-            Panel_Search_Language.BringToFront();
+                d.Visible = b;
+                
+                d.BringToFront();
+            }
         }
-
-        private void Btn_Search_Series_Click(object sender, EventArgs e)
+        private void Btn_Search_Visible_Click(object sender, EventArgs e)
         {
-            Panel_Search_Series.Visible = !Panel_Search_Series.Visible;
-            Panel_Search_Series.BringToFront();
-        }
-
-        private void Btn_Search_Character_Click(object sender, EventArgs e)
-        {
-            Panel_Search_Character.Visible = !Panel_Search_Character.Visible;
-            Panel_Search_Series.BringToFront();
-        }
-
-        private void Btn_Search_Range_Click(object sender, EventArgs e)
-        {
-            Panel_Search_Range.Visible = !Panel_Search_Range.Visible;
-            Panel_Search_Range.BringToFront();
+            Btn_Search_Unvisible(sender);
         }
         #endregion
 

@@ -316,7 +316,7 @@
             this.Btn_Search_Character.TabIndex = 21;
             this.Btn_Search_Character.Text = "캐릭터명";
             this.Btn_Search_Character.UseVisualStyleBackColor = false;
-            this.Btn_Search_Character.Click += new System.EventHandler(this.Btn_Search_Character_Click);
+            this.Btn_Search_Character.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
             // 
             // Btn_Search_Range
             // 
@@ -333,7 +333,7 @@
             this.Btn_Search_Range.TabIndex = 20;
             this.Btn_Search_Range.Text = "다운 범위 지정";
             this.Btn_Search_Range.UseVisualStyleBackColor = false;
-            this.Btn_Search_Range.Click += new System.EventHandler(this.Btn_Search_Range_Click);
+            this.Btn_Search_Range.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
             // 
             // Btn_Search_Type
             // 
@@ -350,7 +350,7 @@
             this.Btn_Search_Type.TabIndex = 17;
             this.Btn_Search_Type.Text = "종류";
             this.Btn_Search_Type.UseVisualStyleBackColor = false;
-            this.Btn_Search_Type.Click += new System.EventHandler(this.Btn_Search_Type_Click);
+            this.Btn_Search_Type.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
             // 
             // Btn_Search_Tags
             // 
@@ -367,7 +367,7 @@
             this.Btn_Search_Tags.TabIndex = 16;
             this.Btn_Search_Tags.Text = "태그";
             this.Btn_Search_Tags.UseVisualStyleBackColor = false;
-            this.Btn_Search_Tags.Click += new System.EventHandler(this.Btn_Search_Tags_Click);
+            this.Btn_Search_Tags.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
             // 
             // Btn_Search_Series
             // 
@@ -384,7 +384,7 @@
             this.Btn_Search_Series.TabIndex = 19;
             this.Btn_Search_Series.Text = "시리즈명";
             this.Btn_Search_Series.UseVisualStyleBackColor = false;
-            this.Btn_Search_Series.Click += new System.EventHandler(this.Btn_Search_Series_Click);
+            this.Btn_Search_Series.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
             // 
             // Btn_Search_Language
             // 
@@ -401,7 +401,7 @@
             this.Btn_Search_Language.TabIndex = 18;
             this.Btn_Search_Language.Text = "언어";
             this.Btn_Search_Language.UseVisualStyleBackColor = false;
-            this.Btn_Search_Language.Click += new System.EventHandler(this.Btn_Search_Language_Click);
+            this.Btn_Search_Language.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
             // 
             // Btn_Search_Title
             // 
@@ -416,9 +416,10 @@
             this.Btn_Search_Title.Name = "Btn_Search_Title";
             this.Btn_Search_Title.Size = new System.Drawing.Size(148, 55);
             this.Btn_Search_Title.TabIndex = 15;
+            this.Btn_Search_Title.Tag = "";
             this.Btn_Search_Title.Text = "제목";
             this.Btn_Search_Title.UseVisualStyleBackColor = false;
-            this.Btn_Search_Title.Click += new System.EventHandler(this.Btn_Search_Title_Click);
+            this.Btn_Search_Title.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
             // 
             // Btn_SearchResult
             // 
