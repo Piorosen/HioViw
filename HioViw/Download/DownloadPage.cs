@@ -1001,18 +1001,25 @@ namespace HioViw
                     MessageBox.Show("검색을 하신뒤에 다운로드를 실행 시켜주세요.");
                     return;
                 }
+
+
                 try
                 {
+                    
+                    
+                    
                     for (int i = (start - 1) * Previews.Count; i < end * Previews.Count; i++)
                     {
-                        Preview p = new Preview();
-                        p.Clear();
-                        p.gallerie = SearchResult[i];
-                        p.Download += Pre_Download;
-                        p.This_DoubleClick(null, null);
-                        DownloadLog_AddReverse(SearchResult[i], 0);
-                        DownloadLists.Add(SearchResult[i], 0);
-                        
+                        Thread th = new Thread(new ParameterizedThreadStart((data) => {
+                            var g = (Gallerie)data;
+                            HioDownloader hio = new HioDownloader(g);
+                            hio.Downloads += Pre_Download;
+                            hio.Download(Global.DownloadPath);
+                            DownloadLog_AddReverse(g, 0);
+                            DownloadLists.Add(g, 0);
+
+                        }));
+                        th.Start(SearchResult[i]);
                     }
                 }catch (Exception e1)
                 {
