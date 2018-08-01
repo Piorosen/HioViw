@@ -122,100 +122,6 @@ namespace HioViw
                                     foreach (var content in j)
                                     {
                                         we = 4;
-                                        if (search.Title.Length != 0 && content.Key == "n")
-                                        {
-                                            if (content.Value.ToString().ToLower().IndexOf(search.Title, 0) == -1)
-                                                IsSearch = false;
-                                        }
-                                        else if (search.Language.Count != 0 && content.Key == "l")
-                                        {
-                                            bool chk = false;
-                                            foreach (var lang in search.Language)
-                                            {
-                                                if (lang == content.Value.ToString())
-                                                {
-                                                    chk = true;
-                                                }
-                                            }
-                                            IsSearch = chk;
-                                        }
-                                        else if (search.Type.Count != 0 && content.Key == "type")
-                                        {
-                                            bool chk = false;
-                                            foreach (var Type in search.Type)
-                                            {
-                                                if (Type == content.Value.ToString())
-                                                {
-                                                    chk = true;
-                                                }
-                                            }
-                                            IsSearch = chk;
-                                        }
-                                        else if (search.Character.Count != 0 && content.Key == "c")
-                                        {
-                                            int count = 0;
-                                            bool chk = false;
-
-                                            foreach (var data in search.Character)
-                                            {
-                                                foreach (var contentName in content.Value)
-                                                {
-                                                    chk = false;
-                                                    if (contentName.ToString().ToLower() == data)
-                                                    {
-                                                        count++;
-                                                        chk = true;
-                                                    }
-                                                    if (chk) break;
-                                                }
-                                            }
-                                            if (count != search.Character.Count)
-                                                IsSearch = false;
-                                        }
-                                        else if (search.Series.Count != 0 && content.Key == "p")
-                                        {
-                                            int count = 0;
-                                            bool chk = false;
-
-                                            foreach (var data in search.Series)
-                                            {
-                                                foreach (var contentName in content.Value)
-                                                {
-                                                    chk = false;
-                                                    if (contentName.ToString().ToLower() == data)
-                                                    {
-                                                        count++;
-                                                        chk = true;
-                                                    }
-                                                    if (chk) break;
-                                                }
-                                                if (chk) break;
-                                            }
-                                            if (count == 0)
-                                                IsSearch = false;
-                                        }
-                                        else if (search.Tags.Count != 0 && content.Key == "t")
-                                        {
-                                            int count = 0;
-                                            bool chk = false;
-
-                                            foreach (var data in search.Tags)
-                                            {
-                                                foreach (var contentName in content.Value)
-                                                {
-                                                    chk = false;
-                                                    if (contentName.ToString().ToLower() == data)
-                                                    {
-                                                        count++;
-                                                        chk = true;
-                                                    }
-                                                    if (chk) break;
-                                                }
-                                            }
-                                            if (count != search.Tags.Count)
-                                                IsSearch = false;
-                                        }
-
                                         if (search.Character_Delete.Count != 0 && content.Key == "c")
                                         {
                                             bool chk = true;
@@ -253,6 +159,103 @@ namespace HioViw
                                             IsSearch = chk;
                                         }
 
+                                        if (IsSearch != false)
+                                        {
+                                            if (search.Title.Length != 0 && content.Key == "n")
+                                            {
+                                                if (content.Value.ToString().ToLower().IndexOf(search.Title, 0) == -1)
+                                                    IsSearch = false;
+                                            }
+                                            else if (search.Language.Count != 0 && content.Key == "l")
+                                            {
+                                                bool chk = false;
+                                                foreach (var lang in search.Language)
+                                                {
+                                                    if (lang == content.Value.ToString())
+                                                    {
+                                                        chk = true;
+                                                    }
+                                                }
+                                                IsSearch = chk;
+                                            }
+                                            else if (search.Type.Count != 0 && content.Key == "type")
+                                            {
+                                                bool chk = false;
+                                                foreach (var Type in search.Type)
+                                                {
+                                                    if (Type == content.Value.ToString())
+                                                    {
+                                                        chk = true;
+                                                    }
+                                                }
+                                                IsSearch = chk;
+                                            }
+                                            else if (search.Character.Count != 0 && content.Key == "c")
+                                            {
+                                                int count = 0;
+                                                bool chk = false;
+
+                                                foreach (var data in search.Character)
+                                                {
+                                                    foreach (var contentName in content.Value)
+                                                    {
+                                                        chk = false;
+                                                        if (contentName.ToString().ToLower() == data)
+                                                        {
+                                                            count++;
+                                                            chk = true;
+                                                        }
+                                                        if (chk) break;
+                                                    }
+                                                }
+                                                if (count != search.Character.Count)
+                                                    IsSearch = false;
+                                            }
+                                            else if (search.Series.Count != 0 && content.Key == "p")
+                                            {
+                                                int count = 0;
+                                                bool chk = false;
+
+                                                foreach (var data in search.Series)
+                                                {
+                                                    foreach (var contentName in content.Value)
+                                                    {
+                                                        chk = false;
+                                                        if (contentName.ToString().ToLower() == data)
+                                                        {
+                                                            count++;
+                                                            chk = true;
+                                                        }
+                                                        if (chk) break;
+                                                    }
+                                                    if (chk) break;
+                                                }
+                                                if (count == 0)
+                                                    IsSearch = false;
+                                            }
+                                            else if (search.Tags.Count != 0 && content.Key == "t")
+                                            {
+                                                int count = 0;
+                                                bool chk = false;
+
+                                                foreach (var data in search.Tags)
+                                                {
+                                                    foreach (var contentName in content.Value)
+                                                    {
+                                                        chk = false;
+                                                        if (contentName.ToString().ToLower() == data)
+                                                        {
+                                                            count++;
+                                                            chk = true;
+                                                        }
+                                                        if (chk) break;
+                                                    }
+                                                }
+                                                if (count != search.Tags.Count)
+                                                    IsSearch = false;
+                                            }
+                                        }
+                                        
                                         if (!IsSearch)
                                         {
                                             break;

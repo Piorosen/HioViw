@@ -418,72 +418,7 @@ namespace HioViw
                 Int_Preview_List++;
             }
         }
-
-        private void Preview_DetailLeave()
-        {
-            Panel_Detail.Visible = false;
-        }
-
-        private void Preview_DetailHover(string data)
-        {
-            Panel_Detail.Visible = true;
-            var position = PointToClient(MousePosition);
-            position.Y += Panel_Detail.Size.Height;
-            
-
-
-            if (position.X > Panel_Download_List.Size.Width)
-            {
-                position.X -= Panel_Detail.Size.Width;
-                position.X -= 1;
-            }
-            else
-            {
-                position.X += 1;
-            }
-            if (position.Y > Panel_Download_List.Size.Height)
-            {
-                position.Y -= Panel_Detail.Size.Height * 2;
-                position.Y -= 1;
-            }
-            else
-            {
-                position.Y -= Panel_Detail.Size.Height;
-                position.Y += 1;
-            }
-            Panel_Detail.Location = position;
-
-            if (data.Split(' ')[0] == "pic")
-            {
-                Pic_Detail.Visible = true;
-                Text_Detail.Visible = false;
-                if (new FileInfo(Global.Thumbnail + data.Split(' ')[1] + Global.ThumbnailExt).Exists)
-                {
-                    try
-                    {
-                        Pic_Detail.Image = Image.FromFile(Global.Thumbnail + data.Split(' ')[1] + Global.ThumbnailExt);
-                    }catch (Exception)
-                    {
-                        MessageBox.Show("썸네일 이미지 다운로드 중 입니다.");
-                    }
-                }
-            }
-            else
-            {
-                Pic_Detail.Visible = false;
-                Text_Detail.Visible = true;
-
-                var list = Regex.Split(data, " : ")[1];
-                var lists = Regex.Split(list, ", ");
-                Text_Detail.Text = "";
-                foreach (var d in lists)
-                {
-                    Text_Detail.Text += d + "\r\n";
-                }
-            }
-
-        }
-
+        
         int Int_DownloadLog_List = 0;
         private void DownloadLog_AddReverse(Gallerie gallerie, float percentage)
         {
@@ -529,6 +464,71 @@ namespace HioViw
             }
 
             
+        }
+
+        private void Preview_DetailLeave()
+        {
+            Panel_Detail.Visible = false;
+        }
+        private void Preview_DetailHover(string data)
+        {
+            Panel_Detail.Visible = true;
+            var position = PointToClient(MousePosition);
+            position.Y += Panel_Detail.Size.Height;
+
+
+
+            if (position.X > Panel_Download_List.Size.Width)
+            {
+                position.X -= Panel_Detail.Size.Width;
+                position.X -= 1;
+            }
+            else
+            {
+                position.X += 1;
+            }
+            if (position.Y > Panel_Download_List.Size.Height)
+            {
+                position.Y -= Panel_Detail.Size.Height * 2;
+                position.Y -= 1;
+            }
+            else
+            {
+                position.Y -= Panel_Detail.Size.Height;
+                position.Y += 1;
+            }
+            Panel_Detail.Location = position;
+
+            if (data.Split(' ')[0] == "pic")
+            {
+                Pic_Detail.Visible = true;
+                Text_Detail.Visible = false;
+                if (new FileInfo(Global.Thumbnail + data.Split(' ')[1] + Global.ThumbnailExt).Exists)
+                {
+                    try
+                    {
+                        Pic_Detail.Image = Image.FromFile(Global.Thumbnail + data.Split(' ')[1] + Global.ThumbnailExt);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("썸네일 이미지 다운로드 중 입니다.");
+                    }
+                }
+            }
+            else
+            {
+                Pic_Detail.Visible = false;
+                Text_Detail.Visible = true;
+
+                var list = Regex.Split(data, " : ")[1];
+                var lists = Regex.Split(list, ", ");
+                Text_Detail.Text = "";
+                foreach (var d in lists)
+                {
+                    Text_Detail.Text += d + "\r\n";
+                }
+            }
+
         }
 
         /// <summary>
@@ -813,7 +813,6 @@ namespace HioViw
             Btn_Search_Unvisible(sender);
         }
         #endregion
-
         #region Search Engine
         List<Gallerie> SearchResult = new List<Gallerie>();
         
@@ -874,7 +873,7 @@ namespace HioViw
             
         }
         #endregion
-
+        #region Hid_Menu
         bool ch = false;
         private void Btn_Menu_Click(object sender, EventArgs e)
         {
@@ -903,6 +902,7 @@ namespace HioViw
                 ch = !ch;
             }
         }
+        #endregion
 
         private void Btn_Viewer_Click(object sender, EventArgs e)
         {
@@ -943,6 +943,8 @@ namespace HioViw
                         p.Download += Pre_Download;
                         p.This_DoubleClick(null, null);
                         DownloadLog_AddReverse(SearchResult[i], 0);
+                        DownloadLists.Add(SearchResult[i], 0);
+                        
                     }
                 }catch (Exception e1)
                 {
