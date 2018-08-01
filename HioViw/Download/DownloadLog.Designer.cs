@@ -1,4 +1,7 @@
-﻿namespace HioViw
+﻿using System;
+using System.Windows.Forms;
+
+namespace HioViw
 {
     partial class DownloadLog
     {
@@ -17,7 +20,14 @@
             {
                 components.Dispose();
             }
-            base.Dispose(disposing);
+            try
+            {
+                base.Dispose(disposing);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         #region 구성 요소 디자이너에서 생성한 코드

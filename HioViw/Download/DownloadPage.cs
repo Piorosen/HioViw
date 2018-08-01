@@ -161,23 +161,27 @@ namespace HioViw
 
             for (int i =0; i < Global.HioDownGalleries.ID.Count; i++)
             {
-                var g = Global.HioDownGalleries.Galleries[i];
-                HioDownloader hio = new HioDownloader(g);
-                hio.Downloads += Pre_Download;
+                
 
-                Thread th = new Thread(new ThreadStart(() => {
-                    if (Global.HioDownGalleries.DownloadPage[i] - 1 == -1)
+                Thread th = new Thread(new ParameterizedThreadStart((data) => {
+                    var g = Global.HioDownGalleries.Galleries[(int)data];
+                    HioDownloader hio = new HioDownloader(g);
+                    hio.Downloads += Pre_Download;
+
+                    if (Global.HioDownGalleries.DownloadPage[(int)data] - 1 == -1)
                     {
                         hio.Download(Global.DownloadPath, 0);
                     }
                     else
                     {
-                        hio.Download(Global.DownloadPath, Global.HioDownGalleries.DownloadPage[i] - 1);
+                        hio.Download(Global.DownloadPath, Global.HioDownGalleries.DownloadPage[(int)data] - 1);
                     }
                 }));
-                th.Start();
-                DownloadLog_AddReverse(g, 0);
-                DownloadLists.Add(g, 0);
+                th.Start(i);
+
+                var gs = Global.HioDownGalleries.Galleries[i];
+                DownloadLog_AddReverse(gs, Global.HioDownGalleries.DownloadPage[i] / Global.HioDownGalleries.TotalPage[i]);
+                DownloadLists.Add(gs, Global.HioDownGalleries.DownloadPage[i] / Global.HioDownGalleries.TotalPage[i]);
             }
         }
 
@@ -291,7 +295,7 @@ namespace HioViw
             if (e.KeyCode == Keys.Enter || !state)
             {
 
-                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out int num) && SearchResult.Count != 0)
+                if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out int num) && DownloadLists.galleries.Count != 0)
                 {
                     if (num < 1)
                     {
