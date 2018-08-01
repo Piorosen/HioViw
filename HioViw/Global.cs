@@ -7,16 +7,18 @@ using System.Windows.Forms;
 
 namespace HioViw
 {
+    [Serializable]
     public class DownloadGallerie
     {
-        public void Add(string mID, int mDownloadPage, int mTotalPage)
+        public void Add(Gallerie mID, int mDownloadPage, int mTotalPage)
         {
-            int num = ID.IndexOf(mID);
+            int num = ID.IndexOf(mID.ID);
             if (num == -1)
             {
                 if (mDownloadPage == 0)
                 {
-                    ID.Add(mID);
+                    Galleries.Add(mID);
+                    ID.Add(mID.ID);
                     DownloadPage.Add(mDownloadPage);
                     TotalPage.Add(mTotalPage);
                 }
@@ -33,6 +35,7 @@ namespace HioViw
             int num = ID.IndexOf(mID);
             if (num != -1)
             {
+                Galleries.RemoveAt(num);
                 ID.RemoveAt(num);
                 DownloadPage.RemoveAt(num);
                 TotalPage.RemoveAt(num);
@@ -44,7 +47,9 @@ namespace HioViw
             return ID.IndexOf(mID) == -1 ? false : true;
         }
 
+        public List<Gallerie> Galleries { get; private set; } = new List<Gallerie>();
         public List<string> ID { get; private set; } = new List<string>();
+
         public List<int> DownloadPage { get; private set; } = new List<int>();
         public List<int> TotalPage { get; private set; } = new List<int>();
     }
@@ -75,6 +80,9 @@ namespace HioViw
 
         public readonly static string DownloadDBName = "DL";
 
+        public static bool ProgramExit = false;
+
+        public readonly static string ReDownloadPath = DBPath + "redown" + DBExt;
 
         public static DownloadGallerie HioDownGalleries = new DownloadGallerie();
     }

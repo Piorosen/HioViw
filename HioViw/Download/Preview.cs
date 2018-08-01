@@ -134,9 +134,6 @@ namespace HioViw
                 return;
             }
             
-            Clipboard.SetText(gallerie.ID + " " + gallerie.Title);
-            
-
             if (Global.CheckDownloadID.IndexOf(gallerie.ID) == -1)
             {
                 Global.CheckDownloadID.Add(gallerie.ID);
@@ -146,7 +143,13 @@ namespace HioViw
                     OnDownload(gallerie, 0);
                     HioDownloader hio = new HioDownloader(gallerie);
                     hio.Downloads += Hio_Downloads;
-                    hio.Download(Global.DownloadPath);
+                    int startPage = 0;
+
+                    if (sender is int)
+                    {
+                        startPage = (int)sender != 0 ? (int)sender : 0;
+                    }
+                    hio.Download(Global.DownloadPath, startPage);
                     Global.CheckDownloadID.Remove(gallerie.ID);
                 }));
                 th.Start();

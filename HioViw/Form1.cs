@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace HioViw
 {
@@ -26,7 +27,16 @@ namespace HioViw
         private void HioView_Form_Resize(object sender, System.EventArgs e)
         {
         }
-       
+
+        private void Form_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            BinaryFormatter binFmt = new BinaryFormatter();
+            using (FileStream fs = new FileStream(Global.ReDownloadPath, FileMode.Create))
+            {
+                binFmt.Serialize(fs, Global.HioDownGalleries);
+            }
+            Global.ProgramExit = true;
+        }
         //
         // 0 : downloadPage
         // 1 : viewPage
@@ -53,12 +63,14 @@ namespace HioViw
                         while (!sr.EndOfStream)
                         {
                             var data = sr.ReadLine().Split((char)255);
-                            Gallerie g = new Gallerie();
-                            g.ID = data[0];
-                            g.Type = data[1];
-                            g.Language = data[2];
-                            g.Series = data[3];
-                            g.Title = data[4];
+                            Gallerie g = new Gallerie
+                            {
+                                ID = data[0],
+                                Type = data[1],
+                                Language = data[2],
+                                Series = data[3],
+                                Title = data[4]
+                            };
                             viewerPage.infos.Add(g);
                         }
 

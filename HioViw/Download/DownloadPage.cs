@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Xml;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace HioViw
 {
@@ -74,6 +75,17 @@ namespace HioViw
             Menu_Button.Add(Btn_SearchResult);
             Menu_Button.Add(Btn_Option);
 
+            Panel_Download_List.Text_Select_Page.KeyDown += LText_Select_Page_KeyDown;
+            Panel_Search_Download.Text_Select_Page.KeyDown += DText_Select_Page_KeyDown;
+
+            bgw.DoWork += Bgw_DoWork;
+            se.Find += Se_Find;
+            bgw.WorkerSupportsCancellation = true;
+        }
+
+
+        private void DownloadPage_Load(object sender, EventArgs e)
+        {
             #region Read DB
             for (int i = 0; i < 20; i++)
             {
@@ -88,8 +100,8 @@ namespace HioViw
 
             Thread tagsDB = new Thread(new ThreadStart(() =>
             {
-                FileInfo fis = new FileInfo(Global.DBPath + Global.DBTags + Global.DBExt);
-                if (!fis.Exists)
+                FileInfo fi = new FileInfo(Global.DBPath + Global.DBTags + Global.DBExt);
+                if (!fi.Exists)
                 {
                     DBDownloader.InfoDownload("tags");
                 }
@@ -135,12 +147,38 @@ namespace HioViw
 
             #endregion
 
-            Panel_Download_List.Text_Select_Page.KeyDown += LText_Select_Page_KeyDown;
-            Panel_Search_Download.Text_Select_Page.KeyDown += DText_Select_Page_KeyDown;
+            FileInfo fis = new FileInfo(Global.ReDownloadPath);
+            if (!fis.Exists)
+            {
+                return;
+            }
 
-            bgw.DoWork += Bgw_DoWork;
-            se.Find += Se_Find;
-            bgw.WorkerSupportsCancellation = true;
+            BinaryFormatter binFmt = new BinaryFormatter(); ;
+            using (FileStream rdr = new FileStream(Global.ReDownloadPath, FileMode.Open))
+            {
+                Global.HioDownGalleries = (DownloadGallerie)binFmt.Deserialize(rdr);
+            }
+
+            for (int i =0; i < Global.HioDownGalleries.ID.Count; i++)
+            {
+                var g = Global.HioDownGalleries.Galleries[i];
+                HioDownloader hio = new HioDownloader(g);
+                hio.Downloads += Pre_Download;
+
+                Thread th = new Thread(new ThreadStart(() => {
+                    if (Global.HioDownGalleries.DownloadPage[i] - 1 == -1)
+                    {
+                        hio.Download(Global.DownloadPath, 0);
+                    }
+                    else
+                    {
+                        hio.Download(Global.DownloadPath, Global.HioDownGalleries.DownloadPage[i] - 1);
+                    }
+                }));
+                th.Start();
+                DownloadLog_AddReverse(g, 0);
+                DownloadLists.Add(g, 0);
+            }
         }
 
         private GallerieP DownloadLists = new GallerieP();
@@ -188,15 +226,23 @@ namespace HioViw
                 DownloadLog_AddReverse(e, Percentage);
             }
 
-
-            if (DownloadLogs.Count != 0)
-                Panel_Download_List.Label_Select_Page?.Invoke(new MethodInvoker(() =>
-                {
-                    if (Math.Ceiling((double)(DownloadLists.galleries.Count) / DownloadLogs.Count) != int.Parse(Panel_Download_List.Label_Select_Page.Text.Split(' ')[1]))
+            try
+            {
+                if (DownloadLogs.Count != 0)
+                    Panel_Download_List.Label_Select_Page?.Invoke(new MethodInvoker(() =>
                     {
-                        Panel_Download_List.Label_Select_Page.Text = "~ " + Math.Ceiling((double)DownloadLists.galleries.Count / DownloadLogs.Count).ToString();
-                    }
-                }));
+                        if (Math.Ceiling((double)(DownloadLists.galleries.Count) / DownloadLogs.Count) != int.Parse(Panel_Download_List.Label_Select_Page.Text.Split(' ')[1]))
+                        {
+                            Panel_Download_List.Label_Select_Page.Text = "~ " + Math.Ceiling((double)DownloadLists.galleries.Count / DownloadLogs.Count).ToString();
+                        }
+                    }));
+            }catch (Exception)
+            {
+                ///
+                ///
+                ///
+                ///
+            }
         }
 
         private void LText_Select_Page_KeyDown(object sender, KeyEventArgs e)
@@ -374,6 +420,7 @@ namespace HioViw
         List<Preview> Previews = new List<Preview>();
         List<DownloadLog> DownloadLogs = new List<DownloadLog>();
 
+        #region Download Log & Preview Add
         int Int_Preview_List = 0;
         private void Preview_AddReverse(Gallerie gallerie)
         {
@@ -472,7 +519,9 @@ namespace HioViw
 
             
         }
+        #endregion
 
+        #region Detail
         private void Preview_DetailLeave()
         {
             Panel_Detail.Visible = false;
@@ -537,6 +586,8 @@ namespace HioViw
             }
 
         }
+
+        #endregion
 
         /// <summary>
         /// 
@@ -961,6 +1012,7 @@ namespace HioViw
             }
             
         }
+
     }
 
     class GallerieP

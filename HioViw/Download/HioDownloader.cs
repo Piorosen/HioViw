@@ -27,7 +27,7 @@ namespace HioViw
             g = gallerie;
         }
 
-        public void Download(string Download_Path = "Download\\")
+        public void Download(string Download_Path = "Download\\", int StartPage = 0)
         {
             DirectoryInfo di = new DirectoryInfo(Download_Path);
        
@@ -56,12 +56,17 @@ namespace HioViw
             }
 
             InfoFileWrite(g, page, Download_Path);
-            Global.HioDownGalleries.Add(g.ID, 0, page);
+            Global.HioDownGalleries.Add(g, 0, page);
 
             using (WebClient wc = new WebClient())
             {
-                for (int i = 0; i < page; i++)
+                for (int i = StartPage; i < page; i++)
                 {
+                    if (Global.ProgramExit == true)
+                    {
+                        return;
+                    }
+
                     if (!Global.HioDownGalleries.IsData(g.ID))
                     {
                         OnDownload(g, -5.0f);
@@ -85,7 +90,7 @@ namespace HioViw
                             Console.WriteLine(g.ID.ToString() + "아이디 동인지 다운로드 실..패!");
                         }
                     }
-                    Global.HioDownGalleries.Add(g.ID, (i + 1), page);
+                    Global.HioDownGalleries.Add(g, (i + 1), page);
                     OnDownload(g, (float)(i + 1) / page);
                 }
                 Global.HioDownGalleries.Remove(g.ID);

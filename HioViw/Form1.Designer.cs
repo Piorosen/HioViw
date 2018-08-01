@@ -30,6 +30,9 @@
         private void InitializeComponent()
         {
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
+            optionPage = new HioViw.OptionPage();
+            downloadPage = new HioViw.DownloadPage();
+            viewerPage = new HioViw.ViewerPage();
             this.SuspendLayout();
             // 
             // downloadPage
@@ -49,6 +52,7 @@
             this.viewerPage.TabIndex = 0;
             this.viewerPage.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             this.viewerPage.Change += Page_Change;
+
 
             this.optionPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.optionPage.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -71,6 +75,7 @@
             this.Controls.Add(viewerPage);
             this.Controls.Add(optionPage);
 
+            this.FormClosing += Form_FormClosing;
             this.Resize += HioView_Form_Resize;
             this.ForeColor = System.Drawing.Color.Transparent;
             this.Name = "HioView_Form";
@@ -79,11 +84,12 @@
 
         }
         
+
         #endregion
 
-        private OptionPage optionPage = new HioViw.OptionPage();
-        private DownloadPage downloadPage = new HioViw.DownloadPage();
-        private ViewerPage viewerPage = new HioViw.ViewerPage();
+        private OptionPage optionPage;
+        private DownloadPage downloadPage;
+        private ViewerPage viewerPage;
     }
 }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HioViw
 {
+    [Serializable]
     public class Gallerie
     {
         public string Title { get; set; }

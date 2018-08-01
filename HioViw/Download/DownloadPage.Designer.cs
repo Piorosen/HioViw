@@ -1282,6 +1282,7 @@
             this.Name = "DownloadPage";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.Size = new System.Drawing.Size(1407, 801);
+            this.Load += new System.EventHandler(this.DownloadPage_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Panel_Top_Option.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Setting)).EndInit();
