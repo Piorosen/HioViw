@@ -215,19 +215,25 @@ namespace HioViw
             {
                 Panel_Download_List?.Invoke(new MethodInvoker(() =>
                 {
-                    DownloadLog_AddReverse(e, Percentage);
-                    DownloadLists.Remove(e);
+                    if (Global.ProgramExit != true)
+                    {
+                        DownloadLog_AddReverse(e, Percentage);
+                        DownloadLists.Remove(e);
+                        LText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
+                    }
                     StreamWriter sw = new StreamWriter(Global.DownloadPath + Global.DownloadDBName + Global.DBExt, true, Encoding.UTF8);
                     sw.WriteLine(e.ID + (char)255 + e.Type + (char)255 + e.Language + (char)255 + e.Series + (char)255 + e.Title);
                     sw.Close();
-                    LText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
+                    
                 }));
             }
             else
             {
-                DownloadLists.Add(e, Percentage);
-
-                DownloadLog_AddReverse(e, Percentage);
+                if (Global.ProgramExit != true)
+                {
+                    DownloadLists.Add(e, Percentage);
+                    DownloadLog_AddReverse(e, Percentage);
+                }
             }
 
             try

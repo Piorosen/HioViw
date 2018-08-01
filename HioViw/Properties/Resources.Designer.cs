@@ -61,6 +61,15 @@ namespace HioViw.Properties {
         }
         
         /// <summary>
+        ///   aweffaddf4uiehraf8@G&amp;YUBQF@#Y&amp;F*@#Fyu32f89HJDF(@#!DFiujn34iuqgf7yhafdei8uN@#R*FI@U#&amp;HNEIWfawef34h*F&amp;U#@#F@#FNU*(@#$WI*(ERGUN#$*&amp;T%@$#*R#@J*R&amp;WEruaef과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Auth {
+            get {
+                return ResourceManager.GetString("Auth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
         internal static System.Drawing.Bitmap download_button {
