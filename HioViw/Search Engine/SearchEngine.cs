@@ -67,10 +67,32 @@ namespace HioViw
                     Return = false;
                 }
             }
-            if (!Return)
-            {
 
+            if (Return)
+            {
+                if (search.Character_Delete.Count != 0)
+                {
+                    if (j["c"] == null)
+                    {
+                        Return = false;
+                    }
+                }
+                if (search.Series_Delete.Count != 0)
+                {
+                    if (j["p"] == null)
+                    {
+                        Return = false;
+                    }
+                }
+                if (search.Tags_Delete.Count != 0)
+                {
+                    if (j["t"] == null)
+                    {
+                        Return = false;
+                    }
+                }
             }
+
             return Return;
         }
 

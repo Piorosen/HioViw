@@ -300,7 +300,7 @@ namespace HioViw
 
             if (e.KeyCode == Keys.Enter || !state)
             {
-
+                DownloadLog_Clear();
                 if (int.TryParse(Panel_Download_List.Text_Select_Page.Text, out int num) && DownloadLists.galleries.Count != 0)
                 {
                     if (num < 1)
@@ -309,7 +309,7 @@ namespace HioViw
                     }
 
                     Int_DownloadLog_List = 0;
-                    DownloadLog_Clear();
+                    
                     for (int w = DownloadLogs.Count * (num - 1); w < DownloadLogs.Count * num; w++)
                     {
                         if (w < DownloadLists.galleries.Count)
@@ -391,6 +391,7 @@ namespace HioViw
         private void Se_Find(object sender, Gallerie e)
         {
             SearchResult.Add(e);
+
 
             try
             {
