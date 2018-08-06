@@ -89,8 +89,6 @@ namespace HioViw
             {
                 di.Create();
             }
-
-            gallerie = g;
             FileInfo fi = new FileInfo(Global.Thumbnail + g.ID + Global.ThumbnailExt);
             if (fi.Exists)
             {
@@ -101,19 +99,20 @@ namespace HioViw
             if (Global.DownloadedID.IndexOf(g.ID) == -1)
             {
                 Global.DownloadedID.Add(g.ID);
-                th = new Thread(new ThreadStart(() =>
+                th = new Thread(new ParameterizedThreadStart((Gall) =>
                 {
                     using (WebClient wc = new WebClient())
                     {
-                        string ID = gallerie.ID;
-                        string Images = gallerie.ThumnailImage;
+                        Gallerie date = Gall as Gallerie;
+                        string ID = date.ID;
+                        string Images = date.ThumnailImage;
                         string str = wc.DownloadString(Images);
                         string name = Regex.Split(str, "//tn.hitomi.la/bigtn/")[1].Split('\"')[0];
 
                         try
                         {
                             wc.DownloadFile("https://tn.hitomi.la/bigtn/" + name, Global.Thumbnail + ID + Global.ThumbnailExt);
-                            if (gallerie.ID == ID)
+                            if (g != null && date.ID == g.ID)
                             {
                                 Pic_Image?.Invoke(new MethodInvoker(() =>
                                 {
@@ -135,7 +134,7 @@ namespace HioViw
 
             }
 
-            th.Start();
+            th.Start(g);
         }
 
 

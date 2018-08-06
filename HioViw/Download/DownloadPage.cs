@@ -213,19 +213,29 @@ namespace HioViw
             }
             else if (Percentage >= 1.0f)
             {
-                Panel_Download_List?.Invoke(new MethodInvoker(() =>
+                if (!Global.ProgramExit)
                 {
-                    if (Global.ProgramExit != true)
+                    Panel_Download_List?.Invoke(new MethodInvoker(() =>
                     {
-                        DownloadLog_AddReverse(e, Percentage);
-                        DownloadLists.Remove(e);
-                        LText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
-                    }
+                        if (Global.ProgramExit != true)
+                        {
+                            DownloadLog_AddReverse(e, Percentage);
+                            DownloadLists.Remove(e);
+                            LText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
+                        }
+                        StreamWriter sw = new StreamWriter(Global.DownloadPath + Global.DownloadDBName + Global.DBExt, true, Encoding.UTF8);
+                        sw.WriteLine(e.ID + (char)255 + e.Type + (char)255 + e.Language + (char)255 + e.Series + (char)255 + e.Title);
+                        sw.Close();
+
+                    }));
+                }
+                else
+                {
+                    DownloadLists.Remove(e);
                     StreamWriter sw = new StreamWriter(Global.DownloadPath + Global.DownloadDBName + Global.DBExt, true, Encoding.UTF8);
                     sw.WriteLine(e.ID + (char)255 + e.Type + (char)255 + e.Language + (char)255 + e.Series + (char)255 + e.Title);
                     sw.Close();
-                    
-                }));
+                }
             }
             else
             {
