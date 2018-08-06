@@ -139,7 +139,14 @@ namespace HioViw
             string page = Regex.Split(sr.ReadToEnd(), "Page : ")[1].Split('\n')[0];
             Label_Page.Text = "~ " + page.ToString();
             Text_Page.Text = "1";
-            Pic_Viewer.Image = Image.FromFile(Global.DownloadPath + e.ID + "\\" + Text_Page.Text + ".jpg");
+            try
+            {
+
+                Pic_Viewer.Image = Image.FromFile(Global.DownloadPath + e.ID + "\\" + Text_Page.Text + ".jpg");
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void Panel_Explorer_Resize(object sender, EventArgs e)
@@ -220,8 +227,15 @@ namespace HioViw
                 {
                     if (1 <= result && result <= int.Parse(Label_Page.Text.Split(' ')[1]))
                     {
-                        if (ViewGallerie != null)
-                            Pic_Viewer.Image = Image.FromFile(Global.DownloadPath + ViewGallerie.ID + "\\" + Text_Page.Text + ".jpg");
+                        try
+                        {
+                            if (ViewGallerie != null)
+                                Pic_Viewer.Image = Image.FromFile(Global.DownloadPath + ViewGallerie.ID + "\\" + Text_Page.Text + ".jpg");
+                        }
+                        catch (Exception)
+                        {
+
+                        }
                     }
                 }
 
