@@ -85,5 +85,12 @@ namespace HioViw
         public readonly static string ReDownloadPath = DBPath + "redown" + DBExt;
 
         public static DownloadGallerie HioDownGalleries = new DownloadGallerie();
+
+        public static Panel Panel_DB = new Panel();
+        public static Panel Panel_Tag = new Panel();
+        public static Panel Panel_Series = new Panel();
+        public static Panel Panel_Character = new Panel();
+
+
     }
 }

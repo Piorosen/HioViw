@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.Panel_Setting = new System.Windows.Forms.Panel();
-            this.Panel_Update = new HioViw.Option.Option_Update();
             this.Panel_Option = new System.Windows.Forms.Panel();
             this.Btn_Preview = new System.Windows.Forms.Button();
             this.Panel_Top_Option = new System.Windows.Forms.Panel();
@@ -37,6 +36,7 @@
             this.Btn_Viewer = new System.Windows.Forms.PictureBox();
             this.Btn_Download = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
+            this.Panel_Update = new HioViw.Option.Option_Update();
             this.Panel_Setting.SuspendLayout();
             this.Panel_Option.SuspendLayout();
             this.Panel_Top_Option.SuspendLayout();
@@ -56,15 +56,6 @@
             this.Panel_Setting.TabIndex = 7;
             this.Panel_Setting.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Panel_Setting.Resize += new System.EventHandler(this.Panel_Setting_Resize);
-            // 
-            // Panel_Update
-            // 
-            this.Panel_Update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.Panel_Update.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Update.Margin = new System.Windows.Forms.Padding(0);
-            this.Panel_Update.Name = "Panel_Update";
-            this.Panel_Update.Size = new System.Drawing.Size(627, 415);
-            this.Panel_Update.TabIndex = 0;
             // 
             // Panel_Option
             // 
@@ -156,6 +147,18 @@
             this.Btn_Menu.TabIndex = 0;
             this.Btn_Menu.TabStop = false;
             this.Btn_Menu.Click += new System.EventHandler(this.Btn_Menu_Click);
+            // 
+            // Panel_Update
+            // 
+            this.Panel_Update.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_Update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Panel_Update.Location = new System.Drawing.Point(0, 0);
+            this.Panel_Update.Margin = new System.Windows.Forms.Padding(0);
+            this.Panel_Update.Name = "Panel_Update";
+            this.Panel_Update.Size = new System.Drawing.Size(650, 443);
+            this.Panel_Update.TabIndex = 0;
             // 
             // OptionPage
             // 
