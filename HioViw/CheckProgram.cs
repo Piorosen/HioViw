@@ -25,7 +25,7 @@ namespace HioViw
             }
             else
             {
-                wc.DownloadFile("https://drive.google.com/uc?authuser=0&id=1h8qjWpMOt7aS4XZuDp9dB6047BNTL8Z_&export=download", Application.StartupPath + "\\Hioviw " + str + ".exe");
+                MessageBox.Show("최신버전을 업데이트를 받으십시오.");
                 return false;
             }
         }
