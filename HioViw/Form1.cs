@@ -58,6 +58,8 @@ namespace HioViw
                 FileInfo fi = new FileInfo(Global.DownloadPath + Global.DownloadDBName + Global.DBExt);
                 if (fi.Exists)
                 {
+                    HashSet<Gallerie> list = new HashSet<Gallerie>();
+
                     using (StreamReader sr = new StreamReader(Global.DownloadPath + Global.DownloadDBName + Global.DBExt))
                     {
                         while (!sr.EndOfStream)
@@ -71,9 +73,10 @@ namespace HioViw
                                 Series = data[3],
                                 Title = data[4]
                             };
-                            viewerPage.infos.Add(g);
-                        }
 
+                            list.Add(g);
+                        }
+                        viewerPage.infos.AddRange(list);
                         sr.Close();
                     }
                     viewerPage.Explorer_Set(new KeyEventArgs(Keys.Enter), true);
