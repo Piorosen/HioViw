@@ -108,9 +108,12 @@ namespace HioViw
                 StreamReader sr = new StreamReader(Global.DBPath + Global.DBTags + Global.DBExt);
                 while (!sr.EndOfStream)
                 {
-                    TagsList.Add(sr.ReadLine());
+                    Global.Tags.Add(sr.ReadLine());
                 }
                 sr.Close();
+                listBox_TagAdd.Items.AddRange(SearchListBox.GetListBox(Global.Tags, String.Empty));
+                listBox_TagDelete.Items.AddRange(SearchListBox.GetListBox(Global.Tags, String.Empty));
+
             }));
             Thread seriesDB = new Thread(new ThreadStart(() =>
             {
@@ -122,9 +125,10 @@ namespace HioViw
                 StreamReader sr = new StreamReader(Global.DBPath + Global.DBSeries + Global.DBExt);
                 while (!sr.EndOfStream)
                 {
-                    SeriesList.Add(sr.ReadLine());
+                    Global.Series.Add(sr.ReadLine());
                 }
                 sr.Close();
+                listBox_SeriesAdd.Items.AddRange(SearchListBox.GetListBox(Global.Series, String.Empty));
             }));
             Thread characterDB = new Thread(new ThreadStart(() =>
             {
@@ -136,9 +140,11 @@ namespace HioViw
                 StreamReader sr = new StreamReader(Global.DBPath + Global.DBCharcter + Global.DBExt);
                 while (!sr.EndOfStream)
                 {
-                    CharacterList.Add(sr.ReadLine());
+                    Global.Character.Add(sr.ReadLine());
                 }
                 sr.Close();
+                listBox_CharacterAdd.Items.AddRange(SearchListBox.GetListBox(Global.Character, String.Empty));
+                listBox_CharacterAdd.Items.AddRange(SearchListBox.GetListBox(Global.Character, String.Empty));
             }));
 
             tagsDB.Start();
@@ -900,10 +906,6 @@ namespace HioViw
         SearchEngine se = new SearchEngine();
         SearchData sd = new SearchData();
         BackgroundWorker bgw = new BackgroundWorker();
-
-        List<string> TagsList = new List<string>();
-        List<string> CharacterList = new List<string>();
-        List<string> SeriesList = new List<string>();
         
         Dictionary<string, ListBox> SearchPairs = new Dictionary<string, ListBox>();
         private void Btn_Search_Add(object sender, EventArgs e)
@@ -936,15 +938,15 @@ namespace HioViw
             switch (v.Name.Split('_')[1][0])
             {
                 case 'T':
-                    listbox.Items.AddRange(SearchListBox.GetListBox(TagsList, v.Text));
+                    listbox.Items.AddRange(SearchListBox.GetListBox(Global.Tags, v.Text));
                     break;
 
                 case 'S':
-                    listbox.Items.AddRange(SearchListBox.GetListBox(SeriesList, v.Text));
+                    listbox.Items.AddRange(SearchListBox.GetListBox(Global.Series, v.Text));
                     break;
 
                 case 'C':
-                    listbox.Items.AddRange(SearchListBox.GetListBox(CharacterList, v.Text));
+                    listbox.Items.AddRange(SearchListBox.GetListBox(Global.Character, v.Text));
                     break;
             }
 

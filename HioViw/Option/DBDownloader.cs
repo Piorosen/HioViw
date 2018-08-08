@@ -36,8 +36,7 @@ namespace HioViw
 
 
             int iSize = 'z' - 'a' + 2;
-
-
+            
             string DownloadLink = "https://hitomi.la/all" + info + "-";
 
             WebClient wc = new WebClient();
@@ -48,6 +47,7 @@ namespace HioViw
             string[] list = Regex.Split(data, "<li><a href=");
 
             StreamWriter sw;
+
 
             Panel panel;
             if (info == "tags")
@@ -89,6 +89,15 @@ namespace HioViw
                     }
                     sw.Close();
                 }
+
+                StreamReader sr = new StreamReader(Global.DBPath + Global.DBTags + Global.DBExt, Encoding.UTF8);
+                Global.Tags.Clear();
+                while (!sr.EndOfStream)
+                {
+                    Global.Tags.Add(sr.ReadLine());
+                }
+                sr.Close();
+
                 Tag = false;
             }
             else if (info == "series")
@@ -130,7 +139,15 @@ namespace HioViw
                     sw.Close();
 
                 }
+                StreamReader sr = new StreamReader(Global.DBPath + Global.DBSeries + Global.DBExt, Encoding.UTF8);
+                Global.Series.Clear();
+                while (!sr.EndOfStream)
+                {
+                    Global.Series.Add(sr.ReadLine());
+                }
+                sr.Close();
                 Seires = false;
+
 
             }
             else
@@ -171,9 +188,16 @@ namespace HioViw
                     }
                     sw.Close();
                 }
+                StreamReader sr = new StreamReader(Global.DBPath + Global.DBCharcter + Global.DBExt, Encoding.UTF8);
+                Global.Character.Clear();
+                while (!sr.EndOfStream)
+                {
+                    Global.Character.Add(sr.ReadLine());
+                }
+                sr.Close();
                 Character = false;
             }
-
+            
 
         }
 

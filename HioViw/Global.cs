@@ -92,5 +92,9 @@ namespace HioViw
         public static Panel Panel_Character = new Panel();
 
 
+        public static List<string> Tags = new List<string>();
+        public static List<string> Series = new List<string>();
+        public static List<string> Character = new List<string>();
+
     }
 }
