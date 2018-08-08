@@ -20,6 +20,7 @@ namespace HioViw
         {
             if (!new CheckProgram().CheckVersion())
             {
+                MessageBox.Show("자동업데이트 되었습니다.");
                 return;
             }
 

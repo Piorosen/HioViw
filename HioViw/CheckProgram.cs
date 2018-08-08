@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HioViw
 {
@@ -16,19 +17,17 @@ namespace HioViw
         {
             WebClient wc = new WebClient();
             string str = wc.DownloadString("https://drive.google.com/uc?authuser=0&id=133eR7CUUhL9FkPLKpWrNSCeCi15BJLSt&export=download");
+            string Version = "1.4.6";
 
-            if (str == "0")
+            if (Version == str)
             {
                 return true;
             }
             else
             {
+                wc.DownloadFile("https://drive.google.com/uc?authuser=0&id=1h8qjWpMOt7aS4XZuDp9dB6047BNTL8Z_&export=download", Application.StartupPath + "\\Hioviw " + str + ".exe");
                 return false;
             }
-            
-
-
-
         }
 
     }

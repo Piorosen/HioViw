@@ -46,6 +46,7 @@
             this.optionPage.Name = "optionPage";
             this.optionPage.Padding = new System.Windows.Forms.Padding(3);
             this.optionPage.Size = new System.Drawing.Size(1059, 568);
+            this.optionPage.Change += Page_Change;
             this.optionPage.TabIndex = 0;
             // 
             // downloadPage
@@ -59,6 +60,7 @@
             this.downloadPage.Name = "downloadPage";
             this.downloadPage.Padding = new System.Windows.Forms.Padding(3);
             this.downloadPage.Size = new System.Drawing.Size(1059, 568);
+            this.downloadPage.Change += Page_Change;
             this.downloadPage.TabIndex = 0;
             // 
             // viewerPage
@@ -72,6 +74,7 @@
             this.viewerPage.Name = "viewerPage";
             this.viewerPage.Padding = new System.Windows.Forms.Padding(3);
             this.viewerPage.Size = new System.Drawing.Size(1059, 568);
+            this.viewerPage.Change += Page_Change;
             this.viewerPage.TabIndex = 0;
             // 
             // HioView_Form
