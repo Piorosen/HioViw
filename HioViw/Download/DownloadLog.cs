@@ -84,6 +84,9 @@ namespace HioViw
 
         public void GetThumbnail(Gallerie g)
         {
+
+            gallerie = g;
+
             DirectoryInfo di = new DirectoryInfo(Global.Thumbnail);
             if (!di.Exists)
             {

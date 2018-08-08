@@ -223,12 +223,9 @@ namespace HioViw
                 {
                     Panel_Download_List?.Invoke(new MethodInvoker(() =>
                     {
-                        if (Global.ProgramExit != true)
-                        {
-                            DownloadLog_AddReverse(e, Percentage);
-                            DownloadLists.Remove(e);
-                            LText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
-                        }
+                        DownloadLog_AddReverse(e, Percentage);
+                        DownloadLists.Remove(e);
+                        LText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
                         StreamWriter sw = new StreamWriter(Global.DownloadPath + Global.DownloadDBName + Global.DBExt, true, Encoding.UTF8);
                         sw.WriteLine(e.ID + (char)255 + e.Type + (char)255 + e.Language + (char)255 + e.Series + (char)255 + e.Title);
                         sw.Close();
@@ -463,6 +460,7 @@ namespace HioViw
                     {
                         Previews[Int_Preview_List].Clear();
                         Previews[Int_Preview_List].Label_ID.Text += gallerie.ID;
+
                         Previews[Int_Preview_List].Label_Title.Text += gallerie.Title;
                         Previews[Int_Preview_List].Label_Group.Text += gallerie.Uploader;
                         Previews[Int_Preview_List].Label_Series.Text += gallerie.Series;

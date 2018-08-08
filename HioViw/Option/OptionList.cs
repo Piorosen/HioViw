@@ -15,9 +15,15 @@ namespace HioViw
         public OptionList()
         {
             InitializeComponent();
+            Text_DBPath.Text = Global.DBPath;
+            Text_DBExt.Text = Global.DBExt;
+            Text_DownPath.Text = Global.DownloadPath;
+            Text_ThumbPath.Text = Global.Thumbnail;
+            Text_ThumbExt.Text = Global.ThumbnailExt;
+
         }
 
-         private void Panel_Paint(object sender, PaintEventArgs e)
+        private void Panel_Paint(object sender, PaintEventArgs e)
         {
             if (sender is Control)
             {
@@ -38,7 +44,40 @@ namespace HioViw
             Global.DownloadPath = Text_DownPath.Text;
             Global.Thumbnail = Text_ThumbPath.Text;
             Global.ThumbnailExt = Text_ThumbExt.Text;
+            string start = Application.StartupPath + "\\config.ini";
+            {
+                Config.SetOption("Global", "DBExt", Global.DBExt, start);
+                Config.SetOption("Global", "DBPath", Global.DBPath, start);
+                Config.SetOption("Global", "DownPath", Global.DownloadPath, start);
+                Config.SetOption("Global", "ThumbPath", Global.Thumbnail, start);
+                Config.SetOption("Global", "ThumbExt", Global.ThumbnailExt, start);
+            }
+            MessageBox.Show("저장이 되었습니다.");
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string start = Application.StartupPath + "\\config.ini";
+
+            Global.DBExt = ".db";
+            Global.DBPath = "Hitomi_DB\\";
+            Global.DownloadPath = "Download\\";
+            Global.Thumbnail = "Download\\Thumbnail\\";
+            Global.ThumbnailExt = ".tumb";
+
+            Text_DBPath.Text = Global.DBPath;
+            Text_DBExt.Text = Global.DBExt;
+            Text_DownPath.Text = Global.DownloadPath;
+            Text_ThumbPath.Text = Global.Thumbnail;
+            Text_ThumbExt.Text = Global.ThumbnailExt;
+
+            Config.SetOption("Global", "DBExt", Global.DBExt, start);
+            Config.SetOption("Global", "DBPath", Global.DBPath, start);
+            Config.SetOption("Global", "DownPath", Global.DownloadPath, start);
+            Config.SetOption("Global", "ThumbPath", Global.Thumbnail, start);
+            Config.SetOption("Global", "ThumbExt", Global.ThumbnailExt, start);
+
+            MessageBox.Show("초기화 되었습니다.");
         }
     }
 }

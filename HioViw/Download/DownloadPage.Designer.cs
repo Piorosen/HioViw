@@ -1252,7 +1252,7 @@
             // 
             this.Text_Detail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.Text_Detail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Text_Detail.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Text_Detail.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Text_Detail.ForeColor = System.Drawing.Color.LightGray;
             this.Text_Detail.Location = new System.Drawing.Point(13, 9);
             this.Text_Detail.Multiline = true;
