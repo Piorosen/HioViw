@@ -30,6 +30,7 @@ namespace HioViw
                 Config.SetOption("Global", "DownPath", Global.DownloadPath, start);
                 Config.SetOption("Global", "ThumbPath", Global.Thumbnail, start);
                 Config.SetOption("Global", "ThumbExt", Global.ThumbnailExt, start);
+                Config.SetOption("Global", "SpeedLimit", Global.SpeedLimit ? bool.TrueString : bool.FalseString , start);
             }
             else
             {
@@ -38,6 +39,8 @@ namespace HioViw
                 Global.DownloadPath = Config.GetOption("Global", "DownPath", start);
                 Global.Thumbnail = Config.GetOption("Global", "ThumbPath", start);
                 Global.ThumbnailExt = Config.GetOption("Global", "ThumbExt", start);
+                Global.SpeedLimit = bool.Parse(Config.GetOption("Global", "SpeedLimit", start));
+                optionPage.Panel_OptionList.Radio_Up.Checked = Global.SpeedLimit;
             }
 
         }

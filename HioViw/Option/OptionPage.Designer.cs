@@ -58,7 +58,6 @@
             this.Panel_Setting.Size = new System.Drawing.Size(650, 443);
             this.Panel_Setting.TabIndex = 7;
             this.Panel_Setting.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
-
             // 
             // Panel_Option
             // 
@@ -230,6 +229,6 @@
         private System.Windows.Forms.Button Btn_Update;
         private Option.Option_Update Panel_Update;
         private System.Windows.Forms.Button Btn_Info;
-        private OptionList Panel_OptionList;
+        public OptionList Panel_OptionList;
     }
 }

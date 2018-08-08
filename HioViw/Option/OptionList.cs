@@ -44,6 +44,8 @@ namespace HioViw
             Global.DownloadPath = Text_DownPath.Text;
             Global.Thumbnail = Text_ThumbPath.Text;
             Global.ThumbnailExt = Text_ThumbExt.Text;
+            Global.SpeedLimit = Radio_Up.Checked;
+
             string start = Application.StartupPath + "\\config.ini";
             {
                 Config.SetOption("Global", "DBExt", Global.DBExt, start);
@@ -51,6 +53,9 @@ namespace HioViw
                 Config.SetOption("Global", "DownPath", Global.DownloadPath, start);
                 Config.SetOption("Global", "ThumbPath", Global.Thumbnail, start);
                 Config.SetOption("Global", "ThumbExt", Global.ThumbnailExt, start);
+                Config.SetOption("Global", "ThumbExt", Global.ThumbnailExt, start);
+                Config.SetOption("Global", "SpeedLimit", Global.SpeedLimit ? bool.TrueString : bool.FalseString, start);
+
             }
             MessageBox.Show("저장이 되었습니다.");
         }
@@ -70,14 +75,31 @@ namespace HioViw
             Text_DownPath.Text = Global.DownloadPath;
             Text_ThumbPath.Text = Global.Thumbnail;
             Text_ThumbExt.Text = Global.ThumbnailExt;
+            Radio_Down.Checked = true;
 
             Config.SetOption("Global", "DBExt", Global.DBExt, start);
             Config.SetOption("Global", "DBPath", Global.DBPath, start);
             Config.SetOption("Global", "DownPath", Global.DownloadPath, start);
             Config.SetOption("Global", "ThumbPath", Global.Thumbnail, start);
             Config.SetOption("Global", "ThumbExt", Global.ThumbnailExt, start);
+            Config.SetOption("Global", "SpeedLimit", bool.TrueString, start);
 
             MessageBox.Show("초기화 되었습니다.");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

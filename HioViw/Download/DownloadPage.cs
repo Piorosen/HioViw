@@ -111,8 +111,12 @@ namespace HioViw
                     Global.Tags.Add(sr.ReadLine());
                 }
                 sr.Close();
-                listBox_TagAdd.Items.AddRange(SearchListBox.GetListBox(Global.Tags, String.Empty));
-                listBox_TagDelete.Items.AddRange(SearchListBox.GetListBox(Global.Tags, String.Empty));
+                if (!Global.SpeedLimit)
+                {
+                    listBox_TagAdd.Items.AddRange(SearchListBox.GetListBox(Global.Tags, String.Empty));
+                    listBox_TagDelete.Items.AddRange(SearchListBox.GetListBox(Global.Tags, String.Empty));
+                }
+                
 
             }));
             Thread seriesDB = new Thread(new ThreadStart(() =>
@@ -127,8 +131,10 @@ namespace HioViw
                 {
                     Global.Series.Add(sr.ReadLine());
                 }
-                sr.Close();
-                listBox_SeriesAdd.Items.AddRange(SearchListBox.GetListBox(Global.Series, String.Empty));
+                sr.Close(); if (!Global.SpeedLimit)
+                {
+                    listBox_SeriesAdd.Items.AddRange(SearchListBox.GetListBox(Global.Series, String.Empty));
+                }
             }));
             Thread characterDB = new Thread(new ThreadStart(() =>
             {
@@ -143,8 +149,11 @@ namespace HioViw
                     Global.Character.Add(sr.ReadLine());
                 }
                 sr.Close();
-                listBox_CharacterAdd.Items.AddRange(SearchListBox.GetListBox(Global.Character, String.Empty));
-                listBox_CharacterAdd.Items.AddRange(SearchListBox.GetListBox(Global.Character, String.Empty));
+                if (!Global.SpeedLimit)
+                {
+                    listBox_CharacterAdd.Items.AddRange(SearchListBox.GetListBox(Global.Character, String.Empty));
+                    listBox_CharacterAdd.Items.AddRange(SearchListBox.GetListBox(Global.Character, String.Empty));
+                }
             }));
 
             tagsDB.Start();
@@ -742,8 +751,6 @@ namespace HioViw
 
             DText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
         }
-        
-
         
         private void Panel_Paint(object sender, PaintEventArgs e)
         {

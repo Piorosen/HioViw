@@ -67,6 +67,8 @@ namespace HioViw
         public static string DownloadPath = "Download\\";
         public static string Thumbnail = DownloadPath + "Thumbnail\\";
 
+        public static bool SpeedLimit = false;
+
         /// <summary>
         ///  Thumbnail
         /// </summary>

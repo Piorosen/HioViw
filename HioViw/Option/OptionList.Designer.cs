@@ -42,8 +42,14 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Btn_Info = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Radio_Up = new System.Windows.Forms.RadioButton();
+            this.Radio_Down = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.Group_DB.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -210,10 +216,10 @@
             this.Btn_Info.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
             this.Btn_Info.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Info.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_Info.Location = new System.Drawing.Point(44, 297);
+            this.Btn_Info.Location = new System.Drawing.Point(44, 421);
             this.Btn_Info.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Info.Name = "Btn_Info";
-            this.Btn_Info.Size = new System.Drawing.Size(147, 55);
+            this.Btn_Info.Size = new System.Drawing.Size(147, 101);
             this.Btn_Info.TabIndex = 12;
             this.Btn_Info.Tag = false;
             this.Btn_Info.Text = "저장";
@@ -230,32 +236,94 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.LightGray;
-            this.button1.Location = new System.Drawing.Point(272, 297);
+            this.button1.Location = new System.Drawing.Point(278, 421);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 55);
+            this.button1.Size = new System.Drawing.Size(147, 101);
             this.button1.TabIndex = 13;
             this.button1.Tag = false;
             this.button1.Text = "초기화";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.Radio_Down);
+            this.groupBox1.Controls.Add(this.Radio_Up);
+            this.groupBox1.ForeColor = System.Drawing.Color.LightGray;
+            this.groupBox1.Location = new System.Drawing.Point(15, 300);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(442, 105);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "속도 최적화";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // Radio_Up
+            // 
+            this.Radio_Up.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Radio_Up.AutoSize = true;
+            this.Radio_Up.Location = new System.Drawing.Point(323, 35);
+            this.Radio_Up.Name = "Radio_Up";
+            this.Radio_Up.Size = new System.Drawing.Size(87, 16);
+            this.Radio_Up.TabIndex = 15;
+            this.Radio_Up.Text = "속도 최적화";
+            this.Radio_Up.UseVisualStyleBackColor = true;
+            // 
+            // Radio_Down
+            // 
+            this.Radio_Down.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Radio_Down.AutoSize = true;
+            this.Radio_Down.Checked = true;
+            this.Radio_Down.Location = new System.Drawing.Point(323, 61);
+            this.Radio_Down.Name = "Radio_Down";
+            this.Radio_Down.Size = new System.Drawing.Size(99, 16);
+            this.Radio_Down.TabIndex = 16;
+            this.Radio_Down.TabStop = true;
+            this.Radio_Down.Text = "기능적 최적화";
+            this.Radio_Down.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 12);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "속도 최적화";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 63);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(288, 12);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "( 프로그램 실행시 Tag, Series, Character 렉 제거 )";
+            // 
             // OptionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Btn_Info);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.Group_DB);
             this.Name = "OptionList";
-            this.Size = new System.Drawing.Size(472, 374);
+            this.Size = new System.Drawing.Size(472, 562);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Group_DB.ResumeLayout(false);
             this.Group_DB.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -276,5 +344,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button Btn_Info;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RadioButton Radio_Down;
+        public System.Windows.Forms.RadioButton Radio_Up;
     }
 }

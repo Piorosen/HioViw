@@ -89,7 +89,7 @@
             this.ForeColor = System.Drawing.Color.Transparent;
             this.Name = "HioView_Form";
             this.Padding = new System.Windows.Forms.Padding(3);
-            this.Text = "HioViw 1.4.6";
+            this.Text = "HioViw 1.4.7";
             this.ResumeLayout(false);
 
         }
