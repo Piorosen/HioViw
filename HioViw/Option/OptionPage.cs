@@ -54,25 +54,16 @@ namespace HioViw
             {
                 Panel_Option.Size = new Size(0, Panel_Option.Size.Height);
 
-                Panel_Setting.Size = new Size(Panel_Setting.Width + 150, Panel_Setting.Height);
-                Panel_Setting.Location = new Point(Panel_Setting.Location.X - 150, Panel_Setting.Location.Y);
                 ch = !ch;
             }
             else
             {
                 Panel_Option.Size = new Size(150, Panel_Option.Size.Height);
 
-                Panel_Setting.Size = new Size(Panel_Setting.Width - 150, Panel_Setting.Height);
-                Panel_Setting.Location = new Point(Panel_Setting.Location.X + 150, Panel_Setting.Location.Y);
                 ch = !ch;
             }
         }
-
-        private void Panel_Setting_Resize(object sender, EventArgs e)
-        {
-            Panel_Update.Size = Panel_Setting.Size;
-            Panel_Update.Location = new Point(Panel_Setting.Location.X - 153, 0);
-        }
+        
 
         private void Btn_Preview_Click(object sender, EventArgs e)
         {

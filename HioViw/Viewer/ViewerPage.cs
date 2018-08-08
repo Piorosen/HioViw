@@ -250,6 +250,36 @@ namespace HioViw
         {
             Text_Page_KeyDown(null, new KeyEventArgs(Keys.Right));
         }
+
+        bool ch = true;
+        private void Btn_Menu_Click(object sender, EventArgs e)
+        {
+            if (ch)
+            {
+                Panel_Explorer.Size = new Size(0, Panel_Explorer.Size.Height);
+                Panel_Explorer_A.Size = new Size(0, Panel_Explorer.Size.Height);
+
+                Panel_Viewer.Width += 250;
+                Panel_Viewer.Location = new Point(Panel_Viewer.Location.X - 250, Panel_Viewer.Location.Y);
+
+                Panel_Explorer_B.Width += 250;
+                Panel_Explorer_B.Location = new Point(Panel_Explorer_B.Location.X - 250, Panel_Explorer_B.Location.Y);
+                ch = !ch;
+            }
+            else
+            {
+                Panel_Explorer.Size = new Size(250, Panel_Explorer.Size.Height);
+                Panel_Explorer_A.Size = new Size(250, Panel_Explorer.Size.Height);
+
+
+                Panel_Viewer.Width -= 250;
+                Panel_Viewer.Location = new Point(Panel_Viewer.Location.X + 250, Panel_Viewer.Location.Y);
+
+                Panel_Explorer_B.Width -= 250;
+                Panel_Explorer_B.Location = new Point(Panel_Explorer_B.Location.X + 250, Panel_Explorer_B.Location.Y);
+                ch = !ch;
+            }
+        }
     }
     
 }

@@ -37,12 +37,12 @@
             this.Panel_Viewer = new System.Windows.Forms.Panel();
             this.Pic_Viewer = new System.Windows.Forms.PictureBox();
             this.Panel_Explorer = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Panel_Explorer_A = new System.Windows.Forms.Panel();
             this.Label_Select_Page = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.Text_Select_Page = new System.Windows.Forms.TextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.Panel_Explorer_B = new System.Windows.Forms.Panel();
             this.Label_Page = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Text_Page = new System.Windows.Forms.TextBox();
@@ -53,8 +53,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).BeginInit();
             this.Panel_Viewer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Viewer)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.Panel_Explorer_A.SuspendLayout();
+            this.Panel_Explorer_B.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Top_Option
@@ -119,6 +119,7 @@
             this.Btn_Menu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Btn_Menu.TabIndex = 0;
             this.Btn_Menu.TabStop = false;
+            this.Btn_Menu.Click += new System.EventHandler(this.Btn_Menu_Click);
             // 
             // Panel_Viewer
             // 
@@ -126,6 +127,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_Viewer.Controls.Add(this.Pic_Viewer);
+            this.Panel_Viewer.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Panel_Viewer.Location = new System.Drawing.Point(252, 49);
             this.Panel_Viewer.Name = "Panel_Viewer";
             this.Panel_Viewer.Size = new System.Drawing.Size(765, 516);
@@ -158,17 +160,17 @@
             this.Panel_Explorer.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             this.Panel_Explorer.Resize += new System.EventHandler(this.Panel_Explorer_Resize);
             // 
-            // panel1
+            // Panel_Explorer_A
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.Controls.Add(this.Label_Select_Page);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.Text_Select_Page);
-            this.panel1.Location = new System.Drawing.Point(3, 565);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 54);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            this.Panel_Explorer_A.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Panel_Explorer_A.Controls.Add(this.Label_Select_Page);
+            this.Panel_Explorer_A.Controls.Add(this.label10);
+            this.Panel_Explorer_A.Controls.Add(this.Text_Select_Page);
+            this.Panel_Explorer_A.Location = new System.Drawing.Point(3, 565);
+            this.Panel_Explorer_A.Name = "Panel_Explorer_A";
+            this.Panel_Explorer_A.Size = new System.Drawing.Size(250, 54);
+            this.Panel_Explorer_A.TabIndex = 0;
+            this.Panel_Explorer_A.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Label_Select_Page
             // 
@@ -214,18 +216,18 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // panel2
+            // Panel_Explorer_B
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.Panel_Explorer_B.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.Label_Page);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.Text_Page);
-            this.panel2.Location = new System.Drawing.Point(253, 565);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(764, 54);
-            this.panel2.TabIndex = 6;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            this.Panel_Explorer_B.Controls.Add(this.Label_Page);
+            this.Panel_Explorer_B.Controls.Add(this.label2);
+            this.Panel_Explorer_B.Controls.Add(this.Text_Page);
+            this.Panel_Explorer_B.Location = new System.Drawing.Point(253, 565);
+            this.Panel_Explorer_B.Name = "Panel_Explorer_B";
+            this.Panel_Explorer_B.Size = new System.Drawing.Size(764, 54);
+            this.Panel_Explorer_B.TabIndex = 6;
+            this.Panel_Explorer_B.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Label_Page
             // 
@@ -270,8 +272,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Panel_Explorer_B);
+            this.Controls.Add(this.Panel_Explorer_A);
             this.Controls.Add(this.Panel_Explorer);
             this.Controls.Add(this.Panel_Viewer);
             this.Controls.Add(this.Panel_Top_Option);
@@ -286,10 +288,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Menu)).EndInit();
             this.Panel_Viewer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Viewer)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.Panel_Explorer_A.ResumeLayout(false);
+            this.Panel_Explorer_A.PerformLayout();
+            this.Panel_Explorer_B.ResumeLayout(false);
+            this.Panel_Explorer_B.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -303,13 +305,13 @@
         private System.Windows.Forms.PictureBox Btn_Setting;
         private System.Windows.Forms.Panel Panel_Viewer;
         private System.Windows.Forms.Panel Panel_Explorer;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Panel_Explorer_A;
         public System.Windows.Forms.Label Label_Select_Page;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox Text_Select_Page;
         private System.Windows.Forms.PictureBox Pic_Viewer;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel Panel_Explorer_B;
         public System.Windows.Forms.Label Label_Page;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox Text_Page;
