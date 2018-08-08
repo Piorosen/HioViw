@@ -517,6 +517,7 @@ namespace HioViw
                     DownloadLogs[Int_DownloadLog_List].Invoke(new MethodInvoker(() =>
                     {
                         DownloadLogs[Int_DownloadLog_List].Clear();
+
                         DownloadLogs[Int_DownloadLog_List].Percentage = percentage;
                         DownloadLogs[Int_DownloadLog_List].Label_ID.Text += gallerie.ID;
                         DownloadLogs[Int_DownloadLog_List].Label_Title.Text += gallerie.Title;
