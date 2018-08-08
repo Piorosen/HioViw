@@ -20,13 +20,28 @@ namespace HioViw
         public HioView_Form()
         {
             InitializeComponent();
-            
-        }
 
+            string start = Application.StartupPath + "\\config.ini";
+            FileInfo fi = new FileInfo(start);
+            if (!fi.Exists)
+            {
+                Config.SetOption("Global", "DBExt", Global.DBExt, start);
+                Config.SetOption("Global", "DBPath", Global.DBPath, start);
+                Config.SetOption("Global", "DownPath", Global.DownloadPath, start);
+                Config.SetOption("Global", "ThumbPath", Global.Thumbnail, start);
+                Config.SetOption("Global", "ThumbExt", Global.ThumbnailExt, start);
+            }
+            else
+            {
+                Global.DBExt = Config.GetOption("Global", "DBExt", start);
+                Global.DBPath = Config.GetOption("Global", "DBPath", start);
+                Global.DownloadPath = Config.GetOption("Global", "DownPath", start);
+                Global.Thumbnail = Config.GetOption("Global", "ThumbPath", start);
+                Global.ThumbnailExt = Config.GetOption("Global", "ThumbExt", start);
+            }
 
-        private void HioView_Form_Resize(object sender, System.EventArgs e)
-        {
         }
+        
 
         private void Form_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {

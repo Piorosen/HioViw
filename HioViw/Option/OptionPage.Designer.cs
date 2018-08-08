@@ -30,12 +30,14 @@
         {
             this.Panel_Setting = new System.Windows.Forms.Panel();
             this.Panel_Option = new System.Windows.Forms.Panel();
-            this.Btn_Preview = new System.Windows.Forms.Button();
+            this.Btn_Info = new System.Windows.Forms.Button();
+            this.Btn_Update = new System.Windows.Forms.Button();
             this.Panel_Top_Option = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_Viewer = new System.Windows.Forms.PictureBox();
             this.Btn_Download = new System.Windows.Forms.PictureBox();
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
+            this.Panel_OptionList = new HioViw.OptionList();
             this.Panel_Update = new HioViw.Option.Option_Update();
             this.Panel_Setting.SuspendLayout();
             this.Panel_Option.SuspendLayout();
@@ -49,6 +51,7 @@
             // Panel_Setting
             // 
             this.Panel_Setting.Controls.Add(this.Panel_Update);
+            this.Panel_Setting.Controls.Add(this.Panel_OptionList);
             this.Panel_Setting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Setting.Location = new System.Drawing.Point(153, 49);
             this.Panel_Setting.Name = "Panel_Setting";
@@ -59,7 +62,8 @@
             // 
             // Panel_Option
             // 
-            this.Panel_Option.Controls.Add(this.Btn_Preview);
+            this.Panel_Option.Controls.Add(this.Btn_Info);
+            this.Panel_Option.Controls.Add(this.Btn_Update);
             this.Panel_Option.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_Option.Location = new System.Drawing.Point(3, 49);
             this.Panel_Option.Name = "Panel_Option";
@@ -67,22 +71,42 @@
             this.Panel_Option.TabIndex = 6;
             this.Panel_Option.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
-            // Btn_Preview
+            // Btn_Info
             // 
-            this.Btn_Preview.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.Btn_Preview.FlatAppearance.BorderSize = 0;
-            this.Btn_Preview.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.Btn_Preview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.Btn_Preview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Preview.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_Preview.Location = new System.Drawing.Point(1, 1);
-            this.Btn_Preview.Margin = new System.Windows.Forms.Padding(0);
-            this.Btn_Preview.Name = "Btn_Preview";
-            this.Btn_Preview.Size = new System.Drawing.Size(148, 55);
-            this.Btn_Preview.TabIndex = 10;
-            this.Btn_Preview.Tag = false;
-            this.Btn_Preview.Text = "업데이트";
-            this.Btn_Preview.UseVisualStyleBackColor = false;
+            this.Btn_Info.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Info.FlatAppearance.BorderSize = 0;
+            this.Btn_Info.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Info.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Info.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Info.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Info.Location = new System.Drawing.Point(1, 56);
+            this.Btn_Info.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Info.Name = "Btn_Info";
+            this.Btn_Info.Size = new System.Drawing.Size(148, 55);
+            this.Btn_Info.TabIndex = 11;
+            this.Btn_Info.Tag = false;
+            this.Btn_Info.Text = "정보 수정";
+            this.Btn_Info.UseVisualStyleBackColor = false;
+            this.Btn_Info.Click += new System.EventHandler(this.Btn_Info_Click);
+            // 
+            // Btn_Update
+            // 
+            this.Btn_Update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Update.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Update.FlatAppearance.BorderSize = 0;
+            this.Btn_Update.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Update.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Update.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Update.Location = new System.Drawing.Point(1, 1);
+            this.Btn_Update.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Update.Name = "Btn_Update";
+            this.Btn_Update.Size = new System.Drawing.Size(148, 55);
+            this.Btn_Update.TabIndex = 10;
+            this.Btn_Update.Tag = false;
+            this.Btn_Update.Text = "업데이트";
+            this.Btn_Update.UseVisualStyleBackColor = false;
+            this.Btn_Update.Click += new System.EventHandler(this.Btn_Preview_Click);
             // 
             // Panel_Top_Option
             // 
@@ -148,6 +172,17 @@
             this.Btn_Menu.TabStop = false;
             this.Btn_Menu.Click += new System.EventHandler(this.Btn_Menu_Click);
             // 
+            // Panel_OptionList
+            // 
+            this.Panel_OptionList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_OptionList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Panel_OptionList.Location = new System.Drawing.Point(0, 0);
+            this.Panel_OptionList.Name = "Panel_OptionList";
+            this.Panel_OptionList.Size = new System.Drawing.Size(650, 443);
+            this.Panel_OptionList.TabIndex = 1;
+            // 
             // Panel_Update
             // 
             this.Panel_Update.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -192,7 +227,9 @@
         private System.Windows.Forms.PictureBox Btn_Menu;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox Btn_Viewer;
-        private System.Windows.Forms.Button Btn_Preview;
+        private System.Windows.Forms.Button Btn_Update;
         private Option.Option_Update Panel_Update;
+        private System.Windows.Forms.Button Btn_Info;
+        private OptionList Panel_OptionList;
     }
 }

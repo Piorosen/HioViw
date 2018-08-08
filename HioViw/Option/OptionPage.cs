@@ -73,5 +73,22 @@ namespace HioViw
             Panel_Update.Size = Panel_Setting.Size;
             Panel_Update.Location = new Point(Panel_Setting.Location.X - 153, 0);
         }
+
+        private void Btn_Preview_Click(object sender, EventArgs e)
+        {
+            Panel_Update.BringToFront();
+            Btn_Update.BackColor = Color.FromArgb(80, 80, 80);
+            Btn_Info.BackColor = Color.FromArgb(20, 20, 20);
+
+
+        }
+
+        private void Btn_Info_Click(object sender, EventArgs e)
+        {
+            Panel_OptionList.BringToFront();
+            Btn_Update.BackColor = Color.FromArgb(20, 20, 20);
+            Btn_Info.BackColor = Color.FromArgb(80, 80, 80);
+
+        }
     }
 }

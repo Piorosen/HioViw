@@ -80,7 +80,14 @@
     <Compile Include="Gallerie.cs" />
     <Compile Include="Download\HioDownloader.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="Library\Config.cs" />
     <Compile Include="Option\DBDownloader.cs" />
+    <Compile Include="Option\OptionList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Option\OptionList.Designer.cs">
+      <DependentUpon>OptionList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Option\OptionPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -127,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Option\OptionList.resx">
+      <DependentUpon>OptionList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Option\OptionPage.resx">
       <DependentUpon>OptionPage.cs</DependentUpon>

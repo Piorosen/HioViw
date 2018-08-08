@@ -76,7 +76,6 @@
             this.Controls.Add(optionPage);
 
             this.FormClosing += Form_FormClosing;
-            this.Resize += HioView_Form_Resize;
             this.ForeColor = System.Drawing.Color.Transparent;
             this.Name = "HioView_Form";
             this.Padding = new System.Windows.Forms.Padding(3);
