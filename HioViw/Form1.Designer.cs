@@ -30,6 +30,7 @@
         private void InitializeComponent()
         {
             this.FolderBrowerDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.FormClosing += Form_FormClosing;
             this.optionPage = new HioViw.OptionPage();
             this.downloadPage = new HioViw.DownloadPage();
             this.viewerPage = new HioViw.ViewerPage();

@@ -25,8 +25,6 @@ namespace HioViw
             Alam.Size = new Size(300, 0);
             Alam.Show();
             Alam.Text = "Hioviw Alam";
-            Alam.FormClosed += Form_FormClosed;
-            Alam.FormClosing += Form_FormClosing;
             Global.manage = new Library.AlamManage(Alam);
             Global.manage.Size = 150;
             
@@ -52,11 +50,6 @@ namespace HioViw
                 optionPage.Panel_OptionList.Radio_Up.Checked = Global.SpeedLimit;
             }
 
-        }
-
-        private void Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Alam.Close();
         }
 
         private void Form_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
