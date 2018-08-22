@@ -69,6 +69,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlamService\Alam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlamService\Alam.Designer.cs">
+      <DependentUpon>Alam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlamService\AlamManage.cs" />
     <Compile Include="CheckProgram.cs" />
     <Compile Include="Download\DownloadLog.cs">
       <SubType>UserControl</SubType>
@@ -140,6 +147,9 @@
     <Compile Include="Viewer\ViewInfo.Designer.cs">
       <DependentUpon>ViewInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AlamService\Alam.resx">
+      <DependentUpon>Alam.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Download\DownloadLog.resx">
       <DependentUpon>DownloadLog.cs</DependentUpon>
     </EmbeddedResource>

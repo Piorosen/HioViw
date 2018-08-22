@@ -43,10 +43,11 @@
             this.Btn_Info = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Radio_Up = new System.Windows.Forms.RadioButton();
-            this.Radio_Down = new System.Windows.Forms.RadioButton();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Radio_Down = new System.Windows.Forms.RadioButton();
+            this.Radio_Up = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
             this.Group_DB.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -250,6 +251,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.Radio_Down);
@@ -263,16 +265,23 @@
             this.groupBox1.Text = "속도 최적화";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // Radio_Up
+            // label7
             // 
-            this.Radio_Up.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Radio_Up.AutoSize = true;
-            this.Radio_Up.Location = new System.Drawing.Point(323, 35);
-            this.Radio_Up.Name = "Radio_Up";
-            this.Radio_Up.Size = new System.Drawing.Size(87, 16);
-            this.Radio_Up.TabIndex = 15;
-            this.Radio_Up.Text = "속도 최적화";
-            this.Radio_Up.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(288, 12);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "( 프로그램 실행시 Tag, Series, Character 렉 제거 )";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 30);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 12);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "속도 최적화";
             // 
             // Radio_Down
             // 
@@ -287,23 +296,25 @@
             this.Radio_Down.Text = "기능적 최적화";
             this.Radio_Down.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // Radio_Up
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 43);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 12);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "속도 최적화";
+            this.Radio_Up.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Radio_Up.AutoSize = true;
+            this.Radio_Up.Location = new System.Drawing.Point(323, 35);
+            this.Radio_Up.Name = "Radio_Up";
+            this.Radio_Up.Size = new System.Drawing.Size(87, 16);
+            this.Radio_Up.TabIndex = 15;
+            this.Radio_Up.Text = "속도 최적화";
+            this.Radio_Up.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // label8
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 63);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(288, 12);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "( 프로그램 실행시 Tag, Series, Character 렉 제거 )";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(205, 12);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "프로그램 재 실행을 하면 적용됩니다.";
             // 
             // OptionList
             // 
@@ -349,5 +360,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RadioButton Radio_Down;
         public System.Windows.Forms.RadioButton Radio_Up;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -98,6 +98,8 @@ namespace HioViw
         public static List<string> Series = new List<string>();
         public static List<string> Character = new List<string>();
 
+        public static Library.AlamManage manage;
+        
 
         public static int MultiDownload = 10;
     }

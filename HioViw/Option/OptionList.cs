@@ -82,7 +82,7 @@ namespace HioViw
             Config.SetOption("Global", "DownPath", Global.DownloadPath, start);
             Config.SetOption("Global", "ThumbPath", Global.Thumbnail, start);
             Config.SetOption("Global", "ThumbExt", Global.ThumbnailExt, start);
-            Config.SetOption("Global", "SpeedLimit", bool.TrueString, start);
+            Config.SetOption("Global", "SpeedLimit", bool.FalseString, start);
 
             MessageBox.Show("초기화 되었습니다.");
         }

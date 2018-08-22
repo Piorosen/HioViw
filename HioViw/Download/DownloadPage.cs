@@ -93,7 +93,9 @@ namespace HioViw
                 if (!fi.Exists)
                 {
                     DBDownloader.DBDownload();
-                    MessageBox.Show("DB존재 하지 않아 다운로드를 시작합니다.");
+                    var Struct = new Library.AlamStruct("Error", "DB파일이 존재하지 않아서 다운로드합니다.", 5f);
+
+                    Global.manage.Add(Struct);
                     break;
                 }
             }
@@ -222,6 +224,12 @@ namespace HioViw
             {
                 Panel_Download_List?.Invoke(new MethodInvoker(() =>
                 {
+                    var Struct = new Library.AlamStruct("다운로드 중지", "ID : " + e.ID + "\n제목 : " + e.Title, 5f);
+                    Struct.ImagePath = Global.Thumbnail + e.ID + Global.ThumbnailExt;
+                    Struct.borderStyle = BorderStyle.FixedSingle;
+
+
+                    Global.manage.Add(Struct);
                     DownloadLists.Remove(e);
                     LText_Select_Page_KeyDown(null, new KeyEventArgs(Keys.Enter));
                 }));
@@ -239,6 +247,12 @@ namespace HioViw
                         sw.WriteLine(e.ID + (char)255 + e.Type + (char)255 + e.Language + (char)255 + e.Series + (char)255 + e.Title);
                         sw.Close();
 
+
+                        var Struct = new Library.AlamStruct("다운로드 완료", "ID : " + e.ID + "\n제목 : " + e.Title, 5f);
+                        Struct.ImagePath = Global.Thumbnail + e.ID + Global.ThumbnailExt;
+                        Struct.borderStyle = BorderStyle.FixedSingle;
+
+                        Global.manage.Add(Struct);
                     }));
                 }
                 else
@@ -624,16 +638,6 @@ namespace HioViw
 
         #endregion
 
-        /// <summary>
-        /// 
-        /// 
-        /// 
-        /// 
-        /// CLear 구현하기.
-        /// 
-        /// 
-        /// 
-        /// </summary>
         private void Preview_Clear()
         {
             foreach (var data in Previews)

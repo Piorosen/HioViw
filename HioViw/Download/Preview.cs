@@ -136,8 +136,14 @@ namespace HioViw
             
             if (Global.CheckDownloadID.IndexOf(gallerie.ID) == -1)
             {
+                var Struct = new Library.AlamStruct("다운로드 시작", "ID : " + gallerie.ID + "\n제목 : " + gallerie.Title, 5f);
+                Struct.ImagePath = Global.Thumbnail + gallerie.ID + Global.ThumbnailExt;
+                Struct.borderStyle = BorderStyle.FixedSingle;
+
+                Global.manage.Add(Struct);
+
                 Global.CheckDownloadID.Add(gallerie.ID);
-                MessageBox.Show("다운로드를 시작합니다.");
+
                 Thread th = new Thread(new ThreadStart(() =>
                 {
                     OnDownload(gallerie, 0);
@@ -156,7 +162,11 @@ namespace HioViw
             }
             else
             {
-                MessageBox.Show("이미 다운로드 중입니다.");
+                var Struct = new Library.AlamStruct("이미 다운로드 중입니다.", "ID : " + gallerie.ID + "\n제목 : " + gallerie.Title, 5f);
+                Struct.ImagePath = Global.Thumbnail + gallerie.ID + Global.ThumbnailExt;
+                Struct.borderStyle = BorderStyle.FixedSingle;
+
+                Global.manage.Add(Struct);
             }
            
 

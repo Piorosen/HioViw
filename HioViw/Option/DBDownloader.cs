@@ -47,7 +47,8 @@ namespace HioViw
             string[] list = Regex.Split(data, "<li><a href=");
 
             StreamWriter sw;
-
+            
+            Global.manage.Add(new Library.AlamStruct("Error", info.ToUpper() + "파일을 갱신 시작합니다.", 5f));
 
             Panel panel;
             if (info == "tags")
@@ -197,8 +198,9 @@ namespace HioViw
                 sr.Close();
                 Character = false;
             }
+           
             
-
+            Global.manage.Add(new Library.AlamStruct("Success", info.ToUpper() + "파일을 갱신 하였습니다.", 5f));
         }
 
         private static bool DBRun = false;
@@ -228,6 +230,10 @@ namespace HioViw
                 {
                     for (int i = 0; i < 30; i++)
                     {
+                        if (Global.ProgramExit)
+                        {
+                            return;
+                        }
                         string DB = wc.DownloadString("https://ltn.hitomi.la/galleries" + i + ".json");
 
                         StreamWriter sw = new StreamWriter(Global.DBPath + Global.DBName + i + Global.DBExt);
@@ -247,7 +253,9 @@ namespace HioViw
                     DBRun = false;
                 }
                 wc.Dispose();
-                MessageBox.Show("DB 다운로드가 완료되었습니다.");
+                var Struct = new Library.AlamStruct("Success", "DB파일을 전부다 다운로드 하였습니다.", 5f);
+
+                Global.manage.Add(Struct);
             }));
             th.Start();
         }

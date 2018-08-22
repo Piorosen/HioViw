@@ -17,10 +17,19 @@ namespace HioViw
 {
     public partial class HioView_Form : Form
     {
+        Form Alam = new Form();
         public HioView_Form()
         {
             InitializeComponent();
-
+            
+            Alam.Size = new Size(300, 0);
+            Alam.Show();
+            Alam.Text = "Hioviw Alam";
+            Alam.FormClosed += Form_FormClosed;
+            Alam.FormClosing += Form_FormClosing;
+            Global.manage = new Library.AlamManage(Alam);
+            Global.manage.Size = 150;
+            
             string start = Application.StartupPath + "\\config.ini";
             FileInfo fi = new FileInfo(start);
             if (!fi.Exists)
@@ -44,10 +53,15 @@ namespace HioViw
             }
 
         }
-        
+
+        private void Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Alam.Close();
+        }
 
         private void Form_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
+            Alam.Close();
             BinaryFormatter binFmt = new BinaryFormatter();
             using (FileStream fs = new FileStream(Global.ReDownloadPath, FileMode.Create))
             {
