@@ -93,10 +93,12 @@ namespace HioViw
         public static Panel Panel_Tag = new Panel();
         public static Panel Panel_Series = new Panel();
         public static Panel Panel_Character = new Panel();
-        
+        public static Panel Panel_Artist = new Panel();
+
         public static List<string> Tags = new List<string>();
         public static List<string> Series = new List<string>();
         public static List<string> Character = new List<string>();
+        public static List<string> Artist = new List<string>();
 
         public static Library.AlamManage manage;
         

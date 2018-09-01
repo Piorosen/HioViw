@@ -26,14 +26,13 @@ namespace HioViw.Option
             Global.Panel_Series = Panel_Series;
             Global.Panel_Tag = Panel_Tag;
             Global.Panel_Character = Panel_Character;
-
+            Global.Panel_Artist = Panel_Artist;
         }
 
 
 
         private void Btn_DBUpdate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("DB를 다운로드 시작합니다.");
             Thread th = new Thread(new ThreadStart(() =>
             {
                 DBDownloader.DBDownload();
@@ -43,7 +42,6 @@ namespace HioViw.Option
         }
         private void Btn_TagsUpdate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("태그 목록을 다운로드 시작합니다.");
             Thread th = new Thread(new ThreadStart(() =>
             {
                 DBDownloader.InfoDownload("tags");
@@ -53,7 +51,6 @@ namespace HioViw.Option
 
         private void Btn_CharacterUpdate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("캐릭터 목록을 다운로드 시작합니다.");
             Thread th = new Thread(new ThreadStart(() =>
             {
                 DBDownloader.InfoDownload("characters");
@@ -63,13 +60,24 @@ namespace HioViw.Option
 
         private void Btn_SeriesUpdate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("시리즈 목록을 다운로드 시작합니다.");
+
             Thread th = new Thread(new ThreadStart(() =>
             {
                 DBDownloader.InfoDownload("series");
             }));
             th.Start();
         }
+
+        private void Btn_ArtistUpdate_Click(object sender, EventArgs e)
+        {
+            Thread th = new Thread(new ThreadStart(() =>
+             {
+                 DBDownloader.InfoDownload("artists");
+
+             }));
+            th.Start();
+        }
+
 
         private void Panel_Paint(object sender, PaintEventArgs e)
         {
@@ -91,5 +99,6 @@ namespace HioViw.Option
                 }
             }
         }
+
     }
 }

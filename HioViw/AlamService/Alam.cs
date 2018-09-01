@@ -35,15 +35,17 @@ namespace Library
             if (alam.BackColor != Color.Empty)
                 Panel_Main.BackColor = AlamStruct.BackColor;
 
-            if (alam.ImagePath != string.Empty && !(new FileInfo(alam.ImagePath).Exists))
+            if (alam.ImagePath != string.Empty && new FileInfo(alam.ImagePath).Exists)
             {
-                Picture_Image.Image = Image.FromFile(AlamStruct.ImagePath);
-            }
-            else
-            {
-                Label_Title.Size = new Size(Label_Title.Size.Width + Picture_Image.Size.Width, Label_Title.Size.Height);
-                Label_Body.Size = new Size(Label_Body.Size.Width + Picture_Image.Size.Width, Label_Body.Size.Height);
-                Picture_Image.Size = new Size(0, 0);
+                try
+                {
+                    Picture_Image.Image = Image.FromFile(AlamStruct.ImagePath);
+                    Label_Title.Size = new Size(Label_Title.Size.Width - Picture_Image.Size.Width - 10, Label_Title.Size.Height);
+                    Label_Body.Size = new Size(Label_Body.Size.Width - Picture_Image.Size.Width - 10, Label_Body.Size.Height);
+                }
+                catch (Exception)
+                {
+                }
             }
 
             if (alam.borderStyle != Picture_Image.BorderStyle)

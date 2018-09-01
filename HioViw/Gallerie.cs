@@ -22,5 +22,6 @@ namespace HioViw
         public string ThumnailImage { get; set; }
         public string Uploader { get; set; }
         public string UploadDate { get; set; }
+        public string Artist { get; set; }
     }
 }

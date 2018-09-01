@@ -8,39 +8,23 @@ namespace HioViw
 {
     public class SearchData
     {
-        public SearchData()
-        {
-            Title = String.Empty;
-            Type = new List<string>();
-            Series = new List<string>();
-            Series_Delete = new List<string>();
+        public string Title { get; set; } = string.Empty;
+        public List<string> Type { get; set; } = new List<string>();
+        public List<string> Language { get; set; } = new List<string>();
 
-            Character = new List<string>();
-            Character_Delete = new List<string>();
+        public List<string> Series { get; set; } = new List<string>();
+        public List<string> Series_Delete { get; set; } = new List<string>();
 
-            Tags = new List<string>();
-            Tags_Delete = new List<string>();
+        public List<string> Character { get; set; } = new List<string>();
+        public List<string> Character_Delete { get; set; } = new List<string>();
 
-            Start_Range = 0;
-            End_Range = 10;
+        public List<string> Artist { get; set; } = new List<string>();
 
-        }
-        public string Title { get; set; }
-        public List<string> Type { get; set; }
-        public List<string> Language { get; set; }
-   
-        public List<string> Series { get; set; }
-        public List<string> Series_Delete { get; set; }
-
-        public List<string> Character { get; set; }
-        public List<string> Character_Delete { get; set; }
+        public List<string> Tags { get; set; } = new List<string>();
+        public List<string> Tags_Delete { get; set; } = new List<string>();
 
 
-        public List<string> Tags { get; set; }
-        public List<string> Tags_Delete { get; set; }
-
-
-        public UInt64 Start_Range { get; set; }
-        public UInt64 End_Range { get; set; }
+        public UInt64 Start_Range { get; set; } = 0;
+        public UInt64 End_Range { get; set; } = 10;
     }
 }

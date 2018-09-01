@@ -93,9 +93,7 @@ namespace HioViw
                 if (!fi.Exists)
                 {
                     DBDownloader.DBDownload();
-                    var Struct = new Library.AlamStruct("Error", "DB파일이 존재하지 않아서 다운로드합니다.", 5f);
-
-                    Global.manage.Add(Struct);
+                    
                     break;
                 }
             }
@@ -811,6 +809,7 @@ namespace HioViw
                 Panel_Search_Tags.Visible = false;
                 Panel_Search_Type.Visible = false;
                 Panel_Search_Title.Visible = false;
+                Panel_Search_Artist.Visible = false;
             }
             Panel_Search_Download.Visible = true;
             Panel_Download_List.Visible = false;
@@ -836,7 +835,7 @@ namespace HioViw
             Panel_Search_Tags.Visible = false;
             Panel_Search_Type.Visible = false;
             Panel_Search_Title.Visible = false;
-
+            Panel_Search_Artist.Visible = false;
 
 
             Btn_Color(sender as Control);
@@ -855,8 +854,11 @@ namespace HioViw
             sd.Tags = listBox_AddTagAdd.Items.Cast<string>().ToList();
             sd.Tags_Delete = listBox_AddTagDelete.Items.Cast<string>().ToList();
 
+            sd.Artist = listBox_AddTagAdd.Items.Cast<string>().ToList();
+
             sd.Start_Range = ulong.Parse(Text_StartRange.Text);
             sd.End_Range = ulong.Parse(Text_EndRange.Text);
+            
             
             if (bgw.IsBusy)
             {
@@ -1052,7 +1054,7 @@ namespace HioViw
             }
             
         }
-
+        
     }
 
     class GallerieP

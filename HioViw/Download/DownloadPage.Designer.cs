@@ -36,10 +36,10 @@
             this.Btn_Menu = new System.Windows.Forms.PictureBox();
             this.Btn_Preview = new System.Windows.Forms.Button();
             this.Btn_Option = new System.Windows.Forms.Button();
-            this.Btn_Hompage = new System.Windows.Forms.Button();
             this.Btn_DownloadStart = new System.Windows.Forms.Button();
             this.Panel_Download_OptionList = new System.Windows.Forms.Panel();
             this.Panel_Search = new System.Windows.Forms.Panel();
+            this.Btn_Search_Artist = new System.Windows.Forms.Button();
             this.Btn_Search_Character = new System.Windows.Forms.Button();
             this.Btn_Search_Range = new System.Windows.Forms.Button();
             this.Btn_Search_Type = new System.Windows.Forms.Button();
@@ -109,11 +109,19 @@
             this.button4 = new System.Windows.Forms.Button();
             this.Panel_Search_Title = new System.Windows.Forms.Panel();
             this.Text_Search_Title = new System.Windows.Forms.TextBox();
-            this.Panel_Download_List = new HioViw.DownloadViewer();
-            this.Panel_Search_Download = new HioViw.DownloadViewer();
             this.Panel_Detail = new System.Windows.Forms.Panel();
             this.Pic_Detail = new System.Windows.Forms.PictureBox();
             this.Text_Detail = new System.Windows.Forms.TextBox();
+            this.Panel_Search_Artist = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.listBox_AddArtistAdd = new System.Windows.Forms.ListBox();
+            this.listBox_ArtistAdd = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.Text_AddArtistAdd = new System.Windows.Forms.TextBox();
+            this.Text_ArtistAdd = new System.Windows.Forms.TextBox();
+            this.Panel_Download_List = new HioViw.DownloadViewer();
+            this.Panel_Search_Download = new HioViw.DownloadViewer();
             this.Panel_Top_Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Setting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_Viewer)).BeginInit();
@@ -133,6 +141,7 @@
             this.Panel_Search_Title.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Detail)).BeginInit();
+            this.Panel_Search_Artist.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Top_Option
@@ -236,22 +245,6 @@
             this.Btn_Option.UseVisualStyleBackColor = false;
             this.Btn_Option.Click += new System.EventHandler(this.Btn_Option_Click);
             // 
-            // Btn_Hompage
-            // 
-            this.Btn_Hompage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Btn_Hompage.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.Btn_Hompage.FlatAppearance.BorderSize = 0;
-            this.Btn_Hompage.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.Btn_Hompage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.Btn_Hompage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Hompage.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_Hompage.Location = new System.Drawing.Point(1, 693);
-            this.Btn_Hompage.Name = "Btn_Hompage";
-            this.Btn_Hompage.Size = new System.Drawing.Size(148, 55);
-            this.Btn_Hompage.TabIndex = 12;
-            this.Btn_Hompage.Text = "Home Page";
-            this.Btn_Hompage.UseVisualStyleBackColor = false;
-            // 
             // Btn_DownloadStart
             // 
             this.Btn_DownloadStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -261,11 +254,11 @@
             this.Btn_DownloadStart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
             this.Btn_DownloadStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_DownloadStart.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_DownloadStart.Location = new System.Drawing.Point(1, 638);
+            this.Btn_DownloadStart.Location = new System.Drawing.Point(1, 692);
             this.Btn_DownloadStart.Name = "Btn_DownloadStart";
             this.Btn_DownloadStart.Size = new System.Drawing.Size(148, 55);
             this.Btn_DownloadStart.TabIndex = 13;
-            this.Btn_DownloadStart.Text = "다운로드 시작";
+            this.Btn_DownloadStart.Text = "범위 다운로드 시작";
             this.Btn_DownloadStart.UseVisualStyleBackColor = false;
             this.Btn_DownloadStart.Click += new System.EventHandler(this.Btn_DownloadStart_Click);
             // 
@@ -273,9 +266,9 @@
             // 
             this.Panel_Download_OptionList.Controls.Add(this.Btn_Option);
             this.Panel_Download_OptionList.Controls.Add(this.Btn_Preview);
+            this.Panel_Download_OptionList.Controls.Add(this.Btn_Search_Range);
             this.Panel_Download_OptionList.Controls.Add(this.Panel_Search);
             this.Panel_Download_OptionList.Controls.Add(this.Btn_DownloadStart);
-            this.Panel_Download_OptionList.Controls.Add(this.Btn_Hompage);
             this.Panel_Download_OptionList.Controls.Add(this.Btn_SearchResult);
             this.Panel_Download_OptionList.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_Download_OptionList.Location = new System.Drawing.Point(3, 49);
@@ -286,20 +279,37 @@
             // 
             // Panel_Search
             // 
+            this.Panel_Search.Controls.Add(this.Btn_Search_Artist);
             this.Panel_Search.Controls.Add(this.Btn_Search_Character);
-            this.Panel_Search.Controls.Add(this.Btn_Search_Range);
             this.Panel_Search.Controls.Add(this.Btn_Search_Type);
             this.Panel_Search.Controls.Add(this.Btn_Search_Tags);
             this.Panel_Search.Controls.Add(this.Btn_Search_Series);
             this.Panel_Search.Controls.Add(this.Btn_Search_Language);
             this.Panel_Search.Controls.Add(this.Btn_Search_Title);
-            this.Panel_Search.Location = new System.Drawing.Point(-63, 110);
+            this.Panel_Search.Location = new System.Drawing.Point(-11, 110);
             this.Panel_Search.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_Search.Name = "Panel_Search";
-            this.Panel_Search.Size = new System.Drawing.Size(150, 387);
+            this.Panel_Search.Size = new System.Drawing.Size(150, 442);
             this.Panel_Search.TabIndex = 21;
             this.Panel_Search.Visible = false;
             this.Panel_Search.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
+            // 
+            // Btn_Search_Artist
+            // 
+            this.Btn_Search_Artist.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Search_Artist.FlatAppearance.BorderSize = 0;
+            this.Btn_Search_Artist.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Search_Artist.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Search_Artist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Search_Artist.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Search_Artist.Location = new System.Drawing.Point(1, 331);
+            this.Btn_Search_Artist.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Search_Artist.Name = "Btn_Search_Artist";
+            this.Btn_Search_Artist.Size = new System.Drawing.Size(148, 55);
+            this.Btn_Search_Artist.TabIndex = 22;
+            this.Btn_Search_Artist.Text = "작가";
+            this.Btn_Search_Artist.UseVisualStyleBackColor = false;
+            this.Btn_Search_Artist.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
             // 
             // Btn_Search_Character
             // 
@@ -320,13 +330,14 @@
             // 
             // Btn_Search_Range
             // 
+            this.Btn_Search_Range.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Btn_Search_Range.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.Btn_Search_Range.FlatAppearance.BorderSize = 0;
             this.Btn_Search_Range.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.Btn_Search_Range.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
             this.Btn_Search_Range.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Search_Range.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_Search_Range.Location = new System.Drawing.Point(1, 331);
+            this.Btn_Search_Range.Location = new System.Drawing.Point(2, 637);
             this.Btn_Search_Range.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Search_Range.Name = "Btn_Search_Range";
             this.Btn_Search_Range.Size = new System.Drawing.Size(148, 55);
@@ -430,7 +441,7 @@
             this.Btn_SearchResult.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
             this.Btn_SearchResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_SearchResult.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_SearchResult.Location = new System.Drawing.Point(1, 583);
+            this.Btn_SearchResult.Location = new System.Drawing.Point(2, 582);
             this.Btn_SearchResult.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_SearchResult.Name = "Btn_SearchResult";
             this.Btn_SearchResult.Size = new System.Drawing.Size(148, 55);
@@ -1201,33 +1212,6 @@
             this.Text_Search_Title.Size = new System.Drawing.Size(406, 29);
             this.Text_Search_Title.TabIndex = 23;
             // 
-            // Panel_Download_List
-            // 
-            this.Panel_Download_List.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Panel_Download_List.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.Panel_Download_List.Location = new System.Drawing.Point(153, 49);
-            this.Panel_Download_List.Margin = new System.Windows.Forms.Padding(0);
-            this.Panel_Download_List.Name = "Panel_Download_List";
-            this.Panel_Download_List.Size = new System.Drawing.Size(1251, 700);
-            this.Panel_Download_List.TabIndex = 19;
-            this.Panel_Download_List.Visible = false;
-            this.Panel_Download_List.Resize += new System.EventHandler(this.Panel_Download_List_Resize);
-            // 
-            // Panel_Search_Download
-            // 
-            this.Panel_Search_Download.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Panel_Search_Download.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.Panel_Search_Download.Location = new System.Drawing.Point(153, 49);
-            this.Panel_Search_Download.Margin = new System.Windows.Forms.Padding(0);
-            this.Panel_Search_Download.Name = "Panel_Search_Download";
-            this.Panel_Search_Download.Size = new System.Drawing.Size(1251, 700);
-            this.Panel_Search_Download.TabIndex = 18;
-            this.Panel_Search_Download.Resize += new System.EventHandler(this.Panel_Search_Download_Resize);
-            // 
             // Panel_Detail
             // 
             this.Panel_Detail.Controls.Add(this.Pic_Detail);
@@ -1260,11 +1244,133 @@
             this.Text_Detail.Size = new System.Drawing.Size(208, 194);
             this.Text_Detail.TabIndex = 2;
             // 
+            // Panel_Search_Artist
+            // 
+            this.Panel_Search_Artist.Controls.Add(this.button13);
+            this.Panel_Search_Artist.Controls.Add(this.button14);
+            this.Panel_Search_Artist.Controls.Add(this.listBox_AddArtistAdd);
+            this.Panel_Search_Artist.Controls.Add(this.listBox_ArtistAdd);
+            this.Panel_Search_Artist.Controls.Add(this.label10);
+            this.Panel_Search_Artist.Controls.Add(this.Text_AddArtistAdd);
+            this.Panel_Search_Artist.Controls.Add(this.Text_ArtistAdd);
+            this.Panel_Search_Artist.Location = new System.Drawing.Point(957, 453);
+            this.Panel_Search_Artist.Name = "Panel_Search_Artist";
+            this.Panel_Search_Artist.Size = new System.Drawing.Size(392, 195);
+            this.Panel_Search_Artist.TabIndex = 23;
+            this.Panel_Search_Artist.Visible = false;
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.Transparent;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.ForeColor = System.Drawing.Color.LightGray;
+            this.button13.Location = new System.Drawing.Point(185, 135);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(23, 31);
+            this.button13.TabIndex = 22;
+            this.button13.Tag = "SeriesAdd";
+            this.button13.Text = "◀";
+            this.button13.UseVisualStyleBackColor = false;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Transparent;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.ForeColor = System.Drawing.Color.LightGray;
+            this.button14.Location = new System.Drawing.Point(185, 79);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(23, 31);
+            this.button14.TabIndex = 21;
+            this.button14.Tag = "SeriesAdd";
+            this.button14.Text = "▶";
+            this.button14.UseVisualStyleBackColor = false;
+            // 
+            // listBox_AddArtistAdd
+            // 
+            this.listBox_AddArtistAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.listBox_AddArtistAdd.ForeColor = System.Drawing.Color.LightGray;
+            this.listBox_AddArtistAdd.FormattingEnabled = true;
+            this.listBox_AddArtistAdd.ItemHeight = 12;
+            this.listBox_AddArtistAdd.Location = new System.Drawing.Point(214, 59);
+            this.listBox_AddArtistAdd.Name = "listBox_AddArtistAdd";
+            this.listBox_AddArtistAdd.Size = new System.Drawing.Size(167, 124);
+            this.listBox_AddArtistAdd.TabIndex = 15;
+            // 
+            // listBox_ArtistAdd
+            // 
+            this.listBox_ArtistAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.listBox_ArtistAdd.ForeColor = System.Drawing.Color.LightGray;
+            this.listBox_ArtistAdd.FormattingEnabled = true;
+            this.listBox_ArtistAdd.ItemHeight = 12;
+            this.listBox_ArtistAdd.Location = new System.Drawing.Point(12, 59);
+            this.listBox_ArtistAdd.Name = "listBox_ArtistAdd";
+            this.listBox_ArtistAdd.Size = new System.Drawing.Size(167, 124);
+            this.listBox_ArtistAdd.TabIndex = 14;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.LightGray;
+            this.label10.Location = new System.Drawing.Point(99, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 12);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "특정 작가만 설정";
+            // 
+            // Text_AddArtistAdd
+            // 
+            this.Text_AddArtistAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Text_AddArtistAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Text_AddArtistAdd.ForeColor = System.Drawing.Color.LightGray;
+            this.Text_AddArtistAdd.Location = new System.Drawing.Point(214, 32);
+            this.Text_AddArtistAdd.Name = "Text_AddArtistAdd";
+            this.Text_AddArtistAdd.Size = new System.Drawing.Size(167, 21);
+            this.Text_AddArtistAdd.TabIndex = 10;
+            // 
+            // Text_ArtistAdd
+            // 
+            this.Text_ArtistAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Text_ArtistAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Text_ArtistAdd.ForeColor = System.Drawing.Color.LightGray;
+            this.Text_ArtistAdd.Location = new System.Drawing.Point(12, 32);
+            this.Text_ArtistAdd.Name = "Text_ArtistAdd";
+            this.Text_ArtistAdd.Size = new System.Drawing.Size(167, 21);
+            this.Text_ArtistAdd.TabIndex = 9;
+            this.Text_ArtistAdd.Tag = "SeriesAdd";
+            // 
+            // Panel_Download_List
+            // 
+            this.Panel_Download_List.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_Download_List.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Panel_Download_List.Location = new System.Drawing.Point(153, 49);
+            this.Panel_Download_List.Margin = new System.Windows.Forms.Padding(0);
+            this.Panel_Download_List.Name = "Panel_Download_List";
+            this.Panel_Download_List.Size = new System.Drawing.Size(1251, 700);
+            this.Panel_Download_List.TabIndex = 19;
+            this.Panel_Download_List.Visible = false;
+            this.Panel_Download_List.Resize += new System.EventHandler(this.Panel_Download_List_Resize);
+            // 
+            // Panel_Search_Download
+            // 
+            this.Panel_Search_Download.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_Search_Download.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Panel_Search_Download.Location = new System.Drawing.Point(153, 49);
+            this.Panel_Search_Download.Margin = new System.Windows.Forms.Padding(0);
+            this.Panel_Search_Download.Name = "Panel_Search_Download";
+            this.Panel_Search_Download.Size = new System.Drawing.Size(1251, 700);
+            this.Panel_Search_Download.TabIndex = 18;
+            this.Panel_Search_Download.Resize += new System.EventHandler(this.Panel_Search_Download_Resize);
+            // 
             // DownloadPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Controls.Add(this.Panel_Search_Artist);
             this.Controls.Add(this.Panel_Search_Character);
             this.Controls.Add(this.Panel_Detail);
             this.Controls.Add(this.Panel_Download_Stat);
@@ -1311,6 +1417,8 @@
             this.Panel_Detail.ResumeLayout(false);
             this.Panel_Detail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Detail)).EndInit();
+            this.Panel_Search_Artist.ResumeLayout(false);
+            this.Panel_Search_Artist.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1323,7 +1431,6 @@
         private System.Windows.Forms.Panel Panel_Top_Option;
         private System.Windows.Forms.Button Btn_Preview;
         private System.Windows.Forms.Button Btn_Option;
-        private System.Windows.Forms.Button Btn_Hompage;
         private System.Windows.Forms.Button Btn_DownloadStart;
         private System.Windows.Forms.Panel Panel_Download_OptionList;
         private System.Windows.Forms.Panel Panel_DownloadBar;
@@ -1402,5 +1509,14 @@
         private System.Windows.Forms.PictureBox Pic_Detail;
         private System.Windows.Forms.TextBox Text_Detail;
         private System.Windows.Forms.Button Btn_Search_Range;
+        private System.Windows.Forms.Button Btn_Search_Artist;
+        private System.Windows.Forms.Panel Panel_Search_Artist;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.ListBox listBox_AddArtistAdd;
+        private System.Windows.Forms.ListBox listBox_ArtistAdd;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox Text_AddArtistAdd;
+        private System.Windows.Forms.TextBox Text_ArtistAdd;
     }
 }

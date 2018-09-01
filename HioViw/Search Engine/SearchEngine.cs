@@ -68,6 +68,11 @@ namespace HioViw
                 }
             }
 
+            if (j["a"] == null)
+            {
+                Return = false;
+            }
+
             return Return;
         }
         
@@ -80,7 +85,8 @@ namespace HioViw
                 if (!fi.Exists)
                 {
                     DBDownloader.DBDownload();
-                    MessageBox.Show("DB가 아직 다운로드가 다 되지 않았습니다.");
+                    var Struct = new Library.AlamStruct("Error", "DB파일이 존재하지 않아서 다운로드합니다.", 5f);
+                    Global.manage.Add(Struct);
                     return;
                 }
             }
@@ -271,6 +277,19 @@ namespace HioViw
                                                 IsSearch = false;
 
                                         }
+                                        else if (search.Artist.Count != 0 && content.Key == "a")
+                                        {
+                                            bool chk = false;
+                                            foreach (var lang in search.Artist)
+                                            {
+                                                if (lang == content.Value.ToString())
+                                                {
+                                                    chk = true;
+                                                    break;
+                                                }
+                                            }
+                                            IsSearch = chk;
+                                        }
 
                                         if (IsSearch  == false)
                                         {
@@ -301,6 +320,8 @@ namespace HioViw
                                         g.Language = j["l"].ToString();
                                     if (j["p"] != null)
                                         g.Series = j["p"].ToString().Split('\"')[1];
+                                    if (j["a"] != null)
+                                        g.Artist = j["a"].ToString();
 
                                     if (j["t"] != null)
                                     {

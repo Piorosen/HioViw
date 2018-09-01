@@ -61,21 +61,21 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.Picture_Image);
             this.panel1.Controls.Add(this.Label_Body);
             this.panel1.Controls.Add(this.Label_Title);
+            this.panel1.Controls.Add(this.Picture_Image);
             this.panel1.Location = new System.Drawing.Point(13, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(364, 156);
+            this.panel1.Size = new System.Drawing.Size(370, 156);
             this.panel1.TabIndex = 2;
             // 
             // Picture_Image
             // 
             this.Picture_Image.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Picture_Image.Location = new System.Drawing.Point(230, 8);
+            this.Picture_Image.Location = new System.Drawing.Point(303, 8);
             this.Picture_Image.Name = "Picture_Image";
-            this.Picture_Image.Size = new System.Drawing.Size(127, 139);
+            this.Picture_Image.Size = new System.Drawing.Size(60, 139);
             this.Picture_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Picture_Image.TabIndex = 2;
             this.Picture_Image.TabStop = false;
@@ -87,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_Body.Location = new System.Drawing.Point(11, 33);
             this.Label_Body.Name = "Label_Body";
-            this.Label_Body.Size = new System.Drawing.Size(208, 114);
+            this.Label_Body.Size = new System.Drawing.Size(352, 114);
             this.Label_Body.TabIndex = 1;
             this.Label_Body.Text = "내용 : ";
             // 
@@ -95,7 +95,7 @@
             // 
             this.Label_Title.Location = new System.Drawing.Point(11, 11);
             this.Label_Title.Name = "Label_Title";
-            this.Label_Title.Size = new System.Drawing.Size(208, 12);
+            this.Label_Title.Size = new System.Drawing.Size(346, 12);
             this.Label_Title.TabIndex = 0;
             this.Label_Title.Text = "제목 : ";
             // 

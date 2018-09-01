@@ -36,6 +36,8 @@
             this.Panel_Tag = new System.Windows.Forms.Panel();
             this.Panel_Character = new System.Windows.Forms.Panel();
             this.Panel_Series = new System.Windows.Forms.Panel();
+            this.Panel_Artist = new System.Windows.Forms.Panel();
+            this.Btn_ArtistUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Btn_DBUpdate
@@ -150,11 +152,40 @@
             this.Panel_Series.TabIndex = 18;
             this.Panel_Series.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
+            // Panel_Artist
+            // 
+            this.Panel_Artist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_Artist.Location = new System.Drawing.Point(200, 460);
+            this.Panel_Artist.Name = "Panel_Artist";
+            this.Panel_Artist.Size = new System.Drawing.Size(522, 27);
+            this.Panel_Artist.TabIndex = 21;
+            // 
+            // Btn_ArtistUpdate
+            // 
+            this.Btn_ArtistUpdate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_ArtistUpdate.FlatAppearance.BorderSize = 0;
+            this.Btn_ArtistUpdate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_ArtistUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_ArtistUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ArtistUpdate.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_ArtistUpdate.Location = new System.Drawing.Point(40, 430);
+            this.Btn_ArtistUpdate.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_ArtistUpdate.Name = "Btn_ArtistUpdate";
+            this.Btn_ArtistUpdate.Size = new System.Drawing.Size(150, 80);
+            this.Btn_ArtistUpdate.TabIndex = 20;
+            this.Btn_ArtistUpdate.Tag = false;
+            this.Btn_ArtistUpdate.Text = "Artist 업데이트";
+            this.Btn_ArtistUpdate.UseVisualStyleBackColor = false;
+            this.Btn_ArtistUpdate.Click += new System.EventHandler(this.Btn_ArtistUpdate_Click);
+            // 
             // Option_Update
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Controls.Add(this.Panel_Artist);
+            this.Controls.Add(this.Btn_ArtistUpdate);
             this.Controls.Add(this.Panel_Character);
             this.Controls.Add(this.Panel_Tag);
             this.Controls.Add(this.Panel_Series);
@@ -180,5 +211,7 @@
         private System.Windows.Forms.Panel Panel_Tag;
         private System.Windows.Forms.Panel Panel_Character;
         private System.Windows.Forms.Panel Panel_Series;
+        private System.Windows.Forms.Panel Panel_Artist;
+        private System.Windows.Forms.Button Btn_ArtistUpdate;
     }
 }
