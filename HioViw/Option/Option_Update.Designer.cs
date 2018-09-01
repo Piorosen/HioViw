@@ -160,6 +160,7 @@
             this.Panel_Artist.Name = "Panel_Artist";
             this.Panel_Artist.Size = new System.Drawing.Size(522, 27);
             this.Panel_Artist.TabIndex = 21;
+            this.Panel_Artist.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // Btn_ArtistUpdate
             // 

@@ -38,7 +38,8 @@ namespace HioViw
                 Panel_Search_Language.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 3);
                 Panel_Search_Series.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 4);
                 Panel_Search_Character.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 5);
-                Panel_Search_Range.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 6);
+                Panel_Search_Artist.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 6);
+                Panel_Search_Range.Location = new Point(Panel_Search.Size.Width + 3, 160 + 55 * 7);
 
                 SearchPairs[listBox_Type.Name] = listBox_Type;
                 SearchPairs[listBox_AddType.Name] = listBox_AddType;
@@ -59,16 +60,17 @@ namespace HioViw
                 SearchPairs[listBox_CharacterAdd.Name] = listBox_CharacterAdd;
                 SearchPairs[listBox_AddCharacterAdd.Name] = listBox_AddCharacterAdd;
 
+                SearchPairs[listBox_ArtistAdd.Name] = listBox_ArtistAdd;
+                SearchPairs[listBox_AddArtistAdd.Name] = listBox_AddArtistAdd;
 
 
                 Dic_Search_List[Btn_Search_Title.Name] = Panel_Search_Title;
                 Dic_Search_List[Btn_Search_Type.Name] = Panel_Search_Type;
                 Dic_Search_List[Btn_Search_Tags.Name] = Panel_Search_Tags;
                 Dic_Search_List[Btn_Search_Series.Name] = Panel_Search_Series;
-                Dic_Search_List[Btn_Search_Range.Name] = Panel_Search_Range;
                 Dic_Search_List[Btn_Search_Language.Name] = Panel_Search_Language;
                 Dic_Search_List[Btn_Search_Character.Name] = Panel_Search_Character;
-
+                Dic_Search_List[Btn_Search_Artist.Name] = Panel_Search_Artist;
             }
 
             Menu_Button.Add(Btn_Preview);
@@ -152,13 +154,32 @@ namespace HioViw
                 if (!Global.SpeedLimit)
                 {
                     listBox_CharacterAdd.Items.AddRange(SearchListBox.GetListBox(Global.Character, String.Empty));
-                    listBox_CharacterAdd.Items.AddRange(SearchListBox.GetListBox(Global.Character, String.Empty));
+                    listBox_CharacterDelete.Items.AddRange(SearchListBox.GetListBox(Global.Character, String.Empty));
+                }
+            }));
+            Thread artistsDB = new Thread(new ThreadStart(() =>
+            {
+                FileInfo fi = new FileInfo(Global.DBPath + Global.DBArtist + Global.DBExt);
+                if (!fi.Exists)
+                {
+                    DBDownloader.InfoDownload("artists");
+                }
+                StreamReader sr = new StreamReader(Global.DBPath + Global.DBArtist + Global.DBExt);
+                while (!sr.EndOfStream)
+                {
+                    Global.Artist.Add(sr.ReadLine());
+                }
+                sr.Close();
+                if (!Global.SpeedLimit)
+                {
+                    listBox_ArtistAdd.Items.AddRange(SearchListBox.GetListBox(Global.Artist, String.Empty));
                 }
             }));
 
             tagsDB.Start();
             seriesDB.Start();
             characterDB.Start();
+            artistsDB.Start();
 
             #endregion
 

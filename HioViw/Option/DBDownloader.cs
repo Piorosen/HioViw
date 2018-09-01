@@ -204,7 +204,7 @@ namespace HioViw
                 }
                 Artist = true;
                 sw = new StreamWriter(Global.DBPath + Global.DBArtist + Global.DBExt, false, Encoding.UTF8);
-                panel = Global.Panel_Character;
+                panel = Global.Panel_Artist;
                 {
                     for (int i = 1; i < list.Length; i++)
                     {
@@ -234,14 +234,14 @@ namespace HioViw
                     }
                     sw.Close();
                 }
-                StreamReader sr = new StreamReader(Global.DBPath + Global.DBCharcter + Global.DBExt, Encoding.UTF8);
-                Global.Character.Clear();
+                StreamReader sr = new StreamReader(Global.DBPath + Global.DBArtist + Global.DBExt, Encoding.UTF8);
+                Global.Artist.Clear();
                 while (!sr.EndOfStream)
                 {
-                    Global.Character.Add(sr.ReadLine());
+                    Global.Artist.Add(sr.ReadLine());
                 }
                 sr.Close();
-                Character = false;
+                Artist = false;
             }
             MessageBox.Show(info + " 다운로드 완료");
         }

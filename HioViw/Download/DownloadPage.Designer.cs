@@ -41,8 +41,8 @@
             this.Panel_Search = new System.Windows.Forms.Panel();
             this.Btn_Search_Artist = new System.Windows.Forms.Button();
             this.Btn_Search_Character = new System.Windows.Forms.Button();
-            this.Btn_Search_Range = new System.Windows.Forms.Button();
             this.Btn_Search_Type = new System.Windows.Forms.Button();
+            this.Btn_Search_Range = new System.Windows.Forms.Button();
             this.Btn_Search_Tags = new System.Windows.Forms.Button();
             this.Btn_Search_Series = new System.Windows.Forms.Button();
             this.Btn_Search_Language = new System.Windows.Forms.Button();
@@ -266,7 +266,6 @@
             // 
             this.Panel_Download_OptionList.Controls.Add(this.Btn_Option);
             this.Panel_Download_OptionList.Controls.Add(this.Btn_Preview);
-            this.Panel_Download_OptionList.Controls.Add(this.Btn_Search_Range);
             this.Panel_Download_OptionList.Controls.Add(this.Panel_Search);
             this.Panel_Download_OptionList.Controls.Add(this.Btn_DownloadStart);
             this.Panel_Download_OptionList.Controls.Add(this.Btn_SearchResult);
@@ -282,6 +281,7 @@
             this.Panel_Search.Controls.Add(this.Btn_Search_Artist);
             this.Panel_Search.Controls.Add(this.Btn_Search_Character);
             this.Panel_Search.Controls.Add(this.Btn_Search_Type);
+            this.Panel_Search.Controls.Add(this.Btn_Search_Range);
             this.Panel_Search.Controls.Add(this.Btn_Search_Tags);
             this.Panel_Search.Controls.Add(this.Btn_Search_Series);
             this.Panel_Search.Controls.Add(this.Btn_Search_Language);
@@ -289,7 +289,7 @@
             this.Panel_Search.Location = new System.Drawing.Point(-11, 110);
             this.Panel_Search.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_Search.Name = "Panel_Search";
-            this.Panel_Search.Size = new System.Drawing.Size(150, 442);
+            this.Panel_Search.Size = new System.Drawing.Size(150, 448);
             this.Panel_Search.TabIndex = 21;
             this.Panel_Search.Visible = false;
             this.Panel_Search.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
@@ -328,24 +328,6 @@
             this.Btn_Search_Character.UseVisualStyleBackColor = false;
             this.Btn_Search_Character.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
             // 
-            // Btn_Search_Range
-            // 
-            this.Btn_Search_Range.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Btn_Search_Range.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.Btn_Search_Range.FlatAppearance.BorderSize = 0;
-            this.Btn_Search_Range.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.Btn_Search_Range.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.Btn_Search_Range.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Search_Range.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_Search_Range.Location = new System.Drawing.Point(2, 637);
-            this.Btn_Search_Range.Margin = new System.Windows.Forms.Padding(0);
-            this.Btn_Search_Range.Name = "Btn_Search_Range";
-            this.Btn_Search_Range.Size = new System.Drawing.Size(148, 55);
-            this.Btn_Search_Range.TabIndex = 20;
-            this.Btn_Search_Range.Text = "다운 범위 지정";
-            this.Btn_Search_Range.UseVisualStyleBackColor = false;
-            this.Btn_Search_Range.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
-            // 
             // Btn_Search_Type
             // 
             this.Btn_Search_Type.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -362,6 +344,23 @@
             this.Btn_Search_Type.Text = "종류";
             this.Btn_Search_Type.UseVisualStyleBackColor = false;
             this.Btn_Search_Type.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
+            // 
+            // Btn_Search_Range
+            // 
+            this.Btn_Search_Range.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Btn_Search_Range.FlatAppearance.BorderSize = 0;
+            this.Btn_Search_Range.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Btn_Search_Range.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.Btn_Search_Range.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Search_Range.ForeColor = System.Drawing.Color.LightGray;
+            this.Btn_Search_Range.Location = new System.Drawing.Point(1, 386);
+            this.Btn_Search_Range.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Search_Range.Name = "Btn_Search_Range";
+            this.Btn_Search_Range.Size = new System.Drawing.Size(148, 55);
+            this.Btn_Search_Range.TabIndex = 20;
+            this.Btn_Search_Range.Text = "다운 범위 지정";
+            this.Btn_Search_Range.UseVisualStyleBackColor = false;
+            this.Btn_Search_Range.Click += new System.EventHandler(this.Btn_Search_Visible_Click);
             // 
             // Btn_Search_Tags
             // 
@@ -441,7 +440,7 @@
             this.Btn_SearchResult.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
             this.Btn_SearchResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_SearchResult.ForeColor = System.Drawing.Color.LightGray;
-            this.Btn_SearchResult.Location = new System.Drawing.Point(2, 582);
+            this.Btn_SearchResult.Location = new System.Drawing.Point(1, 637);
             this.Btn_SearchResult.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_SearchResult.Name = "Btn_SearchResult";
             this.Btn_SearchResult.Size = new System.Drawing.Size(148, 55);
@@ -1258,6 +1257,7 @@
             this.Panel_Search_Artist.Size = new System.Drawing.Size(392, 195);
             this.Panel_Search_Artist.TabIndex = 23;
             this.Panel_Search_Artist.Visible = false;
+            this.Panel_Search_Artist.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // button13
             // 

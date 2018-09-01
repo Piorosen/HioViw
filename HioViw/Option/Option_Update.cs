@@ -89,13 +89,20 @@ namespace HioViw.Option
                 graphic.Clear(this.BackColor);
                 Rectangle r = new Rectangle(0, 0, panel.Size.Width, panel.Size.Height);
                 graphic.DrawRectangle(new Pen(Color.FromArgb(120, 120, 120), 2), r);
-                if (sender is Panel)
+                try
                 {
-                    graphic.DrawLine(new Pen(Color.FromArgb(100, 200, 100), panel.Size.Height / 2),
-                        0, panel.Size.Height / 2.0f,
-                        // TODO : 19.0f DB Count, Search Engine 에도 나중에 수정요청
-                        panel.Size.Width * (float)panel.Tag,
-                        panel.Size.Height / 2.0f);
+                    if (sender is Panel)
+                    {
+                        graphic.DrawLine(new Pen(Color.FromArgb(100, 200, 100), panel.Size.Height / 2),
+                            0, panel.Size.Height / 2.0f,
+                            // TODO : 19.0f DB Count, Search Engine 에도 나중에 수정요청
+                            panel.Size.Width * (float)panel.Tag,
+                            panel.Size.Height / 2.0f);
+                    }
+                }
+                catch (Exception)
+                {
+
                 }
             }
         }
